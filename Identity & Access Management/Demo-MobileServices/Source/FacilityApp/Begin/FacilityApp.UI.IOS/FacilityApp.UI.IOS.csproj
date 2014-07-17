@@ -140,9 +140,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BindingNewADAL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\BindingNewADAL.dll</HintPath>
+    <Reference Include="BindingNewADAL">
+      <HintPath>..\..\lib\BindingNewADAL.dll</HintPath>
     </Reference>
     <Reference Include="MBProgressHUD">
       <HintPath>..\Components\mbprogresshud-0.8\lib\ios\MBProgressHUD.dll</HintPath>
@@ -201,5 +200,5 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>  
+  </ItemGroup>
 </Project>

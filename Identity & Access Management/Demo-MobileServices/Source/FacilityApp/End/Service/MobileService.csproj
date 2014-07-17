@@ -57,9 +57,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlToOpenXml, Version=1.5.0.0, Culture=neutral, PublicKeyToken=6ad79d83e2b60e63, processorArchitecture=MSIL">
-      <HintPath>..\lib\HtmlToOpenXml.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="HtmlToOpenXml">
+      <HintPath>..\packages\HtmlToOpenXml.dll.1.5.0\lib\net45\HtmlToOpenXml.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
