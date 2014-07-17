@@ -683,7 +683,7 @@ We've added authentication with Active Directory, but what our app users would r
 	
 	_Multiple targets in Portable Class_
 
-9. Open the **Misc** folder and show that the **iOS** project is in the same solution in **Visual Studio**.
+9. Open the **Misc** folder and add the FacilityApp.UI.IOS from the end folder into there.
 
 	![iOS Project in Visual Studio](Images/ios-project-in-visual-studio.png?raw=true)
 	

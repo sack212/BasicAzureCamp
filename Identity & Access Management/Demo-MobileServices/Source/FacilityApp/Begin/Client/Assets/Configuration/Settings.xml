@@ -16,7 +16,7 @@
   <add key="StateFRVM" value="BA" />
   <add key="ZipFRVM" value="7000" />
   <add key="CameraThumbnail" value="ms-appx:///Assets/Camera.png" />
-  <add key="MapImageLarge" value="ms-appx:///Assets/Map_Large.png" />
+  <add key="MapImageLarge" value="ms-appx:///Assets/Map_Large.jpg" />
   <add key="StatusImageComplete" value="/Assets/complete.png" />
   <add key="StatusImageIncomplete" value="/Assets/complete.png" />
   <add key="UserImage" value="ms-appx:///Assets/UserImage.png" />

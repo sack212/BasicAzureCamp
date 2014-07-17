@@ -18,7 +18,7 @@
     <RestorePackages>true</RestorePackages>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxPackageDir>c:\temp\testpackage</AppxPackageDir>
-    <AppxBundlePlatforms>x86</AppxBundlePlatforms>    
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -144,7 +144,7 @@
     <Content Include="Assets\incomplete.png" />
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\Map_Large.png" />
+    <BundleResource Include="Assets\Map_Large.jpg" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\Square310x310Logo.scale-100.png" />
     <Content Include="Assets\Square70x70Logo.scale-100.png" />
@@ -241,7 +241,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />  
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
