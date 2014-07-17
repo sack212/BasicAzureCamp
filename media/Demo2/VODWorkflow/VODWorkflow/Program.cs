@@ -25,7 +25,7 @@ namespace VODWorkflow
         //      3. Update _singleInputMp4Path variable below to point at your *.mp4 input file
         //****************************************************************************************    
 
-        private static readonly string _singleInputMp4Path = @"C:\users\nickha\desktop\sco.mp4";
+        private static readonly string _singleInputMp4Path = @"C:\users\you\your.mp4";
         private static readonly string _mediaServicesAccountKey = ConfigurationManager.AppSettings["MediaServicesAccountKey"];
         private static readonly string _mediaServicesAccountName = ConfigurationManager.AppSettings["MediaServicesAccountName"];
 

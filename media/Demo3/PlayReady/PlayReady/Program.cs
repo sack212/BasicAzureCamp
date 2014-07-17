@@ -18,7 +18,7 @@ namespace PlayReady
         // provide paths to your own media files below to run these samples.
 
 
-        private static readonly string _singleMP4File = @"c:\users\nickha\desktop\sco.mp4";
+        private static readonly string _singleMP4File = @"C:\users\you\your.mp4";
 
         // XML Configruation files path.
         private static readonly string _configurationXMLFiles = @".\Configurations\";
