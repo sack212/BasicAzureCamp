@@ -62,7 +62,7 @@ Once you finish signing up for your **Office 365** subscription, follow these st
 
 	![Office Subscription Linked](Images/office-subscription-linked.png?raw=true)
 	
-1. Go to https://{username}-my.sharepoint.com replacing the placeholder with the username you defined before in the **.onmicrosoft.com** domain (e.g.: https://myuser-my.sharepoint.com/).
+1. Go to https://{domain}-my.sharepoint.com replacing the placeholder with the username you defined before in the **.onmicrosoft.com** domain (e.g.: https://myuser-my.sharepoint.com/).
 
 1. This site is provisioned the first time you actually launch it in the browser. After a few minutes, you should see the following:
 
@@ -205,7 +205,7 @@ Once you finish signing up for your **Office 365** subscription, follow these st
 
 1. Add the following settings (take into account that the name of each setting is case sensitive):
 
-	* **SharePointUri**: the SharePoint user's personal site targeting the API address. The URL usually has the following form **https://{domain}-my.sharepoint.com/personal/{username}_{domain}_onmicrosoft_com/_api/web**. For example: https://dpe-my.sharepoint.com/personal/admin_dpe_onmicrosoft_com/_api/web.
+	* **SharePointUri**: the SharePoint user's personal site targeting the API address. The URL usually has the following form **https://{domain}-my.sharepoint.com/personal/{username}&#95;{domain}&#95;onmicrosoft&#95;com/&#95;api/web**. For example: https://dpe-my.sharepoint.com/personal/admin_dpe_onmicrosoft_com/_api/web.
 	* **SharePointResource**: the base URL of SharePoint's Personal sites collection. E.g.: https://{domain}-my.sharepoint.com
 	* **Authority**: the Azure AD authority. Use https://login.windows.net/common/oauth2/authorize
 	* **ActiveDirectoryClientId**: the Id of the Mobile Service application registered in the Azure AD
@@ -226,7 +226,7 @@ Once you finish signing up for your **Office 365** subscription, follow these st
 	* **AppKey**: the Mobile Service key. You can retrieve this value by clicking **Manage Keys** in your Mobile Service
 	* **MobSvcUri**: the Mobile Service URI
 	* **SharePointResource**: the root URL for the personal sites of your SharePoint domain. E.g.: http://{domain}-my.sharepoint.com/
-	* **SharePointUri**: the SharePoint user's personal site targeting the API address. The URL usually has the following form **https://{domain}-my.sharepoint.com/personal/{username}_{domain}_onmicrosoft_com/_api/web**. For example: https://dpe-my.sharepoint.com/personal/admin_dpe_onmicrosoft_com/_api/web.
+	* **SharePointUri**: the SharePoint user's personal site targeting the API address. The URL usually has the following form **https://{domain}-my.sharepoint.com/personal/{username}&#95;{domain}&#95;onmicrosoft&#95;com/&#95;api/web**. For example: https://dpe-my.sharepoint.com/personal/admin&#95;dpe&#95;onmicrosoft&#95;com/&#95;api/web.
 	* **SharePointUser**: Full qualified name for the Office 365 user. E.g.: admin@dpe.onmicrosoft.com.
 	
 1. The following values are displayed in the Windows Store app. These settings configure the Username and the default location of the device, simulating Geolocation inside the app. You can replace them with a real location (e.g.: the location where the demo will be presented).

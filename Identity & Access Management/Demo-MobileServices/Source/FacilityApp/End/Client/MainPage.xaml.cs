@@ -21,7 +21,10 @@
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.OnLoadState;   
+            this.navigationHelper.LoadState += this.OnLoadState; 
+  
+          
+
         }
 
         public NavigationHelper NavigationHelper

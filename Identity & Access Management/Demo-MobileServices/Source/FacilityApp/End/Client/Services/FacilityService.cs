@@ -12,6 +12,7 @@
     {
         public override async Task<string> LoginAsync(bool clearCache, string authorityId, string redirectUri, string resourceId, string clientId)
         {
+
             var context = new AuthenticationContext(authorityId);
             var result = await context.AcquireTokenAsync(resourceId, clientId);
 
@@ -31,6 +32,7 @@
             State.SharePointToken = authenticationResult.AccessToken;
 
             return result.AccessToken;
+
         }
     }
 }
