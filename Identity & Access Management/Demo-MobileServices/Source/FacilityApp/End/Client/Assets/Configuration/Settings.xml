@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<appSettings>
+  <add key="AppKey" value="EAiYBSAYdwJbJsTvSnwnPsbwOiFOPc44" />
+  <add key="AadAuthority" value="https://login.windows.net/common/oauth2/authorize" />
+  <add key="AadRedirectResourceURI" value="https://facilitiesservice.azure-mobile.net/login/aad" />
+  <add key="AadClientID" value="c530c0fe-77d8-4e22-a1e7-c8fb59a5788d" />
+  <add key="SharePointResource" value="https://matv-my.sharepoint.com" />
+  <add key="MobSvcUri" value="https://facilitiesservice.azure-mobile.net/" />
+  <add key="SharePointUser" value="admin@matv.onmicrosoft.com" />
+  <add key="UserName" value="Mat" />
+  <add key="UserSurname" value="Velloso" />
+  <add key="BuildingFRVM" value="Building 9" />
+  <add key="RoomFRVM" value="2262" />
+  <add key="StreetFRVM" value="1 Microsoft Way" />
+  <add key="CityFRVM" value="Redmond" />
+  <add key="StateFRVM" value="WA" />
+  <add key="ZipFRVM" value="98054" />
+  <add key="CameraThumbnail" value="ms-appx:///Assets/Camera.png" />
+  <add key="MapImageLarge" value="ms-appx:///Assets/Map_Large.jpg" />
+  <add key="StatusImageComplete" value="/Assets/complete.png" />
+  <add key="StatusImageIncomplete" value="/Assets/complete.png" />
+  <add key="UserImage" value="ms-appx:///Assets/UserImage.png" />
+</appSettings>
+
