@@ -14,13 +14,13 @@ namespace CustomerQuery.Controllers
 {
     public class HomeController : Controller
     {
-        const string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=redisquerydemostorage;AccountKey=AlUK9LoExoW4kPLwxefZcbYoB3M94FqemLtiGHwuXFiTOjdonJV6RlguwcKpJq3zSRESRg6hAzN+yWVZoC24bw==";
+        const string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=;AccountKey=";
         //cache for customers
-        const string redisUrl = "querydemo.redis.cache.windows.net";
-        const string redisPassword = "AwMLfPaovSxdkXv+sOWx4gf0GBRqKiMcZMwsvW8Ig+E=";
+        const string redisUrl = ".redis.cache.windows.net";
+        const string redisPassword = "";
         //cache for products
-        const string redisUrl2 = "cachecow.redis.cache.windows.net";
-        const string redisPassword2 = "EZ/bm0baS0ZrnaltOkXASAjm5KzTeKa6q+I4LVsm1Xg=";
+        const string redisUrl2 = ".redis.cache.windows.net";
+        const string redisPassword2 = "";
         const int redisPort = 6379;
 
         public ActionResult Index()

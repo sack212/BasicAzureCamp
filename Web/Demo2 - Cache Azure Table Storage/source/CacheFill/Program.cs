@@ -12,16 +12,16 @@ namespace CacheFill
 {
     class Program
     {
-        const string mStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=redisquerydemostorage;AccountKey=AlUK9LoExoW4kPLwxefZcbYoB3M94FqemLtiGHwuXFiTOjdonJV6RlguwcKpJq3zSRESRg6hAzN+yWVZoC24bw==";
-        const string mCacheUrl = "querydemo.redis.cache.windows.net";
-        const string mCachePassword = "AwMLfPaovSxdkXv+sOWx4gf0GBRqKiMcZMwsvW8Ig+E=";
-        const string mCacheUrl2 = "cachecow.redis.cache.windows.net";
-        const string mCachePassword2 = "EZ/bm0baS0ZrnaltOkXASAjm5KzTeKa6q+I4LVsm1Xg=";
+        const string mStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=;AccountKey=";
+        const string mCacheUrl = "";
+        const string mCachePassword = "";
+        const string mCacheUrl2 = "";
+        const string mCachePassword2 = "";
         static void Main(string[] args)
         {
-            //generateRecords();
-            //primeCustomerCache();
-            //generateProuctRecords();
+            generateCustomerRecords();
+            primeCustomerCache();
+            generateProuctRecords();
             primeProuctCache();
         }
         static void generateCustomerRecords()
@@ -199,7 +199,7 @@ namespace CacheFill
             var connection = new BookSleeve.RedisConnection(mCacheUrl2, allowAdmin: true,
                 password: mCachePassword2);
             connection.Open();
-            connection.Server.FlushDb(0);
+            //connection.Server.FlushDb(0);
             foreach (var c in query)
             {
                 string key = string.Format("{0}:{1}:{2}:{3}:{4}", c.PartitionKey, c.RowKey, c.Name, c.Price, c.Rate);

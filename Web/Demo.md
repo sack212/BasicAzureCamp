@@ -10,7 +10,27 @@
 
 ## Demo 2 - Redis Cache Demo
 
+> Setup for this demo takes up to 3 hours for the CacheFill project to run.
+
 1. Run the application.
 1. Check the "Directly Search Table" checkbox.
 1. Type a capital letter in the search field and click search. While the search is running (takes roughly 25 seconds) explain that the application is querying against 1 million un-indexed rows in table storage.
 1. Uncheck the "Directly Search Table" checkbox and run the search again. Search completes in under 2 seconds because it's querying against an indexed Redis cache.
+
+### Prerequisites
+
+1. Add Redis Cache Server connection details to:
+	
+	* CustomerQuery	
+		* HomeController.cs
+		* AutoCompleteController.cs
+		* ProductAutoCompleteController.cs
+	* CacheFill
+		* Program.cs
+
+2. Add Azure Storage connection string to:
+	
+	* CustomerQuery
+		* HomeController.cs
+	* CacheFill
+		* Program.cs  
