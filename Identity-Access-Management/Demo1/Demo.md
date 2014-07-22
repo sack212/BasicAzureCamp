@@ -1,15 +1,15 @@
-<a name="title" />
+<a name="title"></a>
 # Mobile Services Demo #
 
 ---
 
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 
 Since Mobile Services was launched, you have seen some strong adoption and some great apps built on top of the platform, across both the consumer and enterprise space. Mobile Services lets you easily add a cloud-hosted back end to your mobile app, regardless of what client platform you are using. 
 In this demo, you will see an exciting new set of features that makes Mobile Services even more compelling, especially in the enterprise space. You will see how to build a .NET back end locally, publishing it to the cloud, adding authentication using the **Active Directory Authentication Library** (ADAL), integrating with SharePoint and then building a cross-platform client with **Xamarin**.
 
-<a id="goals" />
+<a id="goals"></a>
 ### Goals ###
 In this demo, you will see how to:
 
@@ -17,7 +17,7 @@ In this demo, you will see how to:
 1. Integrate ADAL in a Windows Store app
 1. Showcase Xamarin for iOS and its integration with ADAL
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Key Technologies ###
 
 - [Microsoft Visual Studio 2013][2]
@@ -33,7 +33,7 @@ In this demo, you will see how to:
 [5]: http://xamarin.com/
 [6]: http://azure.microsoft.com/en-us/develop/mobile/
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 
 In order to execute this demo you need to set up your environment. The following are one-time instructions you need to execute in order to prepare the demo. Once completed, there is no need to execute these steps again; you can simply run **Reset.cmd** located in the **Setup** folder to clear the database and SharePoint files to restart the demo.
@@ -309,7 +309,7 @@ Follow these steps to run the **FacilityRequests** app to adjust the correct Sim
 
 1. In the Mac computer, open **Terminal** and clone the ADAL for iOS library from the GitHub repository: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<a name="Demo" />
+<a name="Demo"></a>
 ## Demo ##
 
 This demo is composed of the following segments:
@@ -319,7 +319,7 @@ This demo is composed of the following segments:
 1. [Integrating ADAL and Xamarin for iOS](#segment3).
 1. [Creating Your Own ADAL Binding Library (Optional)](#segment4).
 
-<a name="segment1" />
+<a name="segment1"></a>
 ### Creating a Mobile Services C# Backend ###
 
 1. In Visual Studio, click **File > New > Project...**.
@@ -450,7 +450,7 @@ This demo is composed of the following segments:
 
 	> **Speaking Point:** We have first class support for Mobile Services Table Controller right in the scaffolding dialog.
 
-<a name="segment2" />
+<a name="segment2"></a>
 ### Integrating with ADAL and Deploying to Microsoft Azure Mobile Services###
 
 1. Right-click the **MobileService** project and click **Manage NuGet Packages...**.
@@ -602,7 +602,7 @@ This demo is composed of the following segments:
 	
 	> **Note:** Do not close the Simulator or stop the app in Visual Studio. You will continue using it in the next segment.
 
-<a name="segment3" />
+<a name="segment3"></a>
 ### Integrating with SharePoint ###
 
 We've added authentication with Active Directory, but what our app users would really like is integration with all other enterprise services, including SharePoint and Office365. For example, the facilities department might want to create a document in their SharePoint site for every request they receive. It's easy to build that for them with Mobile Services.
@@ -699,7 +699,7 @@ We've added authentication with Active Directory, but what our app users would r
 
 12. Wait until the Simulator is displayed. Show the app running with the same Facility Request you created using the Windows 8 client app.
 
-<a name="segment4" />
+<a name="segment4"></a>
 ### Creating Your Own ADAL Binding Library ###
 
 1. Switch to the iOS 7.0 computer.
@@ -783,7 +783,7 @@ We've added authentication with Active Directory, but what our app users would r
 
 ---
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 In this demo, you saw how to build a .NET Mobile Service back-end locally, publish it to the cloud, add authentication with Active Directory, integrate with SharePoint, and then build a cross-platform client with Xamarin.
