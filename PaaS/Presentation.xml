@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Presentation>
+	<Id>AzureReadiness-DevCamp-PaaS</Id>
+	<Title>PaaS</Title>
+	<Description>This module provides an overview of how to design and deploy cloud solutions on Azure.</Description>
+	<Version>1.0.0</Version>
+	<Author>
+		<Name>Haishi Bai</Name>
+		<Blog>http://haishibai.blogspot.com/</Blog>
+		<Email>hbai@microsoft.com</Email>
+	</Author>
+</Presentation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Presentation>
+	<Id>AzureReadiness-DevCamp-Keynote</Id>
+	<Title>Keynote</Title>
+	<Description>This module introduces the Cloud and the Cadence of Azure.</Description>
+	<Version>1.0.0</Version>
+	<Author>
+		<Name>Neil Hutson</Name>
+		<Blog></Blog>
+		<Email>neilhut@microsoft.com</Email>
+	</Author>
+</Presentation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Presentation>
+	<Id>AzureReadiness-DevCamp-Data</Id>
+	<Title>Data</Title>
+	<Description>This module outlines the Data offerings on Microsoft Azure</Description>
+	<Version>1.0.0</Version>
+	<Author>
+		<Name>James Baker</Name>
+		<Blog></Blog>
+		<Email>jamesbak@microsoft.com</Email>
+	</Author>
+</Presentation>

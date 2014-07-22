@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Presentation>
+	<Id>AzureReadiness-DevCamp-Identity</Id>
+	<Title>Identity & Access Management</Title>
+	<Description>This module outlines the Identity & Access Management features of Microsoft Azure</Description>
+	<Version>1.0.0</Version>
+	<Author>
+		<Name>Mat Velloso</Name>
+		<Blog>http://blogs.msdn.com/b/velloso</Blog>
+		<Email>mateusv@microsoft.com</Email>
+	</Author>
+</Presentation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Presentation>
+	<Id>AzureReadiness-DevCamp-Integration</Id>
+	<Title>Integration</Title>
+	<Description>This module outlines the integration offerings on Microsoft Azure</Description>
+	<Version>1.0.0</Version>
+	<Author>
+		<Name>Nick Harris</Name>
+		<Blog>http://nickharris.net</Blog>
+		<Email>nickha@microsoft.com</Email>
+	</Author>
+</Presentation>
