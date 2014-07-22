@@ -15,7 +15,6 @@
 11. On the Extensions blade, click on the **ADD** icon to bring up the extension list. Introduce that VM extensions are installable components to customize VM instances. 
 12. Switch to slides to continue with VM extension introduction.
 
-
 ## Demo 2 - VM Extension 
 
 1.	In Azure PowerShell, issue command: **Get-AzureVMAvailableExtension | Format-Table -Property ExtensionName, Publisher**
@@ -32,7 +31,8 @@
 **$result = $status.ResourceExtensionStatusList.ExtensionSettingStatus.SubStatusList | Select Name, @{"Label"="Message";Expression = {$_.FormattedMessage.Message }}** 
 **$result |fl**
 (see screenshots in hidden slides for references)
-(see this blog: http://azure.microsoft.com/blog/2014/07/15/automating-sql-server-vm-configuration-using-custom-script-extension/ for more details on Custom Script Extension) 
+
+([see this blog post](http://azure.microsoft.com/blog/2014/07/15/automating-sql-server-vm-configuration-using-custom-script-extension/) for more details on Custom Script Extension)
 
 ### Prerequisites
 
