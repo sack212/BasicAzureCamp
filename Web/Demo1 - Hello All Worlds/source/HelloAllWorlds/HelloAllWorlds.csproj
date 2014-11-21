@@ -159,6 +159,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="hello.cshtml" />
     <Content Include="hello.php" />
+    <None Include="Properties\PublishProfiles\readinesscloudcamp.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="hello.asp" />
     <Content Include="hello.aspx" />
@@ -194,12 +195,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
