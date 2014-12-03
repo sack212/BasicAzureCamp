@@ -1,267 +1,275 @@
-﻿using Microsoft.WindowsAzure.Storage;
+﻿using System.Globalization;
+using System.Threading.Tasks;
+using CacheFill.Entities;
+using CacheFill.TaskRunnerHelper;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace CacheFill
 {
-    class Program
-    {
-        const string mStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=;AccountKey=";
-        const string mCacheUrl = "";
-        const string mCachePassword = "";
-        const string mCacheUrl2 = "";
-        const string mCachePassword2 = "";
-        static void Main(string[] args)
-        {
-            generateCustomerRecords();
-            primeCustomerCache();
-            generateProuctRecords();
-            primeProuctCache();
-        }
-        static void generateCustomerRecords()
-        {
-            if (!confirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?"))
-                return;
-           CloudStorageAccount account = CloudStorageAccount.Parse(mStorageConnectionString);
-            var client = account.CreateCloudTableClient();
-            var table = client.GetTableReference("customers");
-            table.DeleteIfExists();
-            while (true)
-            {
-                try
-                {
-                    table.CreateIfNotExists();
-                    break;
-                }
-                catch
-                {
-                    Console.WriteLine("RETRY TABLE CREATION");
-                    Thread.Sleep(5000);
-                }
-            }
-            int count = 0;
-            int totalRecords = 1000000;
-            string[] firstNames = File.ReadAllLines("CSV_Database_of_First_Names.csv");
-            string[] lastNames = File.ReadAllLines("CSV_Database_of_Last_Names.csv");
-            Random rand = new Random();
-            Dictionary<string, TableBatchOperation> batches = new Dictionary<string, TableBatchOperation>();
-            while (count < totalRecords)
-            {
-                count++;
-                var company = "Company " + rand.Next(1, 11);
-                if (!batches.ContainsKey(company))
-                    batches.Add(company, new TableBatchOperation());
+	public static class Program
+	{
+		private const string StorageConnectionString = "DefaultEndpointsProtocol=http;AccountName=cloudreadinessdevcamp;AccountKey=fImALf2OJ2BFEZy7rhwa2GSEBlSeGt5b7G2UUa116fK2oP7jkKX008pz1IPQSd9BidJC4FHviraPeGA9szQgdg==";
+		private const string CacheUrl = "";
+		private const string CachePassword = "";
+		private const string CacheUrl2 = "";
+		private const string CachePassword2 = "";
+		private const string StorageCustomerTableName = "customers";
+		private const string StorageProductsTableName = "products";
 
-                Customer cust = new Customer(company, count.ToString())
-                {
-                    Value = (rand.NextDouble() - 0.5) * 99999.0,
-                    ContractDate = DateTime.Now,
-                    Name = firstNames[rand.Next(0, firstNames.Length)] + " " + lastNames[rand.Next(0, lastNames.Length)]
-                };
-                batches[company].Insert(cust);
-                if (batches[company].Count() >= 100)
-                {
-                    Console.WriteLine("Committing " + batches[company].Count + " recrods to " + company);
-                    table.ExecuteBatch(batches[company]);
-                    batches[company].Clear();
-                }
-            }
-            foreach(var batch in batches.Values)
-            {
-                if (batch.Count > 0)
-                {
-                    Console.WriteLine("Committing " + batch.Count + "records...");
-                    table.ExecuteBatch(batch);
-                }
-            }
-        }
-        static void generateProuctRecords()
-        {
-            if (!confirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?"))
-                return;
-            CloudStorageAccount account = CloudStorageAccount.Parse(mStorageConnectionString);
-            var client = account.CreateCloudTableClient();
-            var table = client.GetTableReference("products");
-            table.DeleteIfExists();
-            while (true)
-            {
-                try
-                {
-                    table.CreateIfNotExists();
-                    break;
-                }
-                catch
-                {
-                    Console.WriteLine("RETRY TABLE CREATION");
-                    Thread.Sleep(5000);
-                }
-            }
-            int count = 0;
-            int totalRecords = 1000000;
-            string[] categories = File.ReadAllLines("CSV_Database_of_Categories.csv");
-            string[] products = File.ReadAllLines("CSV_Database_of_Products.csv");
-            string[] prefixes = { "", "Super ", "Ultimate ", "New ", "", "", ""};
-            string[] postfixes = { "", " Mini", " Pro", " Standard", " Lite", " Enterprise", " One", " 2", " X" , " Zero", " 3", " III", " IV", "", "", ""};
-            Random rand = new Random();
-            Dictionary<string, TableBatchOperation> batches = new Dictionary<string, TableBatchOperation>();
-            Dictionary<string, Tuple<int,int>> topRated = new Dictionary<string, Tuple<int,int>>();
-            while (count < totalRecords)
-            {
-                count++;
-                var category = categories[rand.Next(0, categories.Length)];
-                if (!batches.ContainsKey(category))
-                    batches.Add(category, new TableBatchOperation());
-                if (!topRated.ContainsKey(category))
-                    topRated.Add(category, new Tuple<int,int>(0, rand.Next(4,11)));
+		private static readonly object BatchLock = new object();
+		private const int Batchsize = 100;
 
-                Product prod = new Product(category, count.ToString())
-                {
-                    Price = (rand.NextDouble() + 0.1) * 99999.0,
-                    Name = prefixes[rand.Next(0, prefixes.Length)] + 
-                            products[rand.Next(0, products.Length)] +
-                            postfixes[rand.Next(0, postfixes.Length)],
-                    Category = category,
-                };
-                int rate = rand.Next(1, 11);
-                if (rate == 10)
-                {
-                    if (topRated[category].Item1 < topRated[category].Item2)
-                    {
-                        topRated[category] = new Tuple<int, int>(topRated[category].Item1 + 1, topRated[category].Item2);
-                        var color = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("\n\n\n************\n* TOP RANK!*\n************\n\n\n");
-                        Console.ForegroundColor = color;
-                    }
-                    else
-                        rate = rand.Next(1, 10);
-                }
-                prod.Rate = rate;
-                Console.WriteLine(count + " " + prod.Name + " " + prod.Rate + (prod.Rate == 10? "<----------------":""));
-                batches[category].Insert(prod);
-                if (batches[category].Count() >= 100)
-                {
-                    Console.WriteLine("Committing " + batches[category].Count + " recrods to " + category);
-                    table.ExecuteBatch(batches[category]);
-                    batches[category].Clear();
-                }
-            }
-            foreach (var batch in batches.Values)
-            {
-                if (batch.Count > 0)
-                {
-                    Console.WriteLine("Committing " + batch.Count + " records...");
-                    table.ExecuteBatch(batch);
-                }
-            }
-        }
-        static void primeCustomerCache()
-        {
-            if (!confirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?"))
-                return;
+		public static void Main()
+		{
+			var log = Console.Out;
 
-            CloudStorageAccount account = CloudStorageAccount.Parse(mStorageConnectionString);
-            var client = account.CreateCloudTableClient();
-            var table = client.GetTableReference("customers");
-            var query = from c in table.CreateQuery<Customer>()
-                        select c;
+			GenerateCustomerRecords(log);
+			PrimeCustomerCache(log);
+			GenerateProuctRecords(log);
+			PrimeProuctCache(log);
+		}
 
-            var connection = new BookSleeve.RedisConnection(mCacheUrl, allowAdmin: true,
-                password: mCachePassword);
-            connection.Open();
-            connection.Server.FlushDb(0);
-            foreach (var c in query)
-            {
-                string key = string.Format("{0}:{1}", c.PartitionKey, c.RowKey);
-                Console.WriteLine("{0}:{1}", key, c.Name);
-                connection.SortedSets.Add(0, "customervalues", key, c.Value);
-                connection.Strings.Set(0, "cust:" + c.Name.Replace(' ', ':'), key);
-            }
-            connection.Close(false);
-        }
-        static void primeProuctCache()
-        {
-            if (!confirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?"))
-                return;
+		private static void GenerateCustomerRecords(TextWriter log)
+		{
+			if (!ConfirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?", log))
+				return;
 
-            CloudStorageAccount account = CloudStorageAccount.Parse(mStorageConnectionString);
-            var client = account.CreateCloudTableClient();
-            var table = client.GetTableReference("products");
-            var query = from c in table.CreateQuery<Product>()
-                        select c;
+			var cloudStorageAccount = CloudStorageAccount.Parse(StorageConnectionString);
+			var cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
+			var cloudTable = cloudTableClient.GetTableReference(StorageCustomerTableName);
 
-            var connection = new BookSleeve.RedisConnection(mCacheUrl2, allowAdmin: true,
-                password: mCachePassword2);
-            connection.Open();
-            //connection.Server.FlushDb(0);
-            foreach (var c in query)
-            {
-                string key = string.Format("{0}:{1}:{2}:{3}:{4}", c.PartitionKey, c.RowKey, c.Name, c.Price, c.Rate);
-                Console.WriteLine("{0}:{1}", key, c.Name);
-                connection.SortedSets.Add(0, "cat:" + c.Category, key, c.Price);
-                connection.SortedSets.Add(0, "rate:" + c.Category, key, c.Rate);
-                connection.Strings.Set(0, "prod:" + c.Category + ":" + c.Name.Replace(' ', ':'), key);
-            }
-            connection.Close(false);
-        }
-        static bool confirmOperation(string message)
-        {
-            var color = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("\n\n\n" + message + "\n\n\nPlease confirm (Y/N):");
-            Console.ForegroundColor = color;
-            string input = Console.ReadLine();
-            if (input != "Y" && input != "y")
-                return false;
-            else
-                return true;
-        }
-    }
-    public class Customer : TableEntity
-    {
-        public string Id { get; set; }
-        public string Company { get; set; }
-        public string Name { get; set; }
-        public double Value { get; set; }
-        public string Comment { get; set; }
-        public DateTime ContractDate { get; set; }
-        public Customer(string company, string id)
-        {
-            PartitionKey = company;
-            RowKey = id;
-            Company = company;
-            Id = id; 
-        }
-        public Customer()
-        {
+			if (cloudTable.DeleteIfExists())
+			{
+				log.WriteLine("DELETING PREEXISTING TABLE '{0}'", cloudTable.Name);
+			}
+			while (true)
+			{
+				try
+				{
+					cloudTable.CreateIfNotExists();
+					break;
+				}
+				catch
+				{
+					Task.Delay(TimeSpan.FromSeconds(5));
+				}
+				log.WriteLine("RETRY TABLE CREATION");
+			}
 
-        }
-    }
-    public class Product: TableEntity
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Manufactor { get; set; }
-        public double Price { get; set; }
-        public string Category { get; set; }
+			int count = 1;
+			const int totalRecords = 1000000;
+			string[] firstNames = File.ReadAllLines("CSV_Database_of_First_Names.csv");
+			string[] lastNames = File.ReadAllLines("CSV_Database_of_Last_Names.csv");
+			var rand = new Random(DateTime.UtcNow.Millisecond);
+			var batches = new Dictionary<string, TableBatchOperation>();
 
-        public int Rate { get; set; }
-        public Product (string manufactor, string id)
-        {
-            PartitionKey = manufactor;
-            RowKey = id;
-            Id = id;
-            Manufactor = manufactor;
-        }
-        public Product()
-        {
+			var tasks = new List<Task>();
 
-        }
-    }
+			while (count <= totalRecords)
+			{
+				count++;
+				var company = "Company " + rand.Next(1, 11);
+				lock (BatchLock)
+				{
+					if (!batches.ContainsKey(company))
+					{
+						batches.Add(company, new TableBatchOperation());
+					}
+				}
+
+				TableBatchOperation tableBatchOperation;
+
+				lock (BatchLock)
+				{
+					var customer = new Customer(company, count.ToString(CultureInfo.InvariantCulture))
+					{
+						Value = (rand.NextDouble() - 0.5) * 99999.0,
+						ContractDate = DateTime.Now,
+						Name = firstNames[rand.Next(0, firstNames.Length)] + " " + lastNames[rand.Next(0, lastNames.Length)]
+					};
+
+					tableBatchOperation = batches[company];
+
+					tableBatchOperation.Insert(customer);
+
+					if (tableBatchOperation.Count < Batchsize) continue;
+
+					batches[company] = new TableBatchOperation();
+				}
+
+				tasks.Add(new Task(() => cloudTable.ExecuteBatch(tableBatchOperation)));
+			}
+
+			var remainingTasks = batches
+				.Where(keyValuePair => keyValuePair.Value.Count > 0)
+				.Select(keyValuePair => new Task(() => cloudTable.ExecuteBatch(keyValuePair.Value)));
+			tasks.AddRange(remainingTasks);
+
+			// No tasks are running before this line. The TaskRunner will throttle to a specific # tasks
+			const int tasksInParallel = 10;
+			var taskRunner = new TaskRunner(tasks, tasksInParallel);
+			taskRunner.TaskCompleted += (o, e) => log.WriteLine("Tasks running: {0}. Average time: {1}. Tasks completed {2} . Total Time {3}.",
+				e.TasksInParallel,
+				CalculateAverage(e.TaskTimeTotal, e.TasksCompleted).ToString("g"),
+				e.TasksCompleted,
+				e.TaskTimeTotal.ToString("g"));
+			// Run all tasks
+			taskRunner.WaitAll();
+		}
+
+		private static void GenerateProuctRecords(TextWriter log)
+		{
+			if (!ConfirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?", log))
+				return;
+
+			var cloudStorageAccount = CloudStorageAccount.Parse(StorageConnectionString);
+			var cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
+			var cloudTable = cloudTableClient.GetTableReference(StorageProductsTableName);
+			if (cloudTable.DeleteIfExists())
+			{
+				log.WriteLine("DELETING PREEXISTING TABLE '{0}'", cloudTable.Name);
+			}
+			while (true)
+			{
+				try
+				{
+					cloudTable.CreateIfNotExists();
+					break;
+				}
+				catch
+				{
+					Task.Delay(TimeSpan.FromSeconds(5));
+				}
+				log.WriteLine("RETRY TABLE CREATION");
+			}
+			int count = 0;
+			const int totalRecords = 1000000;
+			string[] categories = File.ReadAllLines("CSV_Database_of_Categories.csv");
+			string[] products = File.ReadAllLines("CSV_Database_of_Products.csv");
+			string[] prefixes = { "", "Super ", "Ultimate ", "New ", "", "", "" };
+			string[] postfixes = { "", " Mini", " Pro", " Standard", " Lite", " Enterprise", " One", " 2", " X", " Zero", " 3", " III", " IV", "", "", "" };
+			var random = new Random(DateTime.UtcNow.Millisecond);
+			var batches = new Dictionary<string, TableBatchOperation>();
+			var topRated = new Dictionary<string, Tuple<int, int>>();
+			while (count < totalRecords)
+			{
+				count++;
+				var category = categories[random.Next(0, categories.Length)];
+				if (!batches.ContainsKey(category))
+				{
+					batches.Add(category, new TableBatchOperation());
+				}
+
+				if (!topRated.ContainsKey(category))
+				{
+					topRated.Add(category, new Tuple<int, int>(0, random.Next(4, 11)));
+				}
+
+				var product = new Product(category, count.ToString(CultureInfo.InvariantCulture))
+				{
+					Price = (random.NextDouble() + 0.1) * 99999.0,
+					Name = prefixes[random.Next(0, prefixes.Length)] +
+								 products[random.Next(0, products.Length)] +
+								 postfixes[random.Next(0, postfixes.Length)],
+					Category = category,
+				};
+				int rate = random.Next(1, 11);
+				if (rate == 10)
+				{
+					if (topRated[category].Item1 < topRated[category].Item2)
+					{
+						topRated[category] = new Tuple<int, int>(topRated[category].Item1 + 1, topRated[category].Item2);
+						var color = Console.ForegroundColor;
+						Console.ForegroundColor = ConsoleColor.Cyan;
+						log.WriteLine("\n\n\n************\n* TOP RANK!*\n************\n\n\n");
+						Console.ForegroundColor = color;
+					}
+					else
+						rate = random.Next(1, 10);
+				}
+				product.Rate = rate;
+				log.WriteLine(count + " " + product.Name + " " + product.Rate + (product.Rate == 10 ? "<----------------" : ""));
+				batches[category].Insert(product);
+				if (batches[category].Count() >= Batchsize)
+				{
+					log.WriteLine("Committing " + batches[category].Count + " recrods to " + category);
+					cloudTable.ExecuteBatch(batches[category]);
+					batches[category].Clear();
+				}
+			}
+
+			foreach (var batch in batches.Values.Where(batch => batch.Count > 0))
+			{
+				log.WriteLine("Committing " + batch.Count + " records...");
+				cloudTable.ExecuteBatch(batch);
+			}
+		}
+
+		private static void PrimeCustomerCache(TextWriter log)
+		{
+			if (!ConfirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?", log))
+				return;
+
+			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
+			var client = account.CreateCloudTableClient();
+			var table = client.GetTableReference(StorageCustomerTableName);
+			var query = from customer in table.CreateQuery<Customer>() select customer;
+
+			var connection = new BookSleeve.RedisConnection(CacheUrl, allowAdmin: true, password: CachePassword);
+			connection.Open();
+			connection.Server.FlushDb(0);
+			foreach (var c in query)
+			{
+				string key = string.Format("{0}:{1}", c.PartitionKey, c.RowKey);
+				log.WriteLine("{0}:{1}", key, c.Name);
+				connection.SortedSets.Add(0, "customervalues", key, c.Value);
+				connection.Strings.Set(0, "cust:" + c.Name.Replace(' ', ':'), key);
+			}
+			connection.Close(false);
+		}
+
+		private static void PrimeProuctCache(TextWriter log)
+		{
+			if (!ConfirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?", log))
+				return;
+
+			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
+			var client = account.CreateCloudTableClient();
+			var table = client.GetTableReference(StorageProductsTableName);
+			var query = from product in table.CreateQuery<Product>() select product;
+
+			var connection = new BookSleeve.RedisConnection(CacheUrl2, allowAdmin: true, password: CachePassword2);
+			connection.Open();
+			connection.Server.FlushDb(0);
+			foreach (var c in query)
+			{
+				string key = string.Format("{0}:{1}:{2}:{3}:{4}", c.PartitionKey, c.RowKey, c.Name, c.Price, c.Rate);
+				log.WriteLine("{0}:{1}", key, c.Name);
+				connection.SortedSets.Add(0, "cat:" + c.Category, key, c.Price);
+				connection.SortedSets.Add(0, "rate:" + c.Category, key, c.Rate);
+				connection.Strings.Set(0, "prod:" + c.Category + ":" + c.Name.Replace(' ', ':'), key);
+			}
+			connection.Close(false);
+		}
+
+		private static bool ConfirmOperation(string message, TextWriter log)
+		{
+			var color = Console.ForegroundColor;
+			Console.ForegroundColor = ConsoleColor.Red;
+			log.Write("{1}{1}{1}{0}{1}{1}{1}Please confirm (Y/N):", message, Environment.NewLine);
+			Console.ForegroundColor = color;
+			var input = Console.ReadLine();
+			return !string.IsNullOrWhiteSpace(input) && input.ToLower() == "y";
+		}
+
+		private static TimeSpan CalculateAverage(TimeSpan taskTimeTotal, int tasksCompleted)
+		{
+			return tasksCompleted == 0 ? TimeSpan.Zero : TimeSpan.FromTicks(taskTimeTotal.Ticks / tasksCompleted);
+		}
+	}
 }
