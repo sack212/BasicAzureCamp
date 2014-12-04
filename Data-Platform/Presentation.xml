@@ -5,8 +5,13 @@
 	<Description>This module outlines the Data Platform offerings in Microsoft Azure</Description>
 	<Version>1.0.0</Version>
 	<Author>
-		<Name>Magnus Mårtensson</Name>
+		<Name>Magnus Martensson</Name>
 		<Blog>http://magnusmartensson.com</Blog>
 		<Email>magnus@magnusmartensson.com</Email>
+	</Author>
+	<Author>
+		<Name>James Baker</Name>
+		<Blog></Blog>
+		<Email>jamesbak@microsoft.com</Email>
 	</Author>
 </Presentation>

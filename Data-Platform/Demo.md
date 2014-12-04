@@ -1,4 +1,4 @@
-# Data Demos
+# SQL Database Demos
 
 ## Demo 1 - Create an Azure SQL Database
 
@@ -7,3 +7,10 @@
 ## Demo 2 - DAC Deployment
 
 1. Use SSMS to deploy DAC pack to previously provisioned database server
+
+# HDInsight Demos
+
+## Demo 1 - Create an HDInsight Cluster
+
+1. Provision a cluster via Portal; or
+2. Provision a cluster via PowerShell
