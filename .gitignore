@@ -195,3 +195,6 @@ FakesAssemblies/
 # generated files
 gen/
 [Tt]humbs.db
+
+# Don't check in the shared configuration file!
+Configuration/SharedConfiguration.config
