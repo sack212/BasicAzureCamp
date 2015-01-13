@@ -85,10 +85,10 @@
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Configuration\SharedConfiguration.config">
+    <None Include="..\..\..\Configuration\SharedConfiguration.config">
       <Link>SharedConfiguration.config</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
