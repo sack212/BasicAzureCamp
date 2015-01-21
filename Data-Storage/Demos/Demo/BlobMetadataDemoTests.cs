@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -12,7 +14,7 @@ namespace Data_Storage_Demos
 	[TestClass]
 	public class BlobMetadataDemoTests
 	{
-		const string ContainerName = "democontainer";
+		const string ContainerName = "blobdemocontainer";
 		const string BlobName = "testblob.txt";
 
 		[ClassInitialize]
@@ -37,10 +39,10 @@ namespace Data_Storage_Demos
 		}
 
 		const string SampleMetadataKey = "this_is_metadata";
-		const string SampleMetadataValue = "This works fine!";
-		const string SampleMetadataValue2 = "This contains Swedeish characters and must be encoded ÅÄÖ!";
 
 		static CloudBlockBlob cloudBlockBlob;
+
+		const string SampleMetadataValue = "This works fine!";
 
 		[TestMethod]
 		public void UploadBlob()
@@ -53,8 +55,6 @@ namespace Data_Storage_Demos
 			}
 
 			var metadataValue = SampleMetadataValue;
-			//var metadataValue = SampleMetadataValue2;
-			//var metadataValue = SampleMetadataValue2.ToBase64String();
 			cloudBlockBlob.Metadata.Add(new KeyValuePair<string, string>(SampleMetadataKey, metadataValue));
 
 			cloudBlockBlob.UploadText(string.Empty);
@@ -63,17 +63,51 @@ namespace Data_Storage_Demos
 		}
 
 		[TestMethod]
-		public void DownloadBlob()
+		public void DownloadBlobMetadata()
 		{
 			var expectedMetadataValue = SampleMetadataValue;
-			expectedMetadataValue = SampleMetadataValue2;
 
+			// Note this call to .Exists() will in fact load the metadata on the blob from Azure Storage.
 			Assert.IsTrue(cloudBlockBlob.Exists(), "Run the other test first to create the blob with metadata.");
 
-			cloudBlockBlob.FetchAttributes();
-
 			var metadatavalue = cloudBlockBlob.Metadata[SampleMetadataKey];
-			//metadatavalue = metadatavalue.FromBase64String();
+
+			Assert.AreEqual(expectedMetadataValue, metadatavalue);
+		}
+
+		const string SampleMetadataValueWithSwedishCharacters = "This contains Swedeish characters and must be encoded ÅÄÖ!";
+
+		[TestMethod]
+		public void UploadBlob_EncodedMetadata()
+		{
+			cloudBlockBlob.DeleteIfExists();
+
+			if (cloudBlockBlob.Metadata.ContainsKey(SampleMetadataKey))
+			{
+				cloudBlockBlob.Metadata.Remove(SampleMetadataKey);
+			}
+
+			var metadataValue = SampleMetadataValueWithSwedishCharacters;
+			var bytes = Encoding.UTF8.GetBytes(metadataValue);
+			var base64MetadataValue = Convert.ToBase64String(bytes);
+			cloudBlockBlob.Metadata.Add(new KeyValuePair<string, string>(SampleMetadataKey, base64MetadataValue));
+
+			cloudBlockBlob.UploadText(string.Empty);
+
+			Assert.IsTrue(cloudBlockBlob.Exists());
+		}
+
+		[TestMethod]
+		public void DownloadBlob_EncodedMetadata()
+		{
+			var expectedMetadataValue = SampleMetadataValueWithSwedishCharacters;
+
+			// Note this call to .Exists() will in fact load the metadata on the blob from Azure Storage.
+			Assert.IsTrue(cloudBlockBlob.Exists(), "Run the other test first to create the blob with metadata.");
+
+			var base64MetadataValue = cloudBlockBlob.Metadata[SampleMetadataKey];
+			var bytes = Convert.FromBase64String(base64MetadataValue);
+			var metadatavalue = Encoding.UTF8.GetString(bytes);
 
 			Assert.AreEqual(expectedMetadataValue, metadatavalue);
 		}

@@ -25,7 +25,7 @@ namespace Data_Storage_Demos
 			cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
 		}
 
-		const string ContainerName = "democontainer";
+		const string ContainerName = "blobdemocontainer";
 		const string BlobName = "testblob.txt";
 		const string SampleBlobContent = "This is the sample text which will be uploaded!";
 
@@ -48,7 +48,6 @@ namespace Data_Storage_Demos
 			Assert.IsTrue(cloudBlockBlob.Exists());
 		}
 
-
 		[TestMethod]
 		public void DownloadBlob()
 		{
@@ -62,6 +61,23 @@ namespace Data_Storage_Demos
 			var blobContent = cloudBlockBlob.DownloadText();
 
 			Assert.AreEqual(SampleBlobContent, blobContent);
+		}
+
+		[TestMethod]
+		public void DeleteBlob()
+		{
+			// Note: Deleting (or modifying) data from Azure Storage is considered irreversible!
+
+			var cloudBlobContainer = cloudBlobClient.GetContainerReference(ContainerName);
+
+			if (!cloudBlobContainer.Exists()) return;
+
+			var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(BlobName);
+
+			if (cloudBlockBlob.Exists()) cloudBlockBlob.Delete();
+
+			// Optionally delete the container too or simply delete the container with all it's blobs!
+			cloudBlobContainer.Delete();
 		}
 	}
 }

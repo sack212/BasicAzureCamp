@@ -79,10 +79,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TableDemoTests.cs" />
+    <Compile Include="QueueDemoTests.cs" />
+    <Compile Include="SharedAccessSignaturesDemoTests.cs" />
     <Compile Include="BlobMetadataDemoTests.cs" />
     <Compile Include="BlobDemoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Configuration\SharedConfiguration.config">
