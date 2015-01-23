@@ -54,17 +54,62 @@ Using the same database server from before…
 
 > **Speaking point:** It is pretty much the same experience as before only now the databases are in the Cloud!
 
-9. From SSMS connect to a local SQL Server with a demo database.
+9. From SSMS connect to a local SQL Server with the demo database.
 10. For instance you can use Adventureworks demo database: http://msftdbprodsamples.codeplex.com.
-11. What you will need to do in this case is deploy the Azure version of Adventureworks to an Azure Database. Export this database and
- Import the same on premise. Then you can use this on premise version to migrate back to Azure as a demo.
-* If you encounter issues with compatibility you can consult the SQL Azure Migration Wizard on CodePlex http://sqlazuremw.codeplex.com/.
-* The idea here is to use SSMS to simply fire off a compatible database migration from a SQL Server to Azure SQL Database.
-* Right click on the database -> Tasks -> Deploy Database to ‘Windows’ Azure SQL Database.
-* Go through the wizard and deploy.
-* Using SSMS open up the database in Azure!
+11. Right click on the database and choose Tasks -> "Deploy Database to Windows Azure SQL Database...". This is a very short wizard which will deploy the whole thing to Azure!
 
+> **Speaking point:** The tool [SQL Azure Migration Wizard](http://sqlazuremw.codeplex.com) is an amazing tool to analyze databases for compatibility with Azure!
+
+12. Using SSMS open up the database in Azure!
+
+<a name="Demo3" />
+## Demo 3) DAC Deployment From SQL Server Management Studio ##
+
+Use SSMS to deploy DAC pack to previously provisioned database server.
+
+**Preparation:**
+
+   * In SSMS right-click your database and choose -> Tasks -> Extract data-tier application.
+   * Follow the wizard to export your .dacpac.
+
+Demo:
+
+1. In SSMS connect to your SQL Database Server in Azure.
+2. Right click “Databases” -> “Deploy data-tier Application…”.
+3. Follow the wizard and select your .dacpac.
+4. Deploy the database.
+
+You now have a database in Azure but no data deployed to it. In order to do that instead use a .bacpac
+
+<a name="Demo4" />
+## Demo 4) Standing up a SQL Server in Azure using Marketplace ##
+
+1. Use [http://portal.azure.com](http://portal.azure.com)
+2. Enter Marketplace.
+3. Select Data -> SQL Server -> Any SQL VM you like. For example “SQL Server 2012 SP2 on Windows Server 2012”. Click create.
+4. Show Pricing tier (including all pricing tiers) and other creation options and settings.
+5. Deploy it!
+
+(Don’t forget to delete it or at least stop it later to reduce cost on your Azure account.)
+
+> **Speaking point:** There are other fully supported options for SQL Storage in Azure, including Oracle and MySQL. These can all be viewed in the Marketplace.
+
+<a name="Demo5" />
+## Demo 5) Use the Preview Management Portal to create a new database ##
+
+1. Use [http://portal.azure.com](http://portal.azure.com)
+2. Create a new DocumentDB and view it.
+3. Show Keys, Scale and Configuration.
+4. Open up the Developer Tools:
+    * Document Explorer
+    * Query Explorer
+
+<a name="Demo6" />
+## Demo 6) Azure Search walk through ##
+
+* There are slides in the deck which are a walk through of the basic features of Azure Search.
+* Also show Azure Search in the portal: [http://portal.azure.com](http://portal.azure.com)
 <a name="summary" />
 ## Summary ##
 
-By completing these demos you should have understood how you can leverage Microsoft Azure Storage for your storage needs and access it from your code.
+By completing these demos you have shown how you can leverage the Microsoft Azure Data Platform.
