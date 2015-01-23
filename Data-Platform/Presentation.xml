@@ -3,7 +3,7 @@
 	<Id>AzureReadiness-DevCamp-Data-Platform</Id>
 	<Title>Data Platform</Title>
 	<Description>This module outlines the Data Platform offerings in Microsoft Azure</Description>
-	<Version>1.0.0</Version>
+	<Version>2.0.0</Version>
 	<Author>
 		<Name>Magnus Martensson</Name>
 		<Blog>http://magnusmartensson.com</Blog>
