@@ -15,7 +15,7 @@ namespace Data_Platform_Demos
 		{
 			return new Product
 			{
-				ProductId = sqlProduct.ProductID.ToString(),
+				id = sqlProduct.ProductID.ToString(),
 				Name = sqlProduct.Name,
 				Line = sqlProduct.ProductLine,
 				Number = sqlProduct.ProductNumber,

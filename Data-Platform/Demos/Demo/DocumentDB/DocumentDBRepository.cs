@@ -84,7 +84,8 @@ namespace Data_Platform_Demos.DocumentDB
 
 		public async Task<Document> CreateDocumentAsync(T item, ConsistencyLevel? consistencyLevel)
 		{
-			return await Client(consistencyLevel).CreateDocumentAsync(documentCollectionSelfLink, item, null, true);
+			var resourceResponse = await Client(consistencyLevel).CreateDocumentAsync(documentCollectionSelfLink, item, null, true);
+			return resourceResponse;
 		}
 
 		public async Task<T> GetItemAsync(string id, Func<T, bool> clause, ConsistencyLevel? consistencyLevel)
@@ -113,10 +114,11 @@ namespace Data_Platform_Demos.DocumentDB
 			{
 				return await CreateDocumentAsync(item, consistencyLevel);
 			}
-			return await Client(consistencyLevel).ReplaceDocumentAsync(document.SelfLink, item);
+			var resourceResponse = await Client(consistencyLevel).ReplaceDocumentAsync(document.SelfLink, item);
+			return resourceResponse;
 		}
 
-		public async Task DeleteItemAsync(string id, ConsistencyLevel? consistencyLevel)
+		public async Task DeleteItemAsync(string id, ConsistencyLevel? consistencyLevel = null)
 		{
 			var document = await Task.Run(() => Client(consistencyLevel)
 				.CreateDocumentQuery(documentsLink)
@@ -127,6 +129,18 @@ namespace Data_Platform_Demos.DocumentDB
 			if (document != null)
 			{
 				await Client(consistencyLevel).DeleteDocumentAsync(document.SelfLink);
+			}
+		}
+
+		public async Task DeleteAllItemsAsync(ConsistencyLevel? consistencyLevel = null)
+		{
+			var documents = await Task.Run(() => Client(consistencyLevel)
+				.CreateDocumentQuery(documentsLink)
+				.AsEnumerable());
+
+			foreach (var document in documents)
+			{
+				await DeleteItemAsync(document.Id);
 			}
 		}
 	}

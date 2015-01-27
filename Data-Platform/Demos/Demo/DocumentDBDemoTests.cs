@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Core.Objects;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data_Platform_Demos.DocumentDB;
 using Data_Platform_Demos.SqlDatabase;
 using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -25,7 +22,7 @@ namespace Data_Platform_Demos
 		const string DatabaseId = "DemoDatabase";
 		const string CollectionId = "DemoCollection";
 
-		static DocumentDBRepository<Product> productDocumentDBRepository;
+		static DocumentDBRepository<Product> docDBRepo;
 
 		[ClassInitialize]
 		public static void ConnectToDocumentDB(TestContext context)
@@ -34,7 +31,7 @@ namespace Data_Platform_Demos
 			var endpoint = documentDbConnectionData["endpoint"];
 			var authKey = documentDbConnectionData["authkey"];
 
-			productDocumentDBRepository = new DocumentDBRepository<Product>(
+			docDBRepo = new DocumentDBRepository<Product>(
 				endpoint,
 				authKey,
 				DatabaseId,
@@ -58,8 +55,8 @@ namespace Data_Platform_Demos
 		[TestMethod]
 		public void CreateDatabaseAndCollection()
 		{
-			var database = productDocumentDBRepository.Database().Result;
-			var collection = productDocumentDBRepository.Collection().Result;
+			var database = docDBRepo.Database().Result;
+			var collection = docDBRepo.Collection().Result;
 
 			Assert.IsNotNull(database);
 			Assert.AreEqual(DatabaseId, database.Id);
@@ -89,16 +86,20 @@ namespace Data_Platform_Demos
 		public void CreateData_Sequentially()
 		{
 			// 504 documents to be inserted
-			var documentProducts = FetchProductsFromSqlDatabaseAsync();
+			var documentProducts = FetchProductsFromSqlDatabaseAsync().Result;
 
 			var stopwatch = Stopwatch.StartNew();
 
 			// Insert or replace all the documents in the database one by one...
-			Task.WaitAll(documentProducts.Result
-				.Select(documentProduct => productDocumentDBRepository.UpdateDocumentAsync(documentProduct, product => product.ProductId))
-				.Cast<Task>()
-				.ToArray()
-			);
+			foreach (var product in documentProducts)
+			{
+				docDBRepo.UpdateDocumentAsync(product, p => p.id).Wait();
+			}
+			//Task.WaitAll(documentProducts.Result
+			//	.Select(documentProduct => docDBRepo.UpdateDocumentAsync(documentProduct, product => product.id))
+			//	.Cast<Task>()
+			//	.ToArray()
+			//);
 
 			stopwatch.Stop();
 
@@ -166,9 +167,9 @@ namespace Data_Platform_Demos
 
 			TryDeleteStoredProcedure(BulkImportSprocName).Wait();
 
-			StoredProcedure createdStoredProcedure = productDocumentDBRepository
+			StoredProcedure createdStoredProcedure = docDBRepo
 				.Client()
-				.CreateStoredProcedureAsync(productDocumentDBRepository
+				.CreateStoredProcedureAsync(docDBRepo
 					.Collection()
 					.Result
 					.SelfLink, markAntiquesSproc)
@@ -176,6 +177,12 @@ namespace Data_Platform_Demos
 
 			Assert.IsNotNull(createdStoredProcedure);
 			Assert.AreEqual(BulkImportSprocName, createdStoredProcedure.Id);
+		}
+
+		[TestMethod]
+		public void DeleteAllDocuments()
+		{
+			docDBRepo.DeleteAllItemsAsync().Wait();
 		}
 
 		[TestMethod]
@@ -187,7 +194,7 @@ namespace Data_Platform_Demos
 			// 504 documents to be inserted
 			var documentProducts = FetchProductsFromSqlDatabaseAsync().Result.Cast<object>().ToArray();
 
-			var storedProcSelfLink = GetStoredProcedureAsync(BulkImportSprocName).Result.SelfLink;
+			StoredProcedure storedProcedure = GetStoredProcedureAsync(BulkImportSprocName).Result;
 
 			var stopwatch = new Stopwatch();
 			int totalCount = 0;
@@ -197,8 +204,7 @@ namespace Data_Platform_Demos
 
 				if (!currentBatch.Any()) break;
 
-				var argsJson = CreateBulkInsertScriptArguments(currentBatch);
-				var args = new[] { JsonConvert.DeserializeObject<dynamic>(argsJson) };
+				var jsonArrayOfDocuments = ConvertToJSonArray(currentBatch);
 
 				bool inserted = false;
 				while (!inserted)
@@ -209,9 +215,9 @@ namespace Data_Platform_Demos
 					{
 						stopwatch.Start();
 
-						var storedProcedureResponse = productDocumentDBRepository
+						var storedProcedureResponse = docDBRepo
 							.Client()
-							.ExecuteStoredProcedureAsync<int>(storedProcSelfLink, args)
+							.ExecuteStoredProcedureAsync<int>(storedProcedure.SelfLink, jsonArrayOfDocuments)
 							.Result;
 
 						stopwatch.Stop();
@@ -262,17 +268,36 @@ namespace Data_Platform_Demos
 			ConsoleWrite("Total transaction clock time was: ", TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).ToString("g"));
 		}
 
+		[TestMethod]
+		public void QueryData()
+		{
+			Assert.Fail("Not implemented");
+		}
+
+		[TestMethod]
+		public void DeleteDatabase()
+		{
+			docDBRepo.Client().DeleteDatabaseAsync(docDBRepo.Database().Result.SelfLink);
+		}
+
 		private static async Task TryDeleteStoredProcedure(string sprocId)
 		{
 			StoredProcedure sproc = await GetStoredProcedureAsync(sprocId);
 			if (sproc != null)
 			{
-				await productDocumentDBRepository.Client().DeleteStoredProcedureAsync(sproc.SelfLink);
+				await docDBRepo.Client().DeleteStoredProcedureAsync(sproc.SelfLink);
 			}
 		}
 		private static async Task<StoredProcedure> GetStoredProcedureAsync(string sprocId)
 		{
-			return await Task.Run(() => productDocumentDBRepository.Client().CreateStoredProcedureQuery(productDocumentDBRepository.Collection().Result.SelfLink).Where(s => s.Id == sprocId).AsEnumerable().FirstOrDefault());
+			return await Task.Run(() => docDBRepo.Client().CreateStoredProcedureQuery(docDBRepo.Collection().Result.SelfLink).Where(s => s.Id == sprocId).AsEnumerable().FirstOrDefault());
+		}
+
+		private static dynamic[] ConvertToJSonArray(object[] currentBatch)
+		{
+			var argsJson = CreateBulkInsertScriptArguments(currentBatch);
+			var args = new[] { JsonConvert.DeserializeObject<dynamic>(argsJson) };
+			return args;
 		}
 
 		private static string CreateBulkInsertScriptArguments(object[] objectsToInsert)
@@ -299,35 +324,30 @@ namespace Data_Platform_Demos
 			return jsonDocumentArray.ToString();
 		}
 
-		[TestMethod]
-		public void QueryData()
-		{
-			Assert.Fail("Not implemented");
-		}
-
-		[TestMethod]
-		public void DeleteDataBase()
-		{
-			productDocumentDBRepository.Client().DeleteDatabaseAsync(productDocumentDBRepository.Database().Result.SelfLink);
-		}
-
-		private static async Task<IEnumerable<Product>> FetchProductsFromSqlDatabaseAsync()
+		/// <summary>
+		/// This method will fetch data from the SQLDatabase using EntityFramework and convert the result to a much simpler document structure.
+		/// </summary>
+		private static async Task<IEnumerable<Product>> FetchProductsFromSqlDatabaseAsync(int? count = null)
 		{
 			var sqlDatabaseConnectionString = ConfigurationManager.ConnectionStrings["Azure SQL Database Demo"].ConnectionString;
 
 			// Fetch data from our SQL Database.
-			IEnumerable<Product> documentProducts;
 			using (var entityConnection = new EntityConnection(sqlDatabaseConnectionString))
 			using (var adventureWorksProductsEntities = new AdventureWorksProductsEntities(entityConnection))
 			{
-				return await Task.Run(() => adventureWorksProductsEntities
-					.Products
-					//.Take(10)
-					//.Where(p=>p.ProductReviews.Any())
+				IQueryable<SqlDatabase.Product> products = adventureWorksProductsEntities.Products;
+
+				if (count.HasValue)
+				{
+					products = products.Take(count.Value);
+					//dbSet = dbSet.Where(p=>p.ProductReviews.Any())
+				}
+				
+				return await Task.Run(() => products
 					// Convert the complex database model into a simpler document structure.
 					.Select(Mapper.ToDocumentDatabaseProducts)
 					.ToArray());
-			}
+				}
 		}
 
 		private static void ConsoleWrite(string key, object value)
