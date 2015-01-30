@@ -95,7 +95,7 @@ You now have a database in Azure but no data deployed to it. In order to do that
 > **Speaking point:** There are other fully supported options for SQL Storage in Azure, including Oracle and MySQL. These can all be viewed in the Marketplace.
 
 <a name="Demo5" />
-## Demo 5) Use the Preview Management Portal to create a new database ##
+## Demo 5) View Document DB in the Preview Management Portal and create data using code ##
 
 1. Use [http://portal.azure.com](http://portal.azure.com)
 2. Create a new DocumentDB and view it.
@@ -103,6 +103,14 @@ You now have a database in Azure but no data deployed to it. In order to do that
 4. Open up the Developer Tools:
     * Document Explorer
     * Query Explorer
+5. In the Visual Studio demo solution open the class DocumentDBDemoTests and run the unit tests there sequentially while explaining what happens. Some of the tests fetch data from our SQL database Adventure Works which we have used previously. You might want to pull that data from your on premise SQL Server instance rather than from the SQL Database version which will be faster.
+    * CreateDatabaseAndCollection() - Creates a database and a collection. There is console output which can be commented.
+    * CreateData_Sequentially() - Get 504 documents and start creating them sequentially. This will take a long time! So after a brief time stop execution and explain that this takes too long to do sequentially. Go back to the portal and view these documents.
+    * CreateStoredProcedure() - Create a stored procedure in the collection for bulk insertions.
+    * DeleteAllDocuments() - Delete the previously created documents again. (The proc does not support inser/replace or upsert only clean insert of items that are not pre-existing.)
+    * BulkInsert() - Run bulk insertions of 50 docs at a time. Some times there is a throttle error (usually when inserting the last four doc because they come so quickly after the last 50 batch). This does not always happen though. If it does there will be a retry. Look at the console output.
+    * QueryData() - Room to run any query you like. Can also be demoed in the portal Query explorer. Example SELECT * FROM c where c.Reviews != null.
+    * DeleteDatabase() - Delete the data, collection and database.
 
 <a name="Demo6" />
 ## Demo 6) Azure Search walk through ##

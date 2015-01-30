@@ -95,11 +95,6 @@ namespace Data_Platform_Demos
 			{
 				docDBRepo.UpdateDocumentAsync(product, p => p.id).Wait();
 			}
-			//Task.WaitAll(documentProducts.Result
-			//	.Select(documentProduct => docDBRepo.UpdateDocumentAsync(documentProduct, product => product.id))
-			//	.Cast<Task>()
-			//	.ToArray()
-			//);
 
 			stopwatch.Stop();
 
@@ -112,6 +107,8 @@ namespace Data_Platform_Demos
 		[TestMethod]
 		public void CreateStoredProcedure()
 		{
+			TryDeleteStoredProcedure(BulkImportSprocName).Wait();
+
 			var markAntiquesSproc = new StoredProcedure
 			{
 				Id = BulkImportSprocName,
@@ -165,8 +162,6 @@ namespace Data_Platform_Demos
 								}"
 			};
 
-			TryDeleteStoredProcedure(BulkImportSprocName).Wait();
-
 			StoredProcedure createdStoredProcedure = docDBRepo
 				.Client()
 				.CreateStoredProcedureAsync(docDBRepo
@@ -198,7 +193,7 @@ namespace Data_Platform_Demos
 
 			var stopwatch = new Stopwatch();
 			int totalCount = 0;
-			do
+			while (true)
 			{
 				var currentBatch = documentProducts.Skip(batchCounter * batchSize).Take(batchSize).ToArray();
 
@@ -260,8 +255,7 @@ namespace Data_Platform_Demos
 						ConsoleWrite("Retrying...");
 					}
 				}
-
-			} while (true);
+			}
 
 			Assert.AreEqual(documentProducts.Length, totalCount);
 			ConsoleWrite("Number of docs inserted: ", documentProducts.Length);
