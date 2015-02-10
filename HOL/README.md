@@ -17,26 +17,26 @@ In this lab you will create a free Microsoft Azure trial account and activate th
 
 In this lab you will walk through the _Azure Management Portal_, starting with the basic layout of the hub page and moving to the creation and management of resources, getting an overview of some of the features the portal provides.
 
-#### [Lab 4 - Introduction to the Azure Preview Portal] (working-with-the-new-portal) ####
+#### [Lab 4 - Introduction to the Azure Preview Portal](working-with-the-new-portal) ####
 
 In this lab you will learn about the preview portal features, usage, and how to create a new resource group by building a Website. 
 
-#### [Lab 5 - Getting started with Azure Websites and ASP.NET] (get-started-with-websites-and-asp-net) ####
+#### [Lab 5 - Getting started with Azure Websites and ASP.NET](get-started-with-websites-and-asp-net) ####
 
 In this lab you will create a simple web application and deploy it to an Azure Website. You will also take a quick tour of the Azure Management Portal. 
 
-#### [Lab 6 - Building a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to Log in Users] (build-single-page-app-with-webapi-and-angular) ####
+#### [Lab 6 - Building a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to Log in Users](build-single-page-app-with-webapi-and-angular) ####
 
 In this lab you will learn how to create a Single Page Application using ASP.NET MVC and Web API using Azure Active Directory to log in users. Additionally, you will use Angular.js to create the application interface.
 
-#### [Lab 7 - Infrastructure as a Service in Microsoft Azure] (create-virtual-machine) ####
+#### [Lab 7 - Infrastructure as a Service in Microsoft Azure](create-virtual-machine) ####
 
 In this lab you will learn about Infrastructure as a Service (IaaS) and how to create a virtual machine using the Azure Preview Portal, the Command-line interface (CLI), Powershell or RunBook.
 
-#### [Lab 8 - Building a web application with ASP.NET MVC using DocumentDB] (build-web-app-using-documentdb) ####
+#### [Lab 8 - Building a web application with ASP.NET MVC using DocumentDB](build-web-app-using-documentdb) ####
 
 In this lab you will learn how to create a todo list web application using Azure DocumentDB where the tasks will be stored as JSON documents.
 
-#### [Lab 9 - Getting Started with Azure SQL Database Elastic Scale] (sql-database) ####
+#### [Lab 9 - Getting Started with Azure SQL Database Elastic Scale](sql-database) ####
 
 In this lab you will be introduced to the developer experience and the basic concepts of Azure SQL Database Elastic Scale.
