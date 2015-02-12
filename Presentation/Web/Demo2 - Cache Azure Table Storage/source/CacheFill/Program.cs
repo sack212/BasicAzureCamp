@@ -1,25 +1,21 @@
-﻿using System.Globalization;
-using System.Threading.Tasks;
-using CacheFill.Entities;
-using CacheFill.TaskRunnerHelper;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using BookSleeve;
+using CacheFill.Entities;
+using CacheFill.TaskRunnerHelper;
+using HelperLib;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace CacheFill
 {
 	public static class Program
 	{
-		private const string StorageConnectionString = "DefaultEndpointsProtocol=http;AccountName=cloudreadinessdevcamp;AccountKey=fImALf2OJ2BFEZy7rhwa2GSEBlSeGt5b7G2UUa116fK2oP7jkKX008pz1IPQSd9BidJC4FHviraPeGA9szQgdg==";
-		private const string CacheUrl = "";
-		private const string CachePassword = "";
-		private const string CacheUrl2 = "";
-		private const string CachePassword2 = "";
-		private const string StorageCustomerTableName = "customers";
-		private const string StorageProductsTableName = "products";
+		static readonly CloudStorageAccount CloudStorageAccount = DemoSettings.Storage.ConnectionString.ToCloudStorageAccount();
 
 		private static readonly object BatchLock = new object();
 		private const int Batchsize = 100;
@@ -39,9 +35,8 @@ namespace CacheFill
 			if (!ConfirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?", log))
 				return;
 
-			var cloudStorageAccount = CloudStorageAccount.Parse(StorageConnectionString);
-			var cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
-			var cloudTable = cloudTableClient.GetTableReference(StorageCustomerTableName);
+			var cloudTableClient = CloudStorageAccount.CreateCloudTableClient();
+			var cloudTable = cloudTableClient.GetTableReference(DemoSettings.Storage.CustomerTableName);
 
 			if (cloudTable.DeleteIfExists())
 			{
@@ -127,9 +122,8 @@ namespace CacheFill
 			if (!ConfirmOperation("YOUR STORAGE TABLE WILL BE RECREATED! ALL EXISTING DATA WILL BE LOST! Are you sure?", log))
 				return;
 
-			var cloudStorageAccount = CloudStorageAccount.Parse(StorageConnectionString);
-			var cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
-			var cloudTable = cloudTableClient.GetTableReference(StorageProductsTableName);
+			var cloudTableClient = CloudStorageAccount.CreateCloudTableClient();
+			var cloudTable = cloudTableClient.GetTableReference(DemoSettings.Storage.ProductsTableName);
 			if (cloudTable.DeleteIfExists())
 			{
 				log.WriteLine("DELETING PREEXISTING TABLE '{0}'", cloudTable.Name);
@@ -215,12 +209,11 @@ namespace CacheFill
 			if (!ConfirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?", log))
 				return;
 
-			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
-			var client = account.CreateCloudTableClient();
-			var table = client.GetTableReference(StorageCustomerTableName);
+			var client = CloudStorageAccount.CreateCloudTableClient();
+			var table = client.GetTableReference(DemoSettings.Storage.CustomerTableName);
 			var query = from customer in table.CreateQuery<Customer>() select customer;
 
-			var connection = new BookSleeve.RedisConnection(CacheUrl, allowAdmin: true, password: CachePassword);
+			var connection = new RedisConnection(DemoSettings.CustomerRedisCache.Url, allowAdmin: true, password: DemoSettings.CustomerRedisCache.Password);
 			connection.Open();
 			connection.Server.FlushDb(0);
 			foreach (var c in query)
@@ -238,12 +231,11 @@ namespace CacheFill
 			if (!ConfirmOperation("YOUR CACHE WILL BE FLUSHED! ALL EXISTING INDEXES WILL BE REPLACED! Are you sure?", log))
 				return;
 
-			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
-			var client = account.CreateCloudTableClient();
-			var table = client.GetTableReference(StorageProductsTableName);
+			var client = CloudStorageAccount.CreateCloudTableClient();
+			var table = client.GetTableReference(DemoSettings.Storage.ProductsTableName);
 			var query = from product in table.CreateQuery<Product>() select product;
 
-			var connection = new BookSleeve.RedisConnection(CacheUrl2, allowAdmin: true, password: CachePassword2);
+			var connection = new RedisConnection(DemoSettings.ProductsRedisCache.Url, allowAdmin: true, password: DemoSettings.ProductsRedisCache.Password);
 			connection.Open();
 			connection.Server.FlushDb(0);
 			foreach (var c in query)
