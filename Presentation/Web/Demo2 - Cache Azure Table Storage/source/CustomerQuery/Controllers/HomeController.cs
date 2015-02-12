@@ -3,24 +3,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using BookSleeve;
+using CustomerQuery.Models;
+using HelperLib;
 using Microsoft.WindowsAzure.Storage;
 using StackExchange.Redis;
-
-using CustomerQuery.Models;
 
 namespace CustomerQuery.Controllers
 {
 	public class HomeController : Controller
 	{
-		const string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=;AccountKey=";
-		//cache for customers
-		const string RedisUrl = ".redis.cache.windows.net";
-		const string RedisPassword = "";
-		//cache for products
-		const string RedisUrl2 = ".redis.cache.windows.net";
-		const string RedisPassword2 = "";
-		const int RedisPort = 6379;
-		private const string TableName = "customers";
+		readonly CloudStorageAccount cloudStorageAccount = DemoSettings.Storage.ConnectionString.ToCloudStorageAccount();
 
 		public ActionResult Index()
 		{
@@ -32,9 +25,8 @@ namespace CustomerQuery.Controllers
 		}
 		public ActionResult SearchCustomers(HomeViewModel data)
 		{
-			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
-			var client = account.CreateCloudTableClient();
-			var table = client.GetTableReference(TableName);
+			var client = cloudStorageAccount.CreateCloudTableClient();
+			var table = client.GetTableReference(DemoSettings.Storage.CustomerTableName);
 			data.MatchedCustomers.Clear();
 			var watch = new Stopwatch();
 
@@ -53,8 +45,8 @@ namespace CustomerQuery.Controllers
 
 			var connection = ConnectionMultiplexer.Connect(new ConfigurationOptions
 			{
-				EndPoints = { { RedisUrl, RedisPort } },
-				Password = RedisPassword
+				EndPoints = { { DemoSettings.CustomerRedisCache.Url, DemoSettings.CustomerRedisCache.Port } },
+				Password = DemoSettings.CustomerRedisCache.Password
 			});
 
 			var db = connection.GetDatabase();
@@ -82,8 +74,7 @@ namespace CustomerQuery.Controllers
 		}
 		public ActionResult SearchProducts(HomeViewModel data)
 		{
-			CloudStorageAccount account = CloudStorageAccount.Parse(StorageConnectionString);
-			var client = account.CreateCloudTableClient();
+			var client = cloudStorageAccount.CreateCloudTableClient();
 			var table = client.GetTableReference("products");
 			data.MatchedProducts.Clear();
 			var watch = new Stopwatch();
@@ -151,8 +142,8 @@ namespace CustomerQuery.Controllers
 
 			var connection = ConnectionMultiplexer.Connect(new ConfigurationOptions
 			{
-				EndPoints = { { RedisUrl2, RedisPort } },
-				Password = RedisPassword2
+				EndPoints = { { DemoSettings.ProductsRedisCache.Url, DemoSettings.ProductsRedisCache.Port } },
+				Password = DemoSettings.ProductsRedisCache.Password
 			});
 			var db = connection.GetDatabase();
 			watch.Restart();
@@ -209,8 +200,8 @@ namespace CustomerQuery.Controllers
 		private List<Product> getProducts(string category, double start, double end)
 		{
 			var products = new List<Product>();
-			var connection = new BookSleeve.RedisConnection(RedisUrl2,
-					password: RedisPassword2);
+			var connection = new RedisConnection(DemoSettings.ProductsRedisCache.Url,
+					password: DemoSettings.ProductsRedisCache.Password);
 			connection.Open();
 			var list = connection.SortedSets.Range(0, "cat:" + category, min: start, max: end, ascending: false).Result;
 			foreach (var item in list)
@@ -232,8 +223,8 @@ namespace CustomerQuery.Controllers
 		private List<string> getTopKeys(string category, int top)
 		{
 			List<string> ret = new List<string>();
-			BookSleeve.RedisConnection connection = new BookSleeve.RedisConnection(RedisUrl2,
-					password: RedisPassword2);
+			RedisConnection connection = new RedisConnection(DemoSettings.ProductsRedisCache.Url,
+					password: DemoSettings.ProductsRedisCache.Password);
 			connection.Open();
 			var list = connection.SortedSets.Range(0, "rate:" + category, start: 0, stop: top, ascending: false).Result;
 			foreach (var item in list)
