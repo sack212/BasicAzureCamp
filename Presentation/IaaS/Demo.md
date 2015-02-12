@@ -7,7 +7,7 @@
 3. Click on the **Everything** link.
 4. In **Gallery** blade, open the **Virtual machines** category.
 5. Scroll down the view and show images of different types (refer back to slide 9).
-6. Click on **Windows Server 2012 R2**, and then click the **Create** button in the overview blade. For non-Microsoft focused audience, consider to pick a Linux image instead.
+6. Click on **Windows Server 2012 R2 Datacenter**, and then click the **Create** button in the overview blade. For non-Microsoft focused audience, consider to pick a Linux image instead.
 7. Fill in the **Create VM** form and click on the **Create** button to provision the VM. Explain this will take a few minutes.
 8. Open the already provisioned VM.
 9. Scroll down the blade to show various of information available on the blade.
