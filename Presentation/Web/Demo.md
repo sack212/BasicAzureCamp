@@ -31,7 +31,9 @@ This demo shows using Redis Cache to make
 
 ### Prerequisites
 
-1. Add Redis Cache Server connection details to:
+1. Create 2 Redis cache services on Azure
+1. Ensure redis cache services have enabled "NON-SSL PORT" - 6379 . This feature is disabled by default.
+1. Add each Redis Cache Server connection details to:
 
 	* CustomerQuery web.config
 	* CacheFill app.config
