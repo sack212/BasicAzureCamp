@@ -136,9 +136,9 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 
 	> **Note:** Alternatively, you can use the Package Command Console to install the package by typing the following:
 
-	>  ````PowerShell
+	>  ```PowerShell
 	>  Install-Package Microsoft.Azure.Documents.Client -Pre
-	>  ````
+	>  ```
 
 1. You will be prompted to accept the license. Click **I Accept**.
 
@@ -171,7 +171,7 @@ In this task you will set up the ASP.Net MVC application by adding a model, a co
 
 1. Replace the content of the new **Item.cs** file with the following.
 
-	````C#
+	```C#
 	namespace Todo.Models
 	{
 		 using Newtonsoft.Json;
@@ -191,7 +191,7 @@ In this task you will set up the ASP.Net MVC application by adding a model, a co
 			  public bool Completed { get; set; }
 		 }
 	}
-	````
+	```
 
 	> **Note:** All data in DocumentDB is passed over the wire and stored as JSON. To control the way your objects are serialized/deserialized by JSON.NET you can use the JsonProperty attribute as demonstrated in the Item class we just created. This is optional. Moreover, you can use JsonConverter objects to completely control how serialization is handled.
 
@@ -328,13 +328,13 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Add the following code snippet within the now empty **ItemController** class.
 
-	````C#
+	```C#
 	public ActionResult Index()
 	{
 		var items = DocumentDBRepository.GetIncompleteItems();
 		return this.View(items);
 	}
-	````
+	```
 
 	This code also uses a "pseudo repository" class called **DocumentDBRepository** that has yet to be created. This is a helper class that contains all the DocumentDB specific code. For the purposes of this walk-through, it is not going to be a full data access layer with dependency injection,  factories and repository patterns as it would probably be if you were building a real-world application. In this case, instead, a single class in which all the data access logic is centralized will keep things simple and allow the focus to be on the DocumentDB specific bits.
 
@@ -352,7 +352,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Replace the content of the **DocumentDBRepository.cs** file just created with the following:
 
-	````C#
+	```C#
 	namespace Todo
 	{
 		 using System;
@@ -441,13 +441,13 @@ In this task you will add code in the **ItemController** class to handle the fol
 			  }
 		 }
 	}
-	````
+	```
 
 	The references to the _ReadOrCreateDatabase_ and _ReadOrCreateCollection_ methods will still remain unresolved, as these methods will be added in the next step. These two method calls are used for reading or creating DocumentDB databases and document collections. 
 
 1. Add the following code to the **DocumentDBRepository** class:
 
-	````C#
+	```C#
 	private static DocumentCollection ReadOrCreateCollection(string databaseLink)
 	{
 		 var col = Client.CreateDocumentCollectionQuery(databaseLink)
@@ -477,7 +477,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 		 return db;
 	}
-	````
+	```
 
 	This code takes care of setting up the database, a DocumentCollection, and creating code to connect to DocumentDB through the DocumentClient.
 
@@ -485,7 +485,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Open the **Web.config** file and find the **appSettings** section. Update it to contain the last 4 keys in the snippet below. 
 	
-	````XML
+	```XML
 	<appSettings>
 		<add key="webpages:Version" value="3.0.0.0"/>
 		<add key="webpages:Enabled" value="false"/>
@@ -496,7 +496,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 		<add key="database" value="ToDoList" />
 		<add key="collection" value="Items" />
 	</appSettings>
-	````
+	```
 
 
 1. Switch to the browser instance in which you have the Azure Preview Portal open. Verify that the DocumentDB account has been created by looking for a **Created DocumentDB** notification in the **Notifications** Hub. If there is one, click it. If not, wait until the account finishes creating and the notification appears.
@@ -537,7 +537,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Copy and paste the following code anywhere within the **DocumentDBRepository** class.
 
-	````C#
+	```C#
 	public static List<Item> GetIncompleteItems()
 	{
 		 return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
@@ -545,7 +545,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 					.AsEnumerable()
 					.ToList<Item>();
 	}
-	````
+	```
 
 	At this point your solution should build without any errors.
 
@@ -554,7 +554,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 1. Open the **RouteConfig.cs** file under **App_Start** and locate the line starting with **defaults:**. Update it to resemble the one below:
 
 	<!-- mark:8 -->
-	````C#
+	```C#
 	public static void RegisterRoutes(RouteCollection routes)
 	{
 		routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -565,7 +565,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 			 defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 		);
 	}
-	````
+	```
 
 	This tells ASP.NET MVC that if you have not specified a value in the URL to control the routing behavior, it should use **Item** as the controller instead of using **Home** and use **Index** as the view. Now if you run the application, it will call your **ItemController** and return the results of the **GetIncompleteItems** method to the **Item Index** view.
 
@@ -587,16 +587,16 @@ You already have a **Create** view in the application and a button in the **Inde
 
 1. Open the **ItemController.cs** file and add the following code snippet, which is how ASP.NET MVC knows what to do for the **Create** action. In this case, it will just render the associated Create.cshtml view created earlier.
 
-	````C#
+	```C#
 	public ActionResult Create()
 	{ 
 		return this.View(); 
 	}
-	````
+	```
 
 1. Still in **ItemController.cs**, add the following block of code that tells ASP.NET MVC what to do with a POST form for this controller.
 
-	````C#
+	```C#
 	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<ActionResult> Create([Bind(Include =  "Id,Name,Description,Completed")] Item item)  
@@ -609,7 +609,7 @@ You already have a **Create** view in the application and a button in the **Inde
 
 		 return this.View(item);   
 	}
-	````
+	```
 
 	>**Security Note:** The ValidateAntiForgeryToken attribute is used here to help protect this application against cross-site request forgery attacks. There is more to it than just adding this attribute; your views need to work with this anti-forgery token as well. For more on the subject and examples of how to implement this correctly, please see [Preventing Cross-Site Request Forgery](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks). 
 
@@ -619,12 +619,12 @@ You already have a **Create** view in the application and a button in the **Inde
 
 1. Open the **DocumentDBRepository** class and add the following method:
 
-	````C#
+	```C#
 	public static async Task<Document> CreateItemAsync(Item item)
 	{
 		 return await Client.CreateDocumentAsync(Collection.SelfLink, item);
 	}
-	````
+	```
 
 	This method simply takes an object passed to it and persists it in DocumentDB.
 
@@ -636,7 +636,7 @@ Now you will add the ability to edit Items in the database and to mark them as c
 
 1. Open **ItemController.cs** and add the following code:
 
-	````C#
+	```C#
 	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Completed")] Item item)
@@ -665,7 +665,7 @@ Now you will add the ability to edit Items in the database and to mark them as c
 
 		 return this.View(item);
 	}
-	````
+	```
 
 	The first Edit method handles the Http GET that happens when the user clicks on the Edit link from the Index view. This method fetches a Document from DocumentDB and passes it to the Edit view. The Edit view will then do an Http POST to the IndexController.
 
@@ -673,15 +673,15 @@ Now you will add the ability to edit Items in the database and to mark them as c
 
 1. Add the following using directives to the **ItemController.cs** file.
 
-	````C#
+	```C#
 	using Todo.Models;
 	using System.Threading.Tasks;
 	using System.Net;
-	````
+	```
 
 1. Add the following methods to the **DocumentDBRepository** class:
 
-	````C#
+	```C#
 	public static Item GetItem(string id)
 	{
 		return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
@@ -703,16 +703,16 @@ Now you will add the ability to edit Items in the database and to mark them as c
 		Document doc = GetDocument(item.Id);
 		return await Client.ReplaceDocumentAsync(doc.SelfLink, item);
 	}
-	````
+	```
 	The first of these methods fetches an Item from _DocumentDB_ which is passed back to the **ItemController** and then on to the Edit view.
 
 	The second method retrieves a Document in DocumentDB based on the id. This method is used by the third one (UpdateItemAsync) to replace the Document in DocumentDB with the version of the Document passed in from the **ItemController**.
 
 1. Add the following using directive to the **DocumentDBRepository.cs** file. After this addition, all references should be resolved.
 
-	````C#
+	```C#
 	using System.Threading.Tasks;
-	````
+	```
 	
 	With these additions, the Edit functionality should be working. Now you will add support for deleting items.
 
@@ -722,7 +722,7 @@ The code changes that allow the deletion of Items are similar to those made to a
 
 1. Open **ItemController.cs** and add the following code:
 
-	````C#
+	```C#
 	public ActionResult Delete(string id)
 	{
 		 if (id == null)
@@ -750,17 +750,17 @@ The code changes that allow the deletion of Items are similar to those made to a
 		 await DocumentDBRepository.DeleteItemAsync(id);
 		 return this.RedirectToAction("Index");
 	}
-	````
+	```
 
 1. Add the following methods to the **DocumentDBRepository** class:
 
-	````C#
+	```C#
 	public static async Task DeleteItemAsync(string id)
 	{
 		Document doc = GetDocument(id);
 		await Client.DeleteDocumentAsync(doc.SelfLink);
 	}
-	````
+	```
 
 <a name="details-items"></a>
 ####Viewing details of items####
@@ -768,13 +768,13 @@ The code changes that allow viewing details of Items are even fewer than those m
 
 1. Open **ItemController.cs** and add the following code:
 
-	````C#
+	```C#
   public ActionResult Details(string id)
   {
 		var item = DocumentDBRepository.GetItem(id);
 		return this.View(item);
   }
-	````
+	```
 
 You have finished adding all the necessary code for the application to work. In the next section you will test the application locally.
 

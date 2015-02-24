@@ -131,26 +131,26 @@ In this step we explore _To do list_ application code and see how simple the Mic
 
 1. Open **default.js** under **js** folder.  This is the key JavaScript function provided by the Mobile Services client SDK that provides a way for your application to interact with **Microsoft Azure Mobile Services**. Locate the portion of code where a new **MobileServiceClient** class is instantiated. The first parameter in the constructor is the Mobile Service endpoint and the second parameter is the Application Key for your Mobile Service.
 
-	````JavaScript
+	```JavaScript
 	 var client = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
 				"https://todolist.azure-mobile.net/",
                 "UrHdABRWplXRUyRsfnXBXyHdIlKRLH21"
             );
 	
-	````
+	```
 
 1. Below the previous code, you can observe how the mobile service client is then used for Inserts, Updates, Reads and Deletes:
 
 	The source creates a handle for operations on a table:
 
-	````C#
+	```C#
 	var todoTable = client.getTable('TodoItem');		
-	````
+	```
 
 	Performs an Insert:
 
 	<!-- mark:4-6;-->
-	````C#
+	```C#
 	var insertTodoItem = function (todoItem) {
 				 // This code inserts a new TodoItem into the database. When the operation completes
 				 // and Mobile Services has assigned an id, the item is added to the Binding List
@@ -158,12 +158,12 @@ In this step we explore _To do list_ application code and see how simple the Mic
 					  todoItems.push(item);
 				 });
 			};
-	````
+	```
 
 	Performs an Update:
 
 	<!-- mark:4-6 -->
-	````C#
+	```C#
 	var updateCheckedTodoItem = function (todoItem) {
 				 // This code takes a freshly completed TodoItem and updates the database. When the MobileService 
 				 // responds, the item is removed from the list 
@@ -171,12 +171,12 @@ In this step we explore _To do list_ application code and see how simple the Mic
 					  todoItems.splice(todoItems.indexOf(item), 1);
 				 });
 			};
-	````
+	```
 
 	Performs a Read:
 
 	<!-- mark:3-9 -->
-	````C#
+	```C#
 	var refreshTodoItems = function () {
 				 // This code refreshes the entries in the list view be querying the TodoItems table.
 				 // The query excludes completed TodoItems                
@@ -187,7 +187,7 @@ In this step we explore _To do list_ application code and see how simple the Mic
 							listItems.winControl.itemDataSource = todoItems.dataSource;
 					  });
 			};
-	````
+	```
 
 <a name="Exercise2"></a>
 ## Exercise 2: Adding Push Notifications to your app ##
@@ -278,7 +278,7 @@ Now you will add push notifications, using the **Windows Push Notification servi
 
 1. Insert the following code into the **app.OnActivated** method overload, just after the args.SetPromise method.
 
-	````JavaScript
+	```JavaScript
 	// Get the channel for the application. 
 	var channel; 
 	var channelOperation = Windows.Networking.PushNotifications
@@ -287,15 +287,15 @@ Now you will add push notifications, using the **Windows Push Notification servi
 		.then(function (newChannel) { 
 			channel = newChannel; 
 		});
-	````
+	```
 
 1. Insert the following code after the code that creates the **MobileServiceClient** instance:
 
-	````JavaScript
+	```JavaScript
 	// Insert the new channel URI into the Channel table.
    var channelTable = client.getTable('Channel');
    channelTable.insert({ uri: channel.uri });
-	````
+	```
 
 Now that we have the client wired up to request a channel and write it to our Mobile Service we now need to add a Channel table to our Mobile Service and add a server side script to send push notifications.
 
@@ -327,7 +327,7 @@ This is the minimum requirement for a table in Mobile Services.
 
 1. Replace the existing script with the following script.  
 
-	````JavaScript
+	```JavaScript
 	function insert(item, user, request) { 
 		var channelTable = tables.getTable('Channel'); 
 		channelTable.where({ uri: item.Uri }) 
@@ -341,7 +341,7 @@ This is the minimum requirement for a table in Mobile Services.
 			} 
 		} 
 	}
-	````
+	```
 	> **Note:** The purpose of this script is to ensure that multiple channels with the same Uri are not submitted every time the OnLaunched handler executes in the sample application. This code is sufficient for a HOL scenario but in a real application you would use an Id rather than matching on Uri: item.Uri to identify the channel to be replaced.  The reasoning is Channels expire and will be replaced by a new unique Channel Uri.
 
 1. Click **Save** in the bottom toolbar 
@@ -353,7 +353,7 @@ This is the minimum requirement for a table in Mobile Services.
 1. Click the **Script** tab and select the **Insert** operation and replace the existing script with the following code. Then click **Save** at the bottom toolbar.
 
 
-	````JavaScript
+	```JavaScript
 	function insert(item, user, request) {		 
 		 request.execute({
 			  success: function(){
@@ -387,7 +387,7 @@ This is the minimum requirement for a table in Mobile Services.
 	  }        
     });    
 	}
-	````
+	```
 	> **Note:** This script executes each time an insert operation is executed on the Todoitem table. In the **sendNotifications** method, we select all the channels from the Channels table and iterate through them sending a push notification to each channel Uri.  While we have only demonstrated a single toast template, the push.wns.* namespace provides simple-to-use methods required for sending toast, tile and badge updates. As you can see in this scenario we are sending a ToastText04 template which requires three lines of text.  When you build your applications we would advise that you do not send toast notifications frequently but only at times when a critical or important message needs to be delivered to the user of your application.
 
 	![Image 22](Images/image-22.png?raw=true)
@@ -461,7 +461,7 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 
 1. In the **app.OnActivated** method overload, replace the call to the **refreshTodoItems** method with the following code:
 
-	````JavaScript
+	```JavaScript
 	 var userId = null;
 
 	// Request authentication from Mobile Services using a Microsoft Account login.
@@ -492,7 +492,7 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 	}
 
 	authenticate();
-	````
+	```
 
 	> **Note:** This initializes the **Live Connect** client, sends a login request to **Live Connect**, sends the returned authentication token to Mobile Services, and then displays information about the logged-in user.
 
@@ -536,7 +536,7 @@ In this demo you learn how to execute script on a scheduled basis using **Micros
 
 1. Select the **Script** tab and paste the code snippet below that both polls Twitter and then composes a push notification to update your start screens tile using push.wns.*
  
-	````JavaScript
+	```JavaScript
 	function CheckFeed() {
 		 getUpdatesAndNotify();
 	}
@@ -571,7 +571,7 @@ In this demo you learn how to execute script on a scheduled basis using **Micros
 				}
 			 });
 	}
-	````
+	```
 1. Once you paste the script into the editor, click the **Save** button to store the changes to the script
 
 	![Image 42](Images/image-42.png?raw=true)

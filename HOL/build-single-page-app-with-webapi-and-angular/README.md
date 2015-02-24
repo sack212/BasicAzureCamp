@@ -175,14 +175,14 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     
 10. Open the **Global.asax.cs** file and add the following using statement.
 
-    ````C#
+    ```C#
     using GeekQuiz.Models;
-    ````
+    ```
 
 11. Update the **Application_Start** method, adding the sentence to set the **TriviaDatabaseInitializer** as the database initializer at the beginning, as shown below.
  
 	<!-- mark:3 -->
-    ````C#
+    ```C#
 	protected void Application_Start()
 	{
 	    System.Data.Entity.Database.SetInitializer(new TriviaDatabaseInitializer()); 
@@ -193,12 +193,12 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 	    RouteConfig.RegisterRoutes(RouteTable.Routes);
 	    BundleConfig.RegisterBundles(BundleTable.Bundles);
 	}
-    ````
+    ```
 
 12. Now you will modify the **Home** controller to restrict access to authenticated users. To do this, open the **HomeController.cs** file inside the **Controllers** folder and add the **Authorize** attribute to the **HomeController** class definition.
 
     <!-- mark:3 -->
-    ````C#
+    ```C#
     namespace GeekQuiz.Controllers
     {
         [Authorize]
@@ -212,14 +212,14 @@ In this task you will start creating a new ASP.NET MVC project with support for 
             ...
         }
     }
-    ````
+    ```
 
     > **Note:** The **Authorize** filter checks to see if the user is authenticated. If the user is not authenticated, it returns HTTP status code 401 (Unauthorized) without invoking the action. You can apply the filter globally, at the controller level, or at the level of individual actions.
 
 13. You will now customize the layout of the web pages and the branding. To do this, open the **_Layout.cshtml** file inside the **Views | Shared** folder and update the content of the `<title>` element by replacing _My ASP.NET Application_ with _Geek Quiz_.
 
     <!-- mark:4 -->
-    ````HTML
+    ```HTML
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,12 +227,12 @@ In this task you will start creating a new ASP.NET MVC project with support for 
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
-    ````
+    ```
 
 14. In the same file, update the navigation bar by removing the _About_ and _Contact_ links and renaming the _Home_ link to _Play_. Additionally, rename the _Application name_ link to _Geek Quiz_. The HTML for the navigation bar should look like the following code.
 
     <!-- mark:9,13 -->
-    ````HTML
+    ```HTML
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -251,12 +251,12 @@ In this task you will start creating a new ASP.NET MVC project with support for 
             </div>
         </div>
     </div>
-    ````
+    ```
 
 15. Update the footer of the layout page by replacing _My ASP.NET Application_ with _Geek Quiz_. To do this, replace the content of the `<footer>` element with the one in the following code.
 
     <!-- mark:5 -->
-    ````HTML
+    ```HTML
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -264,7 +264,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
             <p>&copy; @DateTime.Now.Year - Geek Quiz</p>
         </footer>
     </div>
-    ````
+    ```
 
 <a name="creating-the-triviacontroller-web-api"></a>
 ##Creating the TriviaController Web API
@@ -280,14 +280,14 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 2. Add the following using statement at the beginning of the file.
 
-    ````C#
+    ```C#
     using Newtonsoft.Json.Serialization;
-    ````
+    ```
 
 3. Update the **Register** method to globally configure the formatter for the JSON data retrieved by the Web API action methods, as shown in the first sentence of the method below.
 
     <!-- mark:7-8 -->
-    ````C#
+    ```C#
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -307,7 +307,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
             );
         }
     }
-    ````
+    ```
 
     > **Note:** The **CamelCasePropertyNamesContractResolver** automatically converts property names to camel case, which is the general convention for property names in JavaScript.
 
@@ -335,19 +335,19 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 7. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an empty **TriviaController** class. Add the following using statements at the beginning of the file:
 
-    ````C#
+    ```C#
     using System.Data.Entity;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Web.Http.Description;
     using GeekQuiz.Models;
-    ````
+    ```
     
 
 8. Add the following code at the beginning of the **TriviaController** class, to define, initialize and dispose the **TriviaContext** instance in the controller.
 
     <!-- mark:3-13 -->
-    ````C#
+    ```C#
     public class TriviaController : ApiController
     {
         private TriviaContext db = new TriviaContext();
@@ -362,13 +362,13 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
             base.Dispose(disposing);
         }
     }
-    ````
+    ```
 
 	> **Note:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the TriviaContext instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
 
 9. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
  
-    ````C#
+    ```C#
     private async Task<TriviaQuestion> NextQuestionAsync(string userId)
     {
         var lastQuestionId = await this.db.TriviaAnswers
@@ -384,11 +384,11 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
         var nextQuestionId = (lastQuestionId % questionsCount) + 1;
         return await this.db.TriviaQuestions.FindAsync(CancellationToken.None, nextQuestionId);
     }
-    ````
+    ```
 
 10. Add the following **Get** action method to the **TriviaController** class. This action method calls the **NextQuestionAsync** helper method defined in the previous step to retrieve the next question for the authenticated user.
 	
-    ````C#
+    ```C#
     // GET api/Trivia
     [ResponseType(typeof(TriviaQuestion))]
     public async Task<IHttpActionResult> Get()
@@ -404,11 +404,11 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
         return this.Ok(nextQuestion);
     }
-    ````
+    ```
 
 11. Add the following helper method at the end of the **TriviaController** class. This method stores the specified answer in the database and returns a Boolean value indicating whether or not the answer is correct.
 
-    ````C#
+    ```C#
     private async Task<bool> StoreAsync(TriviaAnswer answer)
     {
         this.db.TriviaAnswers.Add(answer);
@@ -419,11 +419,11 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
         return selectedOption.IsCorrect;
     }
-    ````
+    ```
 
 12. Add the following **Post** action method to the **TriviaController** class. This action method associates the answer to the authenticated user and calls the **StoreAsync** helper method. Then, it sends a response with the Boolean value returned by the helper method.
 
-    ````C#
+    ```C#
     // POST api/Trivia
     [ResponseType(typeof(TriviaAnswer))]
     public async Task<IHttpActionResult> Post(TriviaAnswer answer)
@@ -438,18 +438,18 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
         var isCorrect = await this.StoreAsync(answer);
         return this.Ok<bool>(isCorrect);
     }
-    ````
+    ```
 
 13. Modify the Web API controller to restrict access to authenticated users by adding the **Authorize** attribute to the **TriviaController** class definition.
 
     <!-- mark:1 -->
-    ````C#
+    ```C#
     [Authorize]
     public class TriviaController : ApiController
     {
         ...
     }
-	````
+	```
 
 <a name="running-the-solution"></a>
 ##Running the Solution
@@ -495,7 +495,7 @@ In this task you will verify that the Web API service you built in the previous 
 	You will see a **UserProfile()** action that contains code to retrieve a token and then call the Graph API. This code is duplicated below:
 
 	<!-- mark:22 -->
-	````C#
+	```C#
 	[Authorize]
 	public async Task UserProfile()
 	{
@@ -521,7 +521,7 @@ In this task you will verify that the Web API service you built in the previous 
 
 		return View(profile);
 	}
-	````
+	```
 
 	To call the Graph API, you first need to retrieve a token. When the token is retrieved, its string value must be appended in the Authorization header for all subsequent requests to the Graph API. 
 
@@ -569,9 +569,9 @@ You will start by installing AngularJS from Visual Studio's **Package Manager Co
 
 1. Open the **Package Manager Console** from **Tools | Nuget Package Manager | Package Manager Console**. Type the following command to install the **AngularJS.Core** NuGet package.
 
-    ````C#
+    ```C#
     Install-Package AngularJS.Core
-    ````
+    ```
 Wait until the package is downloaded and installed.
 
 2. In the **Solution Explorer**, right-click the **Scripts** folder of the **GeekQuiz** project and select **Add | New Folder**. Name the folder **app** and press **Enter**.
@@ -591,7 +591,7 @@ Wait until the package is downloaded and installed.
 5. In the **quiz-controller.js** file, add the following code to declare and initialize the AngularJS **QuizCtrl** controller.
 
     <!-- mark:1-12 -->
-    ````JS
+    ```JS
     angular.module('QuizApp', [])
         .controller('QuizCtrl', function ($scope, $http) {
             $scope.answered = false;
@@ -604,7 +604,7 @@ Wait until the package is downloaded and installed.
                 return $scope.correctAnswer ? 'correct' : 'incorrect';
             };
         });
-    ````
+    ```
     
 	> **Note:** The constructor function of the **QuizCtrl** controller expects an injectable parameter named **$scope**. The initial state of the scope should be set up in the constructor function by attaching properties to the **$scope** object. The properties contain the **view model**, and will be accessible to the template when the controller is registered.
 
@@ -613,7 +613,7 @@ Wait until the package is downloaded and installed.
 6. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the **QuizCtrl** controller, to define the **nextQuestion** function in the **$scope** object.
 
     <!-- mark:4-19 -->
-    ````JS
+    ```JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
 
@@ -634,14 +634,14 @@ Wait until the package is downloaded and installed.
             });
         };
     };
-    ````
+    ```
 
 	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous task and attaches the question data to the **$scope** object.
 
 7. Insert the following code at the end of the **QuizCtrl** controller to define the **sendAnswer** function in the **$scope** object.
 
     <!-- mark:4-15 -->
-    ````JS
+    ```JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
 
@@ -658,7 +658,7 @@ Wait until the package is downloaded and installed.
             });
         };
     };
-    ````
+    ```
     
 	> **Note:** This function sends the answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
 
@@ -666,7 +666,7 @@ Wait until the package is downloaded and installed.
 
 8. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
 
-	````HTML
+	```HTML
     @{
         ViewBag.Title = "Play";
     }
@@ -698,7 +698,7 @@ Wait until the package is downloaded and installed.
         @Scripts.Render("~/Scripts/angular.js")
         @Scripts.Render("~/Scripts/app/quiz-controller.js")
     }
-    ````
+    ```
 
 	> **Note:** The AngularJS template is a declarative specification that uses information from the model and the controller to transform static markup into the dynamic view that the user sees in the browser. The following are examples of AngularJS elements and element attributes that can be used in a template:
 	* The **ng-app** directive tells AngularJS the DOM element that represents the root element of the application.
@@ -708,7 +708,7 @@ Wait until the package is downloaded and installed.
     
 10. Open the **Site.css** file inside the **Content** folder and add the following styles at the end of the file, to provide a look and feel for the quiz view.
 
-	````CSS
+	```CSS
     .validation-summary-valid {
          display: none;
     }
@@ -751,7 +751,7 @@ Wait until the package is downloaded and installed.
     .flip-container div.front.flip, .flip-container div.back {
         display: none;
     }
-	````
+	```
   
 <a name="running-the-single-page-application"></a>
 ##Running the Single Page Application
@@ -803,7 +803,7 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 
 4. Locate the **flip transformation** comment. The styles below that comment use the CSS **perspective** and **rotateY** transformations to generate a "card flip" effect.
 
-    ````CSS
+    ```CSS
     /* flip transformation */
     .flip-container div.front {
         -moz-transform: perspective(2000px) rotateY(0deg);
@@ -833,29 +833,29 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 		-o-transform: perspective(2000px) rotateY(0);
 		transform: perspective(2000px) rotateY(0);
 	}
-    ````
+    ```
 
 5. Locate the **hide back of pane during flip** comment. 
 
 	The style rule below the comment hides the back-side of the faces when they are facing away from the viewer by setting the **backface-visibility** CSS property to hidden.
 
-    ````CSS
+    ```CSS
     /* hide back of pane during flip */
     .front, .back {
         -moz-backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
     }
-    ````
+    ```
 
 6. Open the **BundleConfig.cs** file inside the **App_Start** folder and add the reference to the **Flip.css** file in the **"~/Content/css"** style bundle.
 
-    ````C#
+    ```C#
     bundles.Add(new StyleBundle("~/Content/css").Include(
         "~/Content/bootstrap.css",
         "~/Content/site.css",
         "~/Content/Flip.css"));
-    ````
+    ```
 
 7. Press **F5** to run the solution and log in with your credentials.
 
@@ -906,7 +906,7 @@ The following steps will show you how to deploy the application to Azure as an A
 4. If you get an error when running the app in Azure, replace the code in the _Views\Shared\\_LoginPartial.cshtml_ file with the following and publish the project again.
 
 	<!-- mark:1-8,15 -->
-	````HTML
+	```HTML
 	@{
 	   var user = "Null User";
 	   if (!String.IsNullOrEmpty(User.Identity.Name))
@@ -935,7 +935,7 @@ The following steps will show you how to deploy the application to Azure as an A
 		<li>@Html.ActionLink("Sign in", "Index", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 	    </ul>
 	}
-	````
+	```
 
 	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier. 
 

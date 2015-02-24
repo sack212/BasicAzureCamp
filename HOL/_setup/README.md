@@ -46,9 +46,9 @@ Windows 8 comes with PowerShell 3.0 installed, but that may not be the case in o
 
 1. Execute the following command:
 
-	````PowerShell
+	```PowerShell
 	$PSVersionTable.PSVersion
-	````
+	```
 
 	The execution of this command should return 3.0 or higher. 
 
@@ -88,21 +88,21 @@ In order to install the **Azure Cross-Platform Command-Line Interface** using th
 
 	> **Note:** If Node.js is already installed on your system, use the following command to install the xplat-cli:
 
-	> ````
+	> ```
 	> npm install azure-cli -g
-	> ````
+	> ```
 
 	>**Note:** The Azure Cross-Platform Command-Line Interface is only required for the _Create Virtual Machine using Cross-Platform Command Line Interface_ task of the [Infrastructure As A Service in Microsoft Azure](../create-virtual-machine) lab.
 
 To ensure that you have the **Azure Cross-Platform Command-Line Interface** correctly installed, open a **Command Prompt** and execute the following command:
 
-	````
+	```
 	azure
-	````
+	```
 
 	You should get a message similar to the following:
 
-	````
+	```
 	info:             _    _____   _ ___ ___
 	info:            /_\  |_  / | | | _ \ __|
 	info:      _ ___/ _ \__/ /| |_| |   / _|___ _ _
@@ -142,7 +142,7 @@ To ensure that you have the **Azure Cross-Platform Command-Line Interface** corr
 	help:    Options:
 	help:      -h, --help     output usage information
 	help:      -v, --version  output the application version
-	````
+	```
 
 ### Clone or download content of this GitHub repository (optional but recommended)
 

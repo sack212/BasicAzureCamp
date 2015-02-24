@@ -135,47 +135,47 @@ In this step we explore _Todo list_ application code and see how simple the Micr
 
 1. Open **App.xaml.cs** and show the _MobileServiceClient_ class.  This is the key class provided by the Mobile Services client SDK that provides a way for your application to interact with Microsoft Azure Mobile Services. The first parameter in the constructor is the Mobile Service endpoint and the second parameter is the Application Key for your Mobile Service.
 
-	````C#
+	```C#
 	public static MobileServiceClient MobileService 
 			= new MobileServiceClient( 
 				"https://todolist.azure-mobile.net/"
 				,"vIWepmcOXGPsYCJQDDcFBKsnOVxzLG52" );
 	
-	````
+	```
 
 1. Open **MainPage.xaml.cs** to observe how the mobile service client is then used for Inserts, Updates, Reads and Deletes:
 
 	The source creates a handle for operations on a table:
 
-	````C#
+	```C#
 	private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();		
-	````
+	```
 	Performs an Insert:
 
 	<!-- mark:3;-->
-	````C#
+	```C#
 	private async void InsertTodoItem(TodoItem todoItem)
 	{
 		await todoTable.InsertAsync(todoItem);
 		items.Add(todoItem);                        
 	}
-	````
+	```
 
 	Performs an Update:
 
 	<!-- mark:3 -->
-	````C#
+	```C#
 	private async void UpdateCheckedTodoItem(TodoItem item)
 	{
 		await todoTable.UpdateAsync(item);
 		items.Remove(item);
 	}
-	````
+	```
 
 	Performs a Read:
 
 	<!-- mark:3-4 -->
-	````C#
+	```C#
 	private void RefreshTodoItems()
 	{
 		items = todoTable
@@ -183,7 +183,7 @@ In this step we explore _Todo list_ application code and see how simple the Micr
 			 .ToCollectionView();
 		ListItems.ItemsSource = items;
 	}
-	````
+	```
 
 1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather then update operation using the todoTable.DeleteAsync(...) method.
 
@@ -274,32 +274,32 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 
 1. Right-click the TodoList project, select **Add | Class** and name it **Channel.cs**. Then insert the following properties into it:  
 
-	````C#
+	```C#
 	public class Channel
 	{
 		public int? Id { get; set; }
 		public string Uri { get; set; }
 	}
 
-	````
+	```
 1. Open the file **App.xaml.cs**.
 
 1. Add the following using statements:
 
-	````C#
+	```C#
 	using Windows.Networking.PushNotifications;
 	using Windows.Storage;
-	````
+	```
 
 1. Find the OnLaunched method and mark it to be **async** as follows.
 
-	````C#
+	```C#
 	protected async override void OnLaunched(LaunchActivatedEventArgs args)
-	````
+	```
 
 1. Add the following lines of code at the end of OnLaunched to request a notification channel and register it with your Mobile Services app.
 
-	````C#
+	```C#
 	var ch = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 	var channelDTO = new Channel()
 				  {
@@ -316,7 +316,7 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 	{
 		 await MobileService.GetTable<Channel>().UpdateAsync(channelDTO);
 	}
-	````
+	```
 
 Now that you have the client wired up to request a channel and write it to the Mobile Service you need to add a Channel table to the Mobile Service and add a server side script to send push notifications.
 
@@ -349,7 +349,7 @@ This is the minimum requirement for a table in Mobile Services.
 1. Click the **Script** tab and select the **Insert** Operation and replace the existing script with the following and walk through the following code.
 
 
-	````JavaScript
+	```JavaScript
 	function insert(item, user, request) {		 
 		 request.execute({
 			  success: function(){
@@ -383,7 +383,7 @@ This is the minimum requirement for a table in Mobile Services.
 	  }        
     });    
 	}
-	````
+	```
 	> **Note:** This script executes each time an insert operation is executed on the Todoitem table.  The sendNotifications method will select all channels from the Channels table and iterate through them sending a push notification to each channel URI. Although we have only demonstrated a single toast template, the push.wns.* namespace provides simple-to-use methods required for sending toast, tile and badge updates. As you can see in this scenario we are sending a ToastText04 template that requires three lines of text. When you build your applications we would advise that you do not send toast notifications so frequently but rather only at times when there is a critical or important message to deliver to the user of your application.
 
 	![Image 22](Images/image-22.png?raw=true)
@@ -463,13 +463,13 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 
 1. Update the **OnNavigatedTo** event handler to be async and add a call to the **LoginAsync** method:
 	<!-- mark:1,3 -->
-	````C#
+	```C#
 	protected async override void OnNavigatedTo(NavigationEventArgs e)
 	{
 		await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
 		RefreshTodoItems();            
 	}
-	````
+	```
 
 1. Press the **F5** key to run the app and sign into Live Connect with your Microsoft Account.
 
@@ -508,7 +508,7 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 
 1. Select the **Script** tab and paste the code snippet below that both polls Twitter and then composes a push notification to update your start screens tile using push.wns.*
  
-	````JavaScript
+	```JavaScript
 	function CheckFeed() {
 		 getUpdatesAndNotify();
 	}
@@ -543,7 +543,7 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 		}
 	 });
 	}
-	````
+	```
 
 1. Once you paste the script into the editor, click the **Save** button to store the changes to the script.
 

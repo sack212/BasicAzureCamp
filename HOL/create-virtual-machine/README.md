@@ -118,18 +118,18 @@ In order to use the publish settings file method, perform the following steps:
 
 1. Open a **Command prompt** if there is not already one open, and run the following command to download the publish settings file for your account:
 
-	````
+	```
 	azure account download
-	````
+	```
 
 	This will open your default browser and prompt you to sign in to the Azure Management Portal. After signing in, a `.publishsettings` file will be downloaded. Make note of where this file is saved.
 
 
 1. Next, import the `.publishsettings` file by running the following command, replacing `[path to .publishsettings file]` with the path to your `.publishsettings` file:
 
-	````
+	```
 	azure account import [path to .publishsettings file]
-	````
+	```
 
 	> **Note:** When you import publish settings, the information to access your Azure subscription is stored in a `.azure` directory located in your `user` directory. Your `user` directory is protected by your operating system; however, it is recommended that you take additional steps to encrypt your `user` directory. You can do so in the following ways:
 
@@ -142,9 +142,9 @@ In order to use the publish settings file method, perform the following steps:
 
 	> **Note:** If you prefer using the login method, use the following command:
 	>
-	> ````
+	> ```
 	> azure login -u username -p password
-	> ````
+	> ```
 	> 
 
 	<a name="create-vm-xplatcli"></a>
@@ -154,53 +154,53 @@ In order to use the publish settings file method, perform the following steps:
 1. From the **Command prompt**, run the following command to list all the available locations from which you can choose to create a virtual machine. Take note of one of them (e.g.: _West US_); as you will use it in the following step.
 
 
-	````
+	```
 	azure vm location list
-	````
+	```
 
 1. To create a new virtual machine based on the _b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB_ image run the following command. Replace _[LINUX-VM-NAME]_ and _[ADMIN-USERNAME]_ with your desired values for the virtual machine name and administrator user. You can also replace _West US_ by the location you chose in the previous step. 
 
 	As the command executes it will prompt you to enter the password for the admin user.
 
-	````
+	```
 	azure vm create [LINUX-VM-NAME] b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB [ADMIN-USERNAME] --location "West US" --ssh
 
-	````
+	```
 	> **Note 1:** The _--ssh_ parameter enables SSH to manage the deployed Linux virtual machine.
 
 	> **Note 2:** To list the available images use the following command.
 	> 
-	> ````
+	> ```
 	> azure vm image list
-	> ````
+	> ```
 	> 
 
 	> **Note 3:** You can specify the blob storage url by specifying the _--blob-url_ parameter to the _vm create_ command. In order to create a storage account use the following steps: 
 
 	> 1. Replace the _[ACCOUNT-NAME]_ placeholder and execute the following command to create the new storage account. You will be prompted to provide the location where you want to create the storage account. Make sure you provide the same location as you plan to use when creating the virtual machine.
 
-	> 		````
+	> ```
 	> 	azure storage account create [ACCOUNT-NAME]
-	> 	````
+	> 	```
 
 	> 1. Obtain and take note of the account keys of the new account by executing the following command. Replace the _[ACCOUNT-NAME]_ placeholder with the one used in the previous step.
 
-	> 		````
+	> ```
 	> 	azure storage account keys list [ACCOUNT-NAME]
-	> 	````
+	> 	```
 
 	> 1. Now, create a new container in the blob storage account by executing the following command, replacing all the placeholders accordingly.
 
 
-	> 		````
+	> ```
 	>	azure storage container create [CONTAINER-NAME] --account-name [ACCOUNT-NAME] --account-key [STORAGE-ACCOUNT-KEY]
-	>	````
+	>	```
 
 	> 1. Finally, execute the `azure vm create` command using the _--blob-url_ parameter with the blob url, which will resemble the following: `https://<accountname>.blob.core.windows.net/<containerName>/<the-blob-name.vhd>`.
 
-	> 		````
+	> ```
 	> 	azure vm create [LINUX-VM-NAME] b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB [ADMIN-USERNAME] --location "West US" --ssh --blob-url https://[ACCOUNT-NAME].blob.core.windows.net/<containerName>/<the-blob-name.vhd>
-	> 	````
+	> 	```
 	>
 
 	Once this command finishes creating the virtual machine with no errors, you can proceed to attach an empty data disk to it.
@@ -208,28 +208,28 @@ In order to use the publish settings file method, perform the following steps:
 	<a name="attach-disk-xplatcli"></a>
 1. To attach a new 30gb disk to your virtual machine, execute the following command. Replace _your-linux-vm_ with the name of the virtual machine you created.
 
-	````
+	```
 	azure vm disk attach-new [LINUX-VM-NAME] 30
-	````
+	```
 
 	You should get a message resembling the following:
 
-	````
+	```
 	info:    Executing command vm disk attach-new
 	+Getting virtual machines
 	+Adding Data-Disk
 	info:    vm disk attach-new command OK
-	````
+	```
 
 1. To display details about the virtual machine, execute the following command. Replace _[LINUX-VM-NAME]_ with the name of the virtual machine you created. Take note of the _DNSName_ value and make sure that the SSH endpoint exists.
 
-	````
+	```
 	azure vm show [LINUX-VM-NAME]
-	````
+	```
 
 	The output of this command should be similar to the following:
 
-	````
+	```
 	info:    Executing command vm show
 	+Getting virtual machines
 	data:    DNSName "your-linux-vm.cloudapp.net"
@@ -262,7 +262,7 @@ In order to use the publish settings file method, perform the following steps:
 	data:    Network Endpoints 0 virtualIPAddress "104.42.11.83"
 	data:    Network Endpoints 0 enableDirectServerReturn false
 	info:    vm show command OK
-	````
+	```
 
 	<a name="connect-to-vm-xplatcli"></a>
 	To manage the settings of the virtual machine and the applications that run on the machine, you can use an SSH client. You will use the PuTTY program to access the virtual machine.
@@ -305,17 +305,17 @@ In order to use the publish settings file method, perform the following steps:
 
 1. In the SSH window, type the following command:
 
-	````
+	```
 	sudo grep SCSI /var/log/syslog
-	````
+	```
 
 	You can find the identifier of the last data disk that was added in the messages that are displayed, in brackets (e.g. [sdc]).
 
 1. In the SSH window, type the following command to create a new device:
 
-	````
+	```
 	sudo fdisk /dev/sdc
-	````
+	```
 
 	![Executing fdisk in the virtual machine](images/executing-fdisk-in-the-vm.png?raw=true)
 
@@ -337,39 +337,39 @@ In order to use the publish settings file method, perform the following steps:
 
 8. You must create the file system on the new partition. As an example, type the following command to create the file system:
 
-	````
+	```
 	sudo mkfs -t ext4 /dev/sdc1
-	````
+	```
 
 	> **Note:** Note that SUSE Linux Enterprise 11 systems provide only read-only access for ext4 file systems. For these systems, we recommended formatting the new file system as ext3 rather than ext4.
 
 9. Create a directory to mount the new file system. As an example, type the following command:
 
-	````
+	```
 	sudo mkdir /datadrive
-	````
+	```
 
 10. Type the following command to mount the drive:
 
-	````
+	```
 	sudo mount /dev/sdc1 /datadrive
-	````
+	```
 
 	The data disk is now ready to use as **/datadrive**.
 
 11. To ensure the drive is re-mounted after a reboot, it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
 
-	````
+	```
 	sudo -i blkid
-	````
+	```
 
 	The output will resemble the following:
 
-	````
+	```
 	/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
 	/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
 	/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
-	````
+	```
 
 	> **Note:** blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
 
@@ -377,23 +377,23 @@ In order to use the publish settings file method, perform the following steps:
 
 1. Using a text editor, enter the information about the new file system at the end of the /etc/fstab file.  In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**.
 
-	````
+	```
 	UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
-	````
+	```
 
 	> **Note 1:** On systems based on SUSE Linux you may need to use a slightly different format:
 	> 
-	> ````
+	> ```
 	> /dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /   ext3   defaults   1   2
-	> ````
+	> ```
 
 	> **Note 2:** You can use the vim text editor in order to perform this steps.
 
 	> 1. Execute the following command in order to start the vim editor
 	>
-	> 		````
+	> ```
 	> sudo vim /etc/fstab
-	> ````
+	> ```
 	> 1. Type **i** to enter to _INSERT_ mode and use the arrows to go to the end of the file.
 	> 1. Type enter and then add the information.
 	> 1. Type **Esc** to exit the _INSERT_ mode.
@@ -403,10 +403,10 @@ In order to use the publish settings file method, perform the following steps:
 
 1. You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps: 
 
-	````
+	```
 	sudo umount /datadrive
 	sudo mount /datadrive
-	````
+	```
 
 	If the second command produces an error, check the /etc/fstab file and make sure the syntax is correct.
 
@@ -435,9 +435,9 @@ To log in using an Azure AD account, follow these instructions:
 
 1. Type the following command and hit Enter:
 
-	````PowerShell
+	```PowerShell
 	Add-AzureAccount
-	````
+	```
 
 1. A dialog box to **Sign in to Windows Azure** will appear. Follow the instructions, typing the email address and password associated with your account when prompted.
 
@@ -449,21 +449,21 @@ To log in using an Azure AD account, follow these instructions:
 
 	>Starting from 0.8.6, if you sign in using an organizational account, you can type the following command to bypass the pop up window: 
 	>
-	>````PowerShell
+	>```PowerShell
 	>$cred = Get-Credential
 	>Add-AzureAccount -Credential $cred
-	>````
+	>```
 	>
 	>This will prompt the standard Windows PowerShell credential window for you to enter your work or school account user name and password.
 	>
 	>If you are using this in an automation script and want to avoid any popup windows, use the following snippet: 
 	>
-	>````PowerShell
+	>```PowerShell
 	>$userName = "<your work or school account user name>"
 	>$securePassword = ConvertTo-SecureString -String "<your work or school account password>" -AsPlainText -Force
 	>$cred = New-Object System.Management.Automation.PSCredential($userName, $securePassword)
 	>Add-AzureAccount -Credential $cred 
-	>````
+	>```
 
 	>**Note:**
 This non-interactive login method only works with an organizational account. An organizational account is a user that is managed by your organization and defined in the Azure Active Directory instance for your organization. If you do not currently have an organizational account you can follow the instructions for [Creating a new organizational account](#creating-new-organizational-account) to create one.
@@ -473,9 +473,9 @@ This non-interactive login method only works with an organizational account. An 
 
 1. To verify whether your subscription has an associated storage account, run this command. 
 
-	````PowerShell
+	```PowerShell
 	Get-AzureSubscription
-	````
+	```
 
 	The command will produce an output like this:
 
@@ -487,9 +487,9 @@ This non-interactive login method only works with an organizational account. An 
 
 1. Run the following command to get information about the storage account:
 
-	````PowerShell
+	```PowerShell
 	Get-AzureStorageAccount
-	````
+	```
 
 	The output produced will look like this:
 	
@@ -501,9 +501,9 @@ This non-interactive login method only works with an organizational account. An 
 
 1. If, like in the image shown a couple of steps above, the command **Get-AzureSubscription** did not list a value next to **CurrentStorageAccountName**, run the following snippet to set it. Replace the [SUBSCRIPTION-NAME] and [STORAGE-ACCOUNT-LABEL] placeholders with the values retrieved earlier. Otherwise, skip this step.
 
-	````PowerShell
+	```PowerShell
 	Set-AzureSubscription -SubscriptionName "[SUBSCRIPTION-NAME]" -CurrentStorageAccountName [STORAGE-ACCOUNT-LABEL]
-	````
+	```
 
 	This will set the storage account. You can execute the **Get-AzureSubscription** command and this time, the value set should be listed.
 
@@ -512,47 +512,47 @@ This non-interactive login method only works with an organizational account. An 
 
 1. Execute the snippet below, replacing the [ADMIN-USER-NAME] and [ADMIN-PASSWORD] placeholders with your desired values, and the [STORAGE-ACCOUNT-LOCATION] placeholder with the value retrieved earlier. The location entered should match the storage account location retrieved earlier.
 
-	````PowerShell
+	```PowerShell
 	$dclocation = '[STORAGE-ACCOUNT-LOCATION]'
 	$adminUserName = '[ADMIN-USER-NAME]'
 	$adminPassword = '[ADMIN-PASSWORD]'
 	$vmname = 'azureVM'
-	````
+	```
 
 1. Select a name for the Cloud Service. As it needs to be unique, you can verify first whether the selected Cloud Service Name exists by running the **Test-AzureName** command. If this command outputs False, the name is available.
 
-	````PowerShell
+	```PowerShell
 	Test-AzureName -Service '[CLOUD-SERVICE-NAME]'
 
 	$cloudSvcName = '[CLOUD-SERVICE-NAME]'
-	````
+	```
 
 1. Set the image name for your virtual machine to _a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201412.01-en.us-127GB.vhd_. This corresponds to an image of Windows Server R2 DataCenter.
 
-	````PowerShell
+	```PowerShell
 	$image = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201412.01-en.us-127GB.vhd'
-	````
+	```
 
 	>Note: You can view the complete list of images available by running the following command:
 	>
-	>````PowerShell
+	>```PowerShell
 	>Get-AzureVMImage | select ImageName
-	>````
+	>```
 	>You can choose to create a virtual machine based on a different image. If you choose to create a Linux virtual machine, the command to create the virtual machine will vary slightly.
 
 1. Now that all variables are set, run the following command to create the virtual machine:
 
-	````PowerShell
+	```PowerShell
 	New-AzureQuickVM -AdminUserName $adminUserName -Windows -ServiceName $cloudSvcName -Name $vmname -ImageName $image -Password $adminPassword -Location $dclocation
 
-	````
+	```
 
 	>**Note:** If you chose to create a Linux image, the command to use is the following:
 
-	>````PowerShell
+	>```PowerShell
 	>New-AzureQuickVM -Linux -ServiceName $cloudSvcName -Name $vmname -ImageName $image -LinuxUser $adminUserName -Password $adminPassword -Location $dclocation
 	>
-	>````
+	>```
 	>
 	>The differences reside in the **-Linux** OS switch and the **-LinuxUser** switch that replaces the **-AdminUserName** switch in Windows.
 	>
@@ -568,9 +568,9 @@ This non-interactive login method only works with an organizational account. An 
 
 1. You can list all VMs in the Cloud Service by running the following cmdlet:
 
-	````PowerShell
+	```PowerShell
 	Get-AzureVM -ServiceName $cloudSvcName
-	````
+	```
 
 	![Get-AzureVM output - list all vms](images/get-azurevm-output---list-all-vms.png?raw=true)
 
@@ -578,9 +578,9 @@ This non-interactive login method only works with an organizational account. An 
 
 	If you want to enumerate only the details of the virtual machine just created, provide the **-Name** switch:
 
-	````PowerShell
+	```PowerShell
 	Get-AzureVM -ServiceName $cloudSvcName -Name $vmname
-	````
+	```
 
 	<a name="attach-disk-powershell"></a>
 
@@ -591,11 +591,11 @@ This non-interactive login method only works with an organizational account. An 
 
 1. Execute the following pipe of cmdlets:
 
-	````PowerShell
+	```PowerShell
 	Get-AzureVM -Name $vmname -ServiceName $cloudSvcName |
 		 Add-AzureDataDisk -CreateNew -DiskSizeInGB 50 -DiskLabel 'datadisk1' -LUN 2 |
 		 Update-AzureVM 
-	````
+	```
 
 	The **Get-AzureVM** Cmdlet retrieves the virtual machine object and sends it to the PowerShell Pipeline.
 
@@ -624,10 +624,10 @@ This non-interactive login method only works with an organizational account. An 
 
 1. To verify whether the VM Agent is enabled on the virtual machine, run these commands: 
 
-	````PowerShell
+	```PowerShell
 	$vm = Get-AzureVM -ServiceName $cloudSvcName
 	$vm.VM.ProvisionGuestAgent
-	````
+	```
 
 	The output of the first command should not return any errors, and the second command should be True.
 
@@ -635,20 +635,20 @@ This non-interactive login method only works with an organizational account. An 
 
 	>**Note:** If the value of the **$vm.VM.ProvisionGuestAgent** property is False, connect to the virtual machine and install the VM Agent. You can download it [here](<http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409>). Then, set the value of the variable to True with the following snippets.
 	>
-	>````PowerShell
+	>```PowerShell
 	>$vm = Get-AzureVM -serviceName $cloudSvcName -Name $vmname
 	>$vm.VM.ProvisionGuestAgent = $TRUE
 	>Update-AzureVM -Name $name -VM $vm.VM -ServiceName $cloudSvcName
-	>````
+	>```
 	
 	Now you will install the Symantec endpoint protection extension.
 
 1. Execute the following command to add the extension:
 
-	````PowerShell
+	```PowerShell
 	Set-AzureVMExtension -Publisher Symantec -ExtensionName SymantecEndpointProtection -VM $vm.VM -Version 12.*
 	Update-AzureVM -ServiceName $cloudSvcName -Name $vmname -VM $vm.VM
-	````
+	```
 
 	**Set-AzureVMExtension** sets the properties for the extension about to be installed. **Update-AzureVM** is the cmdlet that installs the extension.
 
@@ -660,9 +660,9 @@ This non-interactive login method only works with an organizational account. An 
 
 1. To verify that the extension was installed on the virtual machine, run the following command:
 
-	````PowerShell
+	```PowerShell
 	Get-AzureVMExtension -VM $vm.VM
-	````
+	```
 	The output of the command should look like this:
 
 	![Get-AzureVMExtension output](images/get-azurevmextension-output.png?raw=true)
@@ -676,9 +676,9 @@ This non-interactive login method only works with an organizational account. An 
 
 	>**Note:** The location for the rdp file provided must exist, otherwise you will see an error.
 
-	````PowerShell
+	```PowerShell
 	Get-AzureRemoteDesktopFile -ServiceName $cloudSvcName -Name $vmname -LocalPath 'C:\myvmconnection.rdp' -Launch
-	````
+	```
 
 	This will launch the rdp, effectively starting the flow of connecting to the remote machine. 
 
@@ -891,18 +891,18 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	This will navigate to the workflow edition page, which will show the following outline. You will build the Runbook script in the next steps.
 
-	````PowerShell
+	```PowerShell
 	workflow New-AzureVM
 	{ 
 	}
-	````
+	```
 
 	Make sure all the code you copy into the workflow is inside the curly braces that define the workflow, and that there are no lines after that. Also, the workflow name should match the Runbook's name.
 
 
 1. In the **DRAFT** view of the Runbook, add the following code to the workflow definition in order to add parameters. These parameters will later appear in a dialog box when you run the Runbook.
 
-	````PowerShell
+	```PowerShell
     param
 	( 
 		[Parameter(Mandatory=$true)] [String] $ServiceName,
@@ -914,7 +914,7 @@ If you do not currently have an organizational account, and are using a Microsof
 		[Parameter(Mandatory=$false)] [String] $VMName = "VM-Instance",
 		[Parameter(Mandatory=$false)] [String] $VMInstanceSize = "ExtraSmall"
 	)  
-	````
+	```
 	The parameters defined by the workflow are:
 
 	* **$ServiceName**: cloud service name in which the virtual machine will be created. This is created by the script.
@@ -926,7 +926,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 1. Now, add the following code below the parameters definition to get and configure the Azure Credentials from the Automation Asset list.
 
-	````PowerShell
+	```PowerShell
 	# Get the Azure credentials and connect to Azure #######################################################
 
 	# Get the credential to use for Authentication to Azure and Azure Subscription Name
@@ -939,13 +939,13 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	# Connect to Azure
 	$AzureAccount = Add-AzureAccount -Credential $AzureCredential 
-	````
+	```
 
 	The **Get-AutomationVariable** CmdLet retrieves the variable with the name _Subscription name_. You will create this variable in the Assets tab of the Automation Account for the Runbook later.
 
 1. Add the following code below the code you just added in order to get the credentials that will be used to access the virtual machine.
 
-	````PowerShell
+	```PowerShell
 	# Get the VM credentials ###############################################################################
 
 	$VMCred = Get-AutomationPSCredential -Name 'VM credentials'
@@ -957,13 +957,13 @@ If you do not currently have an organizational account, and are using a Microsof
 	$VMUserName = $VMCred.UserName
 	$VMPassword = $VMCred.GetNetworkCredential().Password
  
-	````
+	```
 
 	The **Get-AutomationPSCredential** CmdLet retrieves an object of type PSCredential with the name _VM Credentials_. As with the $AzureCredentials parameter, you will create an Automation Asset named _VM credentials_, of type "credentials", in an upcoming step. 
    
 1. Next, add the following code after the code added in the previous step. This code defines an _InlineScript_ block that contains some variable definitions, including the image to be used to create the virtual machine.
 
-	````PowerShell
+	```PowerShell
 	InlineScript
 	{
 		$VMUserName = $using:VMUserName
@@ -979,11 +979,11 @@ If you do not currently have an organizational account, and are using a Microsof
 		$StorageAccountName = $using:StorageAccountName
 
 	} 
-	````
+	```
 
 1. Add the following code inside the _InlineScript_ block, right below the variable definitions, to retrieve the Storage account that will be used. This code sets the azure subscription to be used as well as the storage account. Additionally, it validates that the storage account exists.
 
-	````PowerShell
+	```PowerShell
 	# Set Azure subscription and storage ################################################################
 
 	Set-AzureSubscription -SubscriptionName $AzureSubscriptionName -CurrentStorageAccountName $StorageAccountName
@@ -995,10 +995,10 @@ If you do not currently have an organizational account, and are using a Microsof
 	}
 
 	$Location = $storageAccount.Location 
-	````
+	```
 1. Finally, add the following code inside the _InlineScript_ block, right below the code added in the previous step. This code will create the virtual machine the same way it was created in the _Create virtual machine with PowerShell_ task.
 
-	````PowerShell
+	```PowerShell
 	# Main script ########################################################################################
 
 	# Check whether a VM by name $VMName already exists, if it does not exist create VM
@@ -1042,7 +1042,7 @@ If you do not currently have an organizational account, and are using a Microsof
 	{
 		Write-Output ("VM '{0}' already exists." -f $VMName)
 	}
-	````
+	```
 
 1. Now that the script is complete, publish the Runbook by clicking the **PUBLISH** button in the bottom bar.
 

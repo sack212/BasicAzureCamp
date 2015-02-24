@@ -112,13 +112,13 @@ Once you finish signing up for your **Office 365** subscription, follow these st
 	
 1. Open the application manifest file with **Visual Studio**. At the top of the file, find the app permissions line.
 
-	````JSON
+	```JSON
 	"appPermissions": [],
-	````
+	```
 
 1. Replace that line with the following app permissions and save the file.
 
-	````JSON
+	```JSON
 	"appPermissions": [
 	    {
 		"claimValue": "user_impersonation",
@@ -139,7 +139,7 @@ Once you finish signing up for your **Office 365** subscription, follow these st
 		"userConsentDisplayName": "Have full access to the mobile service"
 	    }
 	],
-	````
+	```
 	
 1. In the Management Portal, click **Manage Manifest** and select **Upload Manifest**. Select the file you just updated and upload the manifest.
 
@@ -388,7 +388,7 @@ This demo is composed of the following segments:
 	
 	(Code Snippet - _facilityrequest_)
 	<!-- mark:1-49 -->
-	````C#
+	```C#
 	namespace MobileService.DataObjects
 	{
 		using System;
@@ -438,7 +438,7 @@ This demo is composed of the following segments:
 			Auditorium,
 		}
 	}
-	````
+	```
 
 	> **Speaking Point:** By default we use Entity Framework backed by a SQL Server database, but there are a number of backend choices such as MongoDB and Table Storage.
 
@@ -471,7 +471,7 @@ This demo is composed of the following segments:
 
 	(Code Snippet - _authattrib_)
 	<!-- mark:3-6 -->
-	````C#
+	```C#
 	namespace MobileService.Controllers
 	{
 		using Microsoft.WindowsAzure.Mobile.Service.Security;
@@ -483,7 +483,7 @@ This demo is composed of the following segments:
 			...
 		}
 	}	
-	````
+	```
 
 	> **Speaking Point:** Let's assume for a moment that our company has already federated our on-premise Active Directory with Azure. Adding authentication to our API is as easy as adding an attribute to our controller.
 	
@@ -545,7 +545,7 @@ This demo is composed of the following segments:
 
 	(Code Snippet - _authclient_)
 	<!-- mark:3-21 -->
-	````C#
+	```C#
 	public override async Task<string> LoginAsync(bool clearCache, string authorityId, string redirectUri, string resourceId, string clientId)
 	{
 	    var context = new AuthenticationContext(authorityId);
@@ -568,7 +568,7 @@ This demo is composed of the following segments:
 
 	    return result.AccessToken;
 	}	
-	````
+	```
 
 	> **Speaking Point:** We can take advantage of the Active Directory authentication library which gives us a native login experience on all clients. We can pass the authentication token to the Mobile Services back-end so that the user is logged in to both places.
 	
@@ -617,7 +617,7 @@ We've added authentication with Active Directory, but what our app users would r
 
 	(Code Snippet - _sharepoint_)
 	<!-- mark:1-31 -->
-	````C#
+	```C#
 	public async Task<FacilityRequest> PatchFacilityRequest(string id, Delta<FacilityRequest> patch)
 	{
 		var sharePointUri = SharePointProvider.SharePointUri;
@@ -647,7 +647,7 @@ We've added authentication with Active Directory, but what our app users would r
 
 		return await this.UpdateAsync(id, patch);
 	}	
-	````
+	```
 
 	> **Speaking Point:** The method is called every time a facility request is updated, so we can take advantage of the Active Directory authentication token to call the new set of Office365 REST APIs, allowing us to generate the document on the fly and post it straight to SharePoint.
 
@@ -710,9 +710,9 @@ We've added authentication with Active Directory, but what our app users would r
 
 1. Execute the following command to build the library for each specific architecture.
 
-	````Bash
+	```Bash
 	xcodebuild -project ADALiOS.xcodeproj -target ADALiOS -sdk iphonesimulator -configuration Release clean build
-	````
+	```
 
 	![Compiling ADAL iOS](Images/compiling-adal-ios.png?raw=true)
 	
@@ -722,17 +722,17 @@ We've added authentication with Active Directory, but what our app users would r
 
 1. Execute the previous **xcodebuild** command, but use the flag _armv7_.
 
-	````Bash
+	```Bash
 	xcodebuild -project ADALiOS.xcodeproj -target ADALiOS -sdk iphoneos -arch armv7 -configuration Release clean build
-	````
+	```
 
 1. Now rename the generated file (**build/Release-iphoneos/libADALiOS.a**) as **libADALiOS-armv7.a**.
 
 1. Execute **xcodebuild** using the flag _armv7s_.
 
-	````Bash
+	```Bash
 	xcodebuild -project ADALiOS.xcodeproj -target ADALiOS -sdk iphoneos -arch armv7s -configuration Release clean build
-	````
+	```
 
 1. Rename the last generated file (**build/Release-iphoneos/libADALiOS.a**) as **libADALiOS-armv7s.a**.
 
@@ -743,9 +743,9 @@ We've added authentication with Active Directory, but what our app users would r
 
 1. Change into the **build/Binaries** folder and execute the following command specifying the 3 files you generated before.
 
-	````Bash
+	```Bash
 	lipo -create -output libADALiOS.a libADALiOS-i386.a libADALiOS-armv7.a libADALiOS-armv7s.a
-	````
+	```
 	
 	![Creating an universal binary](Images/creating-an-universal-binary.png?raw=true)
 	
