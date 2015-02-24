@@ -54,7 +54,6 @@ There are several ways to get an Azure subscription, such as the free trial subs
 
 	_Sign up page - Agreement section and Signup_
 
-
 	![Free Trial subscription completed](images/signup8.png?raw=true)
 
 	_Free Trial subscription completed_
