@@ -10,7 +10,7 @@ This lab includes the following tasks:
 1. [Creating a trial Windows Azure Account](#Task1)
 1. [Activating MSDN benefits](#Task2)
 
-<a name="Task1" />
+<a name="Task1"></a>
 ##Creating a trial Windows Azure Account
 
 There are several ways to get an Azure subscription, such as the free trial subscription, the **pay-as-you-go** subscription, which has no minimums or commitments and you can cancel anytime; **Enterprise agreement** subscriptions, or you can buy one from a Microsoft retailer. In this task you are going to create a free trial subscription.
@@ -66,7 +66,7 @@ There are several ways to get an Azure subscription, such as the free trial subs
 	![Windows Azure Tour](images/AzureTour.png?raw=true)  
 	_Windows Azure Tour_  
 	
-<a name="Task2" />
+<a name="Task2"></a>
 ##Activating MSDN benefits
 If you happen to be an MSDN subscriber you can activate your Azure MSDN benefits. It is no charge, you can use your MSDN software in the cloud, and most importantly you get up to $150 in Azure credits every month. You can also get 33% discount in Virtual Machines and much more. 
 
@@ -79,7 +79,7 @@ If you happen to be an MSDN subscriber you can activate your Azure MSDN benefits
 	
 4. You will need to enter your Microsoft account credentials to verify the subscription and complete the activation steps.
 
-<a name="Summary" />
+<a name="Summary"></a>
 ##Summary
 
 In this lab you have seen how to create a free Microsoft Azure trial account, and how to activate the MSDN subscription benefits in your azure account. 

@@ -1,8 +1,8 @@
-<a name="title" />
+<a name="title"></a>
 # Microsoft Azure Storage Demos #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 This is a set of demos showing how to interact with [Microsft Azure Storage](http://azure.microsoft.com/en-us/documentation/services/storage/) using tools, http and C# code.
 
@@ -13,7 +13,7 @@ In these demos, you will see how to:
 1. Use a tool to interact with Azure Storage.
 2. Leverage the [C# Azure Storage library](https://www.nuget.org/packages/WindowsAzure.Storage) to interact with Azure storage in code.
 
-<a name="setup" />
+<a name="setup"></a>
 ### Setup and Configuration ###
 Follow these steps to setup your environment for the demo.
 
@@ -24,7 +24,7 @@ Follow these steps to setup your environment for the demo.
 5) Download a third party Storage Explorer tool of your choice from this list: [Azure Storage Explorers](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)
 6) Connect to your Azure Storage demo account using the third party tool.
 
-<a name="Demo1" />
+<a name="Demo1"></a>
 ## Demo 1) Interact with Azure Storage Blobs ##
 
 1. Using the third party tool create a container in your Azure Storage account.
@@ -35,7 +35,7 @@ Follow these steps to setup your environment for the demo.
 
 > **Speaking point:** Explain that interacting with Storage Blobs is really easy using a tool. Any tool that can make a call over http can access your files in Azure Storage. There is also a CDN (Content Delivery Network) Service which can be enabled for Azure Storage which effectively caches your files in edge nodes closer to the downloading users around the globe.
 
-<a name="Demo2" />
+<a name="Demo2"></a>
 ## Demo 2) Interact with Azure Storage Blobs through code ##
 
 * In the Demo solution open the class BlobDemoTests. It contains Unit Tests which are supposed to be executed sequentially while showing the code. You can even choose to debug the tests and step through them wile explaining to the audience.
@@ -46,7 +46,7 @@ Follow these steps to setup your environment for the demo.
 
 **Tip:** You can also show the blob in a storage explorer as it is created!
 
-<a name="Demo3" />
+<a name="Demo3"></a>
 ## Demo 3) Blob metadata ##
 
 This test class has four methods. The first two will upload a blob with metadata and download it again. The second two do the same only the metadata contains invalid characters which means we have to base64 encode the metadata value before uploading it.
@@ -60,7 +60,7 @@ This test class has four methods. The first two will upload a blob with metadata
 
 > **Speaking Point:** The metadata is not searchable using the API. The total size of the metadata, including both the name and value together, may not exceed 8 KB in size.
 
-<a name="Demo4" />
+<a name="Demo4"></a>
 ## Demo 4) Shared Access Signatures (SAS) ##
 
 The class SharedAccessSignaturesDemoTests contains two methods that demo SAS access to Azure Storage.
@@ -72,7 +72,7 @@ The class SharedAccessSignaturesDemoTests contains two methods that demo SAS acc
 > **Speaking Point:** An ordinary SAS key can be used for a specific blob target with specific access rights and time. A Stored Access Policy is persisted in an Azure Storage container and can be revoked on the server side. Two complimentary and great features that provides flexible and fine grained access to 
 Azure Storage.
 
-<a name="Demo5" />
+<a name="Demo5"></a>
 ## Demo 5) Queues in Code ##
 
 In this demo a queue message will be sent to a queue, it will be updated and then collected from the queue.
@@ -86,7 +86,7 @@ In this demo a queue message will be sent to a queue, it will be updated and the
 
 > **Speaking Points:** A message body of a queue message can be maximum 64KB in size. UpdateMessage can be used to process one message in several steps but normal processing is to send and receive messages only once. The delete message action confirms to the queue that the message is indeed processed. If the message is not deleted in time the message will reappear in the queue with the DequeueCount property raised by one. This enables poison message handling. The queue timeout time for holding on to a message before it reappears is a value you can set when you fetch the message. Queues do not support batch processing.
 
-<a name="Demo6" />
+<a name="Demo6"></a>
 ## Demo 6) Enter Entities into a table ##
 
 The demo class TableDemoTests contains three tests that interact with Azure Tables.
@@ -99,7 +99,7 @@ The demo class TableDemoTests contains three tests that interact with Azure Tabl
 
 > **Speaking Points:** InsertOrReplace and InsertOrMerge are useful operations on Azure Tables which are more mild than Insert. A Table can have 255 properties three of which are PartitionKey, RowKey and TimeStamp. The first two make up the composite unique key for the row. Batching operations can take place on one partition only. Rows with the same PartitionKey are always stored on one storage node and are fast to interact with. Strive to use the PartitionKey in every query on an Azure Table else a fan-out-query might be executed in the storage system. A table does not enforce a schema - in our sample Persons and Animals live happily in the same table. Normal operations is to have one type of entity in a table but different versions of the entity might define different columns.
 
-<a name="summary" />
+<a name="summary"></a>
 ## Summary ##
 
 By completing these demos you should have understood how you can leverage Microsoft Azure Storage for your storage needs and access it from your code.

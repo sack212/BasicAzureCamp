@@ -1,12 +1,12 @@
-<a name="title" />
+<a name="title"></a>
 # Introduction to Building Windows Store Apps with Microsoft Azure Mobile Services (JS) #
 
 ---
-<a name="Overview" />
+<a name="Overview"></a>
 ## Overview ##
 In this HOL you will learn how you can leverage Visual Studio 2012 and Microsoft Azure Mobile Services to add structured storage, push notifications, integrated authentication and scheduled jobs to your Windows Store applications.
 
-<a name="Objectives" />
+<a name="Objectives"></a>
 ### Objectives ###
 - Create a Microsoft Azure Mobile Service
 - Use the Microsoft Azure Mobile Services SDK
@@ -15,7 +15,7 @@ In this HOL you will learn how you can leverage Visual Studio 2012 and Microsoft
 - Lock down your Mobile Service such that only authenticated users can consume it
 - Add a Scheduled Job to poll the Twitter API and send tile updates
 
-<a name="technologies" />
+<a name="technologies"></a>
 ### Prerequisites ###
 
 - Microsoft Azure subscription with Mobile Services preview enabled - [Create a Microsoft Azure account and enable preview features][1]
@@ -23,7 +23,7 @@ In this HOL you will learn how you can leverage Visual Studio 2012 and Microsoft
 
 [1]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/create-a-windows-azure-account/
 
-<a name="Exercises" />
+<a name="Exercises"></a>
 ## Exercises ##
 
 This hands-on lab includes the following exercises:
@@ -33,7 +33,7 @@ This hands-on lab includes the following exercises:
 1. [Adding Auth to Your App and Services](#Exercise3)
 1. [Adding a Scheduled Job to your Mobile Service](#Exercise4)
 
-<a name="Exercise1" />
+<a name="Exercise1"></a>
 ## Exercise 1: Creating your first Mobile Service ##
 
 This exercise shows you how to add a cloud-based backend service to a Windows 8 app using Microsoft Azure Mobile Services.  You will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service.
@@ -42,7 +42,7 @@ A screenshot from the completed app is below:
 
 ![Image 1](Images/image-1.png?raw=true)
 
-<a name="create-a-new-mobile-service" />
+<a name="create-a-new-mobile-service"></a>
 ### Task 1- Create a new mobile service ###
 Follow these steps to create a new mobile service.
 
@@ -74,7 +74,7 @@ Follow these steps to create a new mobile service.
 
 You have now created a new mobile service that can be used by your mobile apps.
 
-<a name="create-a-new-app" />
+<a name="create-a-new-app"></a>
 ### Task 2 - Create a new app ###
 Once you have created your mobile service, you can follow an easy quick start in the Management Portal to either create a new Windows Store app or modify an existing app to connect to your mobile service.
 
@@ -95,7 +95,7 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 1. If you haven't already done so, download and install [Visual Studio 2012 Express for Windows 8](http://go.microsoft.com/fwlink/?LinkId=257546&clcid=0x409) on your local computer or virtual machine.
 
-<a name="run-your-app" />
+<a name="run-your-app"></a>
 ### Task 3 - Run your app ###
 
 1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio 2012 Express for Windows 8.
@@ -122,7 +122,7 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 	![Image 11](Images/image-11.png?raw=true)
 
-<a name="Explore-your-app-code" />
+<a name="Explore-your-app-code"></a>
 ### Task 4 - Explore your app code ###
 
 In this step we explore _To do list_ application code and see how simple the Microsoft Azure Mobile Services Client SDK makes it to interact with Microsoft Azure Mobile Services.
@@ -189,12 +189,12 @@ In this step we explore _To do list_ application code and see how simple the Mic
 			};
 	````
 
-<a name="Exercise2" />
+<a name="Exercise2"></a>
 ## Exercise 2: Adding Push Notifications to your app ##
 
 Now you will add push notifications, using the **Windows Push Notification service** (WNS), to the quickstart project. When completed, whenever you insert an item in the mobile service TodoList table, it will generate a push notification back to your application.
 
-<a name="Register-your-app-for-push-notifications-and-configure-Mobile-Services" />
+<a name="Register-your-app-for-push-notifications-and-configure-Mobile-Services"></a>
 ### Task 1 - Register your app for push notifications and configure Mobile Services ###
 
 1.	In Visual Studio, click **Store** in the menu and select **Reserve App Name**. This will open a browser.
@@ -267,7 +267,7 @@ Now you will add push notifications, using the **Windows Push Notification servi
 
 1.	**Close** and **Save** changes to **package.appmanifest**.
 
-<a name="Add-push-notifications-to-the-app" />
+<a name="Add-push-notifications-to-the-app"></a>
 ### Task 2 - Add push notifications to the app ###
 
 1. In Visual Studio open the **package.appxmanifest**,  select the **Application UI** tab and ensure **toast capable** is set to yes.  
@@ -299,7 +299,7 @@ Now you will add push notifications, using the **Windows Push Notification servi
 
 Now that we have the client wired up to request a channel and write it to our Mobile Service we now need to add a Channel table to our Mobile Service and add a server side script to send push notifications.
 
-<a name="Insert-data-to-receive-notifications" />
+<a name="Insert-data-to-receive-notifications"></a>
 ### Task 3 - Insert data to receive notifications ###
 
 In this section we add a Channel table and server side scripts to send push notifications every time someone inserts into our Todo-List.  
@@ -394,12 +394,12 @@ This is the minimum requirement for a table in Mobile Services.
 
 Next we will move on to look at how you can secure your Mobile Service endpoints
 
-<a name="Exercise3" />
+<a name="Exercise3"></a>
 ## Exercise 3: Adding Auth to Your App and Services ##
 
 This exercise shows you how to authenticate users in Microsoft Azure Mobile Services from a Windows 8 app. You will add authentication to the quickstart project using Live Connect. When successfully authenticated by Live Connect, a logged-in will be able to consume your Mobile Service.
 
-<a name="Register-your-app" />
+<a name="Register-your-app"></a>
 ### Task 1 - Register your app ###
 
 To be able to authenticate users, you must register your Windows Store app within an Identity Provider. Then you must then register the obtained client secret to integrate the provider with Mobile Services.
@@ -438,7 +438,7 @@ The supported identity providers are listed below. In this exercise you will use
 
 	![Updating Client Secret](Images/updating-client-secret.png?raw=true)
 
-<a name="Restrict-permissions" />
+<a name="Restrict-permissions"></a>
 ### Task 2 - Restrict permissions ###
 
 1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table.
@@ -454,7 +454,7 @@ This happens because the app is accessing Mobile Services as an unauthenticated 
 
 Next, you will update the app to authenticate users with your Microsoft Account before requesting resources from the mobile service.
 
-<a name="Ex3Task3" />
+<a name="Ex3Task3"></a>
 ### Task 3 - Add authentication ###
 
 1. Open **default.js** in Visual Studio.
@@ -502,12 +502,12 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 
 	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
 
-<a name="Exercise4" />
+<a name="Exercise4"></a>
 ## Exercise 4: Adding a Scheduled Job to your Mobile Service ##
 
 In this demo you learn how to execute script on a scheduled basis using **Microsoft Azure Mobile Services**.  In this scenario we will configure the scheduler to poll Twitter every 15 minutes and then send a Tile update with the latest tweets.
 
-<a name="configure-wide-tiles" />
+<a name="configure-wide-tiles"></a>
 ### Task 1 - Configure your Windows store app for Wide Tiles ###
 1. In Visual Studio Open your **package.appxmanifest**
 
@@ -519,7 +519,7 @@ In this demo you learn how to execute script on a scheduled basis using **Micros
 
 	> **Note:** Note if you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one
 
-<a name="configure-mobile-scheduler" />
+<a name="configure-mobile-scheduler"></a>
 ### Task 2 - Configure the Mobile Services scheduler ###
 
 1. Create the scheduler job that will send push notifications to registered clients every 15 minutes with the latest Twitter updates for a particular twitter handle.

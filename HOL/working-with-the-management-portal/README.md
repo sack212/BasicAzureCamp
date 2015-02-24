@@ -15,7 +15,7 @@ In this lab, you will learn how to:
 - Create new elements and services
 - Manage allocated resources
 
-<a name="Task1" />
+<a name="Task1"></a>
 ##Portal Overview
 
 In this task you will walk through the different pieces of the Azure Management Portal.
@@ -41,7 +41,7 @@ In this task you will walk through the different pieces of the Azure Management 
 
 	_NEW and Help Buttons_
 
-<a name="Task2" />
+<a name="Task2"></a>
 ##Creating new elements and services
 In this task you will go through the process of creating a new element for your subscription. In particular, you will create a new website using the **Create Wizard**.
 
@@ -105,7 +105,7 @@ In this task you will go through the process of creating a new element for your 
 
 1. Close the website and return to the **Management Portal**.
 	
-<a name="Task3" />
+<a name="Task3"></a>
 ##Managing allocated resources
 In this task you will go through the available options for managing the recently created website.
 

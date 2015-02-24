@@ -158,7 +158,7 @@ In this task, you will learn about the preview portal and how to create a new We
 	>The tile is removed.
 
 
-<a name="Summary" />
+<a name="Summary"></a>
 ## Summary ##
 
 The new Azure Preview portal offers an exciting look into the future of DevOps. This is a first-of-its-kind experience which brings together all of the individual resources, people, and lifecycle stages of your application into a unified portal. In this lab, you learned about the preview portal and how to create a new resource group by building a Website.

@@ -21,7 +21,7 @@ This lab includes the following tasks:
 * [Deploying the Application to Azure](#deploying-the-app-to-azure)
 * [Appendix - Cleanup](#cleanup)
 
-<a name="adding-global-administrator-to-AAD" />
+<a name="adding-global-administrator-to-AAD"></a>
 ## Adding a Global Administrator to your Active Directory
 
 Microsoft ASP.NET tools for Windows Azure Active Directory makes it simple to enable authentication for web applications hosted on [Windows Azure Web Sites](http://www.windowsazure.com/en-us/home/features/web-sites/). You can use Windows Azure Authentication to authenticate Office 365 users from your organization, corporate accounts synced from your on-premise Active Directory or users created in your own custom Windows Azure Active Directory domain. Enabling Windows Azure Authentication configures your application to authenticate users using a single [Windows Azure Active Directory](http://www.windowsazure.com/en-us/home/features/identity/) tenant.
@@ -82,7 +82,7 @@ Microsoft ASP.NET tools for Windows Azure Active Directory makes it simple to en
 	
 	_The new User_
 	
-<a name="creating-the-initial-project-for-geek-quiz" />
+<a name="creating-the-initial-project-for-geek-quiz"></a>
 ## Creating the Initial Project for Geek Quiz
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
@@ -266,7 +266,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     </div>
     ````
 
-<a name="creating-the-triviacontroller-web-api" />
+<a name="creating-the-triviacontroller-web-api"></a>
 ##Creating the TriviaController Web API
 
 In the previous task, you created the initial structure of the Geek Quiz web application. You will now build a simple Web API service that interacts with the quiz data model and exposes the following actions:
@@ -451,7 +451,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
     }
 	````
 
-<a name="running-the-solution" />
+<a name="running-the-solution"></a>
 ##Running the Solution
 
 In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer F12 Developer Tools to capture the network traffic and inspect the full response from the Web API service.
@@ -558,7 +558,7 @@ You can call the Graph API using HttpClient and handle the raw data yourself, bu
 
 10. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
-<a name="creating-the-spa-interface-using-angularjs" />
+<a name="creating-the-spa-interface-using-angularjs"></a>
 ## Creating the SPA Interface Using AngularJS
 
 In this task you will use **AngularJS** to implement the client side of the Geek Quiz application. **AngularJS** is an open-source JavaScript framework that augments browser-based applications with Model-View-Controller (MVC) capability, facilitating both development and testing.
@@ -753,7 +753,7 @@ Wait until the package is downloaded and installed.
     }
 	````
   
-<a name="running-the-single-page-application" />
+<a name="running-the-single-page-application"></a>
 ##Running the Single Page Application
 
 In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
@@ -782,7 +782,7 @@ In this task you will execute the solution using the new user interface you buil
 
 6. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
-<a name="creating-a-flip-animation-using-css3" />
+<a name="creating-a-flip-animation-using-css3"></a>
 ##Creating a Flip Animation Using CSS3
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
@@ -874,7 +874,7 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 10. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 
-<a name="deploying-the-app-to-azure" />
+<a name="deploying-the-app-to-azure"></a>
 ##Deploying the Application to Azure
 
 The following steps will show you how to deploy the application to Azure as an Azure Website. In the earlier steps, you connected your new project with an Azure Website, so it's ready to be published easily.
@@ -939,7 +939,7 @@ The following steps will show you how to deploy the application to Azure as an A
 
 	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier. 
 
-<a name="cleanup" />
+<a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the resources created created in the previous sections. These are:

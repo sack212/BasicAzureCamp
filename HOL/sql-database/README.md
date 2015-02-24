@@ -13,7 +13,7 @@ This lab includes the following tasks:
 * [Walking through the sample](#walking-through-the-sample)
 * [Appendix - Cleanup](#cleanup)
 
-<a name="creating-a-sql-server" />
+<a name="creating-a-sql-server"></a>
 ## Creating a Microsoft Azure SQL Database Server ##
 
 In this task you will create a new Microsoft Azure SQL Database Server and configure the firewall so that connections from applications running on your computer are allowed to access the databases on your SQL Database server.
@@ -88,7 +88,7 @@ In this task you will create a new Microsoft Azure SQL Database Server and confi
 
 You now have a SQL Database server on Azure, a firewall rule that enables access to the server, and an administrator login.
 
-<a name="walking-through-the-sample" />
+<a name="walking-through-the-sample"></a>
 ## Walking through the sample ##
 
 The **Elastic Scale with Azure SQL Database - Getting Started** sample application illustrates the most important aspects of the development experience for sharded applications using Azure SQL DB Elastic Scale. It focuses on key use cases for [Shard Map Management](http://go.microsoft.com/?linkid=9862595), [Data Dependent Routing](http://go.microsoft.com/?linkid=9862596) and [Multi-Shard Querying](http://go.microsoft.com/?linkid=9862597). 
@@ -209,7 +209,7 @@ You have successfully built and run your first Elastic Scale application on Azur
 
 * **Merging existing shards**: Shard merges are also performed using the **Split/Merge service**. For more information, see [Split/Merge Service](http://go.microsoft.com/?linkid=9862795). 
 
-<a name="cleanup" />
+<a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the SQL Database Server created in the first task.

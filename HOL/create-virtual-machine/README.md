@@ -35,7 +35,7 @@ This lab includes the following tasks:
 
 This is a long lab which shows how you can perform similar actions using the different tools available, so you can choose which task you want to execute based on the explanations above. It's recommended that you run [Creating a Virtual Machine using using the Cross-Platform Command-Line Interface](#creating-a-vm-using-cli) and [Creating a Virtual Machine using PowerShell](#creating-a-vm-using-powershell), as these provide a good coverage of many tasks performed on a virtual machine, but you can choose to execute all or the ones that most interest you.
 
-<a name="creating-a-vm-using-portal" />
+<a name="creating-a-vm-using-portal"></a>
 ## Creating a Virtual Machine using the Preview Portal ##
 
 In this task you will create a Virtual Machine in Azure using the Azure Preview Portal.
@@ -96,12 +96,12 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 	>Once the virtual machine has been created you can attach new or existing data disks to the Virtual Machine. See [About Virtual Machine Disks in Azure](https://msdn.microsoft.com/library/azure/dn790303.aspx) for more information. 
 
-<a name="creating-a-vm-using-cli" />
+<a name="creating-a-vm-using-cli"></a>
 ## Creating a Virtual Machine using the Cross-Platform Command-Line Interface
 
 In this task you will use the **Azure Cross-Platform Command-Line Interface** (xplat-cli) to create a Linux virtual machine and attach an empty disk to it. After that you will connect to the vm and configure the disk.
 
-<a name="connect-to-your-azure-subscription-xplatcli" />
+<a name="connect-to-your-azure-subscription-xplatcli"></a>
 You will start by configuring your Azure subscription in the xplat-cli.
 
 While some commands provided by the xplat-cli will work without an Azure subscription, most commands require one. To configure the xplat-cli to work with your subscription, you can either download and use a publish settings file or log in to Azure using an organizational account. When you log in, Azure Active Directory is used to authenticate the credentials.
@@ -147,7 +147,7 @@ In order to use the publish settings file method, perform the following steps:
 	> ````
 	> 
 
-	<a name="create-vm-xplatcli" />
+	<a name="create-vm-xplatcli"></a>
 
 	Now that you have configured your Azure subscription in the command line you will proceed to create the virtual machine.
 
@@ -205,7 +205,7 @@ In order to use the publish settings file method, perform the following steps:
 
 	Once this command finishes creating the virtual machine with no errors, you can proceed to attach an empty data disk to it.
 
-	<a name="attach-disk-xplatcli" />
+	<a name="attach-disk-xplatcli"></a>
 1. To attach a new 30gb disk to your virtual machine, execute the following command. Replace _your-linux-vm_ with the name of the virtual machine you created.
 
 	````
@@ -264,7 +264,7 @@ In order to use the publish settings file method, perform the following steps:
 	info:    vm show command OK
 	````
 
-	<a name="connect-to-vm-xplatcli" />
+	<a name="connect-to-vm-xplatcli"></a>
 	To manage the settings of the virtual machine and the applications that run on the machine, you can use an SSH client. You will use the PuTTY program to access the virtual machine.
 
 	> **Note:** To do this, you must install an SSH client on the computer that you want to use to access the virtual machine. There are many SSH client programs to choose from, including the following:
@@ -296,7 +296,7 @@ In order to use the publish settings file method, perform the following steps:
 
 	You can now work with the virtual machine just as you would with any other server.
 
-	<a name="configure-datadisk-xplatcli" />
+	<a name="configure-datadisk-xplatcli"></a>
 	Your application may need to store data. To set this up, you attached an empty data disk to the virtual machine.
 
 	On Linux, the Resource Disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). However, the data disk might be named according to the kernel such as `/dev/sdc`, and users will need to partition, format and mount that resource. You will now learn how to do that. Please see the [Azure Linux Agent User Guide](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/linux-agent-guide/) for more information.
@@ -413,14 +413,14 @@ In order to use the publish settings file method, perform the following steps:
 	> **Note:** Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
 
 
-<a name="creating-a-vm-using-powershell" />
+<a name="creating-a-vm-using-powershell"></a>
 ##Creating a Virtual Machine using Powershell
 
 In this task you will create a virtual machine using PowerShell cmdlets. 
 
 In the following steps you will configure your azure subscription in PowerShell, ensure your subscription has a storage account associated with it and will set one if not. You will then set variables with the parameters of the virtual machine that will be created, and continue by creating the virtual machine. You will also learn how to attach a new disk to the virtual machine and how to add a VM Extension to the virtual machine. Finally, you will create a Remote Desktop Protocol file to access the machine and use it to access the machine and initialize the new disk.
 
-<a name="configure-subscription-powershell" />
+<a name="configure-subscription-powershell"></a>
 You will start by configuring your Azure subscription in Powershell.
 
 As for the xplat-cli, most cmdlets require an Azure subscription to manage your services. There are two ways to provide your subscription information to Windows PowerShell: you can use a management certificate that contains the information or you can sign in to Azure using your Microsoft account or an organizational (work or school) account. When you sign in, Azure Active Directory (Azure AD) authenticates the credentials and returns an access token that lets Azure PowerShell manage your account.
@@ -507,7 +507,7 @@ This non-interactive login method only works with an organizational account. An 
 
 	This will set the storage account. You can execute the **Get-AzureSubscription** command and this time, the value set should be listed.
 
-	<a name="create-vm-powershell" />
+	<a name="create-vm-powershell"></a>
 	Now you will set the variables that will be used to create the virtual machine. 
 
 1. Execute the snippet below, replacing the [ADMIN-USER-NAME] and [ADMIN-PASSWORD] placeholders with your desired values, and the [STORAGE-ACCOUNT-LOCATION] placeholder with the value retrieved earlier. The location entered should match the storage account location retrieved earlier.
@@ -582,7 +582,7 @@ This non-interactive login method only works with an organizational account. An 
 	Get-AzureVM -ServiceName $cloudSvcName -Name $vmname
 	````
 
-	<a name="attach-disk-powershell" />
+	<a name="attach-disk-powershell"></a>
 
 	Now you will add an empty disk to the virtual machine. Since the virtual machine has already been created, you will need to modify the existing machine. Modifying an existing virtual machine requires retrieving the current settings by calling **Get-AzureVM**, modifying them, and then calling the **Update-AzureVM** Cmdlet to save the changes.
 
@@ -610,7 +610,7 @@ This non-interactive login method only works with an organizational account. An 
 	_Update-AzureVM output after adding a new datadisk_
 
 
-	<a name="install-vm-extension-powershell" />
+	<a name="install-vm-extension-powershell"></a>
 	Now you will learn how to add extensions to the virtual machine just created.
 
 	Microsoft Azure provides VM Extensions built by both Microsoft and trusted third-party providers to enable security, runtime, debugging, management, and other features you can take advantage of to increase your productivity with Azure Virtual Machines. 
@@ -669,7 +669,7 @@ This non-interactive login method only works with an organizational account. An 
 
 	_Get-AzureVMExtension output_
 
-	<a name="connect-to-vm-powershell" />
+	<a name="connect-to-vm-powershell"></a>
 	After you attach a disk to a virtual machine you need to initialize it so it's ready for use. To do so you will need to log in to the machine to finish the initialization of the new data disk attached. 
 
 1. Run the following command to create a remote desktop protocol file (rdp) and launch it. When prompted to log in, use the credentials for the administrator user you configured when creating the virtual machine.
@@ -710,7 +710,7 @@ This non-interactive login method only works with an organizational account. An 
 
 	_Using the virtual machine_
 
-	<a name="configure-datadisk-powershell" />
+	<a name="configure-datadisk-powershell"></a>
 	Now you will configure the data disk that you attached to the Virtual Machine. 
 
 1. In the **Server Manager Dashboard** that is open in the virtual machine, click **File and Storage Services**.
@@ -776,7 +776,7 @@ This non-interactive login method only works with an organizational account. An 
 	_Viewing attached disk open in File Explorer, ready to be used_
 
 
-<a name="creating-a-vm-using-Runbook" />
+<a name="creating-a-vm-using-Runbook"></a>
 ##Creating a virtual machine using a Runbook
 
 Azure Automation allows you to automate the creation, deployment, monitoring, and maintenance of resources in your Azure environment using a highly scalable and reliable workflow execution engine.
@@ -789,7 +789,7 @@ An Azure Automation account contains:
 
 In this task you will create and start a Runbook from scratch to create a virtual machine. You will also create the necessary assets for this Runbook, and start it. Before that you will ensure that a couple of prerequisites needed for the task are set up. 
 
-<a name="runbook-setup" />
+<a name="runbook-setup"></a>
 For the Runbook to be created and run successfully you will need to ensure that the subscription contains a storage account and an organizational account that is co-administrator.
 
 To verify whether you already have a storage account, and create a new one if you don't follow these steps: 
@@ -810,7 +810,7 @@ To verify whether you already have a storage account, and create a new one if yo
 
 	_Creating a new storage account_
 
-<a name="creating-new-organizational-account" />
+<a name="creating-new-organizational-account"></a>
 Some non-interactive login methods only work with an organizational account. An organizational account is a user that is managed by your organization, and defined in the Azure Active Directory instance for your organization. This is the case of the runbook.
 
 If you do not currently have an organizational account, and are using a Microsoft account to log in to your Azure subscription, you can create one using the following steps.
@@ -863,7 +863,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 1. Log out of the Azure portal and then log back in using your own account. 
 
-	<a name="create-empty-runbook" />
+	<a name="create-empty-runbook"></a>
 1. Click **NEW** in the bottom bar and then select **APP SERVICES** > **AUTOMATION** > **RUNBOOK** > **QUICK CREATE**.
 
 	![Creating a new Runbook](images/creating-a-new-runbook.png?raw=true)
@@ -882,7 +882,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	_Creating a new Runbook and Automation account_
 
-	<a name="edit-runbook" />
+	<a name="edit-runbook"></a>
 1. When both the Automation account and the Runbook are ready, click the **EDIT RUNBOOK** button in the Runbook notification.
 
 	![Selecting to edit the new Runbook](images/navigating-to-edit-runbook.png?raw=true)
@@ -1056,7 +1056,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	_Clicking yes to save and publish the Runbook_
 
-	<a name="create-assets" />
+	<a name="create-assets"></a>
 	This publishes the Runbook and leaves it one step closer to execution. Now you will add the Assets that will be consumed by the Runbook, and later you will start the Runbook.
 
 1. Navigate to the Automation account by clicking the back arrow above the Runbook name.
@@ -1115,7 +1115,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	_Setting the value of the variable with the subscription name_
 
-	<a name="start-runbook" />
+	<a name="start-runbook"></a>
 1. Now that all assets and variables have been created, you will start the Runbook. To do this, navigate to the **RUNBOOKS** tab, make sure that the Runbook you just created is selected, and click the **START** button in the bottom bar.
 
 	![Starting the Runbook](images/starting-the-runbook.png?raw=true)
@@ -1152,7 +1152,7 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	_Waiting for the job to complete_
 
-	<a name="verify-vm-runbook" />
+	<a name="verify-vm-runbook"></a>
 1. Finally, navigate to the **Virtual Machines** section of the portal and validate that your new VM is ready.
 
 	>**Note:** you may have to refresh the page by pressing **Ctrl+F5** for the Virtual Machine to show up.
@@ -1162,7 +1162,7 @@ If you do not currently have an organizational account, and are using a Microsof
 	_Validating that the virtual machine was created_
 
 
-<a name="cleanup" />
+<a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the virtual machines created in the previous sections, along with the related data disks created. 

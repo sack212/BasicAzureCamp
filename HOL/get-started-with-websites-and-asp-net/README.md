@@ -251,7 +251,7 @@ The [Azure Management Portal](https://manage.windowsazure.com/) is a web interfa
 
 	**Tip:** There is a new management portal in preview which will eventually replace the one you've been using. For more information, see [Azure Preview Portal](http://azure.microsoft.com/en-us/overview/preview-portal/).
 
-<a name="cleanup" />
+<a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the website published in the previous section. 

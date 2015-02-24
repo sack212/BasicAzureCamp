@@ -16,7 +16,7 @@ This lab includes instructions for the following tasks:
 * [Deploying the application to Azure Websites](#deploying-the-app-to-azure)
 * [Appendix - Cleanup](#cleanup)
 
-<a name="creating-a-documentdb-database-account" />
+<a name="creating-a-documentdb-database-account"></a>
 ## Creating a DocumentDB database account
 
 To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This task describes how to create a DocumentDB account in the Azure preview management portal. 
@@ -66,7 +66,7 @@ To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This t
 
 In the next section you will be guided step by step to create a new ASP.NET MVC application from the ground up.
 
-<a name="creating-a-new-aspnet-mvc-app" />
+<a name="creating-a-new-aspnet-mvc-app"></a>
 ## Creating a new ASP.NET MVC application
 
 In this task you will create a new ASP.NET MVC project and configure a Microsoft Azure Website where it will be deployed.
@@ -112,7 +112,7 @@ The project will be created, and the authentication options and Azure Website op
 
 Next you will add DocumentDB to this project and build the application.
 
-<a name="adding-documentdb-to-your-project" />
+<a name="adding-documentdb-to-your-project"></a>
 ##Adding DocumentDB to your project
 
 In this task you will add the Azure DocumentDB SDK to the application. 
@@ -152,7 +152,7 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 
 	_References added to the Solution_
 
-<a name="setting-up-the-aspnet-mvc-app" />
+<a name="setting-up-the-aspnet-mvc-app"></a>
 ##Setting up the ASP.NET MVC application
 
 In this task you will set up the ASP.Net MVC application by adding a model, a controller and several views. 
@@ -307,7 +307,7 @@ Now, create a new view for viewing details of the Items.
 
 Once this is done, close all the cshtml documents in Visual Studio. You will return to these views later.
 
-<a name="wiring-up-documentdb" />
+<a name="wiring-up-documentdb"></a>
 ##Wiring up DocumentDB
 
 In this task you will add code in the **ItemController** class to handle the following functionality: 
@@ -318,7 +318,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 * [Deleting Items](#deleting-items)
 * [Viewing Details of Items](#details-items)
 
-<a name="listing-incomplete-items" />
+<a name="listing-incomplete-items"></a>
 ####Adding code to list incomplete Items####
 1. Open the **ItemController.cs** file and remove all the code within the class, but make sure to keep the class. You will rebuild it piece by piece using DocumentDB in this section.
 
@@ -579,7 +579,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 1. Stop debugging.
 
-<a name="adding-items" />
+<a name="adding-items"></a>
 ####Adding Items####
 Now that you have a view to list items you will add the functionality of adding items into the database, so that you have something more than an empty grid to look at.
 
@@ -630,7 +630,7 @@ You already have a **Create** view in the application and a button in the **Inde
 
 With these steps, you have added all the code required to add new Items to the database. You may have noticed some methods or classes are not yet recognized. This will be fixed in the next section.
 
-<a name="editing-items" />
+<a name="editing-items"></a>
 ####Editing items####
 Now you will add the ability to edit Items in the database and to mark them as complete. The **Edit** view already exists in the project, so you just need to add some code to the **ItemController** and to the **DocumentDBRepository** class again.
 
@@ -716,7 +716,7 @@ Now you will add the ability to edit Items in the database and to mark them as c
 	
 	With these additions, the Edit functionality should be working. Now you will add support for deleting items.
 
-<a name="deleting-items" />
+<a name="deleting-items"></a>
 ####Deleting items####
 The code changes that allow the deletion of Items are similar to those made to allow the edition of items. As before, the **Delete** view already exists in the project, so you just need to add some code to the **ItemController** and the **DocumentDBRepository** class again.
 
@@ -762,7 +762,7 @@ The code changes that allow the deletion of Items are similar to those made to a
 	}
 	````
 
-<a name="details-items" />
+<a name="details-items"></a>
 ####Viewing details of items####
 The code changes that allow viewing details of Items are even fewer than those made to allow the edition or deletion of items. The **Details** view was already added to the project, and the necessary code in the **DocumentDBRepository** class to get a document already exists, so you only need to add some code to the **ItemController**.
 
@@ -778,7 +778,7 @@ The code changes that allow viewing details of Items are even fewer than those m
 
 You have finished adding all the necessary code for the application to work. In the next section you will test the application locally.
 
-<a name="running-the-application-locally" />
+<a name="running-the-application-locally"></a>
 ##Running the application locally
 
 In this task you will verify that the application you built in the previous task is working as expected.
@@ -832,7 +832,7 @@ In this task you will verify that the application you built in the previous task
 
 1. Go back to Visual Studio and press **Shift+F5** to stop debugging.
 
-<a name="deploying-the-app-to-azure" />
+<a name="deploying-the-app-to-azure"></a>
 ## Deploying the application to Azure Websites
 
 The following steps will show you how to deploy the application to Azure as an Azure Website. In the earlier steps, you connected your new project with an Azure Website, so it's ready to be published.
@@ -867,7 +867,7 @@ The following steps will show you how to deploy the application to Azure as an A
     _Publish Web dialog - Connection tab_
 -->
 
-<a name="cleanup" />
+<a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the resources created created in the previous sections. These are:
