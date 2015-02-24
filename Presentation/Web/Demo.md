@@ -10,6 +10,7 @@ This demo shows all of the very many ways you can run code (OOTB) by default in 
 1. Open File Explorer and copy and paste the ftp host name into the adress bar. You will be prompted to sing in. The ftp user name is also found in the portal ({websitename}\{username}). The password can be set by you in the portal.
 1. Navigate to the folder site/wwwroot/. There should be one .html file in this folder corresponding to the default Website page for an empty slot.
 1. Open another File Explorer and place them next to each other on screen. In this second File Explorer navigate to the Presentation\Web\Demo1 - Hello All Worlds\source\HelloAllWorlds folder in the DevCamp material.
+1. Open the project in Visual Studio, enable restore packages from nuget and compile (to download all the packages required inside bin directory)
 1. Below in Demo 1 you can now copy all of the files from File Explorer to File Explorer -> from your local disk to the Cloud Website simply by selecting all the files and dropping them on the website.
 
 (An alternative here is to use the FTP client of your choosing but the effect is the same.)
