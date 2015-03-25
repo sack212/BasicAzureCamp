@@ -2,12 +2,12 @@
 
 ## Demo 1 - Hello Worlds
 
-This demo shows all of the very many ways you can run code (OOTB) by default in Azure Websites.
+This demo shows all of the very many ways you can run code (OOTB) by default in Azure App Service Web App.
 
 ### Prerequisites
 
-1. Go to http://portal.azure.com and provision a new free web site.
-1. Open File Explorer and copy and paste the ftp host name into the adress bar. You will be prompted to sing in. The ftp user name is also found in the portal ({websitename}\{username}). The password can be set by you in the portal.
+1. Go to http://portal.azure.com and provision a new free Web App.
+1. Open File Explorer and copy and paste the ftp host name into the address bar. You will be prompted to sign in. The ftp user name is also found in the portal ({websitename}\{username}). The password can be set by you in the portal.
 1. Navigate to the folder site/wwwroot/. There should be one .html file in this folder corresponding to the default Website page for an empty slot.
 1. Open another File Explorer and place them next to each other on screen. In this second File Explorer navigate to the Presentation\Web\Demo1 - Hello All Worlds\source\HelloAllWorlds folder in the DevCamp material.
 1. Open the project in Visual Studio, enable restore packages from nuget and compile (to download all the packages required inside bin directory)
@@ -17,23 +17,23 @@ This demo shows all of the very many ways you can run code (OOTB) by default in 
 
 ### Demo
 
-1. In the Azure Preview Portal, create a new Azure Website. 
+1. In the Azure Preview Portal, create a new Web App.
 1. Expand the site, scroll to Configuration and click on Settings. Show that .NET, PHP, Python and Java are all shown.
 1. "I've already created another site and connected using an FTP client." Show the Prerequisite web site. If you like you can even edit the .html page on the site to prove that it is indeed the live site!
-1. Show the two File Explorer windows from the Prerequisites and explain that one is local disk while the other is the FTP Connection to the live Website.
+1. Show the two File Explorer windows from the Prerequisites and explain that one is local disk while the other is the FTP Connection to the live Web App.
 1. Copy the contents of the source directory into the /site/wwwroot.
 1. Browse to the site and click through the index page to the samples running on the various platforms.
 
 ## Demo 2 - Redis Cache Demo
 
-This demo shows using Redis Cache to make 
+This demo shows using Redis Cache to make
 
 > Setup for this demo takes up to 3 hours for the CacheFill project to run.
 
 ### Prerequisites
 
 1. Create 2 Redis cache services on Azure
-1. Ensure redis cache services have enabled "NON-SSL PORT" - 6379 . This feature is disabled by default.
+1. Ensure Redis cache services have enabled "NON-SSL PORT" - 6379 . This feature is disabled by default.
 1. Add each Redis Cache Server connection details to:
 
 	* CustomerQuery web.config
