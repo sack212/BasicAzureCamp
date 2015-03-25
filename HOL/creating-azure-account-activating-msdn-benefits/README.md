@@ -1,25 +1,25 @@
-﻿Creating a trial Windows Azure account and activating MSDN benefits
+﻿Creating a trial Microsoft Azure account and activating MSDN benefits
 ===================================================================
 
-What is Azure? In short, it’s Microsoft’s cloud platform: a growing collection of integrated services —compute, storage, data, networking, and app— that help you move faster, do more, and save money. You can build infrastructure, develop modern applications, gain insights from data, manage identity and access and more.
+What is Azure? In short, it’s Microsoft’s cloud platform: a growing collection of integrated services —compute, storage, data, networking, and apps— that help you move faster, do more, and save money. You can build infrastructure, develop modern applications, gain insights from data, manage identity and access and more.
 
-In this lab you will create a free trial Windows Azure account, and you will activate the benefits available to MSDN subscribers.
+In this lab you will create a free trial Microsoft Azure account, and you will activate the benefits available to MSDN subscribers.
 
 This lab includes the following tasks:
 
-1. [Creating a trial Windows Azure Account](#Task1)
+1. [Creating a trial Microsoft Azure Account](#Task1)
 1. [Activating MSDN benefits](#Task2)
 
 <a name="Task1"></a>
-##Creating a trial Windows Azure Account
+##Creating a trial Microsoft Azure Account
 
-There are several ways to get an Azure subscription, such as the free trial subscription, the **pay-as-you-go** subscription, which has no minimums or commitments and you can cancel anytime; **Enterprise agreement** subscriptions, or you can buy one from a Microsoft retailer. In this task you are going to create a free trial subscription.
+There are several ways to get an Azure subscription, such as the free trial subscription, the **pay-as-you-go** subscription, which has no minimums or commitments and you can cancel any time; **Enterprise agreement** subscriptions, or you can buy one from a Microsoft retailer. In this task you are going to create a free trial subscription.
 
-1. Browse to the following page http://azure.microsoft.com/en-us/pricing/free-trial/ to obtain a free trail account.
+1. Browse to the following page http://azure.microsoft.com/en-us/pricing/free-trial/ to obtain a free trial account.
 2. Click the **Try it Now** button.
 3. Enter the credentials for the _Microsoft account_ that you want to use. You will be redirected to the **Sign up** page.
 
-	> **Note:** Some of the following sections could be ommited in the Sign up process, if you recently verified your Microsoft account.
+	> **Note:** Some of the following sections could be omitted in the Sign up process, if you recently verified your Microsoft account.
 
 4. Enter your personal information in the **About you** section. If you have previously loaded this info in your Microsoft Account, it will be automatically populated.
 
@@ -46,7 +46,7 @@ There are several ways to get an Azure subscription, such as the free trial subs
 	
 	> **Note:** You may be prompted to agree the User Consent in order to enter your payment information. If this happens, after reading the dialog, click **Agree**.
 
-8. In the **Agreement** section, check the **I agree to the Windows Azure Agreement, Offer Details, and Privacy Statement** option, and click **Sign up**
+8. In the **Agreement** section, check the **I agree to the subscription Agreement, offer details, and privacy statement** option, and click **Sign up**
 
 9. Your free subscription will be set up, and after a while, you can start using it. Notice that you will be informed when the subscription expires.
 
@@ -60,7 +60,7 @@ There are several ways to get an Azure subscription, such as the free trial subs
 	
 	> **Note:** Your credit card will not be billed, unless you remove the spending limits. If you run out of credit, your services will be shut down unless you choose to be billed.
 	
-10. Cick the **Portal** link at the top-right of the page, to navigate to the **Azure Management Portal**. You will be greeted by the **Windows Azure Tour** dialog, which gives you a sense on how to move around in the Azure portal.
+10. Click the **Portal** link at the top-right of the page, to navigate to the **Azure Management Portal**. You will be greeted by the **Windows Azure Tour** dialog, which gives you a sense on how to move around in the Azure portal.
 
 	![Windows Azure Tour](images/AzureTour.png?raw=true)  
 	_Windows Azure Tour_  
