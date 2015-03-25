@@ -68,31 +68,31 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	> ![Tour](Images/tour.png?raw=true)
 
-6. When you create an application that consists of several resources working together (like in this example, a Website + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Website** option.
+6. When you create an application that consists of several resources working together (like in this example, a Web app + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Web app** option.
 
 	> **Note:** Resource group names can only contain letters, numbers, periods, underscores and dashes.
 
-	![New Website](Images/new-resource-group.png?raw=true)
+	![New Web App](Images/new-resource-group.png?raw=true)
 
 	_New Resource Group_
 
-7. Another blade is opened which displays the options to create a new **Website**. Select a URL for your Website, for example _myMSAzureWebsite_. Take into account that this name must be unique. Click the **Web Hosting Plan** option.
+7. Another blade is opened which displays the options to create a new **Web app**. Select a URL for your Web app, for example _myMSAzureWebsite_. Take into account that this name must be unique. Also fill in the **Create new App Service Plan** or **Select existing** if you already have one.
 
-	![Changing the Web Hosting Plan](Images/changing-the-web-hosting-plan.png?raw=true)
+	![Creating the App Service Plan](Images/changing-the-web-hosting-plan.png?raw=true)
 
-	_Changing the Web Hosting Plan_
+	_Creating the App Service Plan_
 
-8. Scroll to the bottom of the **Web hosting plan** blade, and click **Browse all pricing tiers**. In the _Choose your pricing tier_ blade, you can choose the hosting plan that fits your needs.
+8. If you would like to change the Pricing Tier, click on the **Pricing Tier**. In the _Choose your pricing tier_ blade, you can choose the hosting plan that fits your needs.
 
-	Web hosting plans represent a set of features and capacity that you can share across your Web Apps. Web hosting plans support several pricing tiers (e.g. Free, Shared, Basic and Standard), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. Web hosting plans in the Basic and Standard tiers provider sites with a dedicated infrastructure, meaning that only the site or sites you choose to associate with this plan will be running on those resources. In this tier you can configure your web hosting plan to use one or more virtual machine instances. As we are going to use the default web hosting plan, just close this blade.
+	App Service plans represent a set of features and capacity that you can share across your App Service Apps, including Web Apps. App Service plans support several pricing tiers (e.g. Free, Shared, Basic, Standard and Premium), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. App Service plans in the Basic, Standard and Premium tiers provider sites with a dedicated infrastructure, meaning that only the app or apps you choose to associate with this plan will be running on those resources. In this tier you can configure your App Service Plan to use one or more virtual machine instances. As we are going to use the default App Service plan, just close this blade.
 
-	> **Note:** For all tiers (except 'Shared') you pay one price for the web hosting plan based on the tier and your chosen capacity with no additional charge for each site that uses the plan. Shared web hosting plans are different; due to the nature of the shared infrastructure, you are charged separately for each site in the plan.
+	> **Note:** For all tiers (except 'Shared') you pay one price for the App Service plan based on the tier and your chosen capacity with no additional charge for each site that uses the plan. Shared App Service plans are different; due to the nature of the shared infrastructure, you are charged separately for each app in the plan.
 
-	![_Selecting a Web Hosting Plan](Images/selecting-a-web-hosting-plan.png?raw=true)
+	![_Selecting a Pricing Tier](Images/selecting-a-web-hosting-plan.png?raw=true)
 
-	_Selecting a Web Hosting Plan_
+	_Selecting a Pricing Tier_
 
-9. Click **Ok** to go back to the **Website** blade. You can change or leave the default location for the Website. Click **OK** to go to the previous blade.
+9. Click **Ok** to go back to the **Web app** blade. You can change or leave the default location for the Web app. Click **OK** to go to the previous blade.
 
 10. Click **Database** to change the settings for your new database.
 
@@ -118,10 +118,6 @@ In this task, you will learn about the preview portal and how to create a new We
 	_Configuring the Database Server_
 
 13. Now you are ready to create your resource group. Click **Create**.
-
-	![Configured Resource Group](Images/configured-resource-group.png?raw=true)
-
-	_Configured Resource Group_
 
 14. You can see when the new resource group is created by accessing the **Notifications** tool. On the **Hub Menu**, click **Notifications**.
 
