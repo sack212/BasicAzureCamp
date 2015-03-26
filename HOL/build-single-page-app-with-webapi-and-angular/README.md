@@ -24,64 +24,64 @@ This lab includes the following tasks:
 <a name="adding-global-administrator-to-AAD"></a>
 ## Adding a Global Administrator to your Active Directory
 
-Microsoft ASP.NET tools for Windows Azure Active Directory makes it simple to enable authentication for web applications hosted on [Windows Azure Web Sites](http://www.windowsazure.com/en-us/home/features/web-sites/). You can use Windows Azure Authentication to authenticate Office 365 users from your organization, corporate accounts synced from your on-premise Active Directory or users created in your own custom Windows Azure Active Directory domain. Enabling Windows Azure Authentication configures your application to authenticate users using a single [Windows Azure Active Directory](http://www.windowsazure.com/en-us/home/features/identity/) tenant.
+Microsoft ASP.NET tools for Azure Active Directory makes it simple to enable authentication for web applications hosted on [Azure App Service](http://azure.microsoft.com/en-us/services/app-service/web/) as a **Web App**. You can use Azure Authentication to authenticate Office 365 users from your organization, corporate accounts synced from your on-premise Active Directory or users created in your own custom Azure Active Directory domain. Enabling Azure Authentication configures your application to authenticate users using a single [Azure Active Directory](http://azure.microsoft.com/en-us/services/active-directory/) tenant.
 
 1. Sign in to the [Azure Management Portal](https://manage.windowsazure.com/).
 2. Most Azure accounts contain a **Default Directory**. You can find if yours does by clicking the **Active Directory** option on the sidebar that is on left side of the page.
 	If you do not have a default directory, follow the instructions in the note to create one.
 
-	> **Note:** If your suscription does not have the **Default Directory** or you want to create one, click the **Add Directory** option. 
+	> **Note:** If your suscription does not have the **Default Directory** or you want to create one, click the **Add Directory** option.
 
 	>![Creating new directory](images/creating-new-directory.png?raw=true)
 
 	> _Creating new Active Directory_
 
 	> Alternatively, you can click the **NEW** button at the bottom bar, select **App Services**, **Active Directory**, **Directory**, and click **Custom Create**. This is shown in the following image.
-	
+
 	>![Add User dialog 2](./images/CreatingCustomDirectory.png)
-	
+
 	> In the **Add directory** dialog, enter a name for your directory, a country or region, and a unique domain name. Finally, click the **check mark button** to create the directory.
-	
+
 	>![Add User dialog 2](./images/AddDirectoryDialog.png)
 
-3. In the **Active Directory** page, click on your directory. 
+3. In the **Active Directory** page, click on your directory.
 
 	You will create a new user with the **Global Administrator** role. Click **Users** from the top menu, and then click the **Add User** button on the command bar.
 
 	![Adding an Active Directory User](./images/addingUser.png)
-	
+
 	_Adding an Active Directory User_
- 
+
 5. In the **Add User** dialog, enter a name for the new user and then click the right arrow.
 
 	![Add User dialog](./images/addUserDialog1.png)
-	
+
 	_Add User dialog - Page 1_
-	
+
 6. Enter the user name and set the role to **Global Administrator**. Global administrators require an alternate email address for password recovery purposes. After you're finished, click the right arrow.
 
 	![Add User dialog 2](./images/addUserDialog2.png)
-	
+
 	_Add User dialog - Page 2_
 
-7. On the next page of the dialog, click **Create**. A temporary password will be created for the new user and displayed in the dialog. 
-	
+7. On the next page of the dialog, click **Create**. A temporary password will be created for the new user and displayed in the dialog.
+
 	![Add User dialog](./images/addUserDialog3.png)
-	
+
 	_Add User dialog - Page 3_
-	
-	Note down the password. You will be required to change the password after the first log in. 
+
+	Note down the password. You will be required to change the password after the first log in.
 
 	![Add User Dialog - Page 4](images/add-user-dialog---page-4.png?raw=true)
 
-	The following image shows the new admin account. 
-	
+	The following image shows the new admin account.
+
 	> **Note:** You **must** use the Azure Active Directory to log into your app, **not the Microsoft account** also shown on this page.
 
 	![The new User](./images/theNewUser.png)
-	
+
 	_The new User_
-	
+
 <a name="creating-the-initial-project-for-geek-quiz"></a>
 ## Creating the Initial Project for Geek Quiz
 
@@ -90,75 +90,71 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 1. Open Visual Studio and from the **File** menu, hover over the **New** option and click **Project**.
 
     ![Creating a New Project](./images/newProject.png)
-    
+
     _Creating a New Project_
 
-	> Note: You can open the end solution from end/Geek Quiz and configure it according to the instructions in [Setting up the end solution for Geek Quiz](end). 
+	> Note: You can open the end solution from end/Geek Quiz and configure it according to the instructions in [Setting up the end solution for Geek Quiz](end).
 
 2. In the **New Project** dialog box, select **ASP.NET Web Application** under the **Visual C# | Web** tab. Make sure **.NET Framework 4.5** is selected, name it GeekQuiz, choose a **Location** and click **OK**.
 
-	> **Note:** You may also want to uncheck the **Add Application Insights to Project** if you don't want the functionality for your application. 
+	> **Note:** You may also want to uncheck the **Add Application Insights to Project** if you don't want the functionality for your application.
 
     ![Creating a new ASP.NET Web Application project](./images/newProject-dialog.png)
-    
+
     _Creating a new ASP.NET Web Application project_
 
 3. In the **New ASP.NET Project** dialog, select **MVC**. Make sure that the **Host in the cloud** option is also selected, and then click **Change Authentication**.
 
     ![Creating a new project with the MVC template, including Web API components](./images/newMvcProjectTemplate.png)
-    
+
     _Creating a new project with the MVC template, including Web API components_
 
-4. On the **Change Authentication** dialog, select **Organizational Accounts**. 
+4. On the **Change Authentication** dialog, select **Organizational Accounts**.
 
 	These options can be used to automatically register your application with Azure AD as well as to automatically configure your application to integrate with Azure AD. You don't have to use the **Change Authentication** dialog to register and configure your application, but it makes it much easier. If you are using Visual Studio 2012 for example, you can still manually register the application in the Azure Management Portal and update its configuration to integrate with Azure AD.
 
 	In the drop-down menus, select **Cloud - Single Organization** and **Single Sign On, Read directory data**. Enter the domain for your Azure AD directory (e.g. myADdomainoutlook.onmicrosoft.com) and then click **OK**. You can get the domain name from the Domains tab for the Default Directory on the azure portal (see the next image down).
 
     ![Changing Authentication_](./images/changingAutentication.png)
-    
+
     _Changing Authentication_
 
 	The following image shows the domain name from the Azure portal.
 
 	![Azure Portal](./images/azure-domains.png)
-	
+
     _Azure Portal_
-    
+
     > **Note:** You can optionally configure the Application ID URI that will be registered in Azure AD by clicking **More Options**. The App ID URI is the unique identifier for an application, which is registered in Azure AD and used by the application to identify itself when communicating with Azure AD. For more information about the App ID URI and other properties of registered applications, see [this topic](http://msdn.microsoft.com/en-us/library/azure/dn499820.aspx#BKMK_Registering <http://msdn.microsoft.com/en-us/library/azure/dn499820.aspx>). By clicking the checkbox below the App ID URI field, you can also choose to overwrite an existing registration in Azure AD that uses the same App ID URI.
-    
-5. After clicking **OK**, a sign-in dialog will appear, and you'll need to sign in using a Global Administrator account (not the Microsoft account associated with your subscription). If you created a new Administrator account earlier, you'll be required to change the password and then sign in again using the new password. 
+
+5. After clicking **OK**, a sign-in dialog will appear, and you'll need to sign in using a Global Administrator account (not the Microsoft account associated with your subscription). If you created a new Administrator account earlier, you'll be required to change the password and then sign in again using the new password.
 
 	![Sign in to Azure Active Directory](./images/signingInWithAAD.png)
-	
+
     _Signing in to Azure Active Directory_
-    
-6. After you've successfully authenticated, the **New ASP.NET Project** dialog will show your authentication choice (**Organizational Auth**) and the directory where the new application will be registered (_your_account_name_.onmicrosoft.com in the image below). Check the box for **Web API**. Click **OK**. 
 
-	![Authentication using Organizational Auth](./images/usingOrganizationalAuth.png)
-	
-    _Authentication using Organizational Auth_
-    
-7. The **Configure Microsoft Azure Website** dialog will appear, using an auto-generated site name and region. Also note the account you're currently signed into in the dialog. You want to make sure that this account is the one that your Azure subscription is attached to, typically a Microsoft account.
+6. After you've successfully authenticated, the **New ASP.NET Project** dialog will show your authentication choice (**Organizational Auth**) and the directory where the new application will be registered (_your_account_name_.onmicrosoft.com in the image below). Check the box for **Web API**. Click **OK**.
 
-	This project requires a database. You need to select one of your existing databases, or create a new one. A database is required because the project already uses a local database file to store a small amount of authentication configuration data. When you deploy the application to an Azure Website, this database isn't packaged with the deployment, so you need to choose one that's accessible in the cloud. Click **OK**.
-	
-	![Configuring Microsoft Azure Website](./images/configuring-azure-website.png)
-    
-	_Configuring Microsoft Azure Website_
-	
-	The project will be created, and your authentication options and Azure Website options will be automatically configured with the project.
+7. The **Configure Microsoft Azure Web App** dialog will appear, using an auto-generated site name and region. Also note the account you're currently signed into in the dialog. You want to make sure that this account is the one that your Azure subscription is attached to, typically a Microsoft account.
+
+	This project requires a database. You need to select one of your existing databases, or create a new one. A database is required because the project already uses a local database file to store a small amount of authentication configuration data. When you deploy the application to an App Service Web App, this database isn't packaged with the deployment, so you need to choose one that's accessible in the cloud. Click **OK**.
+
+	![Configuring Microsoft Azure Web App](./images/configuring-azure-website.png)
+
+	_Configuring Microsoft Azure Web App_
+
+	The project will be created, and your authentication options and App Service Web App options will be automatically configured with the project.
 
 8. In **Solution Explorer**, right-click the **Models** folder of the **GeekQuiz** project and select **Add | Existing Item**....
 
     ![Adding an existing item](./images/add-existing-items.png)
-    
+
     _Adding an existing item_
 
 9. In the **Add Existing Item** dialog box, navigate to the Source/Models folder and select all the files. Click **Add**.
 
     ![Adding the model assets](./images/add-models.png)
-    
+
     _Adding the model assets_
 
 	> **Note:** By adding these files, you are adding the data model, the Entity Framework's database context and the database initializer for the Geek Quiz application.
@@ -172,7 +168,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     * **TriviaAnswer:** represents the option selected by the user in response to a quiz question
     * **TriviaContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DbContext** and exposes **DbSet** properties that represent collections of the entities described above.
     * **TriviaDatabaseInitializer:** the implementation of the Entity Framework initializer for the **TriviaContext** class which inherits from **CreateDatabaseIfNotExists**. The default behavior of this class is to create the database only if it does not exist, inserting the entities specified in the **Seed** method.
-    
+
 10. Open the **Global.asax.cs** file and add the following using statement.
 
     ```C#
@@ -180,12 +176,12 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     ```
 
 11. Update the **Application_Start** method, adding the sentence to set the **TriviaDatabaseInitializer** as the database initializer at the beginning, as shown below.
- 
+
 	<!-- mark:3 -->
     ```C#
 	protected void Application_Start()
 	{
-	    System.Data.Entity.Database.SetInitializer(new TriviaDatabaseInitializer()); 
+	    System.Data.Entity.Database.SetInitializer(new TriviaDatabaseInitializer());
 
 	    AreaRegistration.RegisterAllAreas();
 	    GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -314,13 +310,13 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 4. In **Solution Explorer**, right-click the **Controllers** folder of the **GeekQuiz** project and select **Add | New Scaffolded** Item....
 
     ![Creating a new scaffolded item](./images/add-controller.png)
-    
+
     _Creating a new scaffolded item_
 
 5. In the **Add Scaffold** dialog box, make sure that the **Common** node is selected in the left pane. Then, select the **Web API 2 Controller - Empty** template in the center pane and click **Add**.
 
     ![Selecting the Web API 2 Controller Empty template](./images/add-controller-dialog.png)
-    
+
     _Selecting the Web API 2 Controller Empty template_
 
     > **Note:** **ASP.NET Scaffolding** is a code generation framework for ASP.NET Web applications. Visual Studio 2013 includes pre-installed code generators for MVC and Web API projects. You should use scaffolding in your project when you want to quickly add code that interacts with data models in order to reduce the amount of time required to develop standard data operations.
@@ -330,7 +326,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 6. In the **Add Controller** dialog box, type TriviaController in the **Controller name** text box and click **Add**.
 
     ![Adding the Trivia Controller](./images/add-controller-name.png)
-    
+
     _Adding the Trivia Controller_
 
 7. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an empty **TriviaController** class. Add the following using statements at the beginning of the file:
@@ -342,7 +338,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
     using System.Web.Http.Description;
     using GeekQuiz.Models;
     ```
-    
+
 
 8. Add the following code at the beginning of the **TriviaController** class, to define, initialize and dispose the **TriviaContext** instance in the controller.
 
@@ -367,7 +363,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	> **Note:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the TriviaContext instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
 
 9. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
- 
+
     ```C#
     private async Task<TriviaQuestion> NextQuestionAsync(string userId)
     {
@@ -387,7 +383,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
     ```
 
 10. Add the following **Get** action method to the **TriviaController** class. This action method calls the **NextQuestionAsync** helper method defined in the previous step to retrieve the next question for the authenticated user.
-	
+
     ```C#
     // GET api/Trivia
     [ResponseType(typeof(TriviaQuestion))]
@@ -466,31 +462,31 @@ In this task you will verify that the Web API service you built in the previous 
 
     > **Note:** When the application starts, the default MVC route is triggered, which by default is mapped to the Index action of the HomeController class. Since HomeController is restricted to authenticated users (remember that you decorated that class with the Authorize attribute previously) and there is no user authenticated yet, the application redirects the original request to the log in page.
 	>
-	> **Note 2:** The first time you run the application locally you may be prompted to trust the IIS Express SSL certificate. If so, click Yes and then accept the installation of the certificate. IIS Express is a lightweight, self-contained version of IIS optimized for developers, that Visual Studio uses when debugging local web applications. 
+	> **Note 2:** The first time you run the application locally you may be prompted to trust the IIS Express SSL certificate. If so, click Yes and then accept the installation of the certificate. IIS Express is a lightweight, self-contained version of IIS optimized for developers, that Visual Studio uses when debugging local web applications.
 
 2. Enter the Active Directory credentials.
 
     ![Running the solution](./images/AdSigninScreen.png)
-    
+
     _AD sign in screen_
 
 3. After you have successfully logged in, the app will load the default action of the Home controller. Notice that the app shows the logged user at the top.
 
     ![Running the solution](./images/runningTheApp.png)
-    
+
     _Running the solution_
-    
-4. Click the name of the signed-in user at the top right of the page. 
+
+4. Click the name of the signed-in user at the top right of the page.
 
 	This will take you to the **User Profile** page, which is an action on the Home Controller. You will notice that the table contains user information about the administrator account you created earlier. This information is stored in your directory, and the Graph API is called to retrieve this information when the page loads.
 
 	> **Note:** The [Graph API](http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) is the programmatic interface used to perform CRUD and other operations on objects in your Azure AD directory. If you select an Organizational Account option for authentication when creating a new project in Visual Studio, your application will already be configured to call the Graph API.
 
 	![User Profile page](./images/UserProfilePage.png)
-    
+
     _User Profile page_
-    
-5. Go back to Visual Studio and expand the **Controllers** folder and then open the **HomeController.cs** file. 
+
+5. Go back to Visual Studio and expand the **Controllers** folder and then open the **HomeController.cs** file.
 
 	You will see a **UserProfile()** action that contains code to retrieve a token and then call the Graph API. This code is duplicated below:
 
@@ -501,7 +497,7 @@ In this task you will verify that the Web API service you built in the previous 
 	{
 		string tenantId = ClaimsPrincipal.Current.FindFirst(TenantIdClaimType).Value;
 
-		// Get a token for calling the Windows Azure Active Directory Graph
+		// Get a token for calling the Azure Active Directory Graph
 		AuthenticationContext authContext = new AuthenticationContext(String.Format(CultureInfo.InvariantCulture, LoginUrl, tenantId));
 		ClientCredential credential = new ClientCredential(AppPrincipalId, AppKey);
 		AuthenticationResult assertionCredential = authContext.AcquireToken(GraphUrl, credential);
@@ -523,7 +519,7 @@ In this task you will verify that the Web API service you built in the previous 
 	}
 	```
 
-	To call the Graph API, you first need to retrieve a token. When the token is retrieved, its string value must be appended in the Authorization header for all subsequent requests to the Graph API. 
+	To call the Graph API, you first need to retrieve a token. When the token is retrieved, its string value must be appended in the Authorization header for all subsequent requests to the Graph API.
 
 	Most of the code above handles the details of authenticating to Azure AD to get a token, using the token to make a call to the Graph API, and then transforming the response so that it can be presented in the View.
 	The most relevant portion for discussion is the following line:
@@ -537,23 +533,23 @@ You can call the Graph API using HttpClient and handle the raw data yourself, bu
 7. In the browser, press **F12** to open the Developer Tools panel. Press **CTRL + 4** or click the Network icon, and then click the green play button to begin capturing network traffic.
 
     ![Initiating Web API network capture](./images/InitiatingWebApiNetworkCapture.png)
-    
+
     _Initiating Web API network capture_
 
 8. Append _api/trivia_ to the URL in the browser's address bar and hit **Enter**. You will now inspect the details of the response from the Get action method in TriviaController.
 
     ![Retrieving the next question data through Web API](./images/RetrievingTheNextQuestionDataWebApi.png)
-    
+
     _Retrieving the next question data through Web API_
 
 	> **Note:** Once the download finishes, you will be prompted to make an action with the downloaded file. Leave the dialog box open in order to be able to watch the response content through the Developers Tool window.
 
-9. Now you will inspect the body of the response. To do this, click the **Details** tab and then click **Response body**. 
+9. Now you will inspect the body of the response. To do this, click the **Details** tab and then click **Response body**.
 
 	You can check that the downloaded data is an object with the properties options (which is a list of TriviaOption objects), id and title that correspond to the TriviaQuestion class.
 
     ![Viewing Web API Response Body](./images/ViewingWebApiResponseBody.png)
-    
+
     _Viewing Web API Response Body_
 
 10. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
@@ -579,13 +575,13 @@ Wait until the package is downloaded and installed.
 3. Right-click the **app** folder you just created and select **Add | JavaScript** File.
 
     ![Adding a new JavaScript file](./images/add-javascript-file.png)
-    
+
     _Adding a new JavaScript file_
 
 4. In the **Specify Name for Item** dialog box, type _quiz-controller_ in the Item name text box and click OK.
 
     ![Naming the new JavaScript file](./images/add-javascript-controller.png)
-    
+
     _Naming the new JavaScript file_
 
 5. In the **quiz-controller.js** file, add the following code to declare and initialize the AngularJS **QuizCtrl** controller.
@@ -605,7 +601,7 @@ Wait until the package is downloaded and installed.
             };
         });
     ```
-    
+
 	> **Note:** The constructor function of the **QuizCtrl** controller expects an injectable parameter named **$scope**. The initial state of the scope should be set up in the constructor function by attaching properties to the **$scope** object. The properties contain the **view model**, and will be accessible to the template when the controller is registered.
 
 	The **QuizCtrl** controller is defined inside a module named **QuizApp**. Modules are units of work that let you break your application into separate components. The main advantages of using modules is that the code is easier to understand and facilitates unit testing, reusability and maintainability.
@@ -614,7 +610,7 @@ Wait until the package is downloaded and installed.
 
     <!-- mark:4-19 -->
     ```JS
-    .controller('QuizCtrl', function ($scope, $http) { 
+    .controller('QuizCtrl', function ($scope, $http) {
         ...
 
         $scope.nextQuestion = function () {
@@ -642,7 +638,7 @@ Wait until the package is downloaded and installed.
 
     <!-- mark:4-15 -->
     ```JS
-    .controller('QuizCtrl', function ($scope, $http) { 
+    .controller('QuizCtrl', function ($scope, $http) {
         ...
 
         $scope.sendAnswer = function (option) {
@@ -659,7 +655,7 @@ Wait until the package is downloaded and installed.
         };
     };
     ```
-    
+
 	> **Note:** This function sends the answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
 
 	The **nextQuestion** and **sendAnswer** functions, added in the previous steps, use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (for more information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
@@ -705,7 +701,7 @@ Wait until the package is downloaded and installed.
 	* The **ng-controller** directive attaches a controller to the DOM at the point where the directive is declared.
 	* The curly brace notation **{{ }}** denotes bindings to the scope properties defined in the controller.
 	* The **ng-click** directive is used to invoke the functions defined in the scope in response to user clicks.
-    
+
 10. Open the **Site.css** file inside the **Content** folder and add the following styles at the end of the file, to provide a look and feel for the quiz view.
 
 	```CSS
@@ -752,7 +748,7 @@ Wait until the package is downloaded and installed.
         display: none;
     }
 	```
-  
+
 <a name="running-the-single-page-application"></a>
 ##Running the Single Page Application
 
@@ -765,19 +761,19 @@ In this task you will execute the solution using the new user interface you buil
 3. The Home page should appear, showing the first question of the quiz. Answer the question by clicking one of the options. This will trigger the sendAnswer function defined earlier, which sends the selected option to the Trivia Web API.
 
     ![Answering a question](./images/AnsweringQuestion.png)
-    
+
     _Answering a question_
 
 4. After clicking one of the buttons, the answer should appear. Click **Next Question** to show the following question. This will trigger the nextQuestion function defined in the controller.
 
     ![Requesting the next question](./images/RequestingNextQuestion.png)
-    
+
     _Requesting the next question_
 
 5. The next question should appear. Continue answering questions as many times as you want. After completing all the questions you should return to the first question.
 
     ![Next question](./images/NextQuestion.png)
-    
+
     _Next question_
 
 6. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
@@ -835,7 +831,7 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 	}
     ```
 
-5. Locate the **hide back of pane during flip** comment. 
+5. Locate the **hide back of pane during flip** comment.
 
 	The style rule below the comment hides the back-side of the faces when they are facing away from the viewer by setting the **backface-visibility** CSS property to hidden.
 
@@ -862,13 +858,13 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 8. Answer a question by clicking one of the options. Notice the flip effect when transitioning between views.
 
     ![Answering a question with the flip effect](./images/answering-a-question-with-the-flip-effect.png)
-    
+
     _Answering a question with the flip effect_
 
 9. Click **Next Question** to retrieve the following question. The flip effect should appear again.
 
     ![Retrieving the following question with the flip effect](./images/retriving-the-following-question-with-the-fli.png)
-    
+
     _Retrieving the following question with the flip effect_
 
 10. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
@@ -877,30 +873,30 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 <a name="deploying-the-app-to-azure"></a>
 ##Deploying the Application to Azure
 
-The following steps will show you how to deploy the application to Azure as an Azure Website. In the earlier steps, you connected your new project with an Azure Website, so it's ready to be published easily.
+The following steps will show you how to deploy the application to Azure as an App Service Web App. In the earlier steps, you connected your new project with an App Service Web App, so it's ready to be published easily.
 
-1. In Visual Studio, right-click on the project and select **Publish**. 
+1. In Visual Studio, right-click on the project and select **Publish**.
 
-	The **Publish Web** dialog will appear with each setting already configured. 
+	The **Publish Web** dialog will appear with each setting already configured.
 
 1. Click on the **Next** button to go to the **Settings** page. You may be prompted to authenticate; make sure you authenticate using your Azure subscription account (typically a Microsoft account) and not the organizational account you created earlier.
 
     ![Publish Web dialog - Connection tab](./images/publish-web-dialog-connection-tab.png)
-    
+
     _Publish Web dialog - Connection tab_
 
 2. Check the **Enable Organizational Authentication** option. In the **Domain** field, enter the domain for your directory. From the **Access Level** drop-down, select **Single Sign On, Read directory data**. You will notice that the previous database you used is already populated in the **Databases** section. Click **Publish**.
 
     ![Publish Web dialog - Settings tab](./images/publish-web-dialog-settings-tab.png)
-    
+
     _Publish Web dialog - Settings tab_
 
-3. Visual Studio will begin deploying your website, and then a new browser window will appear. You may be prompted to authenticate to your directory once again. 
+3. Visual Studio will begin deploying your website, and then a new browser window will appear. You may be prompted to authenticate to your directory once again.
 
 	Once you've authenticated, you'll be redirected to your newly published website on Azure.
 
     ![Geek Quiz published in Azure](./images/geek-quiz-published.png)
-    
+
     _Geek Quiz published in Azure_
 
 4. If you get an error when running the app in Azure, replace the code in the _Views\Shared\\_LoginPartial.cshtml_ file with the following and publish the project again.
@@ -937,35 +933,35 @@ The following steps will show you how to deploy the application to Azure as an A
 	}
 	```
 
-	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier. 
+	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier.
 
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the resources created created in the previous sections. These are:
 
-* a website
+* a Web App
 * a global account
 
-To delete the website follow these steps:
+To delete the Web App follow these steps:
 
 1. In your browser, go to [http://manage.windowsazure.com](http://manage.windowsazure.com), and sign in with your Azure credentials.
 
-2. In the **All Items** page, select your website by clicking the corresponding row.
+2. In the **All Items** page, select your Web App by clicking the corresponding row.
 
 3. Click **DELETE** in the bottom bar.
 
-	![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+	![Clicking Delete Web App](images/clicking-delete-website.png?raw=true)
 
-	_Clicking Delete to delete website_
+	_Clicking Delete to delete Web App_
 
-4. In the **Delete Confirmation** dialog, check the check box to delete the database associated to the website and click the checkmark button.
+4. In the **Delete Confirmation** dialog, check the check box to delete the database associated to the Web App and click the checkmark button.
 
 	Once the resources are deleted you will see a notification in the bottom bar.
 
-You can delete the global user account by following these steps: 
+You can delete the global user account by following these steps:
 
-1. Navigate to the **Active Directory** page and click your directory. 
+1. Navigate to the **Active Directory** page and click your directory.
 
 1. Once in the directory page, click **Users** from the top bar, and then click the user you want to delete. This should select the user row.
 
@@ -996,4 +992,3 @@ By completing this lab you have learned how to:
 * Implement AngularJS templates and controllers
 * Use CSS3 transitions to perform animation effects
 * Deploy your application to Microsoft Azure
-
