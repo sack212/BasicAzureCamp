@@ -11,7 +11,7 @@ The new portal allows each user to transform the portal home page (called the _S
 
 * **Integrated billing**. A new integrated billing experience enables developers and IT pros to take control of their costs and optimize their resources for maximum business advantage.
 
-* **Gallery**. A rich gallery of application and services from Microsoft and the open source community, this integrated marketplace of free and paid services enables customers to leverage the ecosystem to be more agile and productive.
+* **Marketplace**. A rich marketplace of applications and services from Microsoft and the open source community. This integrated marketplace of free and paid services enables customers to leverage the ecosystem to be more agile and productive.
 
 * **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Preview Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
 
@@ -19,7 +19,7 @@ The new portal allows each user to transform the portal home page (called the _S
 
 Historically, managing a resource (a user-managed entity such as a database server, database or Web App) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It is left up to us, as cloud developers and IT professionals, to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure Preview portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources.
 
-In this task, you will learn about the preview portal and how to create a new Web App and a SQL Server using it.
+In this task, you will learn about the preview portal and how to create a new Web App and a SQL Database using it.
 
 1. Open a browser and browse to http://portal.azure.com and log in using your credentials.
 
@@ -37,20 +37,20 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Creating a new resource_
 
-4. A panel is displayed with different options. You can choose one of the options to create a new resource. Click the **Web + mobile** button to see all the available options.
+4. A panel is displayed with different options. You can choose one of the options to create a new resource. Click the **Web + mobile** category to see all the available options.
 
 	![Displaying every resource type](Images/displaying-resource-types.png?raw=true)
 
 	_Displaying every resource type_
 
-	On the next screen, you get all the available options for Web and Mobile Apps. Click on the Azure Marketplace. You can find ready to use templates.
+	On the next screen, you get all the available options for Web, Mobile Apps and other Azure App Service Apps. Click on the **Azure Marketplace**. You can find ready to use templates.
 
 	![Azure Marketplace](Images/web-mobile-apps-options.png?raw=true)
 
 	_Azure Marketplace_
 
 
-5. Scroll down until you find the **Web app +SQL** option and then click it.
+5. Scroll down until you find the **Web app + SQL** option and then click it.
 
 	![Selecting Web App](Images/selecting-website-sql.png?raw=true)
 
@@ -82,7 +82,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Creating the App Service Plan_
 
-8. If you would like to change the Pricing Tier, click on the **Pricing Tier**. In the _Choose your pricing tier_ blade, you can choose the hosting plan that fits your needs.
+8. If you would like to change the Pricing Tier, click on the **Pricing Tier**. In the _Choose your pricing tier_ blade, you can choose the App Service plan that fits your needs.
 
 	App Service plans represent a set of features and capacity that you can share across your App Service Apps, including Web Apps. App Service plans support several pricing tiers (e.g. Free, Shared, Basic, Standard and Premium), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. App Service plans in the Basic, Standard and Premium tiers provider sites with a dedicated infrastructure, meaning that only the app or apps you choose to associate with this plan will be running on those resources. In this tier you can configure your App Service Plan to use one or more virtual machine instances. As we are going to use the default App Service plan, just close this blade.
 
@@ -92,7 +92,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Selecting a Pricing Tier_
 
-9. Click **Ok** to go back to the **Web app** blade. You can change or leave the default location for the Web app. Click **OK** to go to the previous blade.
+9. Click **OK** to go back to the **Web app** blade. You can change or leave the default location for the Web app. Click **OK** to go to the previous blade.
 
 10. Click **Database** to change the settings for your new database.
 
@@ -105,7 +105,6 @@ In this task, you will learn about the preview portal and how to create a new We
 11. Set a name for the database, e.g. _mywebsite-db_, and click the **Server** option.
 
 	> **Note:** You can also enter in the **Pricing Tier** section and explore the different pricing tiers.
-
 
 	![Database Settings](Images/database-settings.png?raw=true)
 
@@ -131,7 +130,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Created Resource Group Notification_
 
-16. You created your new resource group, which includes a Website and SQL Server database.
+16. You created your new resource group, which includes a Web App, a SQL Server and a SQL Database.
 
 	![New Resource Group Blade](Images/new-resource-group-blade.png?raw=true)
 
