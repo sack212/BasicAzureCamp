@@ -19,20 +19,20 @@ This lab includes instructions for the following tasks:
 <a name="creating-a-documentdb-database-account"></a>
 ## Creating a DocumentDB database account
 
-To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This task describes how to create a DocumentDB account in the Azure preview management portal. 
+To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This task describes how to create a DocumentDB account in the Azure preview management portal.
 
 1. Sign in to the [preview management portal](https://portal.azure.com/).
 
-1. Click **NEW** and select **DocumentDB** in order to create a new DocumentDB account.  
+1. Click **NEW** and select **Data + storage**, then  **DocumentDB** in order to create a new DocumentDB account.  
 
     ![Creating a DocumentDB account](./images/creating-a-new-documentdb-account.png)
-    
+
     _Creating a DocumentDB account_
 
-	> **Note:** Alternatively, from the Startboard, you can browse the Azure Marketplace, select the “Data + analytics” category, choose **DocumentDB** and then click **Create**.
+	> **Note:** Alternatively, from the Startboard, you can browse the Azure Marketplace, select the “Data analytics” category, choose **DocumentDB** and then click **Create**.
 
 	> ![Creating a DocumentDB Account from the Azure Marketplace](./images/creating-a-documentdb-from-market.png)
-    
+
 	> _Creating a DocumentDB Account from the Azure Marketplace_
 
 	This will open the **New DocumentDB (Preview)** blade.
@@ -58,7 +58,7 @@ To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This t
 	> - **Location**: The geographic location where your DocumentDB account will be hosted.
 
 	The DocumentDB account will be created. As this can take some time, you will proceed with the creation of the project and come back to retrieve some necessary information later, once the account creation has completed. Leave the browser open. You can monitor the creation progress on the **Notifications** Hub from time to time, if you wish to.
-	
+
 	![Checking the creation status in the Notification Hub](./images/checking-the-creation-status-notification-hub.png?raw=true)
 
 	_Checking the creation status in the Notification Hub_
@@ -74,50 +74,52 @@ In this task you will create a new ASP.NET MVC project and configure a Microsoft
 1. Open Visual Studio and from the **File** menu, hover over the **New** option and click **Project**.
 
     ![Creating a New Project](./images/newProject.png)
-    
+
     _Creating a New Project_
 
-	> **Note:** You can open the end solution from [end/Todo](end/Todo) and configure it according to the instructions in [Setting up the end solution](end). 
+	> **Note:** You can open the end solution from [end/Todo](end/Todo) and configure it according to the instructions in [Setting up the end solution](end).
 
-1. In the **New Project** dialog box, select **ASP.NET Web Application** under the **Visual C# | Web** tab. Make sure **.NET Framework 4.5** is selected. 
+1. In the **New Project** dialog box, select **ASP.NET Web Application** under the **Visual C# | Web** tab. Make sure **.NET Framework 4.5** is selected.
 Name the project _Todo_, choose a **Location** and click **OK**.
 
-	> **Note:** You may also want to uncheck the **Add Application Insights to Project** if you don't want the functionality for your application. 
+	> **Note:** You may also want to uncheck the **Add Application Insights to Project** if you don't want the functionality for your application.
 
 	![Creating a new ASP.Net Web Application project](images/creating-a-new-aspnet-web-application-project.png?raw=true)
-    
+
     _Creating a new ASP.NET Web Application project_
 
 1. In the **New ASP.NET Project** dialog box, select **MVC**. Make sure that the **Host in the cloud** option is also selected, and change the Authentication method to **No Authentication**. Click **Ok**.
 
 	![Creating a new MVC project](images/creating-a-new-mvc-project.png?raw=true)
-    
+
     _Creating a new project with the MVC template_
 
 	> **Note 1:** Selecting the _Host in the cloud_ option will preprovision an Azure Website for you and make life a lot easier when the time comes to deploy the final working application. If you want to host this elsewhere or don't want to configure Azure upfront, then just clear Host in the Cloud.
-        
+
 	> **Note 2**: You might be prompted to sign in to Visual Studio with your Microsoft account. If so, enter your credentials and click Sign in.
+
+  > **Note 3**: This hands on lab will work with either Visual Studio 2013 or Visual Studio 2015. If you are using Visual Studio 2015 and don't see the *Host in the Cloud* option, the most likely reason is that you need to install the [latest release of the Microsoft Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409).
 
 1. The **Configure Microsoft Azure Website** dialog box will appear, using an auto-generated site name. Select a region (e.g.: _West US_). Also take note of which account you are currently signed into in the dialog box. You want to make sure that this is the account your Azure subscription is attached to (usually a Microsoft account).
 
-	This project does not require a database, as it will be using a new Azure DocumentDB account created later in the Azure Preview portal, so make sure **No database** is selected in the **Database server** field. 
+	This project does not require a database, as it will be using a new Azure DocumentDB account created later in the Azure Preview portal, so make sure **No database** is selected in the **Database server** field.
 
 1. Click **OK**.
-	
+
 	![Configuring Microsoft Azure Website](images/configuring-microsoft-azure-website.png?raw=true)
-    
+
 	_Configuring Microsoft Azure Website_
-	
-The project will be created, and the authentication options and Azure Website options will be automatically configured with the project. The ASP.NET application can be run locally, if desired.	
+
+The project will be created, and the authentication options and Azure Website options will be automatically configured with the project. The ASP.NET application can be run locally, if desired.
 
 Next you will add DocumentDB to this project and build the application.
 
 <a name="adding-documentdb-to-your-project"></a>
 ##Adding DocumentDB to your project
 
-In this task you will add the Azure DocumentDB SDK to the application. 
+In this task you will add the Azure DocumentDB SDK to the application.
 
-The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get the NuGet package in Visual Studio, use the NuGet Package Manager in Visual Studio. 
+The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get the NuGet package in Visual Studio, use the NuGet Package Manager in Visual Studio.
 
 1. Right-click the **Todo** project in the Solution Explorer and then select **Manage NuGet Packages** to open the NuGet Package Manager dialog box.
 
@@ -125,12 +127,12 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 
 	_Opening Manage NuGet Packages_
 
-1. In the Search box, type **Azure DocumentDB**. From the results, select the **Microsoft Azure DocumentDB Client Libraries** package that has id **Microsoft.Azure.Documents.Client** and click **Install**. 
+1. In the Search box, type **Azure DocumentDB**. From the results, select the **Microsoft Azure DocumentDB Client Libraries** package that has id **Microsoft.Azure.Documents.Client** and click **Install**.
 
 	This will download and install the DocumentDB client package as well as all dependencies, like Newtonsoft.Json.
 
 	> **Note:** While the service is still in preview, the NuGet package is marked as "Prerelease", so you need to enable the "Include Prerelease" option in order to be able to find the package.
-	
+
 	![Installing the Microsoft Azure DocumentDB Client Libraries](images/installing-microsoft-azure-documentdb.png?raw=true)
 	_Installing the Microsoft Azure DocumentDB Client Libraries_
 
@@ -146,7 +148,7 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 
 	_Accepting the License for Microsoft.Azure.Documents.Client_
 
-1. Once the package is installed, verify that two new references have been added to the **Todo** project:  _Microsoft.Azure.Documents.Client_ and _Newtonsoft.Json_. Your Visual Studio solution should resemble the following: 
+1. Once the package is installed, verify that two new references have been added to the **Todo** project:  _Microsoft.Azure.Documents.Client_ and _Newtonsoft.Json_. Your Visual Studio solution should resemble the following:
 
 	![References added to the solution](images/references-added-to-the-solution.png?raw=true)
 
@@ -155,14 +157,14 @@ The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get t
 <a name="setting-up-the-aspnet-mvc-app"></a>
 ##Setting up the ASP.NET MVC application
 
-In this task you will set up the ASP.Net MVC application by adding a model, a controller and several views. 
+In this task you will set up the ASP.Net MVC application by adding a model, a controller and several views.
 
 ###Adding a model###
 
 1. In **Solution Explorer**, right-click the **Models** folder of the **Todo** project and select **Add**. Then click **Class...**.
 
     ![Adding a Model](images/adding-a-model.png?raw=true)
-    
+
     _Adding a new model class_
 
 1. In the **Add New Item** dialog box, set the name of the file as _Item.cs_ and click **Add**.  
@@ -270,7 +272,7 @@ You will now create a new view for deleting Items.
 	- In the **Template** box, select **Delete**.
 	- In the **Model class** box, select **Item (Todo.Models)**.
 	- In the **Use a layout page** box, type **~/Views/Shared/_Layout.cshtml**.
-	
+
 	![Adding the Delete View](images/adding-the-delete-view.png?raw=true)
 
 	_Adding the Delete View_
@@ -285,7 +287,7 @@ Now, create a new view for editing existing Items.
 	- In the **Template** box, select **Edit**.
 	- In the **Model class** box, select **Item (Todo.Models)**.
 	- Select **Create as a partial view**.
-	
+
 	![Adding the Edit View](images/adding-the-edit-view.png?raw=true)
 
 	_Adding the Edit View_
@@ -310,8 +312,8 @@ Once this is done, close all the cshtml documents in Visual Studio. You will ret
 <a name="wiring-up-documentdb"></a>
 ##Wiring up DocumentDB
 
-In this task you will add code in the **ItemController** class to handle the following functionality: 
-	
+In this task you will add code in the **ItemController** class to handle the following functionality:
+
 * [Listing incomplete Items](#listing-incomplete-items)
 * [Adding Items](#adding-items)
 * [Editing Items](#editing-items)
@@ -443,7 +445,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 	}
 	```
 
-	The references to the _ReadOrCreateDatabase_ and _ReadOrCreateCollection_ methods will still remain unresolved, as these methods will be added in the next step. These two method calls are used for reading or creating DocumentDB databases and document collections. 
+	The references to the _ReadOrCreateDatabase_ and _ReadOrCreateCollection_ methods will still remain unresolved, as these methods will be added in the next step. These two method calls are used for reading or creating DocumentDB databases and document collections.
 
 1. Add the following code to the **DocumentDBRepository** class:
 
@@ -481,10 +483,10 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	This code takes care of setting up the database, a DocumentCollection, and creating code to connect to DocumentDB through the DocumentClient.
 
-	Now you will update the configuration to set the endpoint and authorization key values, retrieving them from the DocumentDB account that you set to create in the first task of this lab. 
+	Now you will update the configuration to set the endpoint and authorization key values, retrieving them from the DocumentDB account that you set to create in the first task of this lab.
 
-1. Open the **Web.config** file and find the **appSettings** section. Update it to contain the last 4 keys in the snippet below. 
-	
+1. Open the **Web.config** file in the root of your project (not the Web.config file in the Views directory) and find the **appSettings** section. Update it to contain the last 4 keys in the snippet below.
+
 	```XML
 	<appSettings>
 		<add key="webpages:Version" value="3.0.0.0"/>
@@ -515,13 +517,13 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	> **Note:** You can also access your existing DocumentDB accounts from the **Browse** blade.
 
-	> 	![Accessing the DocumentDB accounts from the Browse blade](./images/accessing-the-documentdb-accounts-from-browse.png?raw=true)
+	> ![Accessing the DocumentDB accounts from the Browse blade](./images/accessing-the-documentdb-accounts-from-browse.png?raw=true)
 
-	> 	_Accessing the DocumentDB accounts from the Browse blade_
+	> _Accessing the DocumentDB accounts from the Browse blade_
 
-	> 	![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
+	> ![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
 
-	> 	_Accessing the DocumentDB account just created_
+	> _Accessing the DocumentDB account just created_
 
 1. Now, click the **KEYS** button to open the **Keys** blade. Copy the endpoint **URI** and paste the value in the **Web.config** file open in Visual Studio, in place of the **URI** placeholder.
 
@@ -529,7 +531,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	_Retrieving the keys of the DocumentDB account just created_
 
-1. Switch back to the browser in which the **Keys** blade is open and copy the **PRIMARY KEY** value. Switch to Visual Studio and paste it in the **Web.config** file, replacing the **PRIMARY KEY** placeholder. 
+1. Switch back to the browser in which the **Keys** blade is open and copy the **PRIMARY KEY** value. Switch to Visual Studio and paste it in the **Web.config** file, replacing the **PRIMARY KEY** placeholder.
 
 	Now that the code for handling the database is ready, let's add some code to do the work for the views.
 
@@ -569,7 +571,7 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	This tells ASP.NET MVC that if you have not specified a value in the URL to control the routing behavior, it should use **Item** as the controller instead of using **Home** and use **Index** as the view. Now if you run the application, it will call your **ItemController** and return the results of the **GetIncompleteItems** method to the **Item Index** view.
 
-1. Press **F5** to build and debug the application. 
+1. Press **F5** to build and debug the application.
 
 	The page that opens should look like this:
 
@@ -589,8 +591,8 @@ You already have a **Create** view in the application and a button in the **Inde
 
 	```C#
 	public ActionResult Create()
-	{ 
-		return this.View(); 
+	{
+		return this.View();
 	}
 	```
 
@@ -607,11 +609,11 @@ You already have a **Create** view in the application and a button in the **Inde
 			  return this.RedirectToAction("Index");  
 		 }
 
-		 return this.View(item);   
+		 return this.View(item);
 	}
 	```
 
-	>**Security Note:** The ValidateAntiForgeryToken attribute is used here to help protect this application against cross-site request forgery attacks. There is more to it than just adding this attribute; your views need to work with this anti-forgery token as well. For more on the subject and examples of how to implement this correctly, please see [Preventing Cross-Site Request Forgery](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks). 
+	>**Security Note:** The ValidateAntiForgeryToken attribute is used here to help protect this application against cross-site request forgery attacks. There is more to it than just adding this attribute; your views need to work with this anti-forgery token as well. For more on the subject and examples of how to implement this correctly, please see [Preventing Cross-Site Request Forgery](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks).
 
 	>**Security Note:** We also use the Bind attribute on the method parameter to help protect against over-posting attacks. For more details please see [Basic CRUD Operations in ASP.NET MVC](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost).
 
@@ -628,7 +630,9 @@ You already have a **Create** view in the application and a button in the **Inde
 
 	This method simply takes an object passed to it and persists it in DocumentDB.
 
-With these steps, you have added all the code required to add new Items to the database. You may have noticed some methods or classes are not yet recognized. This will be fixed in the next section.
+With these steps, you have added all the code required to add new Items to the database.
+
+ >You may have noticed some methods or classes are not yet recognized. This will be fixed in the next section.
 
 <a name="editing-items"></a>
 ####Editing items####
@@ -713,7 +717,7 @@ Now you will add the ability to edit Items in the database and to mark them as c
 	```C#
 	using System.Threading.Tasks;
 	```
-	
+
 	With these additions, the Edit functionality should be working. Now you will add support for deleting items.
 
 <a name="deleting-items"></a>
@@ -743,7 +747,7 @@ The code changes that allow the deletion of Items are similar to those made to a
 	//// To protect against Cross-Site Request Forgery, validate that the anti-forgery token was received and is valid
 	//// for more details on preventing see http://go.microsoft.com/fwlink/?LinkID=517254
 	[ValidateAntiForgeryToken]
-	//// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+	//// To protect from overposting attacks, please enable the specific properties you want to bind to, for
 	//// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 	public async Task<ActionResult> DeleteConfirmed([Bind(Include = "Id")] string id)
 	{
@@ -809,7 +813,6 @@ In this task you will verify that the application you built in the previous task
 
 	> **Note:** (Warning) If you mark the **Completed** flag and click **Save**, the Item will no longer appear in the list of incomplete tasks. Please do not do this just yet.
 
-
 	![Testing editing an item](images/testing-editing-an-item.png?raw=true)
 
 	_Testing - Editing an item_
@@ -833,17 +836,17 @@ In this task you will verify that the application you built in the previous task
 1. Go back to Visual Studio and press **Shift+F5** to stop debugging.
 
 <a name="deploying-the-app-to-azure"></a>
-## Deploying the application to Azure Websites
+## Deploying the application to Azure Web Apps
 
-The following steps will show you how to deploy the application to Azure as an Azure Website. In the earlier steps, you connected your new project with an Azure Website, so it's ready to be published.
+The following steps will show you how to deploy the application to Azure as an Azure Web App. In the earlier steps, you connected your new project with an Azure Web App, so it's ready to be published.
 
-1. In **Visual Studio**, right-click the **Todo** project and select **Publish**. 
+1. In **Visual Studio**, right-click the **Todo** project and select **Publish**.
 
 	![Publishing the application](images/publish-web-application.png?raw=true)
 
 	_Publishing the application_
 
-	The **Publish Web** dialog box will appear with each setting already configured according to your credentials. In fact, the website has already been created in Azure for you at the Destination URL shown. 
+	The **Publish Web** dialog box will appear with each setting already configured according to your credentials. In fact, the website has already been created in Azure for you at the Destination URL shown.
 
 	>**Note:** If you opened the end solution provided instead of following the lab instructions, you might have to enter additional information.
 
@@ -863,7 +866,7 @@ The following steps will show you how to deploy the application to Azure as an A
 1. Click on the **Next** button to go to the **Settings** page. You may be prompted to authenticate; make sure you authenticate using your Azure subscription account (typically a Microsoft account) and not the organizational account you created earlier.
 
     ![Publish Web dialog - Connection tab](./images/publish-web-dialog-connection-tab.png)
-    
+
     _Publish Web dialog - Connection tab_
 -->
 
@@ -879,13 +882,13 @@ To delete the website follow these steps:
 
 1. In your browser, go to [the preview management portal](https://portal.azure.com/), and sign in with your Azure credentials.
 
-2. Click **BROWSE** in the Navigation hub on the left and then **Websites**. 
+2. Click **BROWSE** in the Navigation hub on the left and then **Web Apps**.
 
 	![Browse websites](images/browse-websites.png?raw=true)
 
 	_Browsing websites_
 
-	A blade displaying all websites will be displayed. 
+	A blade displaying all websites will be displayed.
 
 1. Select your website and click **DELETE** in the details blade.
 
@@ -899,7 +902,7 @@ To delete the website follow these steps:
 
 To delete the DocumentDB account proceed in a similar way:
 
-1. Click **BROWSE** in the Navigation hub on the left and then **DocumentDB accounts**. 
+1. Click **BROWSE** in the Navigation hub on the left and then **DocumentDB accounts**.
 
 1. Click your documentDB account and in the details blade that opens, click **Delete**.
 
@@ -916,4 +919,3 @@ To delete the DocumentDB account proceed in a similar way:
 ##Summary
 
 By completing this lab you have learned how to create an ASP.Net MVC application that uses Azure DocumentDB to store data as JSON objects. You have implemented all basic CRUD operations, tested the application locally, and published it to Azure Websites.
-
