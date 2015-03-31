@@ -9,8 +9,8 @@
    <body>
       <div class="container">
          <div class="jumbotron">
-            <h1>Azure Readiness: DevCamp</h1>
-            <p></p>
+            <h1>Azure DevCamp</h1>
+            <p>Mar 31, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
@@ -47,13 +47,13 @@
                      <td><a href='HOL/working-with-the-new-portal/README.md'>HOL - Working with the new Portal</a></td>
                   </tr>
                   <tr>
-                     <td rowspan=2>Websites</td>
+                     <td rowspan=2>Web Apps</td>
                      <td>45</td>
                      <td><a href='Presentation/Web/Web.pptx'>Presentation</a></td>
                   </tr>
                   <tr>
                      <td>30</td>
-                     <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a website to Azure</a></td>
+                     <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a Web App to Azure</a></td>
                   </tr>
                   <tr>
                      <td rowspan=2>Identity and Access (AD)</td>
