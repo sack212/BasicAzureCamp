@@ -137,12 +137,12 @@
 					   <td>This module outlines the mobile offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Integration/Demo.md'>Integration</a></td>
+					   <td><a href='Presentation/Integration-Hybrid-Workflows/Demo.md'>Integration</a></td>
 					   <td><a href='Presentation/Integration/APIManagementIntro.pptx'>Presentation</a></td>
 					   <td>This module outlines the integration offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Identity/Demo.md'>Identity</a></td>
+					   <td><a href='Presentation/Identity-Access-Management/Demo.md'>Identity</a></td>
 					   <td><a href='Presentation/Identity/Identity and o365.pptx'>Presentation</a></td>
 					   <td>This module outlines the Identity and Access Management offerings on Microsoft Azure</td>
 					</tr>
