@@ -1,6 +1,6 @@
 # API App Demos
 
-## Demo 1 - Create and Test API App
+## Demo 1 - Create an API App
 
 This is a quick demo showing how quickly you can create a new API App using Visual Studio.
 
@@ -71,9 +71,11 @@ This is a quick demo showing how quickly you can create a new API App using Visu
 11. Click **Launch Request**
 12. Leave the project in Visual Studio open for future demos
 
-## Demo 2: Connecting to a Deployed API App using a Smart Client (Postman)
+## Demo 2: Connecting to an API App
 
-	>  This demo requires you to complete Demo 1 first. The following demo requires Postman (Chrome Standalone Extension).  You can use other tools such as Fiddler.
+This demo	shows how to use a desktop client to connect to an API App instance.
+
+> This demo requires you to complete Demo 1 first. The following demo requires Postman (Chrome Standalone Extension).  You can use other tools such as Fiddler.
 
 1. Open the Postman client
 2. Click the **Import** button at the top of the application
@@ -118,7 +120,7 @@ This is a quick demo showing how quickly you can create a new API App using Visu
 				"Price": 0.50
 		}
 
-## Demo 3: Viewing the Metadata for a Deployed API App using the Portal
+## Demo 3: Viewing the Metadata for an API App
 
 	>  This demo requires you to complete Demo 1 first.
 
