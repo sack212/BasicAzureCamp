@@ -19,11 +19,11 @@ In this lab you will walk through the _Azure Management Portal_, starting with t
 
 #### [Lab 4 - Introduction to the Azure Preview Portal](working-with-the-new-portal) ####
 
-In this lab you will learn about the preview portal features, usage, and how to create a new resource group by building a Website. 
+In this lab you will learn about the preview portal features, usage, and how to create a new resource group by building a Website.
 
 #### [Lab 5 - Getting started with Azure Websites and ASP.NET](get-started-with-websites-and-asp-net) ####
 
-In this lab you will create a simple web application and deploy it to an Azure Website. You will also take a quick tour of the Azure Management Portal. 
+In this lab you will create a simple web application and deploy it to an Azure Website. You will also take a quick tour of the Azure Management Portal.
 
 #### [Lab 6 - Building a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to Log in Users](build-single-page-app-with-webapi-and-angular) ####
 
@@ -40,3 +40,7 @@ In this lab you will learn how to create a todo list web application using Azure
 #### [Lab 9 - Getting Started with Azure SQL Database Elastic Scale](sql-database) ####
 
 In this lab you will be introduced to the developer experience and the basic concepts of Azure SQL Database Elastic Scale.
+
+#### [Lab 10 - Coming an API App](consuming-api-app) ####
+
+In this lab you will create and then use an API App instance.
