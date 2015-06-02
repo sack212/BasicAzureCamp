@@ -32,7 +32,7 @@ In this task you will create a database to store customer records.
 
 5. Click "Open in Visual Studio" button from the toolbar at the top.
 
-    ![Open Visual Studio](./images/visualstudio.png)
+    ![Open Visual Studio](./images/VisualStudio.png)
 
 6. Click on **Configure your firewall**.
 
@@ -40,7 +40,7 @@ In this task you will create a database to store customer records.
 
 7. Make a note of **Client IP Address**.
 
-    ![What is my IP Address](./images/My-Ip.png)
+    ![What is my IP Address](./images/my-ip.png)
 
 8. Enter **Rule1** in the **Rule Name** text box. Add the IP address noted earlier in the **STARTUP IP** and **END AIP** text boxes. Click **Save** button in the toolbar from the top.
 
@@ -164,7 +164,7 @@ In this task you will create a Logic App to receive a text message whenever a cu
 
 4.  Click **Triggers and actions** in the **Summary** tile.
 
-    ![Triggers and actions link](./images/triggers-actions.png)
+    ![Triggers and actions link](./images/Triggers-Actions.png)
 
 5.  Click **Microsoft SQL Connector** listed the **API Apps** pane under the resource group created earlier.
 
