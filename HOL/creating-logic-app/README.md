@@ -213,7 +213,7 @@ In this task you will create a Logic App to receive a text message whenever a cu
         
 14. Click **Save** from the toolbar at the top.
 
-    ![Save](./images/Save.png)
+    ![Save](./images/save.png)
 
 <a name="test-logic-app"></a>
 ## Test the Logic App
