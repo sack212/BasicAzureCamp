@@ -160,7 +160,8 @@ This sample demonstrates creating a WebJob and performing operations with Micros
 
 ### Prerequisites
 
-1. Go to http://portal.azure.com and provision a new free Web App.
+1. Go to http://portal.azure.com and provision a new free Web App.  
+
  > Note: You can use the Web App you provisioned in the first demo here.
 
 ### Demo
