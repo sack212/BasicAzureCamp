@@ -153,3 +153,24 @@ The following code retrieves this value from session state.
        strValue = (string)objValue;
 
 You can also use the Redis Cache to cache objects in your web app. For more info, see [MVC movie app with Azure Redis Cache in 15 minutes](http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
+
+## Demo 7 - WebJobs
+
+This sample demonstrates creating a WebJob and performing operations with Microsoft Azure WebJobs SDK. The two functions in this example split strings into words (CountAndSplitInWords) and in characters (CharFrequency) and computes their frequencies. The results are stored in Azure Storage Tables.
+
+### Prerequisites
+
+1. Go to http://portal.azure.com and provision a new free Web App.
+ > Note: You can use the Web App you provisioned in the first demo here.
+
+### Demo
+1. Open File Explorer and navigate to the Presentation\Web\Demo3 - Web Jobs\source\WebJobs folder in the DevCamp material.
+1. Open the project in Visual Studio, enable restore packages from nuget and compile (to download all the packages required inside bin directory)
+1. Enter a storage account name and key as instructed in App.config.
+1. Right-click project, select " Publish as Azure WebJob.." and then select "run on-demand" from the dropdown.
+1. Set a connection string named AzureWebJobsDashboard in the Web App configuration in the preview portal by using the following format.  
+  
+ > DefaultEndpointsProtocol=https;AccountName=NAME;AccountKey=KEY 
+1. Find the WebJob under the Web App node in Server Explorer, right-click and select run.
+1. Find the storage account in Server Explorer and show the results in queue(textinput) and table(words).
+1. Show how to run the WebJob from the Wep App's WebJob setting blade in the portal. Show the log of successful runs.
