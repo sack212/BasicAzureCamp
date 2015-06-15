@@ -20,8 +20,24 @@ Steps:
 1. Test the application. Invite audience to participate if possible.
 1. Switch back to slide to explain what just happened.
 
-## Demo 2 - Hello World
+## Demo 2 - Azure Resource Manager
+
+This is a quick demo of Azure Resource Manager demo.
+
+1. Go to http://portal.azure.com.
+1. Create an Azure Resource Group.
+1. Provision a Web App in the Resource Group.
+1. Provision an Azure SQL Database in the Resource Group.
+1. Open Resource Group container blade. Show the Web App and database resources are contained within the Resource Group.
+1. Review **Monitoring** for Web App and database events from an application lifecycle container perspective.
+1. (Optional) Review **Billing** to measure total and itemized costs for the resources contained in the Resource Group.
+1. Delete the Azure Resource Group. Show the Web App and database no longer exist since the container is now gone.
+
+
+## Demo 3 - Hello World
 
 1. Create a Cloud Service with a Web Role and Worker Role1. Launch, explain local emulator.
 1. Show publish menu and start the publish. Explain that this takes a few minutes and therefor you have already prepared this step earlier.
 1. Show the current management portal http://manage.windowsazure.com with the CloudService deployed in "Prerequisites". Show the instances and also browse to the web application deployed.
+
+
