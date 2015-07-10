@@ -30,7 +30,7 @@
                      <th>Activity</th>
                   </tr>
                   <tr>
-                     <td rowspan=4>Intro to Azure </td>
+                     <td rowspan=4>Intro to Azure</td>
                      <td>30</td>
                      <td><a href='Presentation/Keynote/Keynote.pptx'>Presentation</a></td>
                   </tr>
@@ -47,9 +47,9 @@
                      <td><a href='HOL/working-with-the-new-portal/README.md'>HOL - Working with the new Portal</a></td>
                   </tr>
                   <tr>
-                     <td rowspan=2>Web Apps</td>
-                     <td>45</td>
-                     <td><a href='Presentation/Web/Web.pptx'>Presentation</a></td>
+                     <td rowspan=2>App Service</td>
+                     <td>30</td>
+                     <td><a href='Presentation/App-Service/App Service.pptx'>Presentation</a></td>
                   </tr>
                   <tr>
                      <td>30</td>
@@ -107,9 +107,9 @@
 					   <td>This module provides an overview of how to design and deploy cloud solutions on Azure.</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Web/Demo.md'>Web</a></td>
-					   <td><a href='Presentation/Web/Web.pptx'>Presentation</a></td>
-					   <td>This module outlines the features of Azure App Service Web Apps and other supporting services</td>
+					   <td><a href='Presentation/App-Service/Demo.md'>App Service</a></td>
+					   <td><a href='Presentation/App-Service/App Service.pptx'>Presentation</a></td>
+					   <td>This module outlines the high-level features of Azure App Service</td>
 					</tr>
 					<tr>
 					   <td><a href='Presentation/Data-Platform/Demo.md'>Data-Platform</a></td>
