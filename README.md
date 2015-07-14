@@ -47,7 +47,7 @@
                      <td><a href='HOL/working-with-the-new-portal/README.md'>HOL - Working with the new Portal</a></td>
                   </tr>
                   <tr>
-                     <td rowspan=2>App Service</td>
+                     <td rowspan=3>App Service</td>
                      <td>30</td>
                      <td><a href='Presentation/App-Service/App Service.pptx'>Presentation</a></td>
                   </tr>
