@@ -55,9 +55,8 @@
                      <td>30</td>
                      <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a Web App to Azure or</a></td>
                   </tr>
-                  <tr></tr>
-                  <tr></tr>
                   <tr>
+                     <td>30</td>
                      <td><a href='HOL/build-mobile-app-with-web-client'>HOL - 
 Create an app with a mobile and web client in Azure App Service</a></td>
                   </tr>
