@@ -3,14 +3,14 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>AzureReadiness: DevCamp</title>
+      <title>Azure Readiness: DevCamp</title>
 	  <link rel="stylesheet" href="style.css">
    </head>
    <body>
       <div class="container">
          <div class="jumbotron">
             <h1>Azure DevCamp</h1>
-            <p>Mar 31, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
+            <p>Jul 14, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
@@ -53,7 +53,13 @@
                   </tr>
                   <tr>
                      <td>30</td>
-                     <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a Web App to Azure</a></td>
+                     <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a Web App to Azure or</a></td>
+                  </tr>
+                  <tr></tr>
+                  <tr></tr>
+                  <tr>
+                     <td><a href='HOL/build-mobile-app-with-web-client'>HOL - 
+Create an app with a mobile and web client in Azure App Service</a></td>
                   </tr>
                   <tr>
                      <td rowspan=2>Identity and Access (AD)</td>
