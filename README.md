@@ -6,14 +6,16 @@
       <title>Azure Readiness: DevCamp</title>
 	  <link rel="stylesheet" href="style.css">
    </head>
-   <body>
+   <body id="home">
       <div class="container">
          <div class="jumbotron">
             <h1>Azure DevCamp</h1>
-            <p>Jul 14, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
+            <p>Jul 16, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
+            <div class="hidden">*We strongly recommend that presenters and camp attendees **run the [Installer](https://github.com/Azure-Readiness/DevCamp/releases/latest)** 
+            rather than clone this repository. The installer is optimized for end users - it includes all NuGet packages, HTML documentation, etc.*</div>
          </div>
          <div class="panel panel-default">
             <div class="panel-heading">
@@ -32,65 +34,61 @@
                   <tr>
                      <td rowspan=4>Intro to Azure</td>
                      <td>30</td>
-                     <td><a href='Presentation/Keynote/Keynote.pptx'>Presentation</a></td>
+                     <td>[Presentation](Presentation/Keynote/Keynote.pptx)</td>
                   </tr>
                   <tr>
                      <td>15</td>
-                     <td><a href='HOL/creating-azure-account-activating-msdn-benefits/README.md'>HOL - Signup</a></td>
+                     <td>[HOL - Signup](HOL/creating-azure-account-activating-msdn-benefits/)</td>
                   </tr>
                   <tr>
                      <td>15</td>
-                     <td><a href='HOL/working-with-the-management-portal/README.md'>HOL - Working with the Management Portal</a></td>
+                     <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>
                   </tr>
                   <tr>
                      <td>(optional)</td>
-                     <td><a href='HOL/working-with-the-new-portal/README.md'>HOL - Working with the new Portal</a></td>
+                     <td>[HOL - Working with the new Portal](HOL/working-with-the-new-portal/)</td>
                   </tr>
                   <tr>
                      <td rowspan=3>App Service</td>
                      <td>30</td>
-                     <td><a href='Presentation/App-Service/App Service.pptx'>Presentation</a></td>
+                     <td>[Presentation](Presentation/App-Service/App Service.pptx)</td>
                   </tr>
                   <tr>
-                     <td>30</td>
-                     <td><a href='HOL/get-started-with-websites-and-asp-net/README.md'>HOL - Deploy a Web App to Azure or</a></td>
+                     <td rowspan=2>30</td>
+                     <td>[HOL - Deploy a Web App to Azure *or*](HOL/get-started-with-websites-and-asp-net/)</td>
                   </tr>
                   <tr>
-                     <td>30</td>
-                     <td><a href='HOL/build-mobile-app-with-web-client'>HOL - 
-Create an app with a mobile and web client in Azure App Service</a></td>
+                     <td>[HOL - Create an app with a mobile and web client in Azure App Service](HOL/build-mobile-app-with-web-client/)</td>
                   </tr>
                   <tr>
                      <td rowspan=2>Identity and Access (AD)</td>
                      <td>45</td>
-                     <td><a href='Presentation/Identity/Identity and o365.pptx'>Presentation</a></td>
+                     <td>[Presentation](Presentation/Identity/Identity and o365.pptx)</td>
                   </tr>
                   <tr>
                      <td>60</td>
-                     <td><a href='HOL/build-single-page-app-with-webapi-and-angular/README.md'>HOL - Deploy a SPA with AD to Azure</a></td>
+                     <td>[HOL - Deploy a SPA with AD to Azure](HOL/build-single-page-app-with-webapi-and-angular/)</td>
                   </tr>
                   <tr>
                      <td rowspan=2>IaaS</td>
                      <td>45</td>
-                     <td><a href='Presentation/IaaS/IaaS.pptx'>Presentation</a></td>
+                     <td>[Presentation](Presentation/IaaS/IaaS.pptx)</td>
                   </tr>
                   <tr>
                      <td>45</td>
-                     <td><a href='HOL/create-virtual-machine/README.md'>HOL - IaaS</a></td>
+                     <td>[HOL - IaaS](HOL/create-virtual-machine/)</td>
                   </tr>
                   <tr>
-                     <td rowspan=5>Data overview</td>
+                     <td rowspan=3>Data overview</td>
                      <td>45</td>
-                     <td><a href='Presentation/Data-Platform/Data-Platform.pptx'>Presentation</a></td>
+                     <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx)</td>
                   </tr>
                   <tr>
-                     <td rowspan=4>45</td>
-                     <td rowspan=3><a href='HOL/create-virtual-machine/README.md'>HOL - DocumentDB or</a></td>
+                     <td rowspan=2>45</td>
+                     <td>[HOL - DocumentDB *or*](HOL/build-web-app-using-documentdb/)</td>
                   </tr>
-                  <tr></tr>
-                  <tr></tr>
                   <tr>
-                     <td><a href='HOL/sql-database/README.md'>HOL - Elastic Scale</a></td>
+                     <td>[HOL - Elastic Scale](HOL/sql-database/)</td>
                   </tr>
                </table>
             </div>
@@ -102,58 +100,58 @@ Create an app with a mobile and web client in Azure App Service</a></td>
             <div class="panel-body">
                <table class="table table-bordered table-striped table-hover">
 					<tr>
-					   <td><a href='Presentation/Keynote/Demo.md'>Keynote</a></td>
-					   <td><a href='Presentation/Keynote/Keynote.pptx'>Presentation</a></td>
+					   <td>[Keynote](Presentation/Keynote/)</td>
+					   <td>[Presentation](Presentation/Keynote/Keynote.pptx)</td>
 					   <td>This module introduces the Cloud and the Cadence of Azure.</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/PaaS/Demo.md'>PaaS</a></td>
-					   <td><a href='Presentation/PaaS/Building Cloud Solutions.pptx'>Presentation</a></td>
+					   <td>[PaaS](Presentation/PaaS/)</td>
+					   <td>[Presentation](Presentation/PaaS/Building Cloud Solutions.pptx)</td>
 					   <td>This module provides an overview of how to design and deploy cloud solutions on Azure.</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/App-Service/Demo.md'>App Service</a></td>
-					   <td><a href='Presentation/App-Service/App Service.pptx'>Presentation</a></td>
+					   <td>[App Service](Presentation/App-Service/)</td>
+					   <td>[Presentation](Presentation/App-Service/App Service.pptx)</td>
 					   <td>This module outlines the high-level features of Azure App Service</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Data-Platform/Demo.md'>Data-Platform</a></td>
-					   <td><a href='Presentation/Data-Platform/Data-Platform.pptx'>Presentation</a></td>
+					   <td>[Data Platform](Presentation/Data-Platform/)</td>
+					   <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx)</td>
 					   <td>This module outlines the Data offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Data-Storage/Demo.md'>Data-Storage</a></td>
-					   <td><a href='Presentation/Data-Storage/Data-Storage.pptx'>Presentation</a></td>
+					   <td>[Data Storage](Presentation/Data-Storage/)</td>
+					   <td>[Presentation](Presentation/Data-Storage/Data-Storage.pptx)</td>
 					   <td>This module gives an overview of HDInsight</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/IaaS/Demo.md'>IaaS</a></td>
-					   <td><a href='Presentation/IaaS/IaaS.pptx'>Presentation</a></td>
+					   <td>[IaaS](Presentation/IaaS/)</td>
+					   <td>[Presentation](Presentation/IaaS/IaaS.pptx)</td>
 					   <td>This module outlines the Virtual Machine and Virtual Network features of Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Media/Demo.md'>Media</a></td>
-					   <td><a href='Presentation/Media/Media.pptx'>Presentation</a></td>
+					   <td>[Media](Presentation/Media/)</td>
+					   <td>[Presentation](Presentation/Media/Media.pptx)</td>
 					   <td>This Module outlines the Media Service on Microsoft Azure.</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Mobile/Demo.md'>Mobile</a></td>
-					   <td><a href='Presentation/Mobile/Mobile.pptx'>Presentation</a></td>
+					   <td>[Mobile](Presentation/Mobile/)</td>
+					   <td>[Presentation](Presentation/Mobile/Mobile.pptx)</td>
 					   <td>This module outlines the mobile offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Integration-Hybrid-Workflows/Demo.md'>Integration</a></td>
-					   <td><a href='Presentation/Integration/APIManagementIntro.pptx'>Presentation</a></td>
+					   <td>[Integration](Presentation/Integration-Hybrid-Workflows/)</td>
+					   <td>[Presentation](Presentation/Integration-Hybrid-Workflows/APIManagementIntro.pptx)</td>
 					   <td>This module outlines the integration offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td><a href='Presentation/Identity-Access-Management/Demo.md'>Identity</a></td>
-					   <td><a href='Presentation/Identity/Identity and o365.pptx'>Presentation</a></td>
+					   <td>[Identity](Presentation/Identity-Access-Management/)</td>
+					   <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx)</td>
 					   <td>This module outlines the Identity and Access Management offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
 					   <td>Conclusion</td>
-					   <td><a href='Presentation/Conclusion/Conclusion.pptx'>Presentation</a></td>
+					   <td>[Presentation](Presentation/Conclusion/Conclusion.pptx)</td>
 					   <td>This short presentation includes calls to action and signup links for camp attendees</td>
 					</tr>
 				 </table>
