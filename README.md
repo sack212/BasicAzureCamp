@@ -63,7 +63,7 @@
                   <tr>
                      <td rowspan=2>Identity and Access (AD)</td>
                      <td>45</td>
-                     <td>[Presentation](Presentation/Identity/Identity and o365.pptx)</td>
+                     <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx)</td>
                   </tr>
                   <tr>
                      <td>60</td>
