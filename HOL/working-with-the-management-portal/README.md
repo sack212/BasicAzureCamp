@@ -16,7 +16,7 @@ In this lab, you will learn how to:
 - Manage allocated resources
 
 <a name="Task1"></a>
-##Portal Overview
+## Portal Overview
 
 In this task you will walk through the different pieces of the Azure Management Portal.
 
@@ -42,7 +42,7 @@ In this task you will walk through the different pieces of the Azure Management 
 	_NEW and Help Buttons_
 
 <a name="Task2"></a>
-##Creating new elements and services
+## Creating new elements and services
 In this task you will go through the process of creating a new element for your subscription. In particular, you will create a new website using the **Create Wizard**.
 
 1. Click the **NEW** button located at the bottom left part of the screen.
@@ -106,7 +106,7 @@ In this task you will go through the process of creating a new element for your 
 1. Close the website and return to the **Management Portal**.
 	
 <a name="Task3"></a>
-##Managing allocated resources
+## Managing allocated resources
 In this task you will go through the available options for managing the recently created website.
 
 1. If not already in the _Quick Start Management_ page, click the website's name to display it. 

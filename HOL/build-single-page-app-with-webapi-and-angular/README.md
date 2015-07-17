@@ -263,7 +263,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     ```
 
 <a name="creating-the-triviacontroller-web-api"></a>
-##Creating the TriviaController Web API
+## Creating the TriviaController Web API
 
 In the previous task, you created the initial structure of the Geek Quiz web application. You will now build a simple Web API service that interacts with the quiz data model and exposes the following actions:
 
@@ -448,7 +448,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	```
 
 <a name="running-the-solution"></a>
-##Running the Solution
+## Running the Solution
 
 In this task you will verify that the Web API service you built in the previous task is working as expected. You will use the Internet Explorer F12 Developer Tools to capture the network traffic and inspect the full response from the Web API service.
 
@@ -750,7 +750,7 @@ Wait until the package is downloaded and installed.
 	```
 
 <a name="running-the-single-page-application"></a>
-##Running the Single Page Application
+## Running the Single Page Application
 
 In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
 
@@ -779,7 +779,7 @@ In this task you will execute the solution using the new user interface you buil
 6. Go back to Visual Studio and press **SHIFT + F5** to stop debugging.
 
 <a name="creating-a-flip-animation-using-css3"></a>
-##Creating a Flip Animation Using CSS3
+## Creating a Flip Animation Using CSS3
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
 
@@ -871,7 +871,7 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 
 
 <a name="deploying-the-app-to-azure"></a>
-##Deploying the Application to Azure
+## Deploying the Application to Azure
 
 The following steps will show you how to deploy the application to Azure as an App Service Web App. In the earlier steps, you connected your new project with an App Service Web App, so it's ready to be published easily.
 
@@ -936,7 +936,7 @@ The following steps will show you how to deploy the application to Azure as an A
 	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier.
 
 <a name="cleanup"></a>
-##Appendix - Cleanup
+## Appendix - Cleanup
 
 In this task you will learn how to delete the resources created created in the previous sections. These are:
 
@@ -979,7 +979,7 @@ You can delete the global user account by following these steps:
 
 The user will be deleted. You should see a notification confirming it.
 
-##Summary
+## Summary
 
 By completing this lab you have learned how to:
 
