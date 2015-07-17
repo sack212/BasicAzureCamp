@@ -14,8 +14,8 @@
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
-            <div class="hidden">*We strongly recommend that presenters and camp attendees **run the [Installer](https://github.com/Azure-Readiness/DevCamp/releases/latest)** 
-            rather than clone this repository. The installer is optimized for end users - it includes all NuGet packages, HTML documentation, etc.*</div>
+            <div class="hidden">_We strongly recommend that presenters and camp attendees **run the [Installer](https://github.com/Azure-Readiness/DevCamp/releases/latest)** 
+            rather than clone this repository. The installer is optimized for end users - it includes all NuGet packages, HTML documentation, etc._</div>
          </div>
          <div class="panel panel-default">
             <div class="panel-heading">
