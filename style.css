@@ -68,3 +68,7 @@ header.navbar {
     font-family: "Segoe UI Symbol";
     font-size: 15px;
 }
+
+.container {
+	min-height: 100%;
+}

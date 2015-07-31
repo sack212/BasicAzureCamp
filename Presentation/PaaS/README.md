@@ -1,4 +1,3 @@
-<a name="title"></a>
 # PaaS
 
 ## Demo 1 - Deploying a Website to Azure
@@ -39,5 +38,3 @@ This is a quick demo of Azure Resource Manager demo.
 1. Create a Cloud Service with a Web Role and Worker Role1. Launch, explain local emulator.
 1. Show publish menu and start the publish. Explain that this takes a few minutes and therefor you have already prepared this step earlier.
 1. Show the current management portal http://manage.windowsazure.com with the CloudService deployed in "Prerequisites". Show the instances and also browse to the web application deployed.
-
-

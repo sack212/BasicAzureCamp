@@ -10,7 +10,7 @@
       <div class="container">
          <div class="jumbotron">
             <h1>Azure DevCamp</h1>
-            <p>Jul 16, 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
+            <p>July 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
@@ -34,7 +34,7 @@
                   <tr>
                      <td rowspan=4>Intro to Azure</td>
                      <td>30</td>
-                     <td>[Presentation](Presentation/Keynote/Keynote.pptx)</td>
+                     <td>[Presentation](Presentation/Keynote/Keynote.pptx) | [Demos](Presentation/Keynote/)</td>
                   </tr>
                   <tr>
                      <td>15</td>
@@ -51,7 +51,7 @@
                   <tr>
                      <td rowspan=3>App Service</td>
                      <td>30</td>
-                     <td>[Presentation](Presentation/App-Service/App Service.pptx)</td>
+                     <td>[Presentation](Presentation/App-Service/App Service.pptx) | [Demos](Presentation/App-Service/)</td>
                   </tr>
                   <tr>
                      <td rowspan=2>30</td>
@@ -63,7 +63,7 @@
                   <tr>
                      <td rowspan=2>Identity and Access (AD)</td>
                      <td>45</td>
-                     <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx)</td>
+                     <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx) | [Demos](Presentation/Identity-Access-Management/)</td>
                   </tr>
                   <tr>
                      <td>60</td>
@@ -72,7 +72,7 @@
                   <tr>
                      <td rowspan=2>IaaS</td>
                      <td>45</td>
-                     <td>[Presentation](Presentation/IaaS/IaaS.pptx)</td>
+                     <td>[Presentation](Presentation/IaaS/IaaS.pptx) | [Demos](Presentation/IaaS/)</td>
                   </tr>
                   <tr>
                      <td>45</td>
@@ -81,7 +81,7 @@
                   <tr>
                      <td rowspan=3>Data overview</td>
                      <td>45</td>
-                     <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx)</td>
+                     <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx) | [Demos](Presentation/Data-Platform/)</td>
                   </tr>
                   <tr>
                      <td rowspan=2>45</td>
@@ -100,53 +100,48 @@
             <div class="panel-body">
                <table class="table table-bordered table-striped table-hover">
 					<tr>
-					   <td>[Keynote](Presentation/Keynote/)</td>
-					   <td>[Presentation](Presentation/Keynote/Keynote.pptx)</td>
+					   <td>Keynote</td>
+					   <td>[Presentation](Presentation/Keynote/Keynote.pptx) | [Demos](Presentation/Keynote/)</td>
 					   <td>This module introduces the Cloud and the Cadence of Azure.</td>
 					</tr>
 					<tr>
-					   <td>[PaaS](Presentation/PaaS/)</td>
-					   <td>[Presentation](Presentation/PaaS/Building Cloud Solutions.pptx)</td>
+					   <td>PaaS</td>
+					   <td>[Presentation](Presentation/PaaS/Building Cloud Solutions.pptx) | [Demos](Presentation/PaaS/)</td>
 					   <td>This module provides an overview of how to design and deploy cloud solutions on Azure.</td>
 					</tr>
 					<tr>
-					   <td>[App Service](Presentation/App-Service/)</td>
-					   <td>[Presentation](Presentation/App-Service/App Service.pptx)</td>
+					   <td>App Service</td>
+					   <td>[Presentation](Presentation/App-Service/App Service.pptx) | [Demos](Presentation/App-Service/)</td>
 					   <td>This module outlines the high-level features of Azure App Service</td>
 					</tr>
 					<tr>
-					   <td>[Data Platform](Presentation/Data-Platform/)</td>
-					   <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx)</td>
+					   <td>Data Platform</td>
+					   <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx) | [Demos](Presentation/Data-Platform/)</td>
 					   <td>This module outlines the Data offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td>[Data Storage](Presentation/Data-Storage/)</td>
-					   <td>[Presentation](Presentation/Data-Storage/Data-Storage.pptx)</td>
+					   <td>Data Storage</td>
+					   <td>[Presentation](Presentation/Data-Storage/Data-Storage.pptx) | [Demos](Presentation/Data-Storage/)</td>
 					   <td>This module gives an overview of HDInsight</td>
 					</tr>
 					<tr>
-					   <td>[IaaS](Presentation/IaaS/)</td>
-					   <td>[Presentation](Presentation/IaaS/IaaS.pptx)</td>
+					   <td>IaaS</td>
+					   <td>[Presentation](Presentation/IaaS/IaaS.pptx) | [Demos](Presentation/IaaS/)</td>
 					   <td>This module outlines the Virtual Machine and Virtual Network features of Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td>[Media](Presentation/Media/)</td>
-					   <td>[Presentation](Presentation/Media/Media.pptx)</td>
+					   <td>Media</td>
+					   <td>[Presentation](Presentation/Media/Media.pptx) | [Demos](Presentation/Media/)</td>
 					   <td>This Module outlines the Media Service on Microsoft Azure.</td>
 					</tr>
 					<tr>
-					   <td>[Mobile](Presentation/Mobile/)</td>
-					   <td>[Presentation](Presentation/Mobile/Mobile.pptx)</td>
-					   <td>This module outlines the mobile offerings on Microsoft Azure</td>
-					</tr>
-					<tr>
-					   <td>[Integration](Presentation/Integration-Hybrid-Workflows/)</td>
-					   <td>[Presentation](Presentation/Integration-Hybrid-Workflows/APIManagementIntro.pptx)</td>
+					   <td>Integration / Hybrid Workflows / API Management</td>
+					   <td>[Presentation](Presentation/Integration-Hybrid-Workflows/APIManagementIntro.pptx) | [Demos](Presentation/Integration-Hybrid-Workflows/)</td>
 					   <td>This module outlines the integration offerings on Microsoft Azure</td>
 					</tr>
 					<tr>
-					   <td>[Identity](Presentation/Identity-Access-Management/)</td>
-					   <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx)</td>
+					   <td>Identity / Access Management</td>
+					   <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx) | [Demos](Presentation/Identity-Access-Management/)</td>
 					   <td>This module outlines the Identity and Access Management offerings on Microsoft Azure</td>
 					</tr>
 					<tr>

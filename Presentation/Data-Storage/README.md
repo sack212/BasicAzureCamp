@@ -1,7 +1,5 @@
-<a name="title"></a>
 # Microsoft Azure Storage Demos #
 
----
 <a name="Overview"></a>
 ## Overview ##
 This is a set of demos showing how to interact with [Microsft Azure Storage](http://azure.microsoft.com/en-us/documentation/services/storage/) using tools, http and C# code.

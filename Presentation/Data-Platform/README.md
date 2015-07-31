@@ -1,7 +1,5 @@
-<a name="title"></a>
-# Microsoft Azure Storage Demos #
+# Data Platform Demos
 
----
 <a name="Overview"></a>
 ## Overview ##
 This is a set of demos showing different data related services in the [Microsft Azure Platform](http://azure.microsoft.com/en-us/services/).
