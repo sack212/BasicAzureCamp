@@ -1,138 +1,3 @@
-# Web Demos
-
-## Demo 1 - Creating a Web App
-
-This is a quick demo showing how quickly you can create a new Web App in the portal. Feel free to change alter this first demo.
-
-1. Browse to [Preview Portal](https://portal.azure.com)
-1. Click New / Web + Mobile / Web App.
-1. Enter a unique name in the URL field and click the Create button.
-1. While the site is being created, explain that Azure is provisioning a new Web App for you with supporting services, monitoring, support for continuous deployment, etc.
-
- > Note: This generally takes 30 - 60 seconds. During this time, you can ask them how long it would take their IT department or hosting provider to provision a new site for them. This us usually enough time for the new Web App to be created.
-
-1. When the site comes up, scroll through the various tiles (Monitoring, Usage, Operations, Deployment, Networking) explaining that these are all live and have been provisioned with the Web App.
-1. Click on the Browse button. When the default landing page loads, point out that the page illustrates the different options for publishing to the new site, including Git, FTP, Visual Studio, etc.
-1.  Back in the portal, Expand the Essentials panel, click on All Settings and click on Settings. Show that .NET, PHP, Python and Java are all shown.
-
-## Demo 2 - WebJobs
-
-This sample demonstrates creating a WebJob and performing operations with Microsoft Azure WebJobs SDK. The two functions in this example split strings into words (CountAndSplitInWords) and in characters (CharFrequency) and computes their frequencies. The results are stored in Azure Storage Tables.
-
-1. Go to http://portal.azure.com and provision a new free Web App.  
-
- > Note: You can use the Web App you provisioned in the first demo here.
-
-1. Open File Explorer and navigate to the Presentation\Web\Demo3 - Web Jobs\source\WebJobs folder in the DevCamp material.
-1. Open the project in Visual Studio, enable restore packages from nuget and compile (to download all the packages required inside bin directory)
-1. Enter a storage account name and key as instructed in App.config.
-1. Right-click project, select " Publish as Azure WebJob.." and then select "run on-demand" from the dropdown.
-1. Set a connection string named AzureWebJobsDashboard in the Web App configuration in the preview portal by using the following format.  
-
- > DefaultEndpointsProtocol=https;AccountName=NAME;AccountKey=KEY
-
-1. Find the WebJob under the Web App node in Server Explorer, right-click and select run.
-1. Find the storage account in Server Explorer and show the results in queue(textinput) and table(words).
-1. Show how to run the WebJob from the Wep App's WebJob setting blade in the portal. Show the log of successful runs.
-
-## Demo 3 - Creating an API App
-
-This is a quick demo showing how quickly you can create a new API App using Visual Studio.
-
-1. Create a new **ASP.NET Web Application** project using Visual Studio with the name **ProductsApp**
-2. Select the **Azure API App (Preview)** project template
-3. Add a Contact class to the project with the name **Product.cs**
-4. Add the following code to the contact class:
-
-		namespace ProductsApp.Models
-		{
-		    public class Product
-		    {
-		        public int Id { get; set; }
-		        public string Name { get; set; }
-		        public string Category { get; set; }
-		        public decimal Price { get; set; }
-		    }
-		}
-
-5. Delete the **ValuesController.cs** file in the **Controllers** folder.
-6. Add a new Empty Controller to the Web API project using the Default Scaffolding and the name **ProductsController.cs**
-7. Add the following code to the controller
-
-		using ProductsApp.Models;
-		using System;
-		using System.Collections.Generic;
-		using System.Linq;
-		using System.Net;
-		using System.Web.Http;
-
-		namespace ProductsApp.Controllers
-		{
-		    public class ProductsController : ApiController
-		    {
-						List<Product> products = new List<Product>
-		        {
-		            new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
-		            new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-		            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
-		        };
-
-		        public IEnumerable<Product> GetAllProducts()
-		        {
-		            return products;
-		        }
-
-		        public IHttpActionResult GetProduct(int id)
-		        {
-		            var product = products.FirstOrDefault((p) => p.Id == id);
-		            if (product == null)
-		            {
-		                return NotFound();
-		            }
-		            return Ok(product);
-		        }
-		    }
-		}
-
-8. Deploy the application to a new API App instance in Azure
-
-	> Ensure that the Access Level is set to **Available to Everyone**
-
-9. Open **Internet Explorer** and navigate to **https://www.hurl.it/**
-10. In the **Destination** textbox, add the URL for your API app with the relative url **/api/Products** appended to the end
-
-	> Ensure that you use the https scheme. `https://[API App Name].azurewebsites.net/api/Products`
-
-11. Click **Launch Request**
-12. Leave the project in Visual Studio open for future demos
-
-## Demo 4 - Basic Mobile App with Validation
-
-1. Use quick start to create an empty Mobile App with SQL DB instance
-2. Create a new data table
-3. Go into insert script and add validation to check length of item.text field
-
-		function insert(item, user, request) {
-
-			if (item.text.length < 5) {
-				request.respond(statusCodes.BAD_REQUEST, 'text should be 5 or more characters long');
-			}
-			else {
-				request.execute();
-			}
-		}
-
-4. Use HTTP tool (Fiddler, Postman, hurl.it) to validate the validation logic works on a POST request.
-
-
-
-
-
-
-
-
-
-
 # Azure App Service
 Demo Script
 ## Prerequisites
@@ -230,25 +95,29 @@ In the toolbar, click the Save button.
 
 > This first demo is intended to show how quickly you can create a new Web App in the portal.
 
-In Internet Explorer or Edge, navigate to the Azure Preview Portal and sign in.
-Click New / Web + Mobile / Web App.
-In the Web App blade, in the App Name text box, enter a unique name.
-Use a unique name like ‘MercuryJeff’ or something and take note of the App Name you use because you will need later in the demonstration.
-Under the Resource Group option, click the Or Create New hyperlink.
-In Azure, you can logically group your application and infrastructure resources into Resource Groups.
-In the Resource Group text box, enter any descriptive name (e.g. MercuryHealth).
+1. In Internet Explorer or Edge, navigate to the Azure Preview Portal and sign in.
+2. Click New / Web + Mobile / Web App.
+3. In the Web App blade, in the App Name text box, enter a unique name.
+4. Use a unique name like ‘MercuryJeff’ or something and take note of the App Name you use because you will need later in the demonstration.
+5. Under the Resource Group option, click the Or Create New hyperlink.
+6. In Azure, you can logically group your application and infrastructure resources into Resource Groups.
+7. In the Resource Group text box, enter any descriptive name (e.g. MercuryHealth).
 
 > Finally, we just need to create or select an App Service Plan. These plans are used to determine the sizing options, features, and, of course, pricing model for our Web Apps.
 
-Click the App Service Plan option and click the Create New button.
-In the App Service plan blade, in the App Service plan text box, enter a name (e.g. SCUS_S1)
-The most defining property of an App Service plan is the Pricing tier. We want to select an S1 Standard tier so we can check out some of the cool features like Deployment Slots and Auto Scale.
-Click the Pricing tier option and select the S1 Standard tier.
-In the upper-right of the Choose your pricing tier blade, click the View all hyperlink.
-As you can see, there are a lot of options for pricing tiers and prices show are estimates for a month.
-Click the Select button.
-Click the OK button.
-Click the Create button.
+8. Click the App Service Plan option and click the Create New button.
+9. In the App Service plan blade, in the App Service plan text box, enter a name (e.g. SCUS_S1)
+
+> The most defining property of an App Service plan is the Pricing tier. We want to select an S1 Standard tier so we can check out some of the cool features like Deployment Slots and Auto Scale.
+
+10. Click the Pricing tier option and select the S1 Standard tier.
+11. In the upper-right of the Choose your pricing tier blade, click the View all hyperlink.
+
+> As you can see, there are a lot of options for pricing tiers and prices show are estimates for a month.
+
+12. Click the Select button.
+13. Click the OK button.
+14. Click the Create button.
 
 > While the site is being created, Azure is provisioning a new Web App for you with supporting services, monitoring, support for continuous deployment, etc.
 
@@ -308,24 +177,24 @@ using (Microsoft.QualityTools.Testing.Fakes.ShimsContext.Create())
 1. Right-click MercuryHealth.Web project and select Add Application Insights Telemetry… from the context menu.
 2. Click the Configure settings… button.
 3. In the Resource Group combo box, enter MercuryHealth.Web.Insights
-In the Application Insights Resource combo box, enter MercuryHealth.Web.Dev
-Click the OK button.
-Click the Add button.
-Open the Cloud Explorer pane.
-Expand the Web Apps node, right-click the Web App you created previously, and select Open in Portal.
-If the blade for the Web App you created previously isn’t visible, you need to click the Browse All button and locate it.
+4. In the Application Insights Resource combo box, enter MercuryHealth.Web.Dev
+5. Click the OK button.
+6. Click the Add button.
+7. Open the Cloud Explorer pane.
+8. Expand the Web Apps node, right-click the Web App you created previously, and select Open in Portal.
+9. If the blade for the Web App you created previously isn’t visible, you need to click the Browse All button and locate it.
 
 > Our Web App is ready to go. This column of information in the portal can be used to monitor and manage your application. Note that we have a tile for Monitoring requests and errors, we can set alerts and so much more.
 
 > We’ve already added the App Insights to our application and that will get us most of the data we need, but let’s also add the agent in and get as many data points as we can!
 
-In the toolbar, click the Tools button.
-In the Tools blade, click Extensions.
-In the Installed web app extensions blade, in the toolbar, click the Add button.
-In the Add web app extension blade, click the Choose Extension option.
-In the Choose web app extension, select Application Insights.
-In the Accept legal terms blade, click the OK button.
-In the Add web app extensions blade, click the OK button.
+10. In the toolbar, click the Tools button.
+11. In the Tools blade, click Extensions.
+12. In the Installed web app extensions blade, in the toolbar, click the Add button.
+13. In the Add web app extension blade, click the Choose Extension option.
+14. In the Choose web app extension, select Application Insights.
+15. In the Accept legal terms blade, click the OK button.
+16. In the Add web app extensions blade, click the OK button.
 ### Set Auto-Scale (2 minutes)
 1. Click the tile labeled Scale.
 2. In the Scale setting blade, in the Scale by drop down list, select CPU Percentage.
@@ -410,21 +279,22 @@ In the Add web app extensions blade, click the OK button.
 
 > Let’s try to reproduce this ourselves in Visual Studio locally.
 
-Back in Visual Studio, click F5 to debug the application.
-In the navigation menu, click the Nutrition menu item.
-Click the Create New hyperlink.
-In the Quantity text box, enter 1
-In the Description text box, enter Apple
-In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-Click the Create button.
-Click the Create New hyperlink.
-In the Quantity text box, enter 1
-In the Description text box, enter Apple
-In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-Click the Create button.
-In the Visual Studio toolbar, click the Break All button (pause button).
-In the Diagnostics Tools pane, click the red Exception event.
-In the Events tab, click the Activate Historical Debugging hyperlink.
-This takes us right to the offending line of code where we can see someone is logging any exceptions, but they aren’t reflecting anything back to the user.
-Hopefully, you’ve seen how we can decide on our fix for this issue, check in the code and get it built, tested, and deployed in just a couple more minutes.
+27. Back in Visual Studio, click F5 to debug the application.
+28. In the navigation menu, click the Nutrition menu item.
+29. Click the Create New hyperlink.
+30. In the Quantity text box, enter 1
+31. In the Description text box, enter Apple
+32. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
+33. Click the Create button.
+34. Click the Create New hyperlink.
+35. In the Quantity text box, enter 1
+36. In the Description text box, enter Apple
+37. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
+38. Click the Create button.
+39. In the Visual Studio toolbar, click the Break All button (pause button).
+40. In the Diagnostics Tools pane, click the red Exception event.
+41. In the Events tab, click the Activate Historical Debugging hyperlink.
 
+> This takes us right to the offending line of code where we can see someone is logging any exceptions, but they aren’t reflecting anything back to the user.
+
+> Hopefully, you’ve seen how we can decide on our fix for this issue, check in the code and get it built, tested, and deployed in just a couple more minutes.
