@@ -30,66 +30,63 @@ The following steps must be completed prior to running through the following wal
 > If you need permissions to this source code in VSO, email me at jfattic@microsoft.com
 
 ### Setup Azure Subscription in VSO
-In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
-Navigate to your Team Project associated with the Mercury Health source code.
-In the upper-right of the page, click the Administer Account (gear icon) button.
-Click the Services tab.
-In the left-hand navigation pane, click the New Service Endpoint button, and select Azure.
-At the bottom-right of the ADD AZURE SUBSCRIPTION dialog box, click the publishsettings xml file hyperlink.
-Download your publish settings file and open it in any text editor.
-Back in ADD AZURE SUBSCRIPTION dialog box, in the Subscription id text box, paste the Subscription ID from your publishsettings file.
-In the Subscription name text box, paste the name of your subscription from your publishsettings file.
-In the Subscription certificate text box, paste the long certificate key (just the value between the quotes.
-Click the OK button.
-Close the browser tab.
+1. In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
+2. Navigate to your Team Project associated with the Mercury Health source code.
+3. In the upper-right of the page, click the Administer Account (gear icon) button.
+4. Click the Services tab.
+5. In the left-hand navigation pane, click the New Service Endpoint button, and select Azure.
+6. At the bottom-right of the ADD AZURE SUBSCRIPTION dialog box, click the publishsettings xml file hyperlink.
+7. Download your publish settings file and open it in any text editor.
+8. Back in ADD AZURE SUBSCRIPTION dialog box, in the Subscription id text box, paste the Subscription ID from your publishsettings file.
+9. In the Subscription name text box, paste the name of your subscription from your publishsettings file.
+10. In the Subscription certificate text box, paste the long certificate key (just the value between the quotes.
+11. Click the OK button.
+12. Close the browser tab.
 ### Setup Build Definition
 
 > This walkthrough assumes your VSO Team Project is using TFVC rather than Git. If you want to use Git, you will have to modify the steps as necessary.
 
-In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
-Navigate to your Team Project associated with the Mercury Health source code.
-From the main menu, click the BUILD menu item.
-In the left-hand navigation pane, click the Actions button (green plus sign).
-In the DEFINITION TEMPLATES dialog, select the Visual Studio option.
-Click the OK button.
+1. In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
+2. Navigate to your Team Project associated with the Mercury Health source code.
+3. From the main menu, click the BUILD menu item.
+4. In the left-hand navigation pane, click the Actions button (green plus sign).
+5. In the DEFINITION TEMPLATES dialog, select the Visual Studio option.
+6. Click the OK button.
 
 > This template sets up the standard build steps: compiling, running unit tests, indexing symbols, and publishing the build output.
 
-Select the Visual Studio Build step.
-Next to the Solution text box, click the ellipsis button, and navigate to the MercuryHealth solution file.
-In the MSBuild Arguments text box, enter the following: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:OutDir=”$(build.stagingDirectory)”
-
-Select the Visual Studio Test step.
+7. Select the Visual Studio Build step.
+8. Next to the Solution text box, click the ellipsis button, and navigate to the MercuryHealth solution file.
+9. In the MSBuild Arguments text box, enter the following: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:OutDir=”$(build.stagingDirectory)”
+10. Select the Visual Studio Test step.
 
 > This step is where we would tell the build engine where to find our tests and which ones to run. At this point, our app isn’t deployed anywhere, so we just want to run our unit tests.
 
-Select the Index Sources & Publish Symbols step.
+11. Select the Index Sources & Publish Symbols step.
 
 > When it comes to debugging versions of your application, it can be very advantageous to have indexed source files and then publishing versions of your symbol files to a symbol server location.
 
-Select the Publish Build Artifacts step.
-
-In the Copy Root text box, enter the following: $(Build.StagingDirectory)
-
-In the Contents text box, replace the text with **\*
-Click the Add build step… button.
+12. Select the Publish Build Artifacts step.
+13. In the Copy Root text box, enter the following: $(Build.StagingDirectory)
+14. In the Contents text box, replace the text with **\*
+15. Click the Add build step… button.
 
 > One of the most exciting aspects of the new build system is the ability to extend it to build, test, and deploy any kind of app on any platform. As you can see, we can add steps to build and sign Android apps, run Grunt tasks, or even build iOS apps on a Mac!
 
-Select the Azure Web App Deployment task.
-Click the Close button.
-In the Azure Subscription drop down list, select your Azure subscription.
-In the Web App Name text box, enter the name of the Web App you created previously.
-In the Web App Location text box, enter the location of the Web App you created previously.
-In the Slot text box, enter the name of the deployment slot you created previously (dev).
-In the Web Deploy Package text box, enter the following: $(Build.StagingDirectory)\**\MercuryHealth.Web.zip
-In the menu, click the Repository menu item.
-Under the Mappings heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
-Remove the second row cloaking the Drops folder.
-In the menu, click the Triggers menu item.
-Check the box labeled Continuous Integration (CI).
-Under the Filters heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
-In the toolbar, click the Save button.
+16. Select the Azure Web App Deployment task.
+17. Click the Close button.
+18. In the Azure Subscription drop down list, select your Azure subscription.
+19. In the Web App Name text box, enter the name of the Web App you created previously.
+20. In the Web App Location text box, enter the location of the Web App you created previously.
+21. In the Slot text box, enter the name of the deployment slot you created previously (dev).
+22. In the Web Deploy Package text box, enter the following: $(Build.StagingDirectory)\**\MercuryHealth.Web.zip
+23. In the menu, click the Repository menu item.
+24. Under the Mappings heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
+25. Remove the second row cloaking the Drops folder.
+26. In the menu, click the Triggers menu item.
+27. Check the box labeled Continuous Integration (CI).
+28. Under the Filters heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
+29. In the toolbar, click the Save button.
 ## Walkthrough
 ### Using Azure Portal to Create a Web App (5 minutes)
 
