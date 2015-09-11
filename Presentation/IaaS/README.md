@@ -1,45 +1,65 @@
-# IaaS Demos
-
-## Demo 1 - Provisioning a VM
-
-1. Open Ibiza portal and click the **NEW** button at the lower-left corner.
-2. Show the short list of resources. Explain that I can directly create popular resources here such as a Windows Server 2012.
-3. Click on the **Everything** link.
-4. In **Gallery** blade, open the **Virtual machines** category.
-5. Scroll down the view and show images of different types (refer back to slide 9).
-6. Click on **Windows Server 2012 R2 Datacenter**, and then click the **Create** button in the overview blade. For non-Microsoft focused audience, consider to pick a Linux image instead.
-7. Fill in the **Create VM** form and click on the **Create** button to provision the VM. Explain this will take a few minutes.
-8. Open the already provisioned VM.
-9. Scroll down the blade to show various of information available on the blade.
-10. Click on the **Extensions** tile. 
-11. On the Extensions blade, click on the **ADD** icon to bring up the extension list. Introduce that VM extensions are installable components to customize VM instances. 
-12. Switch to slides to continue with VM extension introduction.
-
-## Demo 2 - VM Extension 
-
-1.	In Azure PowerShell, issue command: **Get-AzureVMAvailableExtension | Format-Table -Property ExtensionName, Publisher**
-2.	The above cmdlet lists existing extensions. Next we’ll see how we can inject an extension to a running VM instance. In the last demo you’ve seen that you can achieve this using Azure Management Portal. Here we’ll do it using PowerShell. In this case, we’ll install Custom Script Extension to an existing Windows Server 2012 VM.
-3.	Issue the following cmdlets to get a reference to the virtual machine instance:
-      **$serviceName = “[cloud service that hosts the VM]”**
-      **$vmName = “[name of the VM]”**
-      **$vm = Get-AzureVM -ServiceName $serviceName -Name $vmName**
-4.	Next, issue command **Get-AzureVMExtension -VM $vm**. This lists VM extensions that are currently installed on the VM.
-5.	Use the following cmdlet to enable Custom Script Extension, and instruct it to download and execute the helloworld.ps1 (this takes about 20-30 seconds):
-**Set-AzureVMCustomScriptExtension -ContainerName scripts -StorageAccountName '[your storage account name]' -VM $vm -FileName ‘helloworld.ps1' -Run ‘helloworld.ps1' | Update-AzureVM -Verbose**
-6. Next, we’ll retrieve and display the script execution result:
-**$status = Get-AzureVM -ServiceName $serviceName -Name $vmName**
-**$result = $status.ResourceExtensionStatusList.ExtensionSettingStatus.SubStatusList | Select Name, @{"Label"="Message";Expression = {$_.FormattedMessage.Message }}** 
-**$result |fl**
-(see screenshots in hidden slides for references)
-
-([see this blog post](http://azure.microsoft.com/blog/2014/07/15/automating-sql-server-vm-configuration-using-custom-script-extension/) for more details on Custom Script Extension)
-
-### Prerequisites
-
-- Azure PowerShell v0.8 or higher has been installed and configured.
--	Desired Azure subscription has already been selected. 
--	A storage account has been provisioned under the same Azure subscription.
--	A **scripts** container has been created under the storage account with public read access.
--	A **helloworld.ps1** PowerShell script has been uploaded to the container. The content of the script is a single line: **write-output “Hello World!”**
--	PowerShell environment has been set with large font for easy reading.
--	A Windows Server 2012 VM has been provisioned.
+# Azure IaaS
+Demo Script
+## Prerequisites
+Azure subscription – You can use any type of Azure subscription (an MSDN subscription, a Pay-As-You-Go subscription, etc.)
+VSO account – we will be using less than 10 build minutes, but you should make sure you have enough spending in your account to accommodate this. Sign up for a VSO account here.
+Visual Studio Enterprise 2015
+PowerShell Tools for Visual Studio 2015
+Azure SDK – The Azure SDK for VS 2015 can be found here.
+## Setup
+Setup local PowerShell environment
+Open a PowerShell command prompt as an administrator.
+We need to first override the default Windows PowerShell execution policy.
+Enter Set-ExecutionPolicy –ExecutionPolicy RemoteSigned and press the Enter key.
+When prompted, enter y and press the Enter key.
+Next, we’ll import the Azure module, and run the command to fetch our Azure subscription’s publish settings file. 
+Enter Import-Module Azure and press the Enter key.
+Enter Get-AzurePublishSettingsFile and press the Enter key.
+Sign in using the credentials associated with the desired Azure subscription.
+Save the publish settings file to C:\Developer Files and rename it to MyPublishSettings.publishsettings.
+Enter Import-AzurePublishSettingsFile –PublishSettingsFile “C:\Developer Files\MyPublishSettings.publishsettings” and press the Enter key.
+You can run Get-AzureSubscription to confirm that this worked correctly.
+## Walkthrough
+Create Virtual Machine (5 minutes)
+In Internet Explorer or Edge, navigate to https://portal.azure.com.
+In the left-hand navigation pane, click the NEW button.
+In the Create blade, click Compute.
+In the Compute blade, click Marketplace.
+As you can see, we have a huge array of options ranging from Windows Server to Ubuntu, from Chef Server to Oracle, and many more!
+We just want to create a standard IIS web server, so we’ll search for Windows servers.
+In the Compute blade, in the search text box, enter 2012 datacenter
+Select Windows Server 2012 R2 Datacenter.
+In the Windows Server 2012 R2 Datacenter blade, in the Select a deployment model dropdown list, select Resource Manager.
+Click the Create button.
+In the Basics blade, in the Name text box, enter a unique name (e.g. JeffIaaSOneVm).
+In the User name text box, enter the local administrator user name.
+In the Password text box, enter a password for the local administrator account.
+In the Resource Group text box, enter a name (e.g. JeffIaaSOneRg).
+Click the Location option.
+One of the nicest things about Azure is the number of datacenters allow you to create resources close to your end users without having to build your own multi-million dollar datacenter.
+In the Location blade, select Central US.
+Click the OK button.
+In the Choose a size blade, click the View all hyperlink.
+You can see there a wide range of size options. Maybe you want a shared core just for dev / test purposes or maybe you need a SQL server with 32 cores. Maybe IO is a bigger concern and you need a local SSD.
+Note the prices are listed with each option. These are undiscounted charges if you run the VM non-stop for an average month. You only pay for every minute that you have the machine up and running, so it will be much cheaper if you shut machines down outside of business hours for example.
+For this demo, we’ll just select a an A3 from the list.
+Select A3 Standard.
+Click the Select button.
+There are a lot more options for further configuring your machine. You can add it to a virtual network extending your datacenter or set it an availability set for redundancy.
+Make note of the storage account name as we’ll need that later.
+In the Settings blade, click the OK button.
+In the Summary blade, click the OK button.
+This will only take a minute or two, but we’ll jump into Visual Studio and show you a bit more from a developer’s perspective.
+Create Web App (5 minutes)
+Open Visual Studio 2015.
+In the main menu, click File | New | Project…
+In the New Project dialog, under the Installed pane, select Visual C# | Web.
+In the middle pane, select ASP.NET Web Application.
+In the right-hand pane, check the box labeled Add Application Inisghts to Project.
+In the Name text box, enter a unique name (e.g. JeffIaaSOne).
+In the Location text box, enter c:\DeleteMe
+Uncheck the box labeled Add to source control.
+Click the **OK** button.
+In the **New ASP.NET Project** dialog, select the MVC template.
+Check the box labeled Host in the Cloud and select Virtual Machine (v2) from the drop down list.
+Click the **OK** button.
