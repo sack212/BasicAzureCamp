@@ -14,41 +14,41 @@ Azure SDK – The Azure SDK for VS 2015 can be found here.
 
 2. Enter **Set-ExecutionPolicy –ExecutionPolicy RemoteSigned** and press the **Enter** key.
 3. When prompted, enter **y** and press the **Enter** key.
-Next, we’ll import the Azure module, and run the command to fetch our Azure subscription’s publish settings file. 
-Enter Import-Module Azure and press the Enter key.
-Enter **Get-AzurePublishSettingsFile** and press the **Enter** key.
-Sign in using the credentials associated with the desired Azure subscription.
-Save the publish settings file to **C:\Developer Files** and rename it to **MyPublishSettings.publishsettings**.
-Enter **Import-AzurePublishSettingsFile –PublishSettingsFile “C:\Developer Files\MyPublishSettings.publishsettings”** and press the **Enter** key.
+4. Next, we’ll import the Azure module, and run the command to fetch our Azure subscription’s publish settings file. 
+5. Enter **Import-Module Azure** and press the **Enter** key.
+6. Enter **Get-AzurePublishSettingsFile** and press the **Enter** key.
+7. Sign in using the credentials associated with the desired Azure subscription.
+8. Save the publish settings file to **C:\Developer Files** and rename it to **MyPublishSettings.publishsettings**.
+9. Enter **Import-AzurePublishSettingsFile –PublishSettingsFile “C:\Developer Files\MyPublishSettings.publishsettings”** and press the **Enter** key.
 
 > You can run Get-AzureSubscription to confirm that this worked correctly.
 
 ## Walkthrough
 ### Create Virtual Machine (5 minutes)
-In **Internet Explorer** or **Edge**, navigate to https://portal.azure.com.
-In the left-hand navigation pane, click the **NEW** button.
-In the **Create** blade, click **Compute**.
-In the **Compute** blade, click **Marketplace**.
+1. In **Internet Explorer** or **Edge**, navigate to https://portal.azure.com.
+2. In the left-hand navigation pane, click the **NEW** button.
+3. In the **Create** blade, click **Compute**.
+4. In the **Compute** blade, click **Marketplace**.
 
 > As you can see, we have a huge array of options ranging from Windows Server to Ubuntu, from Chef Server to Oracle, and many more!
 
 > We just want to create a standard IIS web server, so we’ll search for Windows servers.
 
-In the **Compute** blade, in the search text box, enter 2012 datacenter
-Select **Windows Server 2012 R2 Datacenter**.
-In the **Windows Server 2012 R2 Datacenter** blade, in the **Select a deployment model** dropdown list, select **Resource Manager**.
-Click the **Create** button.
-In the **Basics** blade, in the Name text box, enter a unique name (e.g. JeffIaaSOneVm).
-In the **User name** text box, enter the local administrator user name.
-In the **Password** text box, enter a password for the local administrator account.
-In the **Resource Group** text box, enter a name (e.g. JeffIaaSOneRg).
-Click the **Location** option.
+5. In the **Compute** blade, in the search text box, enter 2012 datacenter
+6. Select **Windows Server 2012 R2 Datacenter**.
+7. In the **Windows Server 2012 R2 Datacenter** blade, in the **Select a deployment model** dropdown list, select **Resource Manager**.
+8. Click the **Create** button.
+9. In the **Basics** blade, in the Name text box, enter a unique name (e.g. JeffIaaSOneVm).
+10. In the **User name** text box, enter the local administrator user name.
+11. In the **Password** text box, enter a password for the local administrator account.
+12. In the **Resource Group** text box, enter a name (e.g. JeffIaaSOneRg).
+13. Click the **Location** option.
 
 > One of the nicest things about Azure is the number of datacenters allow you to create resources close to your end users without having to build your own multi-million dollar datacenter.
 
-In the **Location** blade, select **Central US**.
-Click the **OK** button.
-In the **Choose a size** blade, click the **View all** hyperlink.
+14. In the **Location** blade, select **Central US**.
+15. Click the **OK** button.
+16. In the **Choose a size** blade, click the **View all** hyperlink.
 
 > You can see there a wide range of size options. Maybe you want a shared core just for dev / test purposes or maybe you need a SQL server with 32 cores. Maybe IO is a bigger concern and you need a local SSD.
 
@@ -56,14 +56,14 @@ In the **Choose a size** blade, click the **View all** hyperlink.
 
 > For this demo, we’ll just select a an A3 from the list.
 
-Select **A3 Standard**.
-Click the **Select** button.
+17. Select **A3 Standard**.
+18. Click the **Select** button.
 
 > There are a lot more options for further configuring your machine. You can add it to a virtual network extending your datacenter or set it an availability set for redundancy.
 
-Make note of the storage account name as we’ll need that later.
-In the **Settings** blade, click the **OK** button.
-In the **Summary** blade, click the **OK** button.
+19. Make note of the storage account name as we’ll need that later.
+20. In the **Settings** blade, click the **OK** button.
+21. In the **Summary** blade, click the **OK** button.
 
 > This will only take a minute or two, but we’ll jump into Visual Studio and show you a bit more from a developer’s perspective.
 
