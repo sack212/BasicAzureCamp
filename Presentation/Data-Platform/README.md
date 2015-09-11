@@ -41,8 +41,8 @@ In this dem you will use the new Azure Portal (Ibiza) to create a new database s
 
 Using the same database server from before…
 
-1. Back in the portal with the database from last demo, click on “Open in Visual Studio” and firewall. Show that it’s work in progress here.
-2. Go to the old portal and configure firewall based on current IP. Reload this in the new portal and see the firewall rule there.
+1. Back in the portal with the database from last demo, click on “Open in Visual Studio” and show that the connection is denied because of firewall rules.
+2. Open the SQL Server in the portal and configure a firewall rule to allow your IP address access (this works in the new portal now)
 3. Click Open in Visual Studio and show the database from Visual Studio.
 4. Open SSMS (SQL Server Management Studio) and the connect dialog. (Note: It’s probably a good idea to run at least SQL Server Developer Edition on your local machine.)
 5. Back in the portal again reopen the connection strings. This is a good place to find the exact credentials to connect to  your database!
