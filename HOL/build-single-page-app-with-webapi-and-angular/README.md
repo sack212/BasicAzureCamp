@@ -103,7 +103,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
 
     _Creating a new ASP.NET Web Application project_
 
-3. In the **New ASP.NET Project** dialog, select **MVC**. Make sure that the **Host in the cloud** option is also selected, and then click **Change Authentication**.
+3. In the **New ASP.NET Project** dialog, select **MVC** and **Web API**. Make sure that the **Host in the cloud** option is also selected, and then click **Change Authentication**.
 
     ![Creating a new project with the MVC template, including Web API components](./images/newMvcProjectTemplate.png)
 
