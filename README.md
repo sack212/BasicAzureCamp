@@ -42,7 +42,7 @@
                   </tr>
                   <tr>
                   <td>15</td>
-                  <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>                     			  <td>[HOL - Working with the Azure Portal](HOL/working-with-the-new-portal/)</td>
+                  <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>
                   </tr>		
                   <tr>		
                      <td>(optional)</td>
