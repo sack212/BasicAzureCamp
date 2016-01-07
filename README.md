@@ -41,7 +41,7 @@
                      <td>[HOL - Signup](HOL/creating-azure-account-activating-msdn-benefits/)</td>
                   </tr>
                   <tr>
-                     <td rowspan=4>Intro to Azure</td>
+                     <td>30</td>
                      <td>[HOL - Working with the Azure Portal](HOL/working-with-the-new-portal/)</td>
                   </tr>
                   <tr>
