@@ -1,25 +1,25 @@
-﻿Introduction to the Azure Preview Portal
+﻿Introduction to the Azure Portal
 =============================================
 
-The new Azure Preview portal is an all-in-one, work-anywhere experience. Now you can manage App Service Apps, databases and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience.
+The new Azure portal is an all-in-one, work-anywhere experience. Now you can manage App Service Apps, databases and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience.
 
 This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single, easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
 
 The new portal allows each user to transform the portal home page (called the _Startboard_) into their own customized dashboard. Stay on top of the things that matter most by pinning them to your **Startboard**. Resize parts to show more or less data. Drill in for all the details. And see insights (and opportunities) across apps and resources. New components include the following:
 
-* **Simplified Resource Management**. Rather than managing standalone resources such as Azure App Service Web Apps, Visual Studio Projects or databases, customers can now create, manage and analyze their entire application as a single resource group in a unified, customized experience, greatly reducing complexity while enabling scale. Today, the new Azure Manager is also being released through the latest Azure SDK for customers to automate their deployment and management from any client or device.
+* **Simplified Resource Management**. Rather than managing standalone resources such as Azure App Service Web Apps, Visual Studio Projects or databases, customers can now create, manage and analyze their entire application as a single resource group in a unified, customized experience, greatly reducing complexity while enabling scale. Today, the new Azure Manager is also available through the latest Azure SDK for customers to automate their deployment and management from any client or device.
 
 * **Integrated billing**. A new integrated billing experience enables developers and IT pros to take control of their costs and optimize their resources for maximum business advantage.
 
 * **Marketplace**. A rich marketplace of applications and services from Microsoft and the open source community. This integrated marketplace of free and paid services enables customers to leverage the ecosystem to be more agile and productive.
 
-* **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Preview Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
+* **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
 
 ## Creating a Web App + SQL ##
 
-Historically, managing a resource (a user-managed entity such as a database server, database or Web App) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It is left up to us, as cloud developers and IT professionals, to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure Preview portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources.
+Historically, managing a resource (a user-managed entity such as a database server, database or Web App) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It is left up to us, as cloud developers and IT professionals, to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources.
 
-In this task, you will learn about the preview portal and how to create a new Web App and a SQL Database using it.
+In this task, you will learn about the portal and how to create a new Web App and a SQL Database using it.
 
 1. Open a browser and browse to http://portal.azure.com and log in using your credentials.
 
@@ -31,7 +31,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Your Home Page: The Startboard_
 
-3. On the left side, you will see the **Hub Menu**. This is the navigation menu where you can access all of your resources and options. Click the **New** button at the bottom of the **Hub Menu**.
+3. On the left side, you will see the **Hub Menu**. This is the navigation menu where you can access all of your resources and options. Click the **New** button at the top of the **Hub Menu**.
 
 	![Creating a new resource](Images/creating-a-new-resource.png?raw=true)
 
@@ -43,14 +43,14 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Displaying every resource type_
 
-	On the next screen, you get all the available options for Web, Mobile Apps and other Azure App Service Apps. Click on the **Azure Marketplace**. You can find ready to use templates.
+	On the next screen, you get all the available options for Web, Mobile Apps and other Azure App Service Apps. Click on the **See all**. You can find ready to use templates.
 
 	![Azure Marketplace](Images/web-mobile-apps-options.png?raw=true)
 
 	_Azure Marketplace_
 
 
-5. Scroll down until you find the **Web app + SQL** option and then click it.
+5. Find the **Web app + SQL** option and then click it.
 
 	![Selecting Web App](Images/selecting-website-sql.png?raw=true)
 
@@ -68,21 +68,13 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	> ![Tour](Images/tour.png?raw=true)
 
-6. When you create an application that consists of several resources working together (like in this example, a Web app + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Web app** option.
-
-	> **Note:** Resource group names can only contain letters, numbers, periods, underscores and dashes.
-
-	![New Web App](Images/new-resource-group.png?raw=true)
-
-	_New Resource Group_
-
-7. Another blade is opened which displays the options to create a new **Web app**. Select a URL for your Web app, for example _myMSAzureWebsite_. Take into account that this name must be unique. Also fill in the **Create new App Service Plan** or **Select existing** if you already have one.
+6. Select *App Service Name* option, another blade is opened which displays the options to create a new **Web app**. Select a URL for your Web app, for example _myMSAzureWebsite_. Take into account that this name must be unique. Also fill in the **Create new App Service Plan** or **Select existing** if you already have one.
 
 	![Creating the App Service Plan](Images/changing-the-web-hosting-plan.png?raw=true)
 
 	_Creating the App Service Plan_
 
-8. If you would like to change the Pricing Tier, click on the **Pricing Tier**. In the _Choose your pricing tier_ blade, you can choose the App Service plan that fits your needs.
+7. If you would like to change the Pricing Tier, click on the **Pricing Tier**. In the _Choose your pricing tier_ blade, you can choose the App Service plan that fits your needs.
 
 	App Service plans represent a set of features and capacity that you can share across your App Service Apps, including Web Apps. App Service plans support several pricing tiers (e.g. Free, Shared, Basic, Standard and Premium), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. App Service plans in the Basic, Standard and Premium tiers provider sites with a dedicated infrastructure, meaning that only the app or apps you choose to associate with this plan will be running on those resources. In this tier you can configure your App Service Plan to use one or more virtual machine instances. As we are going to use the default App Service plan, just close this blade.
 
@@ -92,9 +84,9 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Selecting a Pricing Tier_
 
-9. Click **OK** to go back to the **Web app** blade. You can change or leave the default location for the Web app. Click **OK** to go to the previous blade.
+8. Select a relevant location and click OK.
 
-10. Click **Database** to change the settings for your new database.
+9. Click **Database** to change the settings for your new database.
 
 	>**Note:** If there are any existing databases asociated to the user, the **Database** blade will show up. Select **Create a new Database**.
 
@@ -102,7 +94,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Changing your database settings_
 
-11. Set a name for the database, e.g. _mywebsite-db_, and click the **Server** option.
+10. Set a name for the database, e.g. _mywebsite-db_, and click the **Server** option.
 
 	> **Note:** You can also enter in the **Pricing Tier** section and explore the different pricing tiers.
 
@@ -110,36 +102,45 @@ In this task, you will learn about the preview portal and how to create a new We
 
 	_Database Settings_
 
-12. Enter the **Server Name**, **Server admin login** and a **Password**. Click **OK** to go back to the **New Database** blade, and click **OK** to close it.
+11. Enter the **Server Name**, **Server admin login** and a **Password**. Click **OK** to go back to the **New Database** blade, and click **OK** to close it.
 
 	![Configuring the Database Server](Images/configuring-the-database-server.png?raw=true)
 
 	_Configuring the Database Server_
+	
+12. When you create an application that consists of several resources working together (like in this example, a Web app + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Web app** option.
+
+	> **Note:** Resource group names can only contain letters, numbers, periods, underscores and dashes.
+
+	![New Web App](Images/new-resource-group.png?raw=true)
+
+	_New Resource Group_
 
 13. Now you are ready to create your resource group. Click **Create**.
 
-14. You can see when the new resource group is created by accessing the **Notifications** tool. On the **Hub Menu**, click **Notifications**.
+14. You can see status of the creation process by accessing the **Notifications** tool. On the right top, click bell icon for **Notifications**.
 
 	![Notifications](Images/notifications.png?raw=true)
 
 	_Notifications_
 
-15. Once completed, you can click the notification to open the resource group blade.
-
-	![Created Resource Group Notification](Images/created-resource-group-notification.png?raw=true)
+15. Once the Resource group is successfully created the notification message accordingly displays the relevant message.
+	
+		![Created Resource Group Notification](Images/created-resource-group-notification.png?raw=true)
 
 	_Created Resource Group Notification_
+	
+16. Notice that the recently created resource group was automatically added to the Startboard for easy access. 
 
-16. You created your new resource group, which includes a Web App, a SQL Server and a SQL Database.
+	![Resource Group added to Startboard](Images/resource-group-added-to-startboard.png?raw=true)
+
+16. Click on the name of the resource group to open it. You created your new resource group, which includes a Web App, a SQL Server and a SQL Database.
 
 	![New Resource Group Blade](Images/new-resource-group-blade.png?raw=true)
 
 	_New Resource Group Blade_
 
-	> **Note:** Notice that the recently created resource group was automatically added to the Startboard for easy access.
-	![Resource Group added to Startboard](Images/resource-group-added-to-startboard.png?raw=true)
-
-	>**Note 2:** It is good practice to cleanup any resources that will not be used. To delete the demo resources just created, follow these steps:
+	>**Note:** It is good practice to cleanup any resources that will not be used. To delete the demo resources just created, follow these steps:
 	>
 	>1. In the Resource Group, click **DELETE** at the top of the page.
 	>
@@ -168,4 +169,4 @@ In this task, you will learn about the preview portal and how to create a new We
 <a name="Summary"></a>
 ## Summary ##
 
-The new Azure Preview portal offers an exciting look into the future of DevOps. This is a first-of-its-kind experience which brings together all of the individual resources, people, and lifecycle stages of your application into a unified portal. In this lab, you learned about the preview portal and how to create a new resource group by building a Web App.
+The new Azure portal offers an exciting look into the future of DevOps. This is a first-of-its-kind experience which brings together all of the individual resources, people, and lifecycle stages of your application into a unified portal. In this lab, you learned about the portal and how to create a new resource group by building a Web App.
