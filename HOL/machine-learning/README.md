@@ -155,7 +155,7 @@ columns.*
     status and sex, other debtors, present residence since, property,
     age in years, other installment plans, housing, number of existing
     credits, job, number of people providing maintenance for, telephone,
-    foreign worker, credit risk **
+    foreign worker, credit risk**
 
 3.  The **Properties** pane will look like this:
 
