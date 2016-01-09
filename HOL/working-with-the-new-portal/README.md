@@ -158,7 +158,7 @@ In this task, you will learn about the portal and how to create a new Web App an
 	>
 	>![Notification after Resource Group was deleted](Images/notification-after-resource-group-was-deleted.png?raw=true)
 	>
-	>1. Click **Home** to navigate to the StartBoard. Once there, find and right-click the tile for the resource group. Click **unpin from Startboard**.
+	>1. Navigate to the StartBoard. Once there, find and right-click the tile for the resource group. Click **unpin from Startboard**.
 	>
 	>![Unpin Resource Group from StartBoard](Images/unpin-resource-group-from-startboard.png?raw=true)
 	>
