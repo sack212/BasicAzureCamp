@@ -41,10 +41,10 @@
                      <td>[HOL - Signup](HOL/creating-azure-account-activating-msdn-benefits/)</td>
                   </tr>
                   <tr>
-                     <td>15</td>
-                     <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>
-                  </tr>
-                  <tr>
+                  <td>15</td>
+                  <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>
+                  </tr>		
+                  <tr>		
                      <td>(optional)</td>
                      <td>[HOL - Working with the new Portal](HOL/working-with-the-new-portal/)</td>
                   </tr>
