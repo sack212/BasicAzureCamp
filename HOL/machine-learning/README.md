@@ -103,18 +103,15 @@ Estimated time to complete this lab: **1-2 Hours**
 
     ![](Images/image8.png)
 
-***Column headings** are not essential, but they will make it easier to
+**Column headings** are not essential, but they will make it easier to
 work with the data in the model. Also, when we eventually publish this
 model in a web service, the headings will help identify the columns to
 the user of the service. We can add column headings using
-the *[*Metadata
-Editor *](https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/)*module.
-The *[*Metadata
-Editor *](https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/)*module
+the [Metadata Editor] (https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/) module.
+The [Metadata Editor] (https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/) module
 is used to change the metadata associated with a dataset. In this case,
 it can provide more friendly names for column headings. To do this,
-we'll direct *[*Metadata
-Editor *](https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/)*to
+we'll direct  [Metadata Editor] (https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/) to
 act on all columns and then provide a list of names to be added to the
 columns.*
 
