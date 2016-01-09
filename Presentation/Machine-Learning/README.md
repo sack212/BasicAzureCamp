@@ -1,4 +1,4 @@
-Microsoft Azure Machine Learning – Credit Risk Analysis
+Microsoft Azure Machine Learning – Predicting Automobile Prices
 ===========================================
 
 For demo, use the starter experiment :
