@@ -229,31 +229,31 @@ In this task, you will download and run this sample.
 13.  Now, type **4** and press ***enter*** in the application to execute
     a sample Multi-Shard Query.
 
-> Notice the *\$ShardName* column. It should show that the rows with
-> a *CustomerId* from 0 to 99 are located in
-> the*ElasticScaleStarterKit\_Shard0* shard and those with
-> a *CustomerId* from 100 to 199 are located in
-> the*ElasticScaleStarterKit\_Shard1* shard.
->
-> **Note:** Querying across shards is illustrated in the
-> file **MultiShardQuerySample.cs**. For more information,
-> see [Multi-Shard Querying](http://go.microsoft.com/?linkid=9862597).
->
+    > Notice the *\$ShardName* column. It should show that the rows with
+    > a *CustomerId* from 0 to 99 are located in
+    > the*ElasticScaleStarterKit\_Shard0* shard and those with
+    > a *CustomerId* from 100 to 199 are located in
+    > the*ElasticScaleStarterKit\_Shard1* shard.
+    >
+    > **Note:** Querying across shards is illustrated in the
+    > file **MultiShardQuerySample.cs**. For more information,
+    > see [Multi-Shard Querying](http://go.microsoft.com/?linkid=9862597).
+    >
     > ![](images/image21.png)
->
-> *Executing a Multi-Shard Query*
+    >
+    > *Executing a Multi-Shard Query*
 
 14.  Type **2** and press ***enter*** in the application to add
     another shard. When prompted for the higher key of the new range,
     press ***enter*** to use the default value of *300*.
 
-> **Note:** The iterative adition of new empty shards is performed by
-> the code in file **AddNewShardsSample.cs**. For more information,
-> see [Shard Map Management](http://go.microsoft.com/?linkid=9862595).
->
+    > **Note:** The iterative adition of new empty shards is performed by
+    > the code in file **AddNewShardsSample.cs**. For more information,
+    > see [Shard Map Management](http://go.microsoft.com/?linkid=9862595).
+    >
     > ![](images/image22.png)
->
-> *Adding a new shard*
+    >
+    > *Adding a new shard*
 
 15.  Switch back to the [Azure Portal](http://portal.azure.com). You
     should see a new database for the new shard
@@ -304,7 +304,7 @@ created in the first task.
 The server will be deleted. Once it is done you should see a
 notification in the bottom bar.
 
-**Summary**
+###Summary
 
 By completing this lab, you have learned the basic concepts of Azure SQL
 Database Elastic DB Tools: Shard Map Management, Data Dependent Routing
