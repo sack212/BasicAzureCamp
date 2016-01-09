@@ -46,7 +46,7 @@ Database server.
 
 2.  Click **New &gt; Data + Storage &gt; SQL Database**.
 
-> ![](Images/image1.png){width="5.321564960629921in"
+> ![](images/image1.png){width="5.321564960629921in"
 > height="5.237988845144357in"}
 >
 > *Navigating to the SQL Database Server tab*
@@ -54,7 +54,7 @@ Database server.
 1.  The **SQL Database** settings blade that appears is where you'll set
     up the **server and database** details.
 
-> ![](Images/image2.png){width="2.410758967629046in"
+> ![](images/image2.png){width="2.410758967629046in"
 > height="5.3277777777777775in"}
 
 *A SQL database in Azure lives on a database server. A server can host
@@ -68,7 +68,7 @@ earlier. We'll set up a new one.*
 2.  Under **Server** click **Configure required settings**, and then
     click **Create a new server**.
 
-    ![](Images/image3.png){width="5.038790463692038in"
+    ![](images/image3.png){width="5.038790463692038in"
     height="2.1640277777777777in"}
 
 3.  In the **New server** blade, type a **Server Name** that's unique
@@ -78,7 +78,7 @@ earlier. We'll set up a new one.*
 4.  Type a **Server admin login** that's easy to remember. Then type a
     secure **Password** and type it again in **Confirm password**.
 
-> ![](Images/image4.png){width="2.318357392825897in"
+> ![](images/image4.png){width="2.318357392825897in"
 > height="5.020550087489064in"}
 >
 > *Leave **Create V12 Server (latest update)** set to **Yes** to use the
@@ -90,14 +90,14 @@ earlier. We'll set up a new one.*
 2.  In the **SQL Database** blade, click **Select source** and then
     click **Blank**.
 
-> ![](Images/image5.png){width="4.256363735783027in"
+> ![](images/image5.png){width="4.256363735783027in"
 > height="3.0012817147856516in"}
 
 1.  Go back to the **SQL Database** blade, where **Select Source** now
     shows **Blank Database**. Click **Create** to kick off creation of
     the server and database.
 
-> ![](Images/image6.png){width="1.990048118985127in"
+> ![](images/image6.png){width="1.990048118985127in"
 > height="3.6929254155730535in"}
 >
 > You need to set up a firewall rule on the server that allows
@@ -110,23 +110,23 @@ earlier. We'll set up a new one.*
     and then click the name of the server you created earlier from the
     list of **SQL servers**
 
-    ![](Images/image7.png){width="5.892407042869642in"
+    ![](images/image7.png){width="5.892407042869642in"
     height="1.537638888888889in"}
 
 2.  In the database properties blade that appears to the right,
     click **Settings** and then click **Firewall** from the list
 
-> ![](Images/image8.png){width="5.825484470691164in"
+> ![](images/image8.png){width="5.825484470691164in"
 > height="2.1692989938757656in"}
 >
 > The **Firewall settings** show your current **Client IP address**.
 >
-> ![](Images/image9.png){width="3.125in" height="1.8125in"}
+> ![](images/image9.png){width="3.125in" height="1.8125in"}
 
 1.  Click **Add Client IP** to have Azure create a rule for that IP
     address, and then click **Save**.
 
-> ![](Images/image10.png){width="3.125in"
+> ![](images/image10.png){width="3.125in"
 > height="1.8541666666666667in"}
 
 1.  Take note of the name of the **SQL Database server**
@@ -150,21 +150,21 @@ In this task, you will download and run this sample.
 
 1.  Open Visual Studio and select **File -&gt; New -&gt; Project**.
 
-> ![](Images/image11.png){width="5.611504811898513in"
+> ![](images/image11.png){width="5.611504811898513in"
 > height="3.284449912510936in"}
 >
 > *Creating a new project*
 
 1.  In the *New Project* dialog box, click **Online**.
 
-> ![](Images/image12.png){width="5.745138888888889in"
+> ![](images/image12.png){width="5.745138888888889in"
 > height="3.502516404199475in"}
 >
 > *Clicking Online*
 
 1.  Then click **Visual C\#** under **Samples**.
 
-> ![](Images/image13.png){width="6.272755905511811in"
+> ![](images/image13.png){width="6.272755905511811in"
 > height="3.82417760279965in"}
 >
 > *Navigating to online C\# samples*
@@ -175,14 +175,14 @@ In this task, you will download and run this sample.
 2.  Select the sample, choose a name and a location for the new project
     and click **OK** to create the project.
 
-> ![](Images/image14.png){width="5.7420231846019245in"
+> ![](images/image14.png){width="5.7420231846019245in"
 > height="3.236126421697288in"}
 >
 > *Creating the sample project*
 
 1.  If the **Download and Install** dialog comes up, click **Install**.
 
-> ![](Images/image15.png){width="3.4583333333333335in"
+> ![](images/image15.png){width="3.4583333333333335in"
 > height="3.008307086614173in"}
 >
 > *Clicking Install in the Download and Install dialog*
@@ -193,7 +193,7 @@ In this task, you will download and run this sample.
     the *MyUserName* and *MyPassword* placeholders with your login
     information (user name and password).
 
-> ![](Images/image16.png){width="6.116666666666666in"
+> ![](images/image16.png){width="6.116666666666666in"
 > height="2.8326148293963254in"}
 >
 > *Configuring the sample project*
@@ -203,7 +203,7 @@ In this task, you will download and run this sample.
     download the latest version of the Elastic Database Tools client
     libraries from **NuGet**.
 
-> ![](Images/image17.png){width="4.85308508311461in"
+> ![](images/image17.png){width="4.85308508311461in"
 > height="3.1119892825896764in"}
 >
 > *Running the sample*
@@ -218,7 +218,7 @@ In this task, you will download and run this sample.
 >
 > The output will look like this:
 >
-> ![](Images/image18.png){width="4.860906605424322in"
+> ![](images/image18.png){width="4.860906605424322in"
 > height="6.347222222222222in"}
 >
 > *Creating the shard map manager and adding several shards*
@@ -227,7 +227,7 @@ In this task, you will download and run this sample.
     the SQL Server created and click on the **SQL**
     **DATABASES** section.
 
-> ![](Images/image19.png){width="5.840277777777778in"
+> ![](images/image19.png){width="5.840277777777778in"
 > height="2.8159372265966756in"}
 >
 > Notice that you have three new databases: the shard manager and one
@@ -241,7 +241,7 @@ In this task, you will download and run this sample.
 > in **DataDependentRoutingSample.cs**. For more details, see [Data
 > Dependent Routing](http://go.microsoft.com/?linkid=9862596).
 >
-> ![](Images/image20.png){width="5.5465277777777775in"
+> ![](images/image20.png){width="5.5465277777777775in"
 > height="2.809032152230971in"}
 >
 > *Inserting sample row*
@@ -262,7 +262,7 @@ In this task, you will download and run this sample.
 > file **MultiShardQuerySample.cs**. For more information,
 > see [Multi-Shard Querying](http://go.microsoft.com/?linkid=9862597).
 >
-> ![](Images/image21.png){width="6.1715277777777775in"
+> ![](images/image21.png){width="6.1715277777777775in"
 > height="3.780569772528434in"}
 >
 > *Executing a Multi-Shard Query*
@@ -275,7 +275,7 @@ In this task, you will download and run this sample.
 > the code in file **AddNewShardsSample.cs**. For more information,
 > see [Shard Map Management](http://go.microsoft.com/?linkid=9862595).
 >
-> ![](Images/image22.png){width="6.067361111111111in"
+> ![](images/image22.png){width="6.067361111111111in"
 > height="4.043513779527559in"}
 >
 > *Adding a new shard*
@@ -284,7 +284,7 @@ In this task, you will download and run this sample.
     should see a new database for the new shard
     named*ElasticScaleStarterKit\_Shard2*.
 
-> ![](Images/image23.png){width="5.946393263342082in"
+> ![](images/image23.png){width="5.946393263342082in"
 > height="2.536111111111111in"}
 >
 > *Viewing the new database in the portal*
@@ -292,7 +292,7 @@ In this task, you will download and run this sample.
 1.  Switch back to the application, type **5** and press ***enter***.
     This will drop all the shards and the map manager database.
 
-> ![](Images/image24.png){width="7.053472222222222in"
+> ![](images/image24.png){width="7.053472222222222in"
 > height="3.636111111111111in"}
 >
 > *Removing the shards and the map manager*
@@ -324,7 +324,7 @@ created in the first task.
 
 3.  Select it and then click **DELETE** from the options.
 
-> ![](Images/image25.png){width="6.5in"
+> ![](images/image25.png){width="6.5in"
 > height="2.5055555555555555in"}
 
 1.  In the confirmation dialog that appears, type the server name and
