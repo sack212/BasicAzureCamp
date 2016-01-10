@@ -1170,10 +1170,49 @@ If you do not currently have an organizational account, and are using a Microsof
 
 In this task you will learn how to create the virtual machines using ARM Templates. 
 
+###Resources and Architecture Diagram:
+
+The following resources are created by this template:
+
+* 1 or 2 Windows 2012R2 IIS Web Servers.
+* 1 SQL Server 2014 running on premium or standard storage.
+* 1 virtual network with 2 subnets with NSG rules.
+* 1 storage account for the VHD files.
+* 1 Availability Set for IIS servers.
+* 1 Load balancer with NATing rules.
+
+	![Virtual Machines view in portal](images/create-architecture-diagram-vm.png?raw=true)
+
+	_Architecture diagram for ARM Template_
+
+The below **Deploy to Azure** button embeds with ARM template which creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fiis-2vm-sql-1vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
-This template creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+In order to create virtual machine using ARM, perform the following steps:
 
+1. Click on the **Deploy to Azure** button which will navigate you to Azure Portal with Custom Deployment.
+
+	![Clicking Browse in the left pane and search in the box](images/create-vm-arm-parameters.png?raw=true)
+
+	_Custom Deployment using Azure ARM - using Deploy to Azure button_
+
+1. On the Custom Deployment blade that opens, enter the parameters:
+
+	* **ENVPREFIXNAME**: virtual machine name (e.g. azureVM)
+	* **Location**: location for the virtual machine (e.g. West US)
+	* **User Name**: user name for the administrator account (e.g. adminUser)
+	* **Password**: unique password for the administrator account
+	* **WEBSRVVMSIZE**: unique password for the administrator account (e.g. Standard_DS1)
+	* **NUMBEROFWEBSRVS**: unique password for the administrator account (e.g. 1)
+	* **SQLVMSIZE**: unique password for the administrator account (e.g. Standard_DS1)
+	* **STORAGEACCOUNTTYPE**: unique password for the administrator account (e.g. Standard_LRS)
+
+1. Review the default settings, such as the **Subscription**(if you have multiple), **Resource Group**(create or select an existing group), and **Resource Group Location** and finally **Legal Temrs**, then Click **Create** which will add the resource group on to dashboard.
+
+	![Clicking Browse in the left pane and search in the box](images/create-vm-arm-dashboard.png?raw=true)
+
+	_Creating the architecture using template _
 
 <a name="cleanup"></a>
 ##Appendix - Cleanup
@@ -1186,7 +1225,7 @@ In this task you will learn how to delete the virtual machines created in the pr
 
 	![Clicking Browse in the left pane and search in the box](images/clicking-browse-virtualmachine.png?raw=true)
 
-	_Clicking Browse in the Hub Menu_
+	_Clicking Browse in the left Menu_
 
 1. A page listing all Virtual Machines will be displayed. 
 
