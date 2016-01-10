@@ -31,6 +31,10 @@ This lab includes the following tasks:
 
 	In this task you will [ensure some prerequisites are present](#runbook-setup) like [creating an organizational account](#creating-new-organizational-account), [create an automation account](#create-automation-account), [create an empty runbook](#create-empty-runbook), [edit the runbook to create a virtual machine and publish it](#edit-runbook), [create the necessary assets for the runbook execution](#create-assets), [start the runbook](#start-runbook) and once it finishes [verify that the vm was created in the portal](#verify-vm-runbook).
 
+* [**Creating a Virtual Machines with IIS and SQL VM using ARM Templates**](#creating-a-vm-using-armtemplates)
+
+	In this task you will use ARM template to create one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+	
 * [Appendix - Cleanup](#cleanup)
 
 This is a long lab which shows how you can perform similar actions using the different tools available, so you can choose which task you want to execute based on the explanations above. It's recommended that you run [Creating a Virtual Machine using using the Cross-Platform Command-Line Interface](#creating-a-vm-using-cli) and [Creating a Virtual Machine using PowerShell](#creating-a-vm-using-powershell), as these provide a good coverage of many tasks performed on a virtual machine, but you can choose to execute all or the ones that most interest you.
@@ -1160,6 +1164,15 @@ If you do not currently have an organizational account, and are using a Microsof
 	![Validating that the virtual machine was created](images/validating-that-the-vm-was-created.png?raw=true)
 
 	_Validating that the virtual machine was created_
+
+<a name="creating-a-vm-using-armtemplates"></a>
+##Create Virtual Machine using ARM Templates
+
+In this task you will learn how to create the virtual machines using ARM Templates. 
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fiis-2vm-sql-1vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+
+This template creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
 
 
 <a name="cleanup"></a>
