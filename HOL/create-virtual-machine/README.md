@@ -42,15 +42,15 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 1. Sign in to the [Azure Management Portal](https://portal.azure.com/).
 
-1. Click **NEW** and then **Everything**.
+1. On the Left Side bar, click **+ NEW**. Then click on **See all** and **Everything**.
 
-	![Creating VM - Click New and Everything](images/creating-vm---click-new-and-everything.png?raw=true)
+	![Creating VM - Click New and Everything](images/click-new-and-everything.png?raw=true)
 
 	_Creating a VM_ 
 
-1. Click **Virtual Machines** and then click the **Windows Server** tile.
+1. Click **Compute** and then click the **Windows Server** tile.
 
-	![Creating VM - Click Virtual Machines and Windows Server](images/creating-vm-click-vms-and-windows-server.png?raw=true)
+	![Creating VM - Click Virtual Machines and Windows Server](images/creating-compute-vm-winserver.png?raw=true)
 
 	_Creating a VM - Click Virtual Machines then the Windows Server tile_
 
@@ -60,7 +60,7 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 	_Creating a VM - Select the image to use_
 
-1. In the **Windows Server 2012 R2 Datacenter** blade that opens, click **Create**.
+1. In the **Windows Server 2012 R2 Datacenter** blade, Select **'Classic'** from dropdown **select a deployment model**, and then click **Create**.
 
 	![Creating VM Confirm image](images/creating-vm-confirm-image.png?raw=true)
 
@@ -82,9 +82,9 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 1. Click **Create**.
 
-1. The VM will start being created. You can monitor the creation progress on the **Notifications** Hub. As this can take a few minutes, this task ends here. 
+1. The VM will start being created. You can monitor the creation progress on the **Notifications**. As this can take a few minutes, this task ends here. 
 
-	![Creating a VM - Monitor progress on the Notifications Hub](images/creating-vm-monitor-progress-on-the-notifi.png?raw=true)
+	![Creating a VM - Monitor progress on the Notifications](images/creating-vm-monitor-progress-on-the-notifi.png?raw=true)
 
 	_Creating a VM - Monitor progress in the Notifications Hub_
 
