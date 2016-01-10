@@ -1212,8 +1212,14 @@ In order to create virtual machine using ARM, perform the following steps:
 
 	![Clicking Browse in the left pane and search in the box](images/create-vm-arm-dashboard.png?raw=true)
 
-	_Creating the architecture using template _
+	_Creating the architecture using ARM Template_
 
+1. In the meanwhile, you can click on **Deploying Template deployment** which was created on the dashboard.
+
+	![Clicking Browse in the left pane and search in the box](images/deploying-template-deployment-status.png?raw=true)
+
+	_Azure ARM Template deployment Status_
+	
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
