@@ -15,7 +15,7 @@ In this lab, you will learn how to create virtual machines using different optio
 
 This lab includes the following tasks:
 
-* [**Creating a Virtual Machine using the Preview Portal**](#creating-a-vm-using-portal)
+* [**Creating a Virtual Machine using Azure Portal**](#creating-a-vm-using-portal)
 
 	In this task you will create a Windows virtual machine using an existing image from the Windows Azure Management Portal.
 
@@ -36,13 +36,13 @@ This lab includes the following tasks:
 This is a long lab which shows how you can perform similar actions using the different tools available, so you can choose which task you want to execute based on the explanations above. It's recommended that you run [Creating a Virtual Machine using using the Cross-Platform Command-Line Interface](#creating-a-vm-using-cli) and [Creating a Virtual Machine using PowerShell](#creating-a-vm-using-powershell), as these provide a good coverage of many tasks performed on a virtual machine, but you can choose to execute all or the ones that most interest you.
 
 <a name="creating-a-vm-using-portal"></a>
-## Creating a Virtual Machine using the Preview Portal ##
+## Creating a Virtual Machine using Azure Portal ##
 
-In this task you will create a Virtual Machine in Azure using the Azure Preview Portal.
+In this task you will create a Virtual Machine in Azure Portal.
 
 1. Sign in to the [Azure Management Portal](https://portal.azure.com/).
 
-1. On the Left Side bar, click **+ NEW**. Then click on **See all** and **Everything**.
+1. On the Left Side bar, click **+ NEW** and then click on **See all**.
 
 	![Creating VM - Click New and Everything](images/click-new-and-everything.png?raw=true)
 
@@ -78,7 +78,7 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 1. Review the default settings, such as the **Pricing Tier**, **Optional Configuration**, and **Location**. These choices affect the size of VM as well as networking options such as domain membership. For example, to try out Premium Storage on a virtual machine, you will need to pick a region and size that supports it.
 
-	> **Note:** Premium storage is in Preview, available for DS-series virtual machines in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](http://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage-preview-portal/).
+	> **Note:** Premium storage, available for DS-series virtual machines in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](http://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage-preview-portal/).
 
 1. Click **Create**.
 
@@ -1167,11 +1167,11 @@ If you do not currently have an organizational account, and are using a Microsof
 
 In this task you will learn how to delete the virtual machines created in the previous sections, along with the related data disks created. 
 
-### Remove VM using the Preview Portal
+### Remove VM using Azure Portal
 
-1. Click **Browse** in the **Hub Menu**. Then scroll down and click **Virtual Machines**.
+1. Scroll to the bottom on the left pane and Click **Browse >**. Then either search in the search box at the top or scroll down and find **Virtual machines (Classic)**.
 
-	![Clicking Browse in the Hub Menu](images/clicking-browse-in-the-hub-menu.png?raw=true)
+	![Clicking Browse in the left pane and search in the box](images/clicking-browse-virtualmachine.png?raw=true)
 
 	_Clicking Browse in the Hub Menu_
 
@@ -1199,4 +1199,4 @@ Once complete, the **Virtual Machines** list will refresh and the virtual machin
 
 ##Summary
 
-By completing this lab you have learned how to create virtual machines using several different methods: the Preview Portal interface, the Cross-Platform Command Line Tools, PowerShell and Automation Runbook. Additionally, you have seen how to attach an empty datadisk to the virtual machine, how to generate a Remote Desktop Protocol file to connect to the machine, and how to install extensions.
+By completing this lab you have learned how to create virtual machines using several different methods: the Azure Portal interface, the Cross-Platform Command Line Tools, PowerShell and Automation Runbook. Additionally, you have seen how to attach an empty datadisk to the virtual machine, how to generate a Remote Desktop Protocol file to connect to the machine, and how to install extensions.
