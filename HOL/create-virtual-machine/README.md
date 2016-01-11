@@ -1253,6 +1253,62 @@ In order to create virtual machine using ARM, perform the following steps:
 
 	_Azure ARM Template deployment Succeeds_
 
+1. Now, the 2-tier architecture is created with all necessary resources, to check whether all the rules are applied we will deploy an ASP.NET application and a Sample Database(AdventureWorks2012).
+
+	* Click on **dbNsg** which is a Netowork security group and delete the outbound Security rules (Prioirity - 200) - We do this step to download the below AdventureWorks2012 database.
+
+	* Download RDPs for both Database server and Application server and login with the credentails and download the ASP.NET application content into appserver and AdventureWorks2012 database into Database server.
+
+	* A sample ASP.NET Application content can be downloaded here : [application content](http://opsgilitytraining.blob.core.windows.net/armhackathon/cloudshop.zip)
+
+	* Sample Database can be downloaded here : [AdventureWorks2012] (http://opsgilitytraining.blob.core.windows.net/public/AdventureWorks2012.bak)
+	
+	* Once you download application content onto app server extract the .zip file and copy the content and past in C:\inetpub\wwwroot.
+	
+		![Copied content into inetpub](images/inetpub.png?raw=true)
+
+		_Copy content in wwwroot_
+
+	* Open Database Server, and Open SQL Server Management Studio 2014 login with Windows Authentication for restoring the AdventureWorks2012 database.
+	
+	* Copy the .bak file to the Backup location "C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup" and click **OK**.
+	
+		![Restoring Backup database file](images/backup-database.png?raw=true)
+
+		_Restoring Backup database file_
+		
+	* In object explorer go to Security section and Login subsection Right Click and New Login and create a user with SQL Server authentication and in the default database select as **AdventureWorks2012**
+	
+		![Create a Login user](images/login-user.png?raw=true)
+
+		_Create a login user_
+	
+	* On Left side you have **Server Roles** -> Select **public** and **sysadmin** and check in **User Mapping** whether **public** is selected or not and click **OK**
+	
+	* So till now we have an application content in appserver and database in Database Server. Fianlly we have setup the NSG Outbound rule which we have deleted earlier to Database Server through portal.
+		
+		![Create a Login user](images/login-user.png?raw=true)
+
+		_Create a login user_
+		
+	* In Azure Portal Click on the resource group which we just created and in the resources click on **dbNsg** and click on **All Settings** and Outbound security rules and click on add and fill the details as below:
+		
+		![Adding a Outbound NSG rule](images/addnsgrule-outbound.png?raw=true)
+
+		_Adding a Outbound NSG rule_
+	
+	* And Finally login into AppServer and open inetpub\wwwroot and Open **Web.Config** in notepad and replace the **ConnectionString** with the below code:
+	
+	`<add name="DefaultConnection"
+    connectionString="Data Source=tcp:{Destination-Internal-IP},1433;Initial Catalog=AdventureWorks2012;User ID={User-created-DbServer};Password={password};Encrypt=true;Trusted_Connection=false;TrustServerCertificate=true" providerName="System.Data.SqlClient"/>    
+<add name="AdventureWorksEntities" connectionString="metadata=res://*/Models.AdventureWorks.csdl|res://*/Models.AdventureWorks.ssdl|res://*/Models.AdventureWorks.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:{Destination-Internal-IP},1433;initial catalog=AdventureWorks2012;Uid={User-created-DbServer};Password={password};multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />`
+
+	* Now you can verify by copying the Loadbalancer IP address onto browser and you will see an asp.net application with data populating from the DB Server.
+	
+		![Adding a Outbound NSG rule](images/output-demo.png?raw=true)
+
+		_Output of the application_
+	
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
