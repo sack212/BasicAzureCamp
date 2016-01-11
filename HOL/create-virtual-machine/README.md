@@ -64,27 +64,50 @@ In this task you will create a Virtual Machine in Azure Portal.
 
 	_Creating a VM - Select the image to use_
 
-1. In the **Windows Server 2012 R2 Datacenter** blade, Select **'Classic'** from dropdown **select a deployment model**, and then click **Create**.
+1. In the **Windows Server 2012 R2 Datacenter** blade, Select **'Resource Manager'** from dropdown **select a deployment model**, and then click **Create**.
 
 	![Creating VM Confirm image](images/creating-vm-confirm-image.png?raw=true)
 
 	_Creating a VM - Click Create to confirm the use of this image_
 
-1. On the **Create VM** blade that opens, enter: 
+1. On the **Create Virtual Machine** blade that opens, enter: 
 
-	* **Host Name**: virtual machine name (e.g. azureVM)
+	* **Name**: virtual machine name (e.g. testvm)
 	* **User Name**: administrator user for the virtual machine (e.g. adminUser)
 	* **Password**: unique password for the administrator account
+	* **Subscription**: Select if you have multiple subscriptions
+	* **Resource**: New or Existing (e.g. create-vm)
+	* **Location**: select the location for the virtual machine. (e.g. West US)
+	
+	![Creating a VM - basic configuration](images/create-vm-resource-basic-config.png?raw=true)
 
-	![Creating a VM - Enter VM Name, User Name and Password](images/creating-vm-enter-vm-name-user-name-and-passw.png?raw=true)
+	_Creating a VM - Basic Configuration_
+	
+	* **Size**: select the size of virtual machine needed. (Select **See All** for checking all sizes and details)
+	
+	![Creating a VM - choose size](images/create-vm-resource-choose-size.png?raw=true)
 
-	_Creating a VM - Enter Host Name, User Name and Password_
+	_Creating a VM - Types of Sizes_
+	
+	* **Disk Type**: select the disk size. (e.g. Standard/Premium(SSD))
+	* **storage account**: storage account details(if existing select the storage account at specified location or create new)
+	* **virtual network**: virtual network for the virtual machine to create
+	* **Subnet**: subnets under one Virtual network
+	* **Public IP address**: public IP address
 
-1. Review the default settings, such as the **Pricing Tier**, **Optional Configuration**, and **Location**. These choices affect the size of VM as well as networking options such as domain membership. For example, to try out Premium Storage on a virtual machine, you will need to pick a region and size that supports it.
+	![Creating a VM - Settings Optional features](images/create-vm-resource-settings-config.png?raw=true)
+
+	_Creating a VM - Settings_
+	
+	* **Summary**: virtual machine summary details before you click on create.
+
+	![Creating a VM - VM Summary](images/create-vm-summary.png?raw=true)
+
+	_Creating a VM - Summary_
 
 	> **Note:** Premium storage, available for DS-series virtual machines in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](http://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage-preview-portal/).
 
-1. Click **Create**.
+1. Click **OK**.
 
 1. The VM will start being created. You can monitor the creation progress on the **Notifications**. As this can take a few minutes, this task ends here. 
 
@@ -99,6 +122,10 @@ In this task you will create a Virtual Machine in Azure Portal.
 	>_Creating a VM - A pin was created in the Startboard_
 
 	>Once the virtual machine has been created you can attach new or existing data disks to the Virtual Machine. See [About Virtual Machine Disks in Azure](https://msdn.microsoft.com/library/azure/dn790303.aspx) for more information. 
+	>
+	>![Creating a VM - A pin in the startboard exists after creation](images/create-vm-details-created.png?raw=true)
+	>
+	>_Virtual Machine details after Creation_
 
 <a name="creating-a-vm-using-cli"></a>
 ## Creating a Virtual Machine using the Cross-Platform Command-Line Interface
@@ -1193,7 +1220,7 @@ In order to create virtual machine using ARM, perform the following steps:
 
 1. Click on the **Deploy to Azure** button which will navigate you to Azure Portal with Custom Deployment.
 
-	![Clicking Browse in the left pane and search in the box](images/create-vm-arm-parameters.png?raw=true)
+	![Custom deployment and its Parameters](images/create-vm-arm-parameters.png?raw=true)
 
 	_Custom Deployment using Azure ARM - using Deploy to Azure button_
 
@@ -1210,16 +1237,22 @@ In order to create virtual machine using ARM, perform the following steps:
 
 1. Review the default settings, such as the **Subscription**(if you have multiple), **Resource Group**(create or select an existing group), and **Resource Group Location** and finally **Legal Temrs**, then Click **Create** which will add the resource group on to dashboard.
 
-	![Clicking Browse in the left pane and search in the box](images/create-vm-arm-dashboard.png?raw=true)
+	![Creating a VM using ARM Dashboard](images/create-vm-arm-dashboard.png?raw=true)
 
 	_Creating the architecture using ARM Template_
 
 1. In the meanwhile, you can click on **Deploying Template deployment** which was created on the dashboard.
 
-	![Clicking Browse in the left pane and search in the box](images/deploying-template-deployment-status.png?raw=true)
+	![Status while deploying custom deployment template](images/deploying-template-deployment-status.png?raw=true)
 
 	_Azure ARM Template deployment Status_
 	
+1. Once the Template Deployment succeeds, you will have WebServer with IIS Installed and SQL Server 2014 Standard deployed on a Virtual Netowrk with 2 subnets with NSG rules and a Load Balancer with NATing rules. Click on the Resource Group Tile pinned on the dashboard and then click on each resource for more details.
+
+	![Resource Group with all resources](images/succeeded-arm-template.png?raw=true)
+
+	_Azure ARM Template deployment Succeeds_
+
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
