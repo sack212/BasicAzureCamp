@@ -1285,7 +1285,7 @@ In order to create virtual machine using ARM, perform the following steps:
 	
 	* On Left side you have **Server Roles** -> Select **public** and **sysadmin** and check in **User Mapping** whether **public** is selected or not and click **OK**
 	
-	* So till now we have an application content in appserver and database in Database Server. Fianlly we have setup the NSG Outbound rule which we have deleted earlier to Database Server through portal.
+	* So till now we have an application content in appserver and database in Database Server. Fianlly we have to setup the NSG Outbound rule which we have deleted earlier to Database Server through portal.
 		
 	* In Azure Portal Click on the resource group which we just created and in the resources click on **dbNsg** and click on **All Settings** and Outbound security rules and click on add and fill the details as below:
 		
