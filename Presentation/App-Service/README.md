@@ -4,16 +4,18 @@
 
 This is a quick demo showing how quickly you can create a new Web App in the portal. Feel free to change alter this first demo.
 
-1. Browse to [Preview Portal](https://portal.azure.com)
+1. Browse to the [Azure Portal](https://portal.azure.com)
 1. Click New / Web + Mobile / Web App.
 1. Enter a unique name in the URL field and click the Create button.
 1. While the site is being created, explain that Azure is provisioning a new Web App for you with supporting services, monitoring, support for continuous deployment, etc.
 
- > Note: This generally takes 30 - 60 seconds. During this time, you can ask them how long it would take their IT department or hosting provider to provision a new site for them. This us usually enough time for the new Web App to be created.
+ > Note: This generally takes 30 - 60 seconds. During this time, you can ask them how long it would take their IT department or hosting provider to provision a new site for them. This is usually enough time for the new Web App to be created.
 
-1. When the site comes up, scroll through the various tiles (Monitoring, Usage, Operations, Deployment, Networking) explaining that these are all live and have been provisioned with the Web App.
+1. When the site comes up, scroll through the various features (Monitoring, Usage, Operations, Deployment, Networking) explaining that these are all live and have been provisioned with the Web App. You can click on the _settings_ option to bring up the _settings_ blade.
+> Note: If these tiles are not visible, you can add them by clicking on 'Add tiles' button and add Deployment, Operations, Usage etc.
+
 1. Click on the Browse button. When the default landing page loads, point out that the page illustrates the different options for publishing to the new site, including Git, FTP, Visual Studio, etc.
-1.  Back in the portal, Expand the Essentials panel, click on All Settings and click on Settings. Show that .NET, PHP, Python and Java are all shown.
+1.  Back in the portal, Under 'General' option select 'Application settings'. Show that .NET, PHP, Python and Java are all shown.
 
 ## Demo 2 - WebJobs
 
@@ -23,7 +25,7 @@ This sample demonstrates creating a WebJob and performing operations with Micros
 
  > Note: You can use the Web App you provisioned in the first demo here.
 
-1. Open File Explorer and navigate to the Presentation\Web\Demo3 - Web Jobs\source\WebJobs folder in the DevCamp material.
+1. Open File Explorer and navigate to the Presentation\App-Service\Demo2 - Web Jobs\source\WebJobs folder in the DevCamp material.
 1. Open the project in Visual Studio, enable restore packages from nuget and compile (to download all the packages required inside bin directory)
 1. Enter a storage account name and key as instructed in App.config.
 1. Right-click project, select " Publish as Azure WebJob.." and then select "run on-demand" from the dropdown.
