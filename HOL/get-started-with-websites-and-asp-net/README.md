@@ -5,7 +5,7 @@ This lab shows how to create an ASP.NET web application and deploy it to an Azur
 This lab includes the following sections:
 
 1. [Create an ASP.NET web application in Visual Studio](#create-an-aspnet-web-application)
-1. [Create a SQL Database online](#create-a-database-for-application)
+1. [Create a SQL Database online](#create-a-sql-database-online)
 1. [Deploy the application to Azure](#deploy-the-application-to-azure)
 1. [Make a change and redeploy](#make-a-change-and-redeploy)
 1. [Monitor and manage the site in the portal](#monitor-and-manage-the-site-in-the-management-portal)
