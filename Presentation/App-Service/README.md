@@ -174,11 +174,11 @@ This creates the Mobile App backend. Later you will deploy your server project t
  
 5. In the **Settings** blade for the new Mobile App backend, click **Quick start** &gt; your client app platform &gt; **Connect a database**. 
 
-![](media/connect-a-database.png)
+![](images/connect-a-database.png)
 
 6. In the **Add data connection** blade, click **SQL Database** &gt; **Create a new database**, type the database **Name**, choose a pricing tier, then click **Server**.
 
-![](media/new-database.png)
+![](images/new-database.png)
 
 7. In the **New server** blade, type a unique server name in the **Server name** field, provide a secure **Server admin login** and **Password**, make sure that **Allow azure services to access server** is checked, then click **OK** twice. This creates the new database and server.
 
@@ -212,7 +212,7 @@ Once you have configured your Mobile App backend, you can either create a new cl
 
 4. In the app, type meaningful text, such as *Complete the tutorial*, in the **Insert a TodoItem** text box, and then click **Save**.
 
-![](media/bs-demo-mobileapp.png)
+![](images/bs-demo-mobileapp.png)
 
 This sends a POST request to the new mobile app backend that's hosted in Azure.
 
@@ -289,7 +289,7 @@ This version of the method includes error handling for the **MobileServiceInvali
 
 3. You will get a message dialog similar to the following in response to the invalid text.
 
-![](media/output.png)
+![](images/output.png)
 
 ## Demo 4 - Basic Mobile App with Validation
 
