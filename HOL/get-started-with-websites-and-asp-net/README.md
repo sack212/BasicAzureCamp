@@ -5,9 +5,10 @@ This lab shows how to create an ASP.NET web application and deploy it to an Azur
 This lab includes the following sections:
 
 1. [Create an ASP.NET web application in Visual Studio](#create-an-aspnet-web-application)
+1. [Create a SQL Database online](#create-a-database-for-application)
 1. [Deploy the application to Azure](#deploy-the-application-to-azure)
 1. [Make a change and redeploy](#make-a-change-and-redeploy)
-1. [Monitor and manage the site in the preview portal](#monitor-and-manage-the-site-in-the-management-portal)
+1. [Monitor and manage the site in the portal](#monitor-and-manage-the-site-in-the-management-portal)
 1. [Appendix - Cleanup](#cleanup)
 
 ## Create an ASP.NET web application
@@ -36,23 +37,36 @@ In this task you will create the web application that is going to be used throug
 
     _New ASP.NET Project dialog box_
 
-5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**. Follow the prompts and provide your credentials.
+5. Once the application is selected you will get a pop-up to enter details for **Creating an App Service**. Once you enter the details like: WebApp Name, Subsciption, Resource Group(if you have created earlier, if not create a Resource Group in Azure Portal and the list will be populated. Select the resource group)
 
-	![Sign in to Azure](./images/sign-to-Azure.png)
+	![Creating App Service](./images/configure-azure1.png)
 
-    _Sign in to Azure_
+    _Details for Creating App Service_
 
-6. The configuration wizard will suggest a unique name based on *ContactManager* (see the image below). Select a region near you. You can use [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") to find the lowest latency data center.
-7. If you haven't created a database server before, select **Create new server**, enter a database user name and password.
+6. Click on **New** button under **App Service Plan**. In a Service plan we can select **App Service Plan** Name, **Location**, **Size**(can be Free, Shared(paid), and different configurations)
 
-	![Configure Azure Web App](./images/configure-azure1.png)
+	![Configure Azure Web App - App Serive Plan](./images/configure-azure-app-service-plan.png)
 
-    _Configure Azure Web App_
+    _Configure Azure Web App - App Serive Plan_
+	
+7. Once the Service Plan is selected, select **Create**	to create a **Web App Service**. 
 
-	If you have a database server, use that to create a new database. Database servers are a precious resource, and you generally want to create multiple databases on the same server for testing and development rather than creating a database server per database. Make sure your Web App and database are in the same region.
+	![Configure Azure Web App - App Serive Plan](./images/configure-azure2.png)
 
-8. Click **OK**.
+    _Configure Azure Web App - App Serive Plan_
+	
+8. As the application was created in Azure App Services, you can verify to your azure portal and check under the App Services Section you will have Contact Manager application hosted or navigate to the URL it will be **LIVE**
 
+	![Configure Azure Web App - App Serive Plan](./images/create-website-2.png)
+
+    _Created App Services - Web App_
+	
+8. Once the App Service is created we are ready to publish the ASP.NET Application code, click on **Publish contactmanager to this web app now**	
+
+	![Configure Azure Web App - App Serive Plan](./images/create-appservice-webapp.png)
+
+    _Configure Azure Web App - App Serive Plan_
+	
 	In a few seconds, Visual Studio creates the web project in the folder you specified, and it creates the Web App in the Azure region you specified.
 
 	The **Solution Explorer** window shows the files and folders in the new project.
@@ -61,25 +75,41 @@ In this task you will create the web application that is going to be used throug
 
 	_Solution Explorer_
 
-	The **Azure App Service Activity** window shows that the Web App has been created.
+## Create a SQL Database online
 
-	![Web App created](./images/web-publish-view.png)
+1. In your browser, go to [http://portal.azure.com](http://portal.azure.com), and sign in with your Azure credentials.
 
-	_Web App created_
+	On the left, click on **NEW** and **Data + Storage** and followed by **SQL Database** in the Data Storage section which is a database as a service.
 
-	And you can see the Web App and database in **Server Explorer**.
+2. Fill the details in **SQL Database** section.
 
-	> **Note:** if the Server Explorer window is not open, you can open it from the **View** menu.
+	![Database App details](./images/create-sql-database.png)
 
-	![Web App created](./images/server-explorer.png)
+    _Database details_
+	
+3. Create a new **Server**(if you dont have an existing server) along with the Server Credentials, and select the **Source** as **Blank**, **Pricing Tier**, **Optional Configuration**, and select the existing **Resource Group** where we previously created App Service and Click **Create**
 
-    _Web App created_
+	![Database App details](./images/create-database-server.png)
 
+    _Create Database details_
+
+4. Once the SQL Database is created. Click on the SQL Databases at left pane. and select the database which we created just now.
+
+	![Database details](./images/database-created.png)
+
+    _Created Database details_
+	
+5. Copy the **Connection String** from the Azure portal which will be used when we deploy the App Server as we have to point the Connection String to this database.
+
+	![Database details](./images/database-string.png)
+
+    _Created Database details_
+	
 ## Deploy the application to Azure
 
 1. In the **Azure App Service Activity** window, click **Publish ContactManager to this Web App now**.
 
-	![Web App created](./images/web-publish-view-2.png)
+	![Web App created](./images/create-appservice-webapp-high.png)
 
     _Azure App Service Activity Window_
 
@@ -89,7 +119,7 @@ In this task you will create the web application that is going to be used throug
 
 2. In the **Connection** tab of the **Publish Web** wizard, click **Validate Connection** to make sure that Visual Studio can connect to Azure in order to deploy the web project.
 
-	![Validate connection](./images/validate-connection.png)
+	![Validate connection](./images/publish-azure-connections.png)
 
     _Validating the connection_
 
@@ -97,7 +127,7 @@ In this task you will create the web application that is going to be used throug
 
 3. Click **Next**.
 
-	![Successfully validated connection](./images/validate-connection-2.png)
+	![Successfully validated connection](./images/publish-validate.png)
 
 	_Successfully validated connection_
 
@@ -117,7 +147,7 @@ In this task you will create the web application that is going to be used throug
 
 	In this case, keep the default values for **Configuration** and **File Publish Options** and click **Next**.
 
-	![Settings tab](./images/publishing-settings.png)
+	![Settings tab](./images/publish-azure-connection-string.png)
 
     _Settings tab_
 
@@ -157,7 +187,7 @@ In this task you will create the web application that is going to be used throug
 
 ## Make a change and redeploy
 
-In this task, you will change the **h1** heading of the home page, run the project locally on your development computer to verify the change, and then deploy the change to Azure.
+In this task, you will change the **h1** heading of the home page, run the project and redeploy on your App Service on Azure.
 
 1. Open the *Views/Home/Index.cshtml* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file.
 
@@ -169,11 +199,7 @@ In this task, you will change the **h1** heading of the home page, run the proje
 
     _Changing the page's heading_
 
-2. Press **CTRL+F5** to see the updated heading by running the site on your local computer.
-
-	![Web App running locally](./images/running-localhost.png)
-
-	_Web App running locally_
+2. Press **CTRL+F5** to see the updated heading by running the site.
 
 	The **http://localhost** URL shows that it's running on your local computer. By default it's running in IIS Express, which is a lightweight version of IIS designed for use during web application development.
 
@@ -181,7 +207,7 @@ In this task, you will change the **h1** heading of the home page, run the proje
 
 4. In **Solution Explorer**, right-click the project, and choose **Publish**.
 
-	![Chooose Publish](./images/second-publish.png)
+	![Chooose Publish](./images/publish-aspnet.png)
 
     _Preparing a new deployment_
 
@@ -189,21 +215,15 @@ In this task, you will change the **h1** heading of the home page, run the proje
 
 5. In the **Publish Web** wizard, click **Publish**.
 
-	![Click Publish](./images/click-publish-no-preview.png)
+	![Click Publish](./images/azure-publish-change-files.png)
 
 	_Publish Web Wizard_
 
 	Visual Studio deploys the project to Azure and opens the site in the default browser.
 
-	![Changed site deployed](./images/aspnet-and-azure.png)
+	![Changed site deployed](./images/publish-azure-modified.png)
 
 	_Changes deployed_
-
-	>**Tip:** You can enable the **Web One Click Publish** toolbar for even quicker deployment. Click **View** > **Toolbars**, and then select **Web One Click Publish**. The toolbar enables you to select a profile, click a button to publish, or click a button to open the **Publish Web** wizard.
-
-	![Web One Click Publish Toolbar](./images/publish-toolbar.png)
-
-    _Web One Click Publish Toolbar_
 
 ## Monitor and manage the site in the preview portal
 
@@ -211,17 +231,9 @@ The [Azure Preview Portal](https://portal.azure.com/) is a web interface that en
 
 1. In your browser, go to [http://portal.azure.com](http://portal.azure.com), and sign in with your Azure credentials.
 
-	The portal displays the home dashboard.
-
-	On the left, click on **Browse** and then scroll down until you find **Web Apps**. Click on **Web Apps**.
-
-	![Browse to Web Apps](./images/browse-to-web-apps.png)
+	On the left, click on **App Services** and the Web App Services are listed.
 
 2. Click the name of your Web App on the blade.
-
-	![Web Apps blade with the Web App called out](./images/select-website.png)
-
-    _Web Apps blade_
 
 3. This blade gives you an overview of your Web App.
 
@@ -241,18 +253,6 @@ The [Azure Preview Portal](https://portal.azure.com/) is a web interface that en
 
   	_WebApp's settings blade_
 
-5. Click the **Scale** option, right below **Application Settings**.
-
-	For the paid tiers of the Azure App Service, the [Scale](http://azure.microsoft.com/en-us/documentation/articles/web-sites-scale/) option enables you to control the size and number of machines that service your web application in order to handle variations in traffic.
-
-	You can scale manually or configure criteria or schedules for automatic scaling.
-
-	![Portal Web App scale options](./images/website-scale.png)
-
-    _Web App's Scale Options_
-
-	These are just a few of the management portal features. You can also create new App Service apps, delete existing apps, stop and restart apps, and manage other kinds of Azure services, such as databases and virtual machines.
-
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
@@ -260,35 +260,18 @@ In this task you will learn how to delete the Web App published in the previous 
 
 1. In your browser, go to [http://portal.azure.com](http://portal.azure.com), and sign in with your Azure credentials.
 
-2. Click on **Browse** and scroll down until you see **Web Apps**. Click on **Web Apps**.
-
-3. Select your Web App. The Web App blade should now be open.
+2. Click on **Resource Groups** at left pane which will display all the resource groups created, Select the Resource group created earlier in this Lab.
 
 4. Click **Delete** in the top bar.
 
-	![Clicking Delete Web App](./images/clicking-delete-website.png?raw=true)
+	![Clicking Delete Resource Group](./images/delete-resource.png?raw=true)
 
-	_Clicking Delete to delete Web App_
+	_Clicking Delete Resource Group_
 
 5. In the **Delete app** confirmation dialog, click **Yes**.
 
-	This will delete the Web App but it will keep the database intact. If you want to delete the database as well, follow the instructions below.
-
-6. Click on **Browse** and scroll down until you see **SQL Databases**. Click on **SQL Databases**.
-
-	![SQL Databases](./images/browse-to-sql-database.png)
-	_Click SQL databases_
-
-7. In the new **SQL Databases** blade, click on your database.
-
-	The database blade should now be open.
-
-8. Click on **Delete** from the top bar.
-
-	![SQL Database delete](./images/sql-database-blade-click-delete.png)
-
-9. In the **Delete database** confirmation dialog, click **Yes**.
-
+	This will delete the Resource Group to which all resources are intact(i.e, App Service, App Service Plan, SQL Database, Server).
+	
 ## Summary
 
-In this lab you have seen how to create a simple web application and deploy it to an Azure App Service Web App. You also made a quick tour around the Azure Preview Portal.
+In this lab you have seen how to create a simple web application and deploy it to an Azure App Service Web App. You also made a quick tour around the Azure Portal.
