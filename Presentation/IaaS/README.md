@@ -2,18 +2,17 @@
 
 ## Demo 1 - Provisioning a VM
 
-1. Open Ibiza portal and click the **NEW** button at the lower-left corner.
-2. Show the short list of resources. Explain that I can directly create popular resources here such as a Windows Server 2012.
-3. Click on the **Everything** link.
-4. In **Gallery** blade, open the **Virtual machines** category.
-5. Scroll down the view and show images of different types (refer back to slide 9).
-6. Click on **Windows Server 2012 R2 Datacenter**, and then click the **Create** button in the overview blade. For non-Microsoft focused audience, consider to pick a Linux image instead.
-7. Fill in the **Create VM** form and click on the **Create** button to provision the VM. Explain this will take a few minutes.
-8. Open the already provisioned VM.
-9. Scroll down the blade to show various of information available on the blade.
-10. Click on the **Extensions** tile. 
-11. On the Extensions blade, click on the **ADD** icon to bring up the extension list. Introduce that VM extensions are installable components to customize VM instances. 
-12. Switch to slides to continue with VM extension introduction.
+1. Open Azure portal and click the **NEW** button at the upper-left corner.
+2. Click on **See All** in New section. Select **Compute** in Marketplace. Navigate to Recommended resources in Compute section.
+3. open the **Windows Server** category.
+4. Scroll down the view and show images of different types.
+5. Click on **Windows Server 2012 R2 Datacenter**, and select deplpoyment model as **Resource Manager** then click the **Create** button in the overview blade. For non-Microsoft focused audience, consider searching any Linux image in the search box instead.
+6. Fill in the **Basics**, **Size**, **Settings** form and click on the **OK** button in the **Summary** section to provision the VM. Explain this will take a few minutes.
+7. Open the already provisioned VM.
+8. Scroll down the blade to show various of information available on the blade.
+9. Click on the **Extensions** tile. 
+10. On the Extensions blade, click on the **ADD** icon to bring up the extension list. Introduce that VM extensions are installable components to customize VM instances. 
+11. Switch to slides to continue with VM extension introduction.
 
 ## Demo 2 - VM Extension 
 
