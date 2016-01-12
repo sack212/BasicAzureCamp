@@ -1,9 +1,5 @@
-# Keynote Demos
+﻿# Keynote Demos
 
-## Demo 1 - Full Feature Portal
+## Demo 1 - Demo Azure Portal
 
-1. Give a tour of the [full feature portal](http://manage.windowsazure.com)
-
-## Demo 2 - Preview Portal
-
-1. Give a tour of the [preview portal](http://portal.azure.com)
+1. Give a tour of the [New Azure Portal](http://portal.azure.com)
