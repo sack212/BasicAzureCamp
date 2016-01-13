@@ -6,10 +6,10 @@ In this detailed **demo**, we'll follow the process of **Creating, Managing Azur
 Prerequisites
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--   **Client computer with Internet connectivity.**
--   **Microsoft Account / Live Id**
--   **Microsoft Azure Subscription**
--	**Existing Windows virtual machine**
+-   Client computer with Internet connectivity.
+-   Microsoft Account / Live Id
+-   Microsoft Azure Subscription
+-   Existing Windows virtual machine
 
 Objectives
 ----------
@@ -33,7 +33,7 @@ In this exercise, you will create a new storage account.
 
 3.	Click **NEW**, Click **Data + Storage**, and then **Storage Account**.
 
-	![](images/data-storage.png)
+	![](images/daata-storage.png)
 	
 4.	Change the **deployment model** to **Resource Manager** and click **Create**.
 
