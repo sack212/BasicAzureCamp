@@ -133,26 +133,6 @@ This is a quick demo showing how quickly you can create a new API App using Visu
 
 ## Demo 4 - Basic Mobile App with Validation
 
-1. Use quick start to create an empty Mobile App with SQL DB instance
-
-2. Create a new data table
-
-3. Go into insert script and add validation to check length of item.text field
-
-		function insert(item, user, request) {
-
-			if (item.text.length < 5) {
-				request.respond(statusCodes.BAD_REQUEST, 'text should be 5 or more characters long');
-			}
-			else {
-				request.execute();
-			}
-		}
-
-4. Use HTTP tool (Fiddler, Postman, hurl.it) to validate the validation logic works on a POST request.
-
-## Demo 4 - Basic Mobile App with Validation
-
 Create a .NET backend using the Azure portal
 
 You can create a new mobile application right in the [*Azure portal*](https://portal.azure.com/). You can either follow the steps below, or create a new client and server together by following the [*Create a mobile app*](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-ios-get-started/) tutorial.
@@ -212,7 +192,7 @@ Once you have configured your Mobile App backend, you can either create a new cl
 
 4. In the app, type meaningful text, such as *Complete the tutorial*, in the **Insert a TodoItem** text box, and then click **Save**.
 
-![](images/bs-demo-mobileapp.png)
+	![](images/bs-demo-mobileapp.png)
 
 This sends a POST request to the new mobile app backend that's hosted in Azure.
 
