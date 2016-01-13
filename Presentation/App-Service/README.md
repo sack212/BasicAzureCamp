@@ -2,7 +2,7 @@
 Demo Script
 ## Prerequisites
 1. Azure subscription – we will be spinning up an S1 Web App. Although they are relatively inexpensive, make sure you have enough spend in your account to complete the walkthrough.
-1. VSO account – we will be using less than 10 build minutes, but you should make sure you have enough spend in your account to accommodate this.
+1. VSTS account – we will be using less than 10 build minutes, but you should make sure you have enough spend in your account to accommodate this.
 1. Visual Studio Enterprise 2015
 ## Setup
 The following steps must be completed prior to running through the following walkthrough.
@@ -25,12 +25,12 @@ The following steps must be completed prior to running through the following wal
 13. Click the Create button.
 ### Download Mercury Health Source Code
 
-> The Mercury Health application source code is available in my VSO instance at https://jeffwork.visualstudio.com.
+> The Mercury Health application source code is available in my VSTS instance at https://jeffwork.visualstudio.com.
 
-> If you need permissions to this source code in VSO, email me at jfattic@microsoft.com
+> If you need permissions to this source code in VSTS, email me at jfattic@microsoft.com
 
-### Setup Azure Subscription in VSO
-1. In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
+### Setup Azure Subscription in VSTS
+1. In Internet Explorer or Edge, navigate to your VSTS instance (e.g. https://jeffwork.visualstudio.com)
 2. Navigate to your Team Project associated with the Mercury Health source code.
 3. In the upper-right of the page, click the Administer Account (gear icon) button.
 4. Click the Services tab.
@@ -44,9 +44,9 @@ The following steps must be completed prior to running through the following wal
 12. Close the browser tab.
 ### Setup Build Definition
 
-> This walkthrough assumes your VSO Team Project is using TFVC rather than Git. If you want to use Git, you will have to modify the steps as necessary.
+> This walkthrough assumes your VSTS Team Project is using TFVC rather than Git. If you want to use Git, you will have to modify the steps as necessary.
 
-1. In Internet Explorer or Edge, navigate to your VSO instance (e.g. https://jeffwork.visualstudio.com)
+1. In Internet Explorer or Edge, navigate to your VSTS instance (e.g. https://jeffwork.visualstudio.com)
 2. Navigate to your Team Project associated with the Mercury Health source code.
 3. From the main menu, click the BUILD menu item.
 4. In the left-hand navigation pane, click the Actions button (green plus sign).
