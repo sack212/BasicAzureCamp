@@ -1,4 +1,4 @@
-﻿Infrastructure as a Service in Microsoft Azure
+Infrastructure as a Service in Microsoft Azure
 =======================================================================================
 
 The ability to create a virtual machine on demand, whether a standard image or from one you supply, can be very useful. This approach, commonly known as Infrastructure as a Service (IaaS), is what Azure Virtual Machines provides.
@@ -17,7 +17,7 @@ This lab includes the following tasks:
 
 * [**Creating a Virtual Machine using Azure Portal**](#creating-a-vm-using-portal)
 
-	In this task you will create a Windows virtual machine using an existing image from the Windows Azure Management Portal.
+	In this task you will create a Windows virtual machine using an existing image from the Azure Management Portal.
 
 * [**Creating a Virtual Machine using the Cross-Platform Command-Line Interface**](#creating-a-vm-using-cli) 
 
@@ -470,7 +470,7 @@ To log in using an Azure AD account, follow these instructions:
 	Add-AzureAccount
 	```
 
-1. A dialog box to **Sign in to Windows Azure** will appear. Follow the instructions, typing the email address and password associated with your account when prompted.
+1. A dialog box to **Sign in to Microsoft Azure** will appear. Follow the instructions, typing the email address and password associated with your account when prompted.
 
 	Azure authenticates and saves the credential information, and then closes the window. After it does, you will see the following output appear in the console window.
 
@@ -1269,7 +1269,13 @@ In order to create virtual machine using ARM, perform the following steps:
 
 		_Copy content in wwwroot_
 
-	* Open Database Server, and Open SQL Server Management Studio 2014 login with Windows Authentication for restoring the AdventureWorks2012 database.
+	* Open Database Server, and Open SQL Server Management Studio 2014 login with 
+	* 
+	* 
+	* 
+	* 
+	* 
+	* Windows Authentication for restoring the AdventureWorks2012 database.
 	
 	* Copy the .bak file to the Backup location "C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup" and click **OK**.
 	
