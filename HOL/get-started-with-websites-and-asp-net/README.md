@@ -1,4 +1,4 @@
-﻿# Getting started with Azure App Service Web Apps and ASP.NET
+# Getting started with Azure App Service Web Apps and ASP.NET
 
 This lab shows how to create an ASP.NET web application and deploy it to an Azure App Service Web App by using Visual Studio 2015 Preview. It assumes that you have no prior experience using Azure or ASP.NET. On completing the lab, you will have a simple web application up and running in the cloud.
 
@@ -225,9 +225,9 @@ In this task, you will change the **h1** heading of the home page, run the proje
 
 	_Changes deployed_
 
-## Monitor and manage the site in the preview portal
+## Monitor and manage the site in the Azure portal
 
-The [Azure Preview Portal](https://portal.azure.com/) is a web interface that enables you to manage and monitor your Azure services, such as the App Service Web App you just created. In this task you will look at some of what you can do in the portal.
+The [Azure Portal](https://portal.azure.com/) is a web interface that enables you to manage and monitor your Azure services, such as the App Service Web App you just created. In this task you will look at some of what you can do in the portal.
 
 1. In your browser, go to [http://portal.azure.com](http://portal.azure.com), and sign in with your Azure credentials.
 
