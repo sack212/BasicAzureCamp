@@ -1,11 +1,11 @@
-﻿Introduction to the Azure Portal
+Introduction to the Azure Portal
 =============================================
 
-The new Azure portal is an all-in-one, work-anywhere experience. Now you can manage App Service Apps, databases and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience.
+The new Azure portal is an all-in-one, work-anywhere experience. Now you can manage App Service Apps, databases and Visual Studio Team Services projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience.
 
-This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single, easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
+This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single, easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and life-cycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
 
-The new portal allows each user to transform the portal home page (called the _Startboard_) into their own customized dashboard. Stay on top of the things that matter most by pinning them to your **Startboard**. Resize parts to show more or less data. Drill in for all the details. And see insights (and opportunities) across apps and resources. New components include the following:
+The new portal allows each user to transform the portal home page (called the _Dashboard_) into their own customized dashboard. Stay on top of the things that matter most by pinning them to your **Dashboard**. Re-size parts to show more or less data. Drill in for all the details. And see insights (and opportunities) across apps and resources. New components include the following:
 
 * **Simplified Resource Management**. Rather than managing standalone resources such as Azure App Service Web Apps, Visual Studio Projects or databases, customers can now create, manage and analyze their entire application as a single resource group in a unified, customized experience, greatly reducing complexity while enabling scale. Today, the new Azure Manager is also available through the latest Azure SDK for customers to automate their deployment and management from any client or device.
 
@@ -23,13 +23,13 @@ In this task, you will learn about the portal and how to create a new Web App an
 
  1. Open a browser and browse to http://portal.azure.com and log in using your credentials.
 
- 2. The first thing you will see is the **Startboard**. This is your home page, where you can see dynamic data from your resources and all the details you care about. You can customize it as you see fit.
+ 2. The first thing you will see is the **Dashboard**. This is your home page, where you can see dynamic data from your resources and all the details you care about. You can customize it as you see fit.
 
-	> **Note:** You can right-click the tiles of the Startboard to customize it. You can pin or unpin tiles and change their size.
+	> **Note:** You can right-click the tiles of the Dashboard to customize it. You can pin or unpin tiles and change their size.
 
 	![Startboard](Images/startboard.png?raw=true)
 
-	_Your Home Page: The Startboard_
+	_Your Home Page: The Dashboard_
 
  3. On the left side, you will see the **Hub Menu**. This is the navigation menu where you can access all of your resources and options. Click the **New** button at the top of the **Hub Menu**.
 
@@ -64,7 +64,7 @@ In this task, you will learn about the portal and how to create a new Web App an
 
 	A _blade_ is opened. Blades are your entry point to discovering insights, performing actions and building applications. This particular _blade_ collects input from you to create a new **Web App**.
 
-	> **Note:** For more information about _blades_, you can click the **Tour** tile on your **Startboard**. On the **Tour** blade, scroll down to the bottom and click **Learn more**. A new blade is opened with further information. You can continue the **Tour** to learn the basics of Blades, Commands, Lenses and more.
+	> **Note:** For more information about _blades_, you can click the **Tour** tile on your **Dashboard**. On the **Tour** blade, scroll down to the bottom and click **Learn more**. A new blade is opened with further information. You can continue the **Tour** to learn the basics of Blades, Commands, Lenses and more.
 
 	> ![Tour](Images/tour.png?raw=true)
 
@@ -130,9 +130,9 @@ In this task, you will learn about the portal and how to create a new Web App an
 
 	_Created Resource Group Notification_
 	
- 16. Notice that the recently created resource group was automatically added to the Startboard for easy access. 
+ 16. Notice that the recently created resource group was automatically added to the Dashboard for easy access. 
 
-	![Resource Group added to Startboard](Images/resource-group-added-to-startboard.png?raw=true)
+	![Resource Group added to Dashboard](Images/resource-group-added-to-startboard.png?raw=true)
 
  17. Click on the name of the resource group to open it. You created your new resource group, which includes a Web App, a SQL Server and a SQL Database.
 
@@ -158,15 +158,15 @@ In this task, you will learn about the portal and how to create a new Web App an
 	>
 	>![Notification after Resource Group was deleted](Images/notification-after-resource-group-was-deleted.png?raw=true)
 	>
-	>1. Navigate to the StartBoard. Once there, find and right-click the tile for the resource group. Click **unpin from Startboard**.
+	>1. Navigate to the Dashboard. Once there, find and right-click the tile for the resource group. Click **unpin from Dashboard**.
 	>
-	>![Unpin Resource Group from StartBoard](Images/unpin-resource-group-from-startboard.png?raw=true)
+	>![Unpin Resource Group from Dashboard](Images/unpin-resource-group-from-startboard.png?raw=true)
 	>
-	>_Unpinning Resource Group from StartBoard_
+	>_Unpinning Resource Group from DashBoard_
 	>The tile is removed.
 
 
 <a name="Summary"></a>
 ## Summary ##
 
-The new Azure portal offers an exciting look into the future of DevOps. This is a first-of-its-kind experience which brings together all of the individual resources, people, and lifecycle stages of your application into a unified portal. In this lab, you learned about the portal and how to create a new resource group by building a Web App.
+The new Azure portal offers an exciting look into the future of DevOps. This is a first-of-its-kind experience which brings together all of the individual resources, people, and life-cycle stages of your application into a unified portal. In this lab, you learned about the portal and how to create a new resource group by building a Web App.
