@@ -13,7 +13,7 @@ The new portal allows each user to transform the portal home page (called the _D
 
 * **Marketplace**. A rich marketplace of applications and services from Microsoft and the open source community. This integrated marketplace of free and paid services enables customers to leverage the ecosystem to be more agile and productive.
 
-* **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
+* **Visual Studio Team Services**. Microsoft announced key enhancements through the Microsoft Azure Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
 
 ## Creating a Web App + SQL ##
 
