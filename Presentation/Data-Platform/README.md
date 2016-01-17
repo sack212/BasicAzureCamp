@@ -93,7 +93,7 @@ You now have a database in Azure but no data deployed to it. In order to do that
 > **Speaking point:** There are other fully supported options for SQL Storage in Azure, including Oracle and MySQL. These can all be viewed in the Marketplace.
 
 <a name="Demo5"></a>
-## Demo 5) View Document DB in the Preview Management Portal and create data using code ##
+## Demo 5) View Document DB in the Azure Management Portal and create data using code ##
 
 1. Use [http://portal.azure.com](http://portal.azure.com)
 2. Create a new DocumentDB and view it.
