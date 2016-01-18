@@ -41,7 +41,7 @@ ContactsList.Angular - An AngularJS client, for demonstrating CORS support.
 
 1. Download the sample application:
 	
-	>Download the Azure-Samples/app-service-api-dotnet-contact-list repository.
+	>Download the solution from [/source/ContactList](https://github.com/opsgility/DevCamp/tree/master/HOL/build-mobile-app-with-web-client/source/ContactList).
 
 2. You can Download a .zip file or clone the repository on your local machine.
 
