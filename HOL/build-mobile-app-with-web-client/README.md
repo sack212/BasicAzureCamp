@@ -57,16 +57,15 @@ In this section of the tutorial you take a look at the generated Swagger 2.0 met
 
 2. Press F5 to run the project in debug mode.
 
-The browser opens and shows the 403 Forbidden page.
+	The browser opens and shows the 403 Forbidden page.
 
    ![](./images/swagger-download.png)
 
-   swagger-ui.png
 3. In your browser address bar, add swagger/docs/v1 to the end of the line, and then press Return. (The URL will be http://localhost:{port-num}/swagger/docs/v1.)
 
 4. This is the default URL used by Swashbuckle to return Swagger 2.0 JSON metadata for the API. If you're using Internet Explorer, the browser prompts you to download a v1.json file.
 
-If you're using Chrome or Edge, the browser displays the JSON in the browser window.
+	If you're using Chrome or Edge, the browser displays the JSON in the browser window.
 
 5. In your browser address bar, add swagger to the end of the line, and then press Return. (The URL will be http://localhost:{port-num}/swagger.)
 
@@ -91,7 +90,7 @@ In this section you use Azure tools that are integrated into the Visual Studio P
 
 4. Once the application is created, Add "swagger" to the URL in the browser's address bar, and then press Enter. (The URL will be http://{apiappname}.azurewebsites.net/swagger.)
 
-The browser displays the same Swagger UI that you saw earlier, but it is now running in the cloud. Try out the Get method, and you see that you're back to the default 3 contacts, because the changes you made earlier were saved in a local file; any changes you make now will be saved in the file system of the Azure API app.
+	The browser displays the same Swagger UI that you saw earlier, but it is now running in the cloud. Try out the Get method, and you see that you're back to the default 3 contacts, because the changes you made earlier were saved in a local file; any changes you make now will be saved in the file system of the Azure API app.
 
 5. Click **Browse** > **API Apps** > **{your new API app}**.
 
@@ -104,22 +103,22 @@ The browser displays the same Swagger UI that you saw earlier, but it is now run
 <a name="publish-a-ContactList-web-client-ui"></a>
 ## Publish a ContactList Web Client UI
 
-This tutorial shows how to consume an API app from JavaScript code in a website that is served from a different domain than the API app. The sample client uses AngularJS.
+	This tutorial shows how to consume an API app from JavaScript code in a website that is served from a different domain than the API app. The sample client uses AngularJS.
 
-In the ContactsList sample application, the ContactsList.Angular project is a simple AngularJS client for the ContactsList.API Web API project.
+	In the ContactsList sample application, the ContactsList.Angular project is a simple AngularJS client for the ContactsList.API Web API project.
 
 1. In Visual Studio, open the project **ContactsList.Angular** > **_index.html_**.
 
         angular.module('myApp', []).controller('contactListCtrl', function ($scope, $http) {
         $scope.baseUrl = 'http://localhost:51864';
 
-The AngularJS JavaScript code that calls the API is in the index.html file in the ContactsList.Angular project. The code defines the functions and adds them to the $scope object, as shown here where the API's Get method is defined as $scope.refresh()
+	The AngularJS JavaScript code that calls the API is in the index.html file in the ContactsList.Angular project. The code defines the functions and adds them to the $scope object, as shown here where the API's Get method is defined as $scope.refresh()
 
 2. Run the AngularJS project locally:
 
-The code calls $scope.refresh() method when the page loads (at the end of of the snippet shown above) and is wired up to the Refresh button in the UI.
+	The code calls $scope.refresh() method when the page loads (at the end of of the snippet shown above) and is wired up to the Refresh button in the UI.
 
->Note: These instructions work for Internet Explorer and Edge browsers because these browsers allow cross-origin JavaScript calls from and to http://localhost URLs. If you're using Chrome, start the browser with the --disable-web-security switch. If you're using Firefox, skip this section.
+	>Note: These instructions work for Internet Explorer and Edge browsers because these browsers allow cross-origin JavaScript calls from and to http://localhost URLs. If you're using Chrome, start the browser with the --disable-web-security switch. If you're using Firefox, skip this section.
 
 3. Set the ContactsList.API and ContactsList.Angular projects as startup projects, with ContactsList.API starting before ContactsList.Angular.
 
@@ -129,7 +128,7 @@ The code calls $scope.refresh() method when the page loads (at the end of of the
 
 6. Change the AngularJS project to point to the Azure API app. In the ContactsList.Angular project, open index.html.
 
-Comment out the line that sets baseUrl to the localhost URL, uncomment the line that sets baseUrl to an azurewebsites.net URL, and replace the placeholder with the actual name of the API app you created earlier. If you named the API app ContactsListAPI, the code now looks like the following example.
+	Comment out the line that sets baseUrl to the localhost URL, uncomment the line that sets baseUrl to an azurewebsites.net URL, and replace the placeholder with the actual name of the API app you created earlier. If you named the API app ContactsListAPI, the code now looks like the following example.
 
 		$scope.baseUrl = 'https://ContactsListAPI.azurewebsites.net';
 		//$scope.baseUrl = 'http://localhost:51864';
@@ -146,7 +145,7 @@ Comment out the line that sets baseUrl to the localhost URL, uncomment the line 
 
    ![](./images/publish-code-list.png)
 
-Normally when you deploy a web project to an existing App Service web app you don't want the "remove additional files" option because any changes are typically updates or new files. In this case you're deploying a different project to the same web app, so there are likely to be many files from the earlier deployment that aren't needed in the new one.
+	Normally when you deploy a web project to an existing App Service web app you don't want the "remove additional files" option because any changes are typically updates or new files. In this case you're deploying a different project to the same web app, so there are likely to be many files from the earlier deployment that aren't needed in the new one.
 
 5. Click Publish.
 
