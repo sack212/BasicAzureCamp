@@ -24,7 +24,7 @@ In this section, you will create a Azure App Service Mobile App backend.
 
 2. Click **Web + Mobile** and then click **Mobile App**.
 
-3. Enter **App Service Name**. Select **Subscription**. Select/Create **RESOURCE GROUP**. Select/Create **App Service Plan**.
+3. Enter **App Service Name**. Select **Subscription**. Select/Create **Resource Group**. Select/Create **App Service Plan**.
 
    ![](./images/creating-portal.PNG)
 
@@ -103,9 +103,9 @@ In this section you use Azure tools that are integrated into the Visual Studio P
 <a name="publish-a-ContactList-web-client-ui"></a>
 ## Publish a ContactList Web Client UI
 
-	This tutorial shows how to consume an API app from JavaScript code in a website that is served from a different domain than the API app. The sample client uses AngularJS.
+This tutorial shows how to consume an API app from JavaScript code in a website that is served from a different domain than the API app. The sample client uses AngularJS.
 
-	In the ContactsList sample application, the ContactsList.Angular project is a simple AngularJS client for the ContactsList.API Web API project.
+In the ContactsList sample application, the ContactsList.Angular project is a simple AngularJS client for the ContactsList.API Web API project.
 
 1. In Visual Studio, open the project **ContactsList.Angular** > **_index.html_**.
 
