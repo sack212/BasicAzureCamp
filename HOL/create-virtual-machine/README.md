@@ -1269,13 +1269,7 @@ In order to create virtual machine using ARM, perform the following steps:
 
 		_Copy content in wwwroot_
 
-	* Open Database Server, and Open SQL Server Management Studio 2014 login with 
-	* 
-	* 
-	* 
-	* 
-	* 
-	* Windows Authentication for restoring the AdventureWorks2012 database.
+	* Open Database Server, and Open SQL Server Management Studio 2014 login with Windows Authentication for restoring the AdventureWorks2012 database.
 	
 	* Copy the .bak file to the Backup location "C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup" and click **OK**.
 	
