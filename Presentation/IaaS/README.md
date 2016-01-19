@@ -43,9 +43,9 @@
 -	PowerShell environment has been set with large font for easy reading.
 -	A Windows Server 2012 VM has been provisioned.
 
-## Demo 3 - Creating a Virtual Machines with IIS and SQL VM using ARM Templates
+## Demo 3 - Creating Virtual Machines with IIS and SQL VM using ARM Templates
 
-In this demo you will learn how to create the virtual machines using ARM Templates. 
+In this demo you will learn how to create a virtual machine using ARM Templates. 
 
 ###Resources and Architecture Diagram:
 
@@ -62,7 +62,7 @@ The following resources are created by this template:
 
 	_Architecture diagram for ARM Template_
 
-The below **Deploy to Azure** button embeds with ARM template which creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+The below **Deploy to Azure** button embeds an Azure ARM template which creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fiis-2vm-sql-1vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
