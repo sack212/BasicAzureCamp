@@ -1299,6 +1299,12 @@ In order to create virtual machine using ARM, perform the following steps:
     connectionString="Data Source=tcp:{Destination-Internal-IP},1433;Initial Catalog=AdventureWorks2012;User ID={User-created-DbServer};Password={password};Encrypt=true;Trusted_Connection=false;TrustServerCertificate=true" providerName="System.Data.SqlClient"/>    
 <add name="AdventureWorksEntities" connectionString="metadata=res://*/Models.AdventureWorks.csdl|res://*/Models.AdventureWorks.ssdl|res://*/Models.AdventureWorks.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:{Destination-Internal-IP},1433;initial catalog=AdventureWorks2012;Uid={User-created-DbServer};Password={password};multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />`
 
+	>NOTE: Before replacing the connection string, do change the following text with respective values
+		
+		1) Destination IP address : {Destination-Internal-IP} -> Destination IP
+		2) User ID: {User-created-DbServer} -> User ID for SQL Authentication
+		3) Password: {password} -> Password for SQL Authentication
+		
 	* Now you can verify by copying the Loadbalancer IP address onto browser and you will see an asp.net application with data populating from the DB Server.
 	
 		![Adding a Outbound NSG rule](images/output-demo.png?raw=true)
