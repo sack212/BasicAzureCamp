@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactManager\ContactManager.csproj", "{183A2941-B64C-44EA-927F-CEB5C3264BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.WebAPI", "Contacts.WebAPI\Contacts.WebAPI.csproj", "{947D59DD-476F-4318-96FB-681808F8440D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{183A2941-B64C-44EA-927F-CEB5C3264BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183A2941-B64C-44EA-927F-CEB5C3264BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183A2941-B64C-44EA-927F-CEB5C3264BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183A2941-B64C-44EA-927F-CEB5C3264BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947D59DD-476F-4318-96FB-681808F8440D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947D59DD-476F-4318-96FB-681808F8440D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947D59DD-476F-4318-96FB-681808F8440D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947D59DD-476F-4318-96FB-681808F8440D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://incyclesoftware.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ContactManager\\ContactManager.csproj
+		SccProjectName1 = ContactManager
+		SccLocalPath1 = ContactManager
+		SccProjectUniqueName2 = Contacts.WebAPI\\Contacts.WebAPI.csproj
+		SccProjectName2 = Contacts.WebAPI
+		SccLocalPath2 = Contacts.WebAPI
+	EndGlobalSection
+EndGlobal
