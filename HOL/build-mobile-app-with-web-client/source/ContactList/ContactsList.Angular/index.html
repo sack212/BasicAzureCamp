@@ -74,8 +74,8 @@
     <script type="text/javascript">
         /* client javascript code here */
         angular.module('myApp', []).controller('contactListCtrl', function ($scope, $http) {
-            $scope.baseUrl = 'http://democontactlist.azurewebsites.net';
-            //$scope.baseUrl = 'http://localhost:51864';
+            //$scope.baseUrl = 'http://[your azure app service name].azurewebsites.net';
+            $scope.baseUrl = 'http://localhost:51864';
 
             $scope.refresh = function () {
                 $scope.status = "Refreshing Contacts...";

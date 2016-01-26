@@ -24,7 +24,7 @@ In this section, you will create a Azure App Service Mobile App backend.
 
 2. Click **Web + Mobile** and then click **Mobile App**.
 
-3. Enter **App Service Name**. Select **Subscription**. Select/Create **Resource Group**. Select/Create **App Service Plan**.
+3. Enter a unique **App Service Name**. Select **Subscription**. Create a new **Resource group** named contactlisting. **Resource Group**. Create a new **App Service Plan** in the region you want to run the lab in.
 
    ![](./images/creating-portal.PNG)
 
@@ -120,7 +120,9 @@ In the ContactsList sample application, the ContactsList.Angular project is a si
 
 	>Note: These instructions work for Internet Explorer and Edge browsers because these browsers allow cross-origin JavaScript calls from and to http://localhost URLs. If you're using Chrome, start the browser with the --disable-web-security switch. If you're using Firefox, skip this section.
 
-3. Set the ContactsList.API and ContactsList.Angular projects as startup projects, with ContactsList.API starting before ContactsList.Angular.
+3. Set the ContactsList.API and ContactsList.Angular projects as startup projects, with ContactsList.API starting before ContactsList.Angular by right clicking on the Solution, opening the properties, and set both projects to Start.
+
+   ![](./images/multiple-start-projects.png)
 
 4. Press F5 to start the projects.
 
@@ -135,33 +137,42 @@ In the ContactsList sample application, the ContactsList.Angular project is a si
 
 ### Deploy the ContactsList.Angular project to the web app
 
-1. In Solution Explorer, right-click the ContactsList.Angular project, and then click Publish.
+1. Before the solution will work when running against Azure you must enable CORS on the API App. 
 
-2. Click the Microsoft Azure web App. Create a new Web App with the final app url along with the app settings like Subscription, Resource Group, App Service Plan and click Create which will create a Web App and download the deployment settings details
+2. Open the API App that you created earlier in the Azure Management Portal, within SETTINGS click CORS. 
+ 
+4. In the ALLOWED ORIGINS section add * and click Save on the toolbar. 
 
-3. Click the Settings tab.
+  ![](./images/enable-cors.png)
 
-4. Expand File Publish Options, and then select Remove additional files at destination.
+
+5. In Solution Explorer, right-click the ContactsList.Angular project, and then click Publish.
+
+6. Click the Microsoft Azure web App. Create a new Web App with the final app url along with the app settings like Subscription, Resource Group, App Service Plan and click Create which will create a Web App and download the deployment settings details
+
+7. Click the Settings tab.
+
+8. Expand File Publish Options, and then select Remove additional files at destination.
 
    ![](./images/publish-code-list.png)
 
 	Normally when you deploy a web project to an existing App Service web app you don't want the "remove additional files" option because any changes are typically updates or new files. In this case you're deploying a different project to the same web app, so there are likely to be many files from the earlier deployment that aren't needed in the new one.
 
-5. Click Publish.
+9. Click Publish.
+ 
 
 <a name="test-the-mobile-and-web-apps"></a>
 ## Test the Mobile and Web Apps 
 
-1. To Get the web UI. Open **RUN**(Windows + R) and type **chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security** and press Enter.
+1. Refresh the local client now that it has been updated to point to the API in Azure.
 
-2. Open the Web App Url.
-   ![View of Web Application in the Browser](./images/final-demo.png)
+   ![View of Web Application in the Browser](./images/validated-azure-api.png)
 
 ##Summary
 
 By completing this lab you have learned how to:
 
-* Create Azure App Service Mobile App backend
-* Use the same underlying Mobile App backend for an app that has a website.
+* Create an Azure App Service API backend
+* Use the same underlying API App for a web app
 
 
