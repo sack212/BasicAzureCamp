@@ -1,4 +1,4 @@
-﻿Infrastructure as a Service in Microsoft Azure
+Infrastructure as a Service in Microsoft Azure
 =======================================================================================
 
 The ability to create a virtual machine on demand, whether a standard image or from one you supply, can be very useful. This approach, commonly known as Infrastructure as a Service (IaaS), is what Azure Virtual Machines provides.
@@ -15,9 +15,9 @@ In this lab, you will learn how to create virtual machines using different optio
 
 This lab includes the following tasks:
 
-* [**Creating a Virtual Machine using the Preview Portal**](#creating-a-vm-using-portal)
+* [**Creating a Virtual Machine using Azure Portal**](#creating-a-vm-using-portal)
 
-	In this task you will create a Windows virtual machine using an existing image from the Windows Azure Management Portal.
+	In this task you will create a Windows virtual machine using an existing image from the Azure Management Portal.
 
 * [**Creating a Virtual Machine using the Cross-Platform Command-Line Interface**](#creating-a-vm-using-cli) 
 
@@ -31,26 +31,30 @@ This lab includes the following tasks:
 
 	In this task you will [ensure some prerequisites are present](#runbook-setup) like [creating an organizational account](#creating-new-organizational-account), [create an automation account](#create-automation-account), [create an empty runbook](#create-empty-runbook), [edit the runbook to create a virtual machine and publish it](#edit-runbook), [create the necessary assets for the runbook execution](#create-assets), [start the runbook](#start-runbook) and once it finishes [verify that the vm was created in the portal](#verify-vm-runbook).
 
+* [**Creating a Virtual Machines with IIS and SQL VM using ARM Templates**](#creating-a-vm-using-armtemplates)
+
+	In this task you will use ARM template to create one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+	
 * [Appendix - Cleanup](#cleanup)
 
 This is a long lab which shows how you can perform similar actions using the different tools available, so you can choose which task you want to execute based on the explanations above. It's recommended that you run [Creating a Virtual Machine using using the Cross-Platform Command-Line Interface](#creating-a-vm-using-cli) and [Creating a Virtual Machine using PowerShell](#creating-a-vm-using-powershell), as these provide a good coverage of many tasks performed on a virtual machine, but you can choose to execute all or the ones that most interest you.
 
 <a name="creating-a-vm-using-portal"></a>
-## Creating a Virtual Machine using the Preview Portal ##
+## Creating a Virtual Machine using Azure Portal ##
 
-In this task you will create a Virtual Machine in Azure using the Azure Preview Portal.
+In this task you will create a Virtual Machine in Azure Portal.
 
 1. Sign in to the [Azure Management Portal](https://portal.azure.com/).
 
-1. Click **NEW** and then **Everything**.
+1. On the Left Side bar, click **+ NEW** and then click on **See all**.
 
-	![Creating VM - Click New and Everything](images/creating-vm---click-new-and-everything.png?raw=true)
+	![Creating VM - Click New and Everything](images/click-new-and-everything.png?raw=true)
 
 	_Creating a VM_ 
 
-1. Click **Virtual Machines** and then click the **Windows Server** tile.
+1. Click **Compute** and then click the **Windows Server** tile.
 
-	![Creating VM - Click Virtual Machines and Windows Server](images/creating-vm-click-vms-and-windows-server.png?raw=true)
+	![Creating VM - Click Virtual Machines and Windows Server](images/creating-compute-vm-winserver.png?raw=true)
 
 	_Creating a VM - Click Virtual Machines then the Windows Server tile_
 
@@ -60,31 +64,54 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 
 	_Creating a VM - Select the image to use_
 
-1. In the **Windows Server 2012 R2 Datacenter** blade that opens, click **Create**.
+1. In the **Windows Server 2012 R2 Datacenter** blade, Select **'Resource Manager'** from dropdown **select a deployment model**, and then click **Create**.
 
 	![Creating VM Confirm image](images/creating-vm-confirm-image.png?raw=true)
 
 	_Creating a VM - Click Create to confirm the use of this image_
 
-1. On the **Create VM** blade that opens, enter: 
+1. On the **Create Virtual Machine** blade that opens, enter: 
 
-	* **Host Name**: virtual machine name (e.g. azureVM)
+	* **Name**: virtual machine name (e.g. testvm)
 	* **User Name**: administrator user for the virtual machine (e.g. adminUser)
 	* **Password**: unique password for the administrator account
+	* **Subscription**: Select if you have multiple subscriptions
+	* **Resource**: New or Existing (e.g. create-vm)
+	* **Location**: select the location for the virtual machine. (e.g. West US)
+	
+	![Creating a VM - basic configuration](images/create-vm-resource-basic-config.png?raw=true)
 
-	![Creating a VM - Enter VM Name, User Name and Password](images/creating-vm-enter-vm-name-user-name-and-passw.png?raw=true)
+	_Creating a VM - Basic Configuration_
+	
+	* **Size**: select the size of virtual machine needed. (Select **See All** for checking all sizes and details)
+	
+	![Creating a VM - choose size](images/create-vm-resource-choose-size.png?raw=true)
 
-	_Creating a VM - Enter Host Name, User Name and Password_
+	_Creating a VM - Types of Sizes_
+	
+	* **Disk Type**: select the disk size. (e.g. Standard/Premium(SSD))
+	* **storage account**: storage account details(if existing select the storage account at specified location or create new)
+	* **virtual network**: virtual network for the virtual machine to create
+	* **Subnet**: subnets under one Virtual network
+	* **Public IP address**: public IP address
 
-1. Review the default settings, such as the **Pricing Tier**, **Optional Configuration**, and **Location**. These choices affect the size of VM as well as networking options such as domain membership. For example, to try out Premium Storage on a virtual machine, you will need to pick a region and size that supports it.
+	![Creating a VM - Settings Optional features](images/create-vm-resource-settings-config.png?raw=true)
 
-	> **Note:** Premium storage is in Preview, available for DS-series virtual machines in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](http://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage-preview-portal/).
+	_Creating a VM - Settings_
+	
+	* **Summary**: virtual machine summary details before you click on create.
 
-1. Click **Create**.
+	![Creating a VM - VM Summary](images/create-vm-summary.png?raw=true)
 
-1. The VM will start being created. You can monitor the creation progress on the **Notifications** Hub. As this can take a few minutes, this task ends here. 
+	_Creating a VM - Summary_
 
-	![Creating a VM - Monitor progress on the Notifications Hub](images/creating-vm-monitor-progress-on-the-notifi.png?raw=true)
+	> **Note:** Premium storage, available for DS-series virtual machines in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](http://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage-preview-portal/).
+
+1. Click **OK**.
+
+1. The VM will start being created. You can monitor the creation progress on the **Notifications**. As this can take a few minutes, this task ends here. 
+
+	![Creating a VM - Monitor progress on the Notifications](images/creating-vm-monitor-progress-on-the-notifi.png?raw=true)
 
 	_Creating a VM - Monitor progress in the Notifications Hub_
 
@@ -95,6 +122,10 @@ In this task you will create a Virtual Machine in Azure using the Azure Preview 
 	>_Creating a VM - A pin was created in the Startboard_
 
 	>Once the virtual machine has been created you can attach new or existing data disks to the Virtual Machine. See [About Virtual Machine Disks in Azure](https://msdn.microsoft.com/library/azure/dn790303.aspx) for more information. 
+	>
+	>![Creating a VM - A pin in the startboard exists after creation](images/create-vm-details-created.png?raw=true)
+	>
+	>_Virtual Machine details after Creation_
 
 <a name="creating-a-vm-using-cli"></a>
 ## Creating a Virtual Machine using the Cross-Platform Command-Line Interface
@@ -439,7 +470,7 @@ To log in using an Azure AD account, follow these instructions:
 	Add-AzureAccount
 	```
 
-1. A dialog box to **Sign in to Windows Azure** will appear. Follow the instructions, typing the email address and password associated with your account when prompted.
+1. A dialog box to **Sign in to Microsoft Azure** will appear. Follow the instructions, typing the email address and password associated with your account when prompted.
 
 	Azure authenticates and saves the credential information, and then closes the window. After it does, you will see the following output appear in the console window.
 
@@ -1161,19 +1192,137 @@ If you do not currently have an organizational account, and are using a Microsof
 
 	_Validating that the virtual machine was created_
 
+<a name="creating-a-vm-using-armtemplates"></a>
+##Create Virtual Machine using ARM Templates
 
+In this task you will learn how to create a virtual machine using ARM Templates. 
+
+###Resources and Architecture Diagram:
+
+The following resources are created by this template:
+
+* 1 or 2 Windows 2012R2 IIS Web Servers.
+* 1 SQL Server 2014 running on premium or standard storage.
+* 1 virtual network with 2 subnets with NSG rules.
+* 1 storage account for the VHD files.
+* 1 Availability Set for IIS servers.
+* 1 Load balancer with NATing rules.
+
+	![Virtual Machines view in portal](images/create-architecture-diagram-vm.png?raw=true)
+
+	_Architecture diagram for ARM Template_
+
+The below **Deploy to Azure** button embeds an Azure ARM template which creates one or two Windows Server 2012R2 VM(s) with IIS configured using DSC. It also installs one SQL Server 2014 standard edition VM, a VNET with two subnets, NSG, loader balancer, NATing and probing rules.
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fiis-2vm-sql-1vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+
+In order to create virtual machine using ARM, perform the following steps:
+
+1. Click on the **Deploy to Azure** button which will navigate you to Azure Portal with Custom Deployment.
+
+	![Custom deployment and its Parameters](images/create-vm-arm-parameters.png?raw=true)
+
+	_Custom Deployment using Azure ARM - using Deploy to Azure button_
+
+1. On the Custom Deployment blade that opens, enter the parameters:
+
+	* **ENVPREFIXNAME**: virtual machine name (e.g. azureVM)
+	* **Location**: location for the virtual machine (e.g. West US)
+	* **User Name**: user name for the administrator account (e.g. adminUser)
+	* **Password**: unique password for the administrator account
+	* **WEBSRVVMSIZE**: unique password for the administrator account (e.g. Standard_DS1)
+	* **NUMBEROFWEBSRVS**: unique password for the administrator account (e.g. 1)
+	* **SQLVMSIZE**: unique password for the administrator account (e.g. Standard_DS1)
+	* **STORAGEACCOUNTTYPE**: unique password for the administrator account (e.g. Standard_LRS)
+
+1. Review the default settings, such as the **Subscription**(if you have multiple), **Resource Group**(create or select an existing group), and **Resource Group Location** and finally **Legal Temrs**, then Click **Create** which will add the resource group on to dashboard.
+
+	![Creating a VM using ARM Dashboard](images/create-vm-arm-dashboard.png?raw=true)
+
+	_Creating the architecture using ARM Template_
+
+1. In the meanwhile, you can click on **Deploying Template deployment** which was created on the dashboard.
+
+	![Status while deploying custom deployment template](images/deploying-template-deployment-status.png?raw=true)
+
+	_Azure ARM Template deployment Status_
+	
+1. Once the Template Deployment succeeds, you will have WebServer with IIS Installed and SQL Server 2014 Standard deployed on a Virtual Netowrk with 2 subnets with NSG rules and a Load Balancer with NATing rules. Click on the Resource Group Tile pinned on the dashboard and then click on each resource for more details.
+
+	![Resource Group with all resources](images/succeeded-arm-template.png?raw=true)
+
+	_Azure ARM Template deployment Succeeds_
+
+1. Now, the 2-tier architecture is created with all necessary resources, to check whether all the rules are applied we will deploy an ASP.NET application and a Sample Database(AdventureWorks2012).
+
+	* Click on **dbNsg** which is a Netowork security group and delete the outbound Security rules (Prioirity - 200) - We do this step to download the below AdventureWorks2012 database.
+
+	* Download RDPs for both Database server and Application server and login with the credentails and download the ASP.NET application content into appserver and AdventureWorks2012 database into Database server.
+
+	* A sample ASP.NET Application content can be downloaded here : [application content](http://opsgilitytraining.blob.core.windows.net/armhackathon/cloudshop.zip)
+
+	* Sample Database can be downloaded here : [AdventureWorks2012] (http://opsgilitytraining.blob.core.windows.net/public/AdventureWorks2012.bak)
+	
+	* Once you download application content onto app server extract the .zip file and copy the content and past in C:\inetpub\wwwroot.
+	
+		![Copied content into inetpub](images/inetpub.png?raw=true)
+
+		_Copy content in wwwroot_
+
+	* Open Database Server, and Open SQL Server Management Studio 2014 login with Windows Authentication for restoring the AdventureWorks2012 database.
+	
+	* Copy the .bak file to the Backup location "C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup" and click **OK**.
+	
+		![Restoring Backup database file](images/backup-database.png?raw=true)
+
+		_Restoring Backup database file_
+		
+	* In object explorer go to Security section and Login subsection Right Click and New Login and create a user with SQL Server authentication and in the default database select as **AdventureWorks2012**
+	
+		![Create a Login user](images/login-user.png?raw=true)
+
+		_Create a login user_
+	
+	* On Left side you have **Server Roles** -> Select **public** and **sysadmin** and check in **User Mapping** whether **public** is selected or not and click **OK**
+	
+	* So till now we have an application content in appserver and database in Database Server. Fianlly we have to setup the NSG Outbound rule which we have deleted earlier to Database Server through portal.
+		
+	* In Azure Portal Click on the resource group which we just created and in the resources click on **dbNsg** and click on **All Settings** and Outbound security rules and click on add and fill the details as below:
+		
+		![Adding a Outbound NSG rule](images/addnsgrule-outbound.png?raw=true)
+
+		_Adding a Outbound NSG rule_
+	
+	* And Finally login into AppServer and open inetpub\wwwroot and Open **Web.Config** in notepad and replace the **ConnectionString** with the below code:
+	
+	`<add name="DefaultConnection"
+    connectionString="Data Source=tcp:{Destination-Internal-IP},1433;Initial Catalog=AdventureWorks2012;User ID={User-created-DbServer};Password={password};Encrypt=true;Trusted_Connection=false;TrustServerCertificate=true" providerName="System.Data.SqlClient"/>    
+<add name="AdventureWorksEntities" connectionString="metadata=res://*/Models.AdventureWorks.csdl|res://*/Models.AdventureWorks.ssdl|res://*/Models.AdventureWorks.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:{Destination-Internal-IP},1433;initial catalog=AdventureWorks2012;Uid={User-created-DbServer};Password={password};multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />`
+
+	>NOTE: Before replacing the connection string, do change the following text with respective values
+		
+		1) Destination IP address : {Destination-Internal-IP} -> Destination IP
+		2) User ID: {User-created-DbServer} -> User ID for SQL Authentication
+		3) Password: {password} -> Password for SQL Authentication
+		
+	* Now you can verify by copying the Loadbalancer IP address onto browser and you will see an asp.net application with data populating from the DB Server.
+	
+		![Adding a Outbound NSG rule](images/output-demo.png?raw=true)
+
+		_Output of the application_
+	
 <a name="cleanup"></a>
 ##Appendix - Cleanup
 
 In this task you will learn how to delete the virtual machines created in the previous sections, along with the related data disks created. 
 
-### Remove VM using the Preview Portal
+### Remove VM using Azure Portal
 
-1. Click **Browse** in the **Hub Menu**. Then scroll down and click **Virtual Machines**.
+1. Scroll to the bottom on the left pane and Click **Browse >**. Then either search in the search box at the top or scroll down and find **Virtual machines (Classic)**.
 
-	![Clicking Browse in the Hub Menu](images/clicking-browse-in-the-hub-menu.png?raw=true)
+	![Clicking Browse in the left pane and search in the box](images/clicking-browse-virtualmachine.png?raw=true)
 
-	_Clicking Browse in the Hub Menu_
+	_Clicking Browse in the left Menu_
 
 1. A page listing all Virtual Machines will be displayed. 
 
@@ -1199,4 +1348,4 @@ Once complete, the **Virtual Machines** list will refresh and the virtual machin
 
 ##Summary
 
-By completing this lab you have learned how to create virtual machines using several different methods: the Preview Portal interface, the Cross-Platform Command Line Tools, PowerShell and Automation Runbook. Additionally, you have seen how to attach an empty datadisk to the virtual machine, how to generate a Remote Desktop Protocol file to connect to the machine, and how to install extensions.
+By completing this lab you have learned how to create virtual machines using several different methods: the Azure Portal interface, the Cross-Platform Command Line Tools, PowerShell and Automation Runbook. Additionally, you have seen how to attach an empty datadisk to the virtual machine, how to generate a Remote Desktop Protocol file to connect to the machine, and how to install extensions.

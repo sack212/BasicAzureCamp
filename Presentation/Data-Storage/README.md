@@ -25,13 +25,15 @@ Follow these steps to setup your environment for the demo.
 <a name="Demo1"></a>
 ## Demo 1) Interact with Azure Storage Blobs ##
 
-1. Using the third party tool create a container in your Azure Storage account.
+1. Using the [Azure Storage Explorer](http://storageexplorer.com/) tool create a container in your Azure Storage account.
 2. Upload a file for instance an image. (It can be any image you feel like sharing.)
 3. Copy the URL to the file and browse to it. It does not work.
 4. Change the container access permissions to allow public read access (at the container level or at the blob level).5) Try browsing to the blob again. It works.
 5. Upload a small video file, copy the URL to it and open it in Media Player. Streaming of the blob should happen. (Azure Storage supports smooth streaming.)
+6. Using this storage explorer tool, you can as well demonstrate how easy it is to copy blobs between two different storage accounts. It involved multiple steps in the PowerShell world.
 
-> **Speaking point:** Explain that interacting with Storage Blobs is really easy using a tool. Any tool that can make a call over http can access your files in Azure Storage. There is also a CDN (Content Delivery Network) Service which can be enabled for Azure Storage which effectively caches your files in edge nodes closer to the downloading users around the globe.
+> **Speaking point:** Explain that interacting with Storage Blobs is really easy using a tool. Any tool that can make a call over http can access your files in Azure Storage. There is also a CDN (Content Delivery Network) Service which can be enabled for Azure Storage which effectively caches your files in edge nodes closer to the downloading users around the globe. 
+	> Note: Azure Storage Explorer is a tool released by Microsoft and is currently under version 0.7.
 
 <a name="Demo2"></a>
 ## Demo 2) Interact with Azure Storage Blobs through code ##
