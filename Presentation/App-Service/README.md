@@ -1,297 +1,280 @@
-# Azure App Service
-Demo Script
-## Prerequisites
-1. Azure subscription – we will be spinning up an S1 Web App. Although they are relatively inexpensive, make sure you have enough spend in your account to complete the walkthrough.
-1. VSTS account – we will be using less than 10 build minutes, but you should make sure you have enough spend in your account to accommodate this.
-1. Visual Studio Enterprise 2015
-## Setup
-The following steps must be completed prior to running through the following walkthrough.
-### Setup SQL Database
-1. In Internet Explorer or Edge, navigate to the Azure Preview Portal and sign in.
-2. Click New / Data + Storage / SQL Database.
-3. In the SQL Database blade, in the Name text box, enter a name for your database (e.g. MercuryJeffDb.Dev).
-4. Click the Server option.
-
-> If you don’t already have a server, you’ll need to create one. If you already have one, feel free to use it and skip the next steps.
-
-5. In the Server blade, click the Create a new server option.
-6. In the New server blade, in the Server name text box, enter a unique name (e.g. demosqlscus).
-7. Enter your credentials.
-8. Select the Location option.
-9. In the Location blade, select the same location as the Web App you created previously.
-10. In the New server blade, click the OK button.
-11. Select the Resource Group option.
-12. In the Resource group blade, select the Resource Group you created previously.
-13. Click the Create button.
-### Download Mercury Health Source Code
-
-> The Mercury Health application source code is available in my VSTS instance at https://jeffwork.visualstudio.com.
-
-> If you need permissions to this source code in VSTS, email me at jfattic@microsoft.com
-
-### Setup Azure Subscription in VSTS
-1. In Internet Explorer or Edge, navigate to your VSTS instance (e.g. https://jeffwork.visualstudio.com)
-2. Navigate to your Team Project associated with the Mercury Health source code.
-3. In the upper-right of the page, click the Administer Account (gear icon) button.
-4. Click the Services tab.
-5. In the left-hand navigation pane, click the New Service Endpoint button, and select Azure.
-6. At the bottom-right of the ADD AZURE SUBSCRIPTION dialog box, click the publishsettings xml file hyperlink.
-7. Download your publish settings file and open it in any text editor.
-8. Back in ADD AZURE SUBSCRIPTION dialog box, in the Subscription id text box, paste the Subscription ID from your publishsettings file.
-9. In the Subscription name text box, paste the name of your subscription from your publishsettings file.
-10. In the Subscription certificate text box, paste the long certificate key (just the value between the quotes.
-11. Click the OK button.
-12. Close the browser tab.
-### Setup Build Definition
+# Web Demos
 
-> This walkthrough assumes your VSTS Team Project is using TFVC rather than Git. If you want to use Git, you will have to modify the steps as necessary.
+> Note: These demos are verified with VS 2015 Community edition with Update 1 and Azure SDK for .Net 2.8.1
 
-1. In Internet Explorer or Edge, navigate to your VSTS instance (e.g. https://jeffwork.visualstudio.com)
-2. Navigate to your Team Project associated with the Mercury Health source code.
-3. From the main menu, click the BUILD menu item.
-4. In the left-hand navigation pane, click the Actions button (green plus sign).
-5. In the DEFINITION TEMPLATES dialog, select the Visual Studio option.
-6. Click the OK button.
+## Demo 1 - Creating a Web App
 
-> This template sets up the standard build steps: compiling, running unit tests, indexing symbols, and publishing the build output.
+This is a quick demo showing how quickly you can create a new Web App in the portal. Feel free to change alter this first demo.
 
-7. Select the Visual Studio Build step.
-8. Next to the Solution text box, click the ellipsis button, and navigate to the MercuryHealth solution file.
-9. In the MSBuild Arguments text box, enter the following: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:OutDir=”$(build.stagingDirectory)”
-10. Select the Visual Studio Test step.
-
-> This step is where we would tell the build engine where to find our tests and which ones to run. At this point, our app isn’t deployed anywhere, so we just want to run our unit tests.
-
-11. Select the Index Sources & Publish Symbols step.
-
-> When it comes to debugging versions of your application, it can be very advantageous to have indexed source files and then publishing versions of your symbol files to a symbol server location.
-
-12. Select the Publish Build Artifacts step.
-13. In the Copy Root text box, enter the following: $(Build.StagingDirectory)
-14. In the Contents text box, replace the text with **\*
-15. Click the Add build step… button.
+1. Browse to the [Azure Portal](https://portal.azure.com)
 
-> One of the most exciting aspects of the new build system is the ability to extend it to build, test, and deploy any kind of app on any platform. As you can see, we can add steps to build and sign Android apps, run Grunt tasks, or even build iOS apps on a Mac!
-
-16. Select the Azure Web App Deployment task.
-17. Click the Close button.
-18. In the Azure Subscription drop down list, select your Azure subscription.
-19. In the Web App Name text box, enter the name of the Web App you created previously.
-20. In the Web App Location text box, enter the location of the Web App you created previously.
-21. In the Slot text box, enter the name of the deployment slot you created previously (dev).
-22. In the Web Deploy Package text box, enter the following: $(Build.StagingDirectory)\**\MercuryHealth.Web.zip
-23. In the menu, click the Repository menu item.
-24. Under the Mappings heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
-25. Remove the second row cloaking the Drops folder.
-26. In the menu, click the Triggers menu item.
-27. Check the box labeled Continuous Integration (CI).
-28. Under the Filters heading, at the end of the first row, click the ellipsis button, and navigate to the MercuryHealth solution folder.
-29. In the toolbar, click the Save button.
-## Walkthrough
-### Using Azure Portal to Create a Web App (5 minutes)
-
-> This first demo is intended to show how quickly you can create a new Web App in the portal.
-
-1. In Internet Explorer or Edge, navigate to the Azure Preview Portal and sign in.
-2. Click New / Web + Mobile / Web App.
-3. In the Web App blade, in the App Name text box, enter a unique name.
-4. Use a unique name like ‘MercuryJeff’ or something and take note of the App Name you use because you will need later in the demonstration.
-5. Under the Resource Group option, click the Or Create New hyperlink.
-6. In Azure, you can logically group your application and infrastructure resources into Resource Groups.
-7. In the Resource Group text box, enter any descriptive name (e.g. MercuryHealth).
+1. Click New / Web + Mobile / Web App.
 
-> Finally, we just need to create or select an App Service Plan. These plans are used to determine the sizing options, features, and, of course, pricing model for our Web Apps.
+1. Enter a unique name in the URL field and click the Create button.
 
-8. Click the App Service Plan option and click the Create New button.
-9. In the App Service plan blade, in the App Service plan text box, enter a name (e.g. SCUS_S1)
+1. While the site is being created, explain that Azure is provisioning a new Web App for you with supporting services, monitoring, support for continuous deployment, etc.
 
-> The most defining property of an App Service plan is the Pricing tier. We want to select an S1 Standard tier so we can check out some of the cool features like Deployment Slots and Auto Scale.
+ > Note: This generally takes 30 - 60 seconds. During this time, you can ask them how long it would take their IT department or hosting provider to provision a new site for them. This is usually enough time for the new Web App to be created.
 
-10. Click the Pricing tier option and select the S1 Standard tier.
-11. In the upper-right of the Choose your pricing tier blade, click the View all hyperlink.
+1. When the site comes up, scroll through the various features (Monitoring, Usage, Operations, Deployment, Networking) explaining that these are all live and have been provisioned with the Web App. You can click on the _settings_ option to bring up the _settings_ blade.
+> Note: If these tiles are not visible, you can add them by clicking on 'Add tiles' button and add Deployment, Operations, Usage etc.
 
-> As you can see, there are a lot of options for pricing tiers and prices show are estimates for a month.
+1. Click on the Browse button. When the default landing page loads, point out that the page illustrates the different options for publishing to the new site, including Git, FTP, Visual Studio, etc.
 
-12. Click the Select button.
-13. Click the OK button.
-14. Click the Create button.
-
-> While the site is being created, Azure is provisioning a new Web App for you with supporting services, monitoring, support for continuous deployment, etc.
+1.  Back in the portal, Under 'General' option select 'Application settings'. Show that .NET, PHP, Python and Java are all shown.
 
-> This generally takes 30 - 60 seconds. How long it would take your IT department or hosting provider to provision a new site for you?
+## Demo 2 - WebJobs
 
-> You don’t have to wait for the process to finish. You can move on and the site will be ready before we need it.
+This sample demonstrates creating a WebJob and performing operations with Microsoft Azure WebJobs SDK. In this sample, the Program class starts the JobHost and creates the demo data. The Functions class contains methods that will be invoked when messages are placed on the queues and tables, based on the attributes in the method headers.
 
-### Unit Testing (10 minutes)
+ 1. Go to http://portal.azure.com and provision a new free Web App.  
 
-> Let’s look at an existing ASP.NET application that needs some work. At this point, we are early in the development of a web application that customers can use to track their diet, exercises, and physical measurements.
+ > Note: You can use the Web App you provisioned in the first demo here.
 
-> We’ve had a lot of regression bugs crop up in our demos to stakeholders, so we’ve been tasked with adding some unit tests.
-Open Visual Studio and the MercuryHealth solution from source control.
+ 2. In Visual Studio, go to File -> New -> Project and navigate to Visual C# -> Cloud -> QuickStarts -> Select "Azure WebJobs SDK: Tables"
 
-1. In Solution Explorer, expand the MercuryHealth.Models project, and double-click the MyMetricsViewModel.cs file.
+ 3. Select the name and location for the project and click "ok".
 
-> The CalculateBmr method isn’t especially complicated at first glance, but it’s using some polymorphism to call into the desired derived type and calculate the number of calories a person burns by just doing nothing all day.
+ 4. Open the project in Visual Studio, and compile (to download all the packages required inside bin directory)
 
-2. Right-click within the CalculateBmr method, and select Run IntelliTest.
+ 5. Enter a storage account name and key as instructed in App.config.
 
-> In the IntelliTest Exploration Results pane, each of these rows corresponds to a unit test that Visual Studio generated as it explored the logic branches in our code. While this looks like a decent set of tests, we actually have some warnings that we need to look into.
+ 6. Right-click project, select " Publish as Azure WebJob.." and then select "run on-demand" from the dropdown.
 
-3. In the IntelliTest Exploration Results toolbar, click Warnings button.
+ 7. Select "Microsoft Azure App Service" and Click Next.
 
-> As you can see, we have a bunch of boundary warnings indicating that IntelliTest was timing out as it explored our code. The first warning, about the DateTime, is our problem. Code depending on DateTime.Now is problematic when we unit test because the results may not be consistent between test runs – which is exactly what’s happening here. This is where mocking frameworks come into play.
+ 8. Select the relevant subscription/ resource group and web app.
 
-> First, let’s switch back to our tests and save them in a unit test project.
+ 9. Modify any details that you want here and click "Publish".
 
-4. Click the Warnings button.
-5. Click the Save button.
-6. Clicking Save tells Visual Studio to emit those rows of tests into unit tests.
-7. In Solution Explorer, select the MyMetricsViewModelTest.cs file.
+ 10. Find the WebJob under the Web App node in Server Explorer, right-click and select run.
+ 
+ 11. Find the storage account in Server Explorer and show the results in queue(textinput) and table(words).
 
-> This generated code is what we call a Parameterized Unit Test. It’s simply how our other unit tests will call our method under test. As you recall, we need to mock out DateTime in order for us to unit test here.
+ 12. Show how to run the WebJob from the Wep App's WebJob setting blade in the portal. Show the log of successful runs.
 
-8. In Solution Explorer, under the MercuryHealth.Models.Tests project, expand the References node.
-9. Right-click the reference to MercuryHealth.Models, and select Add Fakes Assembly.
-10. In the CalculateBmr method, add the following lines of code highlighted in green:
-using (Microsoft.QualityTools.Testing.Fakes.ShimsContext.Create())
-{
-    Fakes.ShimMemberProfile.AllInstances.CalculateAgeDateTime = (self, birthdate) => 25;
+## Demo 3 - Creating an API App
 
-    double result = target.CalculateBmr(calculatorOption, profile);
-    return result;
-    // TODO: add assertions to method MyMetricsViewModelTest.CalculateBmr(MyMetricsViewModel, BmrCalculatorOption, MemberProfile)
-}
-11. Open MyMetricsViewModel.cs file.
-12. Right-click within the CalculateBmr method, and select Run IntelliTest.
-
-> We still get a single warning that you can Suppress if you want, but it’s an inconsequential warning that will be removed by a future product update.
-
-> We still have several failing unit tests due to null reference and argument exceptions. To save time, we’ll select each of these and click the Allow button which tells IntelliTest that these are expected exception if someone passes in a null profile or an invalid gender value. We’ll then re-run IntelliTest one last time.
-
-13. Hold down the Ctrl key and select each of the failing tests.
-14. In the toolbar, click the Allow button.
-### Add Monitoring (5 minutes)
-1. Right-click MercuryHealth.Web project and select Add Application Insights Telemetry… from the context menu.
-2. Click the Configure settings… button.
-3. In the Resource Group combo box, enter MercuryHealth.Web.Insights
-4. In the Application Insights Resource combo box, enter MercuryHealth.Web.Dev
-5. Click the OK button.
-6. Click the Add button.
-7. Open the Cloud Explorer pane.
-8. Expand the Web Apps node, right-click the Web App you created previously, and select Open in Portal.
-9. If the blade for the Web App you created previously isn’t visible, you need to click the Browse All button and locate it.
+This is a quick demo showing how quickly you can create a new API App using Visual Studio.
 
-> Our Web App is ready to go. This column of information in the portal can be used to monitor and manage your application. Note that we have a tile for Monitoring requests and errors, we can set alerts and so much more.
+1. Create a new **ASP.NET Web Application** project using Visual Studio with the name **ProductsApp**
 
-> We’ve already added the App Insights to our application and that will get us most of the data we need, but let’s also add the agent in and get as many data points as we can!
-
-10. In the toolbar, click the Tools button.
-11. In the Tools blade, click Extensions.
-12. In the Installed web app extensions blade, in the toolbar, click the Add button.
-13. In the Add web app extension blade, click the Choose Extension option.
-14. In the Choose web app extension, select Application Insights.
-15. In the Accept legal terms blade, click the OK button.
-16. In the Add web app extensions blade, click the OK button.
-### Set Auto-Scale (2 minutes)
-1. Click the tile labeled Scale.
-2. In the Scale setting blade, in the Scale by drop down list, select CPU Percentage.
-3. Leave the Instances slider set to 1.
-4. Set the Target range slider to 3.
-5. In the toolbar, click the Save button.
-### Create Deployment Slot (2 minutes)
-1. Return to your Web App’s blade.
-2. Click the tile labeled Deployment slots.
-3. In the Deployment slots blade, in the toolbar, click the Add Slot button.
-4. In the Add a slot blade, in the Name text box, enter dev
-5. Click the OK button.
-### Set Application Settings (2 minutes)
-1. In the Deployment slots blade, click the Deployment Slot you just created.
-2. In the Web App blade for your new deployment slot, in the toolbar, click the Settings button.
-3. In the Settings blade, click Application settings.
-4. In the Application settings blade, under Connection strings section, click the Show connection strings button.
-5. In the first text box, enter DefaultConnection
-6. In the second text box, paste the connection string to your SQL Database.
-7. In the drop down list, select SQL Database.
-8. Check the box labeled Slot setting.
-9. In the toolbar, click the Save button.
-### Check In (1 minutes)
-
-> Let’s check in our changes. Our check-in is wired up for Continuous Integration, so we will automatically kick off a build.
-
-1. Back in Visual Studio, in Solution Explorer, right-click the solution, and select Check In…
-2. In the Team Explorer pane, click the Check In button.
-### Build (1 minutes)
-
-> Let’s zip over to our build and see how things are going
-
-1. In the Team Explorer pane, in the toolbar, click the Home button.
-2. Click the Builds button.
-3. Under My Builds, double-click the first build.
-### Deploy (1 minute)
-
-> The automated builds are great at compiling code, running unit tests, and packaging up an application. I would prefer to deploy and configure my applications from Release Management, but this is a simple demo. Here, you can see our build will actually deploy to an Azure Web App.
-
-### Test (1 minute)
-
-> We could add steps to our build that would run automated functional tests, load tests, etc.
-
-### Track Down Issue (10 minutes)
-
-> Let’s add an apple to our nutrition log so we can verify it works.
-
-1. Back in the Preview portal, be sure you are looking at the blade for your Web App’s Deployment Slot.
-2. Click the URL to navigate to your web app.
-3. In the navigation menu, click the Nutrition menu item.
-4. Click the Create New hyperlink.
-5. In the Quantity text box, enter 1
-6. In the Description text box, enter Apple
-7. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-8. In the Calories text box, enter 1
-9. In the ProteinInGrams text box, enter 1
-10. In the FatInGrams text box, enter 1
-11. In the CarbohydratesInGrams text box, enter 1
-12. In the SodiumInGramstext box, enter 1
-13. Click the Create button.
-
-> Let’s put some more data in. We’ll just add another apple to keep it easy.
-
-14. Click the Create New hyperlink.
-15. In the Quantity text box, enter 1
-16. In the Description text box, enter Apple
-17. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-18. In the Calories text box, enter 1
-19. In the ProteinInGrams text box, enter 1
-20. In the FatInGrams text box, enter 1
-21. In the CarbohydratesInGrams text box, enter 1
-22. In the SodiumInGramstext box, enter 1
-23. Click the Create button.
-
-> Hmmm… We expected to see two entries for Apple, but we don’t. There were no obvious errors, but we didn’t set up Application Insights for nothing, so let’s go see if it can help us.
-
-24. Back in the Preview portal, in the left-hand navigation pane, click the BROWSE ALL button.
-25. In the Browse blade, click Application Insights.
-26. In the Application Insights blade, click the Application Insights instance.
-
-[PROBLEM: For some reason, the exception isn’t showing up in App Insights like I was expecting it to.]
-
-> Let’s try to reproduce this ourselves in Visual Studio locally.
-
-27. Back in Visual Studio, click F5 to debug the application.
-28. In the navigation menu, click the Nutrition menu item.
-29. Click the Create New hyperlink.
-30. In the Quantity text box, enter 1
-31. In the Description text box, enter Apple
-32. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-33. Click the Create button.
-34. Click the Create New hyperlink.
-35. In the Quantity text box, enter 1
-36. In the Description text box, enter Apple
-37. In the MealTime text box, enter today’s date (e.g. 8/25/2105)
-38. Click the Create button.
-39. In the Visual Studio toolbar, click the Break All button (pause button).
-40. In the Diagnostics Tools pane, click the red Exception event.
-41. In the Events tab, click the Activate Historical Debugging hyperlink.
-
-> This takes us right to the offending line of code where we can see someone is logging any exceptions, but they aren’t reflecting anything back to the user.
-
-> Hopefully, you’ve seen how we can decide on our fix for this issue, check in the code and get it built, tested, and deployed in just a couple more minutes.
+2. Select the **Azure API App (Preview)** project template
+
+3. Add a Contact class to the project with the name **Product.cs**
+
+4. Add the following code to the contact class:
+
+		namespace ProductsApp.Models
+		{
+		    public class Product
+		    {
+		        public int Id { get; set; }
+		        public string Name { get; set; }
+		        public string Category { get; set; }
+		        public decimal Price { get; set; }
+		    }
+		}
+
+5. Delete the **ValuesController.cs** file in the **Controllers** folder.
+
+6. Add a new Empty Controller to the Web API project using the Default Scaffolding and the name **ProductsController.cs**
+
+7. Add the following code to the controller
+
+		using ProductsApp.Models;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Net;
+		using System.Web.Http;
+
+		namespace ProductsApp.Controllers
+		{
+		    public class ProductsController : ApiController
+		    {
+						List<Product> products = new List<Product>
+		        {
+		            new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
+		            new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
+		            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
+		        };
+
+		        public IEnumerable<Product> GetAllProducts()
+		        {
+		            return products;
+		        }
+
+		        public IHttpActionResult GetProduct(int id)
+		        {
+		            var product = products.FirstOrDefault((p) => p.Id == id);
+		            if (product == null)
+		            {
+		                return NotFound();
+		            }
+		            return Ok(product);
+		        }
+		    }
+		}
+
+8. Deploy the application to a new API App instance in Azure
+
+	> Ensure that the Access Level is set to **Available to Everyone**
+
+9. Open **Internet Explorer** and navigate to **https://www.hurl.it/**
+
+10. In the **Destination** textbox, add the URL for your API app with the relative url **/api/Products** appended to the end
+
+	> Ensure that you use the https scheme. `https://[API App Name].azurewebsites.net/api/Products`
+
+11. Click **Launch Request**
+
+12. Leave the project in Visual Studio open for future demos
+
+## Demo 4 - Basic Mobile App with Validation
+
+Create a .NET backend using the Azure portal
+
+You can create a new mobile application right in the [*Azure portal*](https://portal.azure.com/). You can either follow the steps below, or create a new client and server together by following the [*Create a mobile app*](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-ios-get-started/) tutorial.
+
+1. Log into the [*Azure Portal*](https://portal.azure.com/).
+
+2. In the top left of the window, click the **+NEW** button > **Web + Mobile** > **Mobile App**, then provide a name for your Mobile App backend.
+
+3. In the **Resource Group** box, select an existing resource group. If you have no resource groups, enter the same name as your app.
+
+	At this point, the default App Service plan is selected, which is in the Free tier. The App Service plan settings determine the location, features, cost and compute resources associated with your app. You can either select another App Service plan or create a new one. For more about App Services plans and how to create a new plan, see [*Azure App Service plans in-depth overview*](https://azure.microsoft.com/en-us/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)
+
+4. Use the default App Service plan, select a different plan or [*create a new plan*](https://azure.microsoft.com/en-us/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/#create-an-app-service-plan), then click **Create**.
+
+	This creates the Mobile App backend. Later you will deploy your server project to this backend. Provisioning a Mobile App backend can take several minutes; the **Settings** blade for the Mobile App backend is displayed when complete. Before you can use the Mobile App backend, you must also define a connection a data store.
+
+	> NOTE:
+	> As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same location as the new mobile app backend, you can instead choose **Use an existing database** and then select that database. The use of a database in a different location is not recommended because of additional bandwidth costs and higher latencies. Other data storage options are available.
+ 
+5. In the **Settings** blade for the new Mobile App backend, click **Quick start** &gt; your client app platform &gt; **Connect a database**. 
+
+	![](images/connect-a-database.png)
+
+6. In the **Add data connection** blade, click **SQL Database** &gt; **Create a new database**, type the database **Name**, choose a pricing tier, then click **Server**.
+
+	![](images/new-database.png)
+
+7. In the **New server** blade, type a unique server name in the **Server name** field, provide a secure **Server admin login** and **Password**, make sure that **Allow azure services to access server** is checked, then click **OK** twice. This creates the new database and server.
+
+8. Back in the **Add data connection** blade, click **Connection string**, type the login and password values for your database, then click **OK** twice.
+
+	Creation of the database can take a few minutes. Use the **Notifications** area to monitor the progress of the deployment. You cannot continue until the database has been deployed successfully.
+
+9. Back in the *Quick Start* blade, under **Create a table API**, choose **C\#** as your **Backend language**
+
+10. Click Download, extract the compressed project files to your local computer, and open the solution in Visual Studio.
+
+### Configure the server project
+
+1. Back in the Mobile App backend settings, click **Quick Start** > your client platform.
+
+2. Under **Create a table API**, select **C\#** as your **Backend language**,
+
+3. Click **Download**, extract the compressed project files to your local computer, open the solution in Visual Studio, build the project to restore the NuGet packages, then deploy the project to Azure. To learn how to deploy a .NET backend server project to Azure, see [How to: Publish the server project](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-dotnet-backend-how-to-use-server-sdk/#publish-server-project) in the .NET backend SDK topic.
+
+You Mobile App backend is now ready to use with your client app.
+
+###Download and run the client project
+
+Once you have configured your Mobile App backend, you can either create a new client app or modify an existing app to connect to Azure. In this section, you download a universal Windows app template project that is customized to connect to your Mobile App backend.
+
+1. Back in the **Quick Start** blade for your Mobile App backend, click **Create a new app** &gt; **Download**, then extract the compressed project files to your local computer.
+
+2. (Optional) Add the universal Windows app project to the solution with the server project. This makes it easier to debug and test both the app and the backend in the same Visual Studio solution, if you choose to do so.
+
+3. With the Windows Store app as the startup project, press the F5 key to rebuild the project and start the Windows Store app.
+
+4. In the app, type meaningful text, such as *Complete the tutorial*, in the **Insert a TodoItem** text box, and then click **Save**.
+
+	![](images/bs-demo-mobileapp.png)
+
+This sends a POST request to the new mobile app backend that's hosted in Azure.
+
+5. Stop debugging, right-click the `_your app name_.WindowsPhone` project, click **Set as StartUp Project**, and then press F5 again.
+
+Notice that data saved from the previous step is loaded from the mobile app after the Windows app starts.
+
+###Add Server Side Validation
+
+1. Switch to Visual Studio solution that contains the mobile service project.
+
+2. In the Solution Explorer window expand the todo list service project and expand **Controllers**. Open the *TodoItemController.cs* file which is part of the mobile service project.
+
+3. Replace the PostTodoItem method with the following method which will validate that the text string is not greater than 10 characters. For items that do have a text length greater than 10 characters, the method returns an HTTP Status code 400 Bad Request with a descriptive message included as content.
+
+		public async Task<IHttpActionResult> PostTodoItem(TodoItem item) 
+		{
+			if (item.Text.Length < 5)
+			{
+				return BadRequest("The Item's Text length must be greater than 5.");
+			}
+			else 
+			{
+				TodoItem current = await InsertAsync(item);
+				return CreatedAtRoute("Tables", new { id = current.Id }, current);
+
+			}
+		}
+
+4. Right click the service project and click Build to build the mobile service project. Verify no errors occurred.
+
+5. Right click the service project and click Publish.
+
+###Update the Client
+
+Now that the mobile service is setup to validate data and send error responses for an invalid text length, you need to update your app to be able to handle error responses from validation. The error will be caught as a _MobileServiceInvalidOperationException_ from the client app's call to _IMobileServiceTable<TodoItem].InsertAsync()_.
+
+1. In the Solution Explorer window in Visual Studio, navigate to the client project and open the MainPage.xaml.cs file. Add the following using statement in that file:
+
+		using Windows.UI.Popups;
+		using Newtonsoft.Json.Linq;
+		
+2. In **MainPage.xaml.cs** replace the existing **InsertTodoItem** method with the following code:
+		
+		private async void InsertTodoItem(TodoItem todoItem)
+		{
+			// This code inserts a new TodoItem into the database. When the operation completes
+			// and Mobile Services has assigned an Id, the item is added to the CollectionView MobileServiceInvalidOperationException invalidOpException = null;
+			try
+			{
+				await todoTable.InsertAsync(todoItem);
+				items.Add(todoItem);
+			}
+			catch(MobileServiceInvalidOperationException e)
+			{
+				invalidOpException = e;
+			}
+			if (invalidOpException != null)
+			{
+				string strJsonContent = await invalidOpException.Response.Content.ReadAsStringAsync();
+				var responseContent = JObject.Parse(strJsonContent);
+				MessageDialog errormsg = new MessageDialog(string.Format("{0} (HTTP {1})", (string)responseContent["message"],(int)invalidOpException.Response.StatusCode), invalidOpException.Message);
+				var ignoreAsyncOpResult = errormsg.ShowAsync();
+			}
+		}
+		
+This version of the method includes error handling for the **MobileServiceInvalidOperationException** that displays the deserialized error message from the response content in a message dialog.
+
+### Test Length Validation
+
+1. In Solution Explorer in Visual Studio, right click the client app project and then click **Set as StartUp Project**. Then press the **F5** key to start the app hosting the service locally in IIS Express.
+
+2. Enter the text for a new todo item with a length less than 5 characters and then click **Save**.
+
+3. You will get a message dialog similar to the following in response to the invalid text.
+
+![](images/output.png)
+
+## Demo 4 - Basic Mobile App with Validation
+
+Logic Apps allow developers to design workflows that start from a trigger and then execute a series of steps. Each step invokes an App Service API app whilst securely taking care of authentication and best practices, like checkpointing and durable execution.
+
+If you want to automate any business process (e.g. find negative tweets and post to your internal slack channel or replicate new customer records from SQL, as they arrive, into your CRM system), Logic Apps makes integrating disparate data sources, from cloud to on-premises easy.
+
+You can create a demo by utilizing "Twitter connector" and "Dropbox connector" from marketplace by following the instructions from this [logic app tutorial](https://azure.microsoft.com/en-us/documentation/articles/app-service-logic-create-a-logic-app/).
