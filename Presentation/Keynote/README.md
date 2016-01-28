@@ -1,5 +1,5 @@
-﻿# Keynote Demos
+# Keynote Demos
 
-## Demo 1 - Demo Azure Portal
+## Demo 1 - Azure Portal
 
-1. Give a tour of the [New Azure Portal](http://portal.azure.com)
+1. Give a tour of the [Azure portal](http://portal.azure.com)
