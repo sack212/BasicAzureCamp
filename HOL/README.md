@@ -39,7 +39,6 @@ In this lab you will learn how to create a todo list web application using Azure
 
 In this lab you will be introduced to the developer experience and the basic concepts of Azure SQL Database Elastic Scale.
 
-#### [Lab 10 - 
-Create an app with a mobile and web client in Azure App Service](consuming-api-app) ####
+#### [Lab 10 - Create an app with a mobile and web client in Azure App Service](consuming-api-app) ####
 
 In this lab, you will learn how to build a todo list web client using a Azure App Service Mobile App SQL Database backend. The task items will be stored in Azure SQL Database. 
