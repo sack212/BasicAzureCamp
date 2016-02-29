@@ -10,7 +10,7 @@
       <div class="container">
          <div class="jumbotron">
             <h1>Azure DevCamp</h1>
-            <p>July 2015 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
+            <p>February 2016 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
             </p>
@@ -61,13 +61,13 @@
                      <td>[HOL - Create an app with a mobile and web client in Azure App Service](HOL/build-mobile-app-with-web-client/)</td>
                   </tr>
                   <tr>
-                     <td rowspan=2>Identity and Access (AD)</td>
+                     <td rowspan=2>Machine Learning</td>
                      <td>45</td>
-                     <td>[Presentation](Presentation/Identity-Access-Management/Identity and o365.pptx) | [Demos](Presentation/Identity-Access-Management/)</td>
+                     <td>[Presentation](/Presentation/Machine-Learning/Azure-Machine-Learning.pptx) | [Demos](Presentation/Machine-Learning/)</td>
                   </tr>
                   <tr>
-                     <td>60</td>
-                     <td>[HOL - Deploy a SPA with AD to Azure](HOL/build-single-page-app-with-webapi-and-angular/)</td>
+                     <td>45</td>
+                     <td>[HOL - Deploy a SPA with AD to Azure](HOL/machine-learning/)</td>
                   </tr>
                   <tr>
                      <td rowspan=2>IaaS</td>
