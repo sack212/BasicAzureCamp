@@ -115,6 +115,11 @@
 					   <td>This module outlines the high-level features of Azure App Service</td>
 					</tr>
 					<tr>
+					   <td>Machine Learning</td>
+					   <td>[Presentation](/Presentation/Machine-Learning/Azure-Machine-Learning.pptx) | [Demos](Presentation/Machine-Learning/)</td>
+					   <td>This module outlines the high-level features of Azure Machine Learning</td>
+					</tr>
+					<tr>
 					   <td>Data Platform</td>
 					   <td>[Presentation](Presentation/Data-Platform/Data-Platform.pptx) | [Demos](Presentation/Data-Platform/)</td>
 					   <td>This module outlines the Data offerings on Microsoft Azure</td>
