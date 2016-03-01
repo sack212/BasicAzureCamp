@@ -42,12 +42,8 @@
                   </tr>
                   <tr>
                   <td>15</td>
-                  <td>[HOL - Working with the Management Portal](HOL/working-with-the-management-portal/)</td>
+                  <td>[HOL - Working with the Management Portal](HOL/working-with-the-new-portal/)</td>
                   </tr>		
-                  <tr>		
-                     <td>(optional)</td>
-                     <td>[HOL - Working with the new Portal](HOL/working-with-the-new-portal/)</td>
-                  </tr>
                   <tr>
                      <td rowspan=3>App Service</td>
                      <td>30</td>
