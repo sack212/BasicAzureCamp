@@ -32,7 +32,7 @@
                      <th>Activity</th>
                   </tr>
                   <tr>
-                     <td rowspan=4>Intro to Azure</td>
+                     <td rowspan=3>Intro to Azure</td>
                      <td>30</td>
                      <td>[Presentation](Presentation/Keynote/Keynote.pptx) | [Demos](Presentation/Keynote/)</td>
                   </tr>
