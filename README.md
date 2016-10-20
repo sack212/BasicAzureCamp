@@ -9,7 +9,7 @@
    <body id="home">
       <div class="container">
          <div class="jumbotron">
-            <h1>Azure DevCamp</h1>
+            <h1>BasicAzureCamp</h1>
             <p>February 2016 release. Source: <a href="http://aka.ms/azure-devcamp">http://aka.ms/azure-devcamp</a></p>
             <p>
                <a href="http://aka.ms/CloudCamp-AzureTrial" class="btn btn-success">Sign up for Microsoft Azure</a>
